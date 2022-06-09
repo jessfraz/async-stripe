@@ -1,3 +1,4 @@
+use schemars::JsonSchema;
 use serde::ser::SerializeStruct;
 use serde::{Deserialize, Serialize};
 
@@ -11,7 +12,7 @@ use crate::resources::{Account, AlipayAccount, BankAccount, Card, Currency, Sour
 ///
 /// Not to be confused with `SourceParams` which is used by `Source::create`
 /// to create a source that is not necessarily attached to a customer.
-#[derive(Clone, Debug, Serialize, Deserialize)]
+#[derive(Clone, Debug, Serialize, Deserialize, JsonSchema)]
 #[serde(untagged)]
 pub enum PaymentSourceParams {
     /// Creates a payment method (e.g. card or bank account) from tokenized data,
@@ -29,7 +30,7 @@ pub enum PaymentSourceParams {
 /// Not to be confused with `Source` which represents a "generic" payment method
 /// returned by the `Source::get` (which could still be a credit card, etc)
 /// but is not necessarily attached to either a customer or charge.
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 #[serde(tag = "object", rename_all = "snake_case")]
 pub enum PaymentSource {
     Card(Card),
@@ -61,7 +62,7 @@ impl Object for PaymentSource {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize)]
+#[derive(Clone, Debug, Default, Deserialize, JsonSchema)]
 pub struct BankAccountParams<'a> {
     pub country: &'a str,
     pub currency: Currency,
@@ -87,7 +88,7 @@ impl<'a> serde::ser::Serialize for BankAccountParams<'a> {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize)]
+#[derive(Clone, Debug, Default, Deserialize, JsonSchema)]
 pub struct CardParams<'a> {
     pub exp_month: &'a str, // eg. "12"
     pub exp_year: &'a str,  // eg. "17" or 2017"

@@ -298,7 +298,7 @@ pub use {
 #[cfg(feature = "webhook-endpoints")]
 pub use {
     webhook_endpoints::webhook_endpoint_ext::*,
-    generated::webhook_endpoints::webhook_endpoint::*, 
+    generated::webhook_endpoints::webhook_endpoint::*,
 };
 
 #[cfg(not(feature = "full"))]
@@ -309,7 +309,7 @@ pub use generated::placeholders::*;
 /// if there are more features that requires a fully fledged CompanyParams
 /// we probably need to update the code generation and move to a shared place
 #[cfg(not(feature = "connect"))]
-#[derive(Clone, Debug, serde::Deserialize, serde::Serialize)]
+#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, schemars::JsonSchema)]
 pub struct CompanyParams {
     #[serde(default)]
     pub metadata: crate::params::Metadata,
@@ -320,7 +320,7 @@ pub struct CompanyParams {
 /// if there are more features that requires a fully fledged PersonParams
 /// we probably need to update the code generation and move to a shared place
 #[cfg(not(feature = "connect"))]
-#[derive(Clone, Debug, serde::Deserialize, serde::Serialize)]
+#[derive(Clone, Debug, serde::Deserialize, serde::Serialize, schemars::JsonSchema)]
 pub struct PersonParams {
     #[serde(default)]
     pub metadata: crate::params::Metadata,

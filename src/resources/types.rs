@@ -1,9 +1,10 @@
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::params::Timestamp;
 
 /// An enum representing the versions of the Stripe API.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, JsonSchema, PartialEq)]
 #[serde(rename_all = "snake_case")]
 pub enum ApiVersion {
     #[serde(rename = "2011-01-01")]
@@ -302,14 +303,14 @@ impl std::fmt::Display for ApiVersion {
 
 /* Developers note -- DelayDays and DelayDaysOther are not worth the trouble
  * to automate.  Recommend letting the mapping stand*/
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, JsonSchema, PartialEq)]
 #[serde(untagged)]
 pub enum DelayDays {
     Days(u32),
     Other(DelayDaysOther),
 }
 
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, JsonSchema, PartialEq)]
 #[serde(rename_all = "snake_case")]
 pub enum DelayDaysOther {
     Minimum,
@@ -324,14 +325,14 @@ impl DelayDays {
     }
 }
 
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, JsonSchema, PartialEq)]
 #[serde(untagged)]
 pub enum Scheduled {
     Timestamp(Timestamp),
     Other(ScheduledOther),
 }
 
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, JsonSchema, PartialEq)]
 #[serde(rename_all = "snake_case")]
 pub enum ScheduledOther {
     Now,
@@ -346,14 +347,14 @@ impl Scheduled {
     }
 }
 
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, JsonSchema, PartialEq)]
 #[serde(untagged)]
 pub enum UpTo {
     Max(u64),
     Other(UpToOther),
 }
 
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, JsonSchema, PartialEq)]
 #[serde(rename_all = "snake_case")]
 pub enum UpToOther {
     Inf,
@@ -368,14 +369,14 @@ impl UpTo {
     }
 }
 
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, JsonSchema, PartialEq)]
 #[serde(untagged)]
 pub enum PaymentIntentOffSession {
     Exists(bool),
     Other(OffSessionOther),
 }
 
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, JsonSchema, PartialEq)]
 #[serde(rename_all = "snake_case")]
 pub enum OffSessionOther {
     #[serde(rename = "one_off")]

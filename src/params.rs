@@ -2,6 +2,7 @@ use std::collections::HashMap;
 
 use serde::de::DeserializeOwned;
 use serde::{Deserialize, Serialize};
+use schemars::JsonSchema;
 
 use crate::error::StripeError;
 use crate::resources::ApiVersion;
@@ -65,7 +66,7 @@ pub trait Object {
 }
 
 /// A deleted object.
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 pub struct Deleted<T> {
     /// Unique identifier for the object.
     pub id: T,
@@ -98,7 +99,7 @@ impl Expand<'_> {
 /// ```
 ///
 /// For more details see <https://stripe.com/docs/api/expanding_objects>.
-#[derive(Clone, Debug, Serialize, Deserialize)] // TODO: Implement deserialize by hand for better error messages
+#[derive(Clone, Debug, Serialize, Deserialize, JsonSchema)] // TODO: Implement deserialize by hand for better error messages
 #[serde(untagged)]
 pub enum Expandable<T: Object> {
     Id(T::Id),
@@ -199,7 +200,7 @@ pub struct ListPaginator<T, P> {
 /// A single page of a cursor-paginated list of an object.
 ///
 /// For more details, see <https://stripe.com/docs/api/pagination>
-#[derive(Debug, Deserialize, Serialize)]
+#[derive(Debug, Deserialize, Serialize, JsonSchema)]
 pub struct List<T> {
     pub data: Vec<T>,
     pub has_more: bool,
@@ -377,7 +378,7 @@ where
 pub type Metadata = HashMap<String, String>;
 pub type Timestamp = i64;
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 #[serde(rename_all = "lowercase")]
 pub struct RangeBounds<T> {
     pub gt: Option<T>,
@@ -394,7 +395,7 @@ impl<T> Default for RangeBounds<T> {
 
 /// A set of generic request parameters that can be used on
 /// list endpoints to filter their results by some timestamp.
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 #[serde(untagged)]
 pub enum RangeQuery<T> {
     Exact(T),

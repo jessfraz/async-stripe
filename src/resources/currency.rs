@@ -1,3 +1,4 @@
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::params::to_snakecase;
@@ -5,7 +6,7 @@ use crate::params::to_snakecase;
 /// Currency is the list of supported currencies.
 ///
 /// For more details see <https://support.stripe.com/questions/which-currencies-does-stripe-support>.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, Hash)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, Hash, JsonSchema)]
 pub enum Currency {
     #[serde(rename = "aed")]
     AED, // United Arab Emirates Dirham

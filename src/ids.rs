@@ -1,3 +1,4 @@
+use schemars::JsonSchema;
 use smart_default::SmartDefault;
 
 macro_rules! def_id_serde_impls {
@@ -71,6 +72,21 @@ macro_rules! def_id {
             fn as_ref(&self) -> &str {
                 self.as_str()
             }
+        }
+
+        impl JsonSchema for $struct_name {
+            fn schema_name() -> String{
+                String::new(stringify!($struct_name))
+            }
+            fn json_schema(gen: &mut schemars::SchemaGenerator) -> schemars::Schema {
+                schemars::SchemaObject {
+                    instance_type: Some(InstanceType::String.into()),
+                    ..Default::default()
+                }
+                .into()
+            }
+
+            fn is_referenceable() -> bool {false }
         }
 
         impl crate::params::AsCursor for $struct_name {}
@@ -172,6 +188,21 @@ macro_rules! def_id {
             }
         }
 
+        impl JsonSchema for $struct_name {
+            fn schema_name() -> String{
+                String::new(stringify!($struct_name))
+            }
+            fn json_schema(gen: &mut schemars::SchemaGenerator) -> schemars::Schema {
+                schemars::SchemaObject {
+                    instance_type: Some(InstanceType::String.into()),
+                    ..Default::default()
+                }
+                .into()
+            }
+
+            fn is_referenceable() -> bool {false }
+        }
+
         impl crate::params::AsCursor for $struct_name {}
 
         impl std::ops::Deref for $struct_name {
@@ -211,7 +242,7 @@ macro_rules! def_id {
         def_id_serde_impls!($struct_name $(, $generate_hint )*);
     };
     (#[optional] enum $enum_name:ident { $( $variant_name:ident($($variant_type:tt)*) ),* $(,)* }) => {
-        #[derive(Clone, Debug, Eq, PartialEq, Ord, PartialOrd, Hash)]
+        #[derive(Clone, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, JsonSchema)]
         pub enum $enum_name {
             None,
             $( $variant_name($($variant_type)*), )*
@@ -326,7 +357,7 @@ macro_rules! def_id {
         )*
     };
     (enum $enum_name:ident { $( $(#[$test:meta])? $variant_name:ident($($variant_type:tt)*) ),+ $(,)? }) => {
-        #[derive(Clone, Debug, Eq, PartialEq, Ord, PartialOrd, Hash)]
+        #[derive(Clone, Debug, Eq, PartialEq, Ord, PartialOrd, Hash, JsonSchema)]
         #[derive(SmartDefault)]
         pub enum $enum_name {
             $( $(#[$test])* $variant_name($($variant_type)*), )*
