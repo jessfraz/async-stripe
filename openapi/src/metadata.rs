@@ -107,6 +107,7 @@ impl<'a> Metadata<'a> {
         out.push_str("use crate::ids::*;\n");
         out.push_str("use crate::params::Object;\n");
         out.push_str("use serde::{Deserialize, Serialize};\n");
+        out.push_str("use schemars::JsonSchema;\n");
 
         for (schema, feature) in self.feature_groups.iter() {
             out.push('\n');
@@ -114,7 +115,7 @@ impl<'a> Metadata<'a> {
                 self.schema_to_id_type(schema).unwrap_or_else(|| ("()".into(), CopyOrClone::Copy));
             let struct_type = self.schema_to_rust_type(schema);
             out.push_str(&format!("#[cfg(not(feature = \"{}\"))]\n", feature));
-            out.push_str("#[derive(Clone, Debug, Default, Deserialize, Serialize)]\n");
+            out.push_str("#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]\n");
             out.push_str(&format!("pub struct {} {{\n", struct_type));
             out.push_str(&format!("\tpub id: {},\n", id_type));
             out.push_str("}\n\n");
