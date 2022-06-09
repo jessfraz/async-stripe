@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::ids::BankAccountId;
@@ -9,7 +10,7 @@ use crate::params::{Expandable, Metadata, Object};
 use crate::resources::{Account, BankAccountStatus, Currency, Customer};
 
 /// The resource representing a Stripe "BankAccount".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct BankAccount {
     /// Unique identifier for the object.
     pub id: BankAccountId,
@@ -110,7 +111,7 @@ impl Object for BankAccount {
 }
 
 /// An enum representing the possible values of an `BankAccount`'s `available_payout_methods` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum BankAccountAvailablePayoutMethods {
     Instant,

@@ -2,12 +2,13 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::resources::Address;
 
 /// The resource representing a Stripe "Shipping".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct Shipping {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub address: Option<Address>,

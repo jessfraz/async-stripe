@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::ids::TerminalReaderId;
@@ -9,7 +10,7 @@ use crate::params::{Expandable, Metadata, Object};
 use crate::resources::{Currency, PaymentIntent, SetupIntent, TerminalLocation};
 
 /// The resource representing a Stripe "TerminalReaderReader".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct TerminalReader {
     /// Unique identifier for the object.
     pub id: TerminalReaderId,
@@ -161,7 +162,7 @@ pub struct TerminalReaderReaderResourceLineItem {
 }
 
 /// An enum representing the possible values of an `TerminalReader`'s `device_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum TerminalReaderDeviceType {
     BbposChipper2x,
@@ -204,7 +205,7 @@ impl std::default::Default for TerminalReaderDeviceType {
 }
 
 /// An enum representing the possible values of an `TerminalReaderReaderResourceReaderAction`'s `status` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum TerminalReaderReaderResourceReaderActionStatus {
     Failed,
@@ -240,7 +241,7 @@ impl std::default::Default for TerminalReaderReaderResourceReaderActionStatus {
 }
 
 /// An enum representing the possible values of an `TerminalReaderReaderResourceReaderAction`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum TerminalReaderReaderResourceReaderActionType {
     ProcessPaymentIntent,
@@ -280,7 +281,7 @@ impl std::default::Default for TerminalReaderReaderResourceReaderActionType {
 }
 
 /// An enum representing the possible values of an `TerminalReaderReaderResourceSetReaderDisplayAction`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum TerminalReaderReaderResourceSetReaderDisplayActionType {
     Cart,

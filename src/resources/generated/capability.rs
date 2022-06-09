@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::ids::CapabilityId;
@@ -9,7 +10,7 @@ use crate::params::{Expandable, Object, Timestamp};
 use crate::resources::Account;
 
 /// The resource representing a Stripe "AccountCapability".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct Capability {
     /// The identifier for the capability.
     pub id: CapabilityId,
@@ -156,7 +157,7 @@ pub struct AccountRequirementsError {
 }
 
 /// An enum representing the possible values of an `AccountRequirementsError`'s `code` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum AccountRequirementsErrorCode {
     InvalidAddressCityStatePostalCode,
@@ -276,7 +277,7 @@ impl std::default::Default for AccountRequirementsErrorCode {
 }
 
 /// An enum representing the possible values of an `Capability`'s `status` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CapabilityStatus {
     Active,

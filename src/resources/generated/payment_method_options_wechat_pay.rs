@@ -2,10 +2,11 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 /// The resource representing a Stripe "payment_method_options_wechat_pay".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodOptionsWechatPay {
     /// The app ID registered with WeChat Pay.
     ///
@@ -27,7 +28,7 @@ pub struct PaymentMethodOptionsWechatPay {
 }
 
 /// An enum representing the possible values of an `PaymentMethodOptionsWechatPay`'s `client` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentMethodOptionsWechatPayClient {
     Android,
@@ -63,7 +64,7 @@ impl std::default::Default for PaymentMethodOptionsWechatPayClient {
 }
 
 /// An enum representing the possible values of an `PaymentMethodOptionsWechatPay`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentMethodOptionsWechatPaySetupFutureUsage {
     None,

@@ -2,10 +2,11 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 /// The resource representing a Stripe "linked_account_options_us_bank_account".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct LinkedAccountOptionsUsBankAccount {
     /// The list of permissions to request.
     ///
@@ -21,7 +22,7 @@ pub struct LinkedAccountOptionsUsBankAccount {
 }
 
 /// An enum representing the possible values of an `LinkedAccountOptionsUsBankAccount`'s `permissions` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum LinkedAccountOptionsUsBankAccountPermissions {
     Balances,

@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::client::{Client, Response};
@@ -15,7 +16,7 @@ use crate::resources::{
 /// The resource representing a Stripe "Quote".
 ///
 /// For more details see <https://stripe.com/docs/api/quotes/object>
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct Quote {
     /// Unique identifier for the object.
     pub id: QuoteId,
@@ -376,7 +377,7 @@ impl Paginable for ListQuotes<'_> {
     }
 }
 /// An enum representing the possible values of an `Quote`'s `collection_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum QuoteCollectionMethod {
     ChargeAutomatically,
@@ -410,7 +411,7 @@ impl std::default::Default for QuoteCollectionMethod {
 }
 
 /// An enum representing the possible values of an `Quote`'s `status` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum QuoteStatus {
     Accepted,
@@ -448,7 +449,7 @@ impl std::default::Default for QuoteStatus {
 }
 
 /// An enum representing the possible values of an `QuotesResourceAutomaticTax`'s `status` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum QuotesResourceAutomaticTaxStatus {
     Complete,
@@ -484,7 +485,7 @@ impl std::default::Default for QuotesResourceAutomaticTaxStatus {
 }
 
 /// An enum representing the possible values of an `QuotesResourceRecurring`'s `interval` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum QuotesResourceRecurringInterval {
     Day,

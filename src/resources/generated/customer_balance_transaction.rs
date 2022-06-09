@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::ids::CustomerBalanceTransactionId;
@@ -11,7 +12,7 @@ use crate::resources::{CreditNote, Currency, Customer, Invoice};
 /// The resource representing a Stripe "CustomerBalanceTransaction".
 ///
 /// For more details see <https://stripe.com/docs/api/customer_balance_transactions/object>
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CustomerBalanceTransaction {
     /// Unique identifier for the object.
     pub id: CustomerBalanceTransactionId,
@@ -81,7 +82,7 @@ impl Object for CustomerBalanceTransaction {
 }
 
 /// An enum representing the possible values of an `CustomerBalanceTransaction`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CustomerBalanceTransactionType {
     Adjustment,

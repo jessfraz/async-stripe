@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::ids::IssuingTransactionId;
@@ -12,7 +13,7 @@ use crate::resources::{
 };
 
 /// The resource representing a Stripe "IssuingTransaction".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct IssuingTransaction {
     /// Unique identifier for the object.
     pub id: IssuingTransactionId,
@@ -249,7 +250,7 @@ pub struct IssuingTransactionTreasury {
 }
 
 /// An enum representing the possible values of an `IssuingTransaction`'s `wallet` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum IssuingTransactionWallet {
     ApplePay,

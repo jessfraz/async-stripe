@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::ids::IssuingSettlementId;
@@ -9,7 +10,7 @@ use crate::params::{Metadata, Object, Timestamp};
 use crate::resources::Currency;
 
 /// The resource representing a Stripe "IssuingSettlement".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct IssuingSettlement {
     /// Unique identifier for the object.
     pub id: IssuingSettlementId,
@@ -76,7 +77,7 @@ impl Object for IssuingSettlement {
 }
 
 /// An enum representing the possible values of an `IssuingSettlement`'s `network` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum IssuingSettlementNetwork {
     Visa,

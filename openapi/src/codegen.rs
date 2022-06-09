@@ -48,7 +48,7 @@ pub fn gen_struct(
         out.push_str(&doc_url);
         out.push_str(">\n");
     }
-    out.push_str("#[derive(Clone, Debug, Default, Deserialize, Serialize)]\n");
+    out.push_str("#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]\n");
     out.push_str("pub struct ");
     out.push_str(&struct_name);
     out.push_str(" {\n");
@@ -168,6 +168,7 @@ pub fn gen_prelude(state: &FileGenerator, meta: &Metadata) -> String {
         prelude.push_str("};\n");
     }
     prelude.push_str("use serde::{Deserialize, Serialize};\n");
+    prelude.push_str("use schemars::JsonSchema;\n");
     prelude.push('\n');
     prelude
 }
@@ -766,7 +767,7 @@ pub fn gen_emitted_structs(
                 }
             };
             out.push('\n');
-            out.push_str("#[derive(Clone, Debug, Default, Deserialize, Serialize)]\n");
+            out.push_str("#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]\n");
             out.push_str("pub struct ");
             out.push_str(&struct_name.to_camel_case());
             out.push_str(" {\n");
@@ -798,7 +799,7 @@ pub fn gen_unions(out: &mut String, state: &mut FileGenerator, meta: &Metadata) 
         log::trace!("union {} {{ ... }}", union_name);
 
         out.push('\n');
-        out.push_str("#[derive(Clone, Debug, Deserialize, Serialize)]\n");
+        out.push_str("#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]\n");
         out.push_str("#[serde(untagged, rename_all = \"snake_case\")]\n");
         out.push_str("pub enum ");
         out.push_str(&union_name.to_camel_case());
@@ -870,7 +871,9 @@ pub fn gen_enums(out: &mut String, state: &mut FileGenerator, meta: &Metadata) {
             "/// An enum representing the possible values of an `{}`'s `{}` field.\n",
             enum_.parent, enum_.field
         ));
-        out.push_str("#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]\n");
+        out.push_str(
+            "#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]\n",
+        );
         out.push_str("#[serde(rename_all = \"snake_case\")]\n");
         out.push_str("pub enum ");
         out.push_str(enum_name);
@@ -999,7 +1002,9 @@ pub fn gen_objects(out: &mut String, state: &mut FileGenerator) {
         if let Some(type_) = schema["type"].as_str() {
             match type_ {
                 "object" => {
-                    out.push_str("#[derive(Clone, Debug, Default, Deserialize, Serialize)]\n");
+                    out.push_str(
+                        "#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]\n",
+                    );
                     out.push_str(&format!("pub struct {} {{\n", key_str));
                     if let Some(prop_map) = schema["properties"].as_object() {
                         let empty_vec = vec![];
@@ -1046,7 +1051,7 @@ pub fn gen_objects(out: &mut String, state: &mut FileGenerator) {
         };
 
         if let Some(array) = schema["anyOf"].as_array() {
-            out.push_str("#[derive(Clone, Debug, Deserialize, Serialize)]\n");
+            out.push_str("#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]\n");
             out.push_str("#[serde(untagged, rename_all = \"snake_case\")]\n");
             out.push_str(&format!("pub enum {} {{\n", key_str));
 

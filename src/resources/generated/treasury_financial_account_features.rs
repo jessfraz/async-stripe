@@ -2,13 +2,14 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::params::Object;
 use crate::resources::AccountServiceResourceToggleSettings;
 
 /// The resource representing a Stripe "AccountServiceResourceTreasuryFinancialAccountFeatures".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct TreasuryFinancialAccountFeatures {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub card_issuing: Option<AccountServiceResourceToggleSettings>,

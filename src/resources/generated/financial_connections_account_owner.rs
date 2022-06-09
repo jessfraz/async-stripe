@@ -2,13 +2,14 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::ids::FinancialConnectionsAccountOwnerId;
 use crate::params::{Object, Timestamp};
 
 /// The resource representing a Stripe "BankConnectionsResourceOwner".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct FinancialConnectionsAccountOwner {
     /// Unique identifier for the object.
     pub id: FinancialConnectionsAccountOwnerId,

@@ -2,12 +2,13 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::params::Object;
 
 /// The resource representing a Stripe "TerminalConnectionToken".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct TerminalConnectionToken {
     /// The id of the location that this connection token is scoped to.
     ///

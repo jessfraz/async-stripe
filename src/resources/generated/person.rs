@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::ids::PersonId;
@@ -11,7 +12,7 @@ use crate::resources::{Address, File};
 /// The resource representing a Stripe "Person".
 ///
 /// For more details see <https://stripe.com/docs/api/persons/object>
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct Person {
     /// Unique identifier for the object.
     pub id: PersonId,
@@ -323,7 +324,7 @@ pub struct PersonRequirements {
 }
 
 /// An enum representing the possible values of an `AccountRequirementsError`'s `code` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum AccountRequirementsErrorCode {
     InvalidAddressCityStatePostalCode,
@@ -443,7 +444,7 @@ impl std::default::Default for AccountRequirementsErrorCode {
 }
 
 /// An enum representing the possible values of an `Person`'s `political_exposure` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PersonPoliticalExposure {
     Existing,

@@ -2,10 +2,11 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 /// The resource representing a Stripe "payment_method_options_customer_balance".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodOptionsCustomerBalance {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub bank_transfer: Option<PaymentMethodOptionsCustomerBalanceBankTransfer>,
@@ -27,29 +28,50 @@ pub struct PaymentMethodOptionsCustomerBalance {
 
 #[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct PaymentMethodOptionsCustomerBalanceBankTransfer {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub eu_bank_transfer: Option<PaymentMethodOptionsCustomerBalanceEuBankAccount>,
+
     /// List of address types that should be returned in the financial_addresses response.
     ///
-    /// If not specified, all valid types will be returned.  Permitted values include: `zengin`.
+    /// If not specified, all valid types will be returned.  Permitted values include: `sort_code`, `zengin`, `iban`, or `spei`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested_address_types:
         Option<Vec<PaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes>>,
 
-    /// The bank transfer type that this PaymentIntent is allowed to use for funding Permitted values include: `jp_bank_transfer`.
+    /// The bank transfer type that this PaymentIntent is allowed to use for funding Permitted values include: `eu_bank_transfer`, `gb_bank_transfer`, `jp_bank_transfer`, or `mx_bank_transfer`.
     #[serde(rename = "type")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub type_: Option<PaymentMethodOptionsCustomerBalanceBankTransferType>,
 }
 
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+pub struct PaymentMethodOptionsCustomerBalanceEuBankAccount {
+    /// The desired country code of the bank account information.
+    ///
+    /// Permitted values include: `DE`, `ES`, `FR`, `IE`, or `NL`.
+    pub country: PaymentMethodOptionsCustomerBalanceEuBankAccountCountry,
+}
+
 /// An enum representing the possible values of an `PaymentMethodOptionsCustomerBalanceBankTransfer`'s `requested_address_types` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes {
+    Iban,
+    Sepa,
+    SortCode,
+    Spei,
     Zengin,
 }
 
 impl PaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes {
     pub fn as_str(self) -> &'static str {
         match self {
+            PaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes::Iban => "iban",
+            PaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes::Sepa => "sepa",
+            PaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes::SortCode => {
+                "sort_code"
+            }
+            PaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes::Spei => "spei",
             PaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes::Zengin => {
                 "zengin"
             }
@@ -72,22 +94,34 @@ impl std::default::Default
     for PaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes
 {
     fn default() -> Self {
-        Self::Zengin
+        Self::Iban
     }
 }
 
 /// An enum representing the possible values of an `PaymentMethodOptionsCustomerBalanceBankTransfer`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentMethodOptionsCustomerBalanceBankTransferType {
+    EuBankTransfer,
+    GbBankTransfer,
     JpBankTransfer,
+    MxBankTransfer,
 }
 
 impl PaymentMethodOptionsCustomerBalanceBankTransferType {
     pub fn as_str(self) -> &'static str {
         match self {
+            PaymentMethodOptionsCustomerBalanceBankTransferType::EuBankTransfer => {
+                "eu_bank_transfer"
+            }
+            PaymentMethodOptionsCustomerBalanceBankTransferType::GbBankTransfer => {
+                "gb_bank_transfer"
+            }
             PaymentMethodOptionsCustomerBalanceBankTransferType::JpBankTransfer => {
                 "jp_bank_transfer"
+            }
+            PaymentMethodOptionsCustomerBalanceBankTransferType::MxBankTransfer => {
+                "mx_bank_transfer"
             }
         }
     }
@@ -106,12 +140,57 @@ impl std::fmt::Display for PaymentMethodOptionsCustomerBalanceBankTransferType {
 }
 impl std::default::Default for PaymentMethodOptionsCustomerBalanceBankTransferType {
     fn default() -> Self {
-        Self::JpBankTransfer
+        Self::EuBankTransfer
+    }
+}
+
+/// An enum representing the possible values of an `PaymentMethodOptionsCustomerBalanceEuBankAccount`'s `country` field.
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
+#[serde(rename_all = "snake_case")]
+pub enum PaymentMethodOptionsCustomerBalanceEuBankAccountCountry {
+    #[serde(rename = "DE")]
+    De,
+    #[serde(rename = "ES")]
+    Es,
+    #[serde(rename = "FR")]
+    Fr,
+    #[serde(rename = "IE")]
+    Ie,
+    #[serde(rename = "NL")]
+    Nl,
+}
+
+impl PaymentMethodOptionsCustomerBalanceEuBankAccountCountry {
+    pub fn as_str(self) -> &'static str {
+        match self {
+            PaymentMethodOptionsCustomerBalanceEuBankAccountCountry::De => "DE",
+            PaymentMethodOptionsCustomerBalanceEuBankAccountCountry::Es => "ES",
+            PaymentMethodOptionsCustomerBalanceEuBankAccountCountry::Fr => "FR",
+            PaymentMethodOptionsCustomerBalanceEuBankAccountCountry::Ie => "IE",
+            PaymentMethodOptionsCustomerBalanceEuBankAccountCountry::Nl => "NL",
+        }
+    }
+}
+
+impl AsRef<str> for PaymentMethodOptionsCustomerBalanceEuBankAccountCountry {
+    fn as_ref(&self) -> &str {
+        self.as_str()
+    }
+}
+
+impl std::fmt::Display for PaymentMethodOptionsCustomerBalanceEuBankAccountCountry {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        self.as_str().fmt(f)
+    }
+}
+impl std::default::Default for PaymentMethodOptionsCustomerBalanceEuBankAccountCountry {
+    fn default() -> Self {
+        Self::De
     }
 }
 
 /// An enum representing the possible values of an `PaymentMethodOptionsCustomerBalance`'s `funding_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentMethodOptionsCustomerBalanceFundingType {
     BankTransfer,
@@ -143,7 +222,7 @@ impl std::default::Default for PaymentMethodOptionsCustomerBalanceFundingType {
 }
 
 /// An enum representing the possible values of an `PaymentMethodOptionsCustomerBalance`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentMethodOptionsCustomerBalanceSetupFutureUsage {
     None,

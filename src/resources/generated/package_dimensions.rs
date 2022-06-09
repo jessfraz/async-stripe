@@ -2,10 +2,11 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 /// The resource representing a Stripe "PackageDimensions".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PackageDimensions {
     /// Height, in inches.
     pub height: f64,

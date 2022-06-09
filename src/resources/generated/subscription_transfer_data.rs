@@ -2,13 +2,14 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::params::Expandable;
 use crate::resources::Account;
 
 /// The resource representing a Stripe "SubscriptionTransferData".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SubscriptionTransferData {
     /// A non-negative decimal between 0 and 100, with at most two decimal places.
     ///

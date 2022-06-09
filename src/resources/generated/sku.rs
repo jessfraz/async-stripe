@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::client::{Client, Response};
@@ -12,7 +13,7 @@ use crate::params::{
 use crate::resources::{CreateProduct, Currency, PackageDimensions, Product};
 
 /// The resource representing a Stripe "Sku".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct Sku {
     /// Unique identifier for the object.
     pub id: SkuId,

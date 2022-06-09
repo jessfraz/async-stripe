@@ -2,17 +2,18 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 /// The resource representing a Stripe "invoice_payment_method_options_bancontact".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct InvoicePaymentMethodOptionsBancontact {
     /// Preferred language of the Bancontact authorization page that the customer is redirected to.
     pub preferred_language: InvoicePaymentMethodOptionsBancontactPreferredLanguage,
 }
 
 /// An enum representing the possible values of an `InvoicePaymentMethodOptionsBancontact`'s `preferred_language` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum InvoicePaymentMethodOptionsBancontactPreferredLanguage {
     De,

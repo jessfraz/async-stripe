@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::client::{Client, Response};
@@ -15,7 +16,7 @@ use crate::resources::{
 /// The resource representing a Stripe "Source".
 ///
 /// For more details see <https://stripe.com/docs/api/sources/object>
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct Source {
     /// Unique identifier for the object.
     pub id: SourceId,
@@ -1082,18 +1083,18 @@ impl<'a> UpdateSource<'a> {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSourceReceiver {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub refund_attributes_method: Option<SourceRefundNotificationMethod>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSourceRedirect {
     pub return_url: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSourceSourceOrder {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub items: Option<Vec<CreateSourceSourceOrderItems>>,
@@ -1102,7 +1103,7 @@ pub struct CreateSourceSourceOrder {
     pub shipping: Option<CreateSourceSourceOrderShipping>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SourceMandateParams {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub acceptance: Option<SourceAcceptanceParams>,
@@ -1120,7 +1121,7 @@ pub struct SourceMandateParams {
     pub notification_method: Option<SourceMandateNotificationMethod>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSourceSourceOrder {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub items: Option<Vec<UpdateSourceSourceOrderItems>>,
@@ -1129,7 +1130,7 @@ pub struct UpdateSourceSourceOrder {
     pub shipping: Option<UpdateSourceSourceOrderShipping>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSourceSourceOrderItems {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub amount: Option<i64>,
@@ -1151,7 +1152,7 @@ pub struct CreateSourceSourceOrderItems {
     pub type_: Option<CreateSourceSourceOrderItemsType>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSourceSourceOrderShipping {
     pub address: CreateSourceSourceOrderShippingAddress,
 
@@ -1168,7 +1169,7 @@ pub struct CreateSourceSourceOrderShipping {
     pub tracking_number: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SourceAcceptanceParams {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub date: Option<Timestamp>,
@@ -1192,7 +1193,7 @@ pub struct SourceAcceptanceParams {
     pub user_agent: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSourceSourceOrderItems {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub amount: Option<i64>,
@@ -1214,7 +1215,7 @@ pub struct UpdateSourceSourceOrderItems {
     pub type_: Option<UpdateSourceSourceOrderItemsType>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSourceSourceOrderShipping {
     pub address: UpdateSourceSourceOrderShippingAddress,
 
@@ -1231,7 +1232,7 @@ pub struct UpdateSourceSourceOrderShipping {
     pub tracking_number: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSourceSourceOrderShippingAddress {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub city: Option<String>,
@@ -1251,12 +1252,12 @@ pub struct CreateSourceSourceOrderShippingAddress {
     pub state: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SourceAcceptanceOfflineParams {
     pub contact_email: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SourceAcceptanceOnlineParams {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub date: Option<Timestamp>,
@@ -1268,7 +1269,7 @@ pub struct SourceAcceptanceOnlineParams {
     pub user_agent: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSourceSourceOrderShippingAddress {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub city: Option<String>,
@@ -1289,7 +1290,7 @@ pub struct UpdateSourceSourceOrderShippingAddress {
 }
 
 /// An enum representing the possible values of an `CreateSourceSourceOrderItems`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateSourceSourceOrderItemsType {
     Discount,
@@ -1327,7 +1328,7 @@ impl std::default::Default for CreateSourceSourceOrderItemsType {
 }
 
 /// An enum representing the possible values of an `SourceAcceptanceParams`'s `status` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SourceAcceptanceParamsStatus {
     Accepted,
@@ -1365,7 +1366,7 @@ impl std::default::Default for SourceAcceptanceParamsStatus {
 }
 
 /// An enum representing the possible values of an `SourceAcceptanceParams`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SourceAcceptanceParamsType {
     Offline,
@@ -1399,7 +1400,7 @@ impl std::default::Default for SourceAcceptanceParamsType {
 }
 
 /// An enum representing the possible values of an `CreateSource`'s `flow` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SourceFlow {
     CodeVerification,
@@ -1437,7 +1438,7 @@ impl std::default::Default for SourceFlow {
 }
 
 /// An enum representing the possible values of an `SourceMandateParams`'s `interval` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SourceMandateInterval {
     OneTime,
@@ -1473,7 +1474,7 @@ impl std::default::Default for SourceMandateInterval {
 }
 
 /// An enum representing the possible values of an `SourceMandateParams`'s `notification_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SourceMandateNotificationMethod {
     DeprecatedNone,
@@ -1513,7 +1514,7 @@ impl std::default::Default for SourceMandateNotificationMethod {
 }
 
 /// An enum representing the possible values of an `CreateSourceReceiver`'s `refund_attributes_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SourceRefundNotificationMethod {
     Email,
@@ -1549,7 +1550,7 @@ impl std::default::Default for SourceRefundNotificationMethod {
 }
 
 /// An enum representing the possible values of an `Source`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SourceType {
     AchCreditTransfer,
@@ -1615,7 +1616,7 @@ impl std::default::Default for SourceType {
 }
 
 /// An enum representing the possible values of an `UpdateSourceSourceOrderItems`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateSourceSourceOrderItemsType {
     Discount,

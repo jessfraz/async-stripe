@@ -2,10 +2,11 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 /// The resource representing a Stripe "payment_method_options_oxxo".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodOptionsOxxo {
     /// The number of calendar days before an OXXO invoice expires.
     ///
@@ -22,7 +23,7 @@ pub struct PaymentMethodOptionsOxxo {
 }
 
 /// An enum representing the possible values of an `PaymentMethodOptionsOxxo`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentMethodOptionsOxxoSetupFutureUsage {
     None,

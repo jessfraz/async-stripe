@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::ids::TransferReversalId;
@@ -11,7 +12,7 @@ use crate::resources::{BalanceTransaction, Currency, Refund, Transfer};
 /// The resource representing a Stripe "TransferReversal".
 ///
 /// For more details see <https://stripe.com/docs/api/transfer_reversals/object>
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct TransferReversal {
     /// Unique identifier for the object.
     pub id: TransferReversalId,

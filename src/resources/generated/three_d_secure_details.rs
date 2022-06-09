@@ -2,10 +2,11 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 /// The resource representing a Stripe "three_d_secure_details".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct ThreeDSecureDetails {
     /// For authenticated transactions: how the customer was authenticated by
     /// the issuing bank.
@@ -27,7 +28,7 @@ pub struct ThreeDSecureDetails {
 }
 
 /// An enum representing the possible values of an `ThreeDSecureDetails`'s `authentication_flow` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum ThreeDSecureDetailsAuthenticationFlow {
     Challenge,
@@ -61,7 +62,7 @@ impl std::default::Default for ThreeDSecureDetailsAuthenticationFlow {
 }
 
 /// An enum representing the possible values of an `ThreeDSecureDetails`'s `result` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum ThreeDSecureDetailsResult {
     AttemptAcknowledged,
@@ -101,7 +102,7 @@ impl std::default::Default for ThreeDSecureDetailsResult {
 }
 
 /// An enum representing the possible values of an `ThreeDSecureDetails`'s `result_reason` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum ThreeDSecureDetailsResultReason {
     Abandoned,
@@ -145,7 +146,7 @@ impl std::default::Default for ThreeDSecureDetailsResultReason {
 }
 
 /// An enum representing the possible values of an `ThreeDSecureDetails`'s `version` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum ThreeDSecureDetailsVersion {
     #[serde(rename = "1.0.2")]

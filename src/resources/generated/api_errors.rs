@@ -2,12 +2,13 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::resources::{BankAccount, Card, PaymentIntent, PaymentMethod, SetupIntent, Source};
 
 /// The resource representing a Stripe "APIErrors".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct ApiErrors {
     /// For card errors, the ID of the failed charge.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -63,7 +64,7 @@ pub struct ApiErrors {
     pub type_: ApiErrorsType,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 #[serde(untagged, rename_all = "snake_case")]
 pub enum ApiErrorsSourceUnion {
     BankAccount(BankAccount),
@@ -77,7 +78,7 @@ impl std::default::Default for ApiErrorsSourceUnion {
 }
 
 /// An enum representing the possible values of an `ApiErrors`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum ApiErrorsType {
     ApiError,

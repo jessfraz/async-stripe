@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::ids::ReportingReportRunId;
@@ -9,7 +10,7 @@ use crate::params::{Object, Timestamp};
 use crate::resources::{Currency, File};
 
 /// The resource representing a Stripe "reporting_report_run".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct ReportingReportRun {
     /// Unique identifier for the object.
     pub id: ReportingReportRunId,

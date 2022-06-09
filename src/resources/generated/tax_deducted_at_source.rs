@@ -2,13 +2,14 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::ids::TaxDeductedAtSourceId;
 use crate::params::{Object, Timestamp};
 
 /// The resource representing a Stripe "TaxDeductedAtSource".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct TaxDeductedAtSource {
     /// Unique identifier for the object.
     pub id: TaxDeductedAtSourceId,

@@ -2,13 +2,14 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::params::Expandable;
 use crate::resources::{Account, Customer};
 
 /// The resource representing a Stripe "BankConnectionsResourceAccountholder".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct BankConnectionsResourceAccountholder {
     /// The ID of the Stripe account this account belongs to.
     ///
@@ -28,7 +29,7 @@ pub struct BankConnectionsResourceAccountholder {
 }
 
 /// An enum representing the possible values of an `BankConnectionsResourceAccountholder`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum BankConnectionsResourceAccountholderType {
     Account,

@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::ids::TreasuryDebitReversalId;
@@ -9,7 +10,7 @@ use crate::params::{Expandable, Metadata, Object, Timestamp};
 use crate::resources::{Currency, TreasuryTransaction};
 
 /// The resource representing a Stripe "ReceivedDebitsResourceTreasuryDebitReversal".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct TreasuryDebitReversal {
     /// Unique identifier for the object.
     pub id: TreasuryDebitReversalId,
@@ -83,7 +84,7 @@ pub struct ReceivedDebitsResourceStatusTransitions {
 }
 
 /// An enum representing the possible values of an `TreasuryDebitReversal`'s `network` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum TreasuryDebitReversalNetwork {
     Ach,
@@ -117,7 +118,7 @@ impl std::default::Default for TreasuryDebitReversalNetwork {
 }
 
 /// An enum representing the possible values of an `TreasuryDebitReversal`'s `status` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum TreasuryDebitReversalStatus {
     Failed,

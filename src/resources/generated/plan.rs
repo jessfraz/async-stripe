@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::client::{Client, Response};
@@ -15,7 +16,7 @@ use crate::resources::{CreateProduct, Currency, Product};
 /// The resource representing a Stripe "Plan".
 ///
 /// For more details see <https://stripe.com/docs/api/plans/object>
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct Plan {
     /// Unique identifier for the object.
     pub id: PlanId,
@@ -309,7 +310,7 @@ impl<'a> UpdatePlan<'a> {
 }
 
 /// An enum representing the possible values of an `Plan`'s `aggregate_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PlanAggregateUsage {
     LastDuringPeriod,
@@ -347,7 +348,7 @@ impl std::default::Default for PlanAggregateUsage {
 }
 
 /// An enum representing the possible values of an `Plan`'s `billing_scheme` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PlanBillingScheme {
     PerUnit,
@@ -381,7 +382,7 @@ impl std::default::Default for PlanBillingScheme {
 }
 
 /// An enum representing the possible values of an `Plan`'s `interval` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PlanInterval {
     Day,
@@ -419,7 +420,7 @@ impl std::default::Default for PlanInterval {
 }
 
 /// An enum representing the possible values of an `Plan`'s `tiers_mode` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PlanTiersMode {
     Graduated,
@@ -453,7 +454,7 @@ impl std::default::Default for PlanTiersMode {
 }
 
 /// An enum representing the possible values of an `Plan`'s `usage_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PlanUsageType {
     Licensed,
@@ -487,7 +488,7 @@ impl std::default::Default for PlanUsageType {
 }
 
 /// An enum representing the possible values of an `TransformUsage`'s `round` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum TransformUsageRound {
     Down,

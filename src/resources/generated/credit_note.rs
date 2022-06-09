@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::client::{Client, Response};
@@ -15,7 +16,7 @@ use crate::resources::{
 /// The resource representing a Stripe "CreditNote".
 ///
 /// For more details see <https://stripe.com/docs/api/credit_notes/object>
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreditNote {
     /// Unique identifier for the object.
     pub id: CreditNoteId,
@@ -326,7 +327,7 @@ impl<'a> UpdateCreditNote<'a> {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateCreditNoteLines {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub amount: Option<i64>,
@@ -354,7 +355,7 @@ pub struct CreateCreditNoteLines {
 }
 
 /// An enum representing the possible values of an `CreateCreditNoteLines`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateCreditNoteLinesType {
     CustomLineItem,
@@ -388,7 +389,7 @@ impl std::default::Default for CreateCreditNoteLinesType {
 }
 
 /// An enum representing the possible values of an `CreditNote`'s `reason` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreditNoteReason {
     Duplicate,
@@ -426,7 +427,7 @@ impl std::default::Default for CreditNoteReason {
 }
 
 /// An enum representing the possible values of an `CreditNote`'s `status` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreditNoteStatus {
     Issued,
@@ -460,7 +461,7 @@ impl std::default::Default for CreditNoteStatus {
 }
 
 /// An enum representing the possible values of an `CreditNote`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreditNoteType {
     PostPayment,

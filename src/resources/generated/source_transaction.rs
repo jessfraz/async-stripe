@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::ids::ChargeId;
@@ -9,7 +10,7 @@ use crate::params::{Object, Timestamp};
 use crate::resources::Currency;
 
 /// The resource representing a Stripe "SourceTransaction".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SourceTransaction {
     /// Unique identifier for the object.
     pub id: ChargeId,
@@ -171,7 +172,7 @@ pub struct SourceTransactionSepaCreditTransferData {
 }
 
 /// An enum representing the possible values of an `SourceTransaction`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SourceTransactionType {
     AchCreditTransfer,

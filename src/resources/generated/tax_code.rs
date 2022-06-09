@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::client::{Client, Response};
@@ -11,7 +12,7 @@ use crate::params::{Expand, List, Object, Paginable};
 /// The resource representing a Stripe "TaxProductResourceTaxCode".
 ///
 /// For more details see <https://stripe.com/docs/api/tax_codes/object>
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct TaxCode {
     /// Unique identifier for the object.
     pub id: TaxCodeId,

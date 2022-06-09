@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::ids::TreasuryFinancialAccountId;
@@ -9,7 +10,7 @@ use crate::params::{Metadata, Object, Timestamp};
 use crate::resources::TreasuryFinancialAccountFeatures;
 
 /// The resource representing a Stripe "AccountServiceResourceTreasuryFinancialAccount".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct TreasuryFinancialAccount {
     /// Unique identifier for the object.
     pub id: TreasuryFinancialAccountId,
@@ -143,7 +144,7 @@ pub struct AccountServiceResourceTreasuryClosedStatusDetails {
 }
 
 /// An enum representing the possible values of an `AccountServiceResourceFinancialAddress`'s `supported_networks` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum AccountServiceResourceFinancialAddressSupportedNetworks {
     Ach,
@@ -179,7 +180,7 @@ impl std::default::Default for AccountServiceResourceFinancialAddressSupportedNe
 }
 
 /// An enum representing the possible values of an `AccountServiceResourceFinancialAddress`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum AccountServiceResourceFinancialAddressType {
     Aba,
@@ -211,7 +212,7 @@ impl std::default::Default for AccountServiceResourceFinancialAddressType {
 }
 
 /// An enum representing the possible values of an `AccountServiceResourcePlatformRestrictions`'s `inbound_flows` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum AccountServiceResourcePlatformRestrictionsInboundFlows {
     Restricted,
@@ -245,7 +246,7 @@ impl std::default::Default for AccountServiceResourcePlatformRestrictionsInbound
 }
 
 /// An enum representing the possible values of an `AccountServiceResourcePlatformRestrictions`'s `outbound_flows` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum AccountServiceResourcePlatformRestrictionsOutboundFlows {
     Restricted,
@@ -279,7 +280,7 @@ impl std::default::Default for AccountServiceResourcePlatformRestrictionsOutboun
 }
 
 /// An enum representing the possible values of an `AccountServiceResourceTreasuryClosedStatusDetails`'s `reasons` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum AccountServiceResourceTreasuryClosedStatusDetailsReasons {
     AccountRejected,
@@ -319,7 +320,7 @@ impl std::default::Default for AccountServiceResourceTreasuryClosedStatusDetails
 }
 
 /// An enum representing the possible values of an `TreasuryFinancialAccount`'s `active_features` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum TreasuryFinancialAccountActiveFeatures {
     CardIssuing,
@@ -385,7 +386,7 @@ impl std::default::Default for TreasuryFinancialAccountActiveFeatures {
 }
 
 /// An enum representing the possible values of an `TreasuryFinancialAccount`'s `pending_features` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum TreasuryFinancialAccountPendingFeatures {
     CardIssuing,
@@ -451,7 +452,7 @@ impl std::default::Default for TreasuryFinancialAccountPendingFeatures {
 }
 
 /// An enum representing the possible values of an `TreasuryFinancialAccount`'s `restricted_features` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum TreasuryFinancialAccountRestrictedFeatures {
     CardIssuing,
@@ -521,7 +522,7 @@ impl std::default::Default for TreasuryFinancialAccountRestrictedFeatures {
 }
 
 /// An enum representing the possible values of an `TreasuryFinancialAccount`'s `status` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum TreasuryFinancialAccountStatus {
     Closed,

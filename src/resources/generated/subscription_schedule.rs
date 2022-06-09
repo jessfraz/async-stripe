@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::client::{Client, Response};
@@ -16,7 +17,7 @@ use crate::resources::{
 /// The resource representing a Stripe "SubscriptionSchedule".
 ///
 /// For more details see <https://stripe.com/docs/api/subscription_schedules/object>
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SubscriptionSchedule {
     /// Unique identifier for the object.
     pub id: SubscriptionScheduleId,
@@ -522,7 +523,7 @@ impl<'a> UpdateSubscriptionSchedule<'a> {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSubscriptionSchedulePhases {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub add_invoice_items: Option<Vec<AddInvoiceItems>>,
@@ -578,7 +579,7 @@ pub struct CreateSubscriptionSchedulePhases {
     pub trial_end: Option<Scheduled>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SubscriptionScheduleDefaultSettingsParams {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub application_fee_percent: Option<f64>,
@@ -605,7 +606,7 @@ pub struct SubscriptionScheduleDefaultSettingsParams {
     pub transfer_data: Option<SubscriptionScheduleDefaultSettingsParamsTransferData>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSubscriptionSchedulePhases {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub add_invoice_items: Option<Vec<AddInvoiceItems>>,
@@ -664,7 +665,7 @@ pub struct UpdateSubscriptionSchedulePhases {
     pub trial_end: Option<Scheduled>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct AddInvoiceItems {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub price: Option<String>,
@@ -679,12 +680,12 @@ pub struct AddInvoiceItems {
     pub tax_rates: Option<Vec<String>>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSubscriptionSchedulePhasesAutomaticTax {
     pub enabled: bool,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSubscriptionSchedulePhasesItems {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub billing_thresholds: Option<CreateSubscriptionSchedulePhasesItemsBillingThresholds>,
@@ -702,7 +703,7 @@ pub struct CreateSubscriptionSchedulePhasesItems {
     pub tax_rates: Option<Vec<String>>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSubscriptionSchedulePhasesTransferData {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub amount_percent: Option<f64>,
@@ -710,7 +711,7 @@ pub struct CreateSubscriptionSchedulePhasesTransferData {
     pub destination: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SubscriptionScheduleBillingThresholds {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub amount_gte: Option<i64>,
@@ -719,12 +720,12 @@ pub struct SubscriptionScheduleBillingThresholds {
     pub reset_billing_cycle_anchor: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SubscriptionScheduleDefaultSettingsParamsAutomaticTax {
     pub enabled: bool,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SubscriptionScheduleDefaultSettingsParamsTransferData {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub amount_percent: Option<f64>,
@@ -732,18 +733,18 @@ pub struct SubscriptionScheduleDefaultSettingsParamsTransferData {
     pub destination: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SubscriptionScheduleInvoiceSettings {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub days_until_due: Option<u32>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSubscriptionSchedulePhasesAutomaticTax {
     pub enabled: bool,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSubscriptionSchedulePhasesItems {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub billing_thresholds: Option<UpdateSubscriptionSchedulePhasesItemsBillingThresholds>,
@@ -761,7 +762,7 @@ pub struct UpdateSubscriptionSchedulePhasesItems {
     pub tax_rates: Option<Vec<String>>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSubscriptionSchedulePhasesTransferData {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub amount_percent: Option<f64>,
@@ -769,12 +770,12 @@ pub struct UpdateSubscriptionSchedulePhasesTransferData {
     pub destination: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSubscriptionSchedulePhasesItemsBillingThresholds {
     pub usage_gte: i64,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSubscriptionSchedulePhasesItemsPriceData {
     pub currency: Currency,
 
@@ -792,7 +793,7 @@ pub struct CreateSubscriptionSchedulePhasesItemsPriceData {
     pub unit_amount_decimal: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct InvoiceItemPriceData {
     pub currency: Currency,
 
@@ -808,12 +809,12 @@ pub struct InvoiceItemPriceData {
     pub unit_amount_decimal: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSubscriptionSchedulePhasesItemsBillingThresholds {
     pub usage_gte: i64,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSubscriptionSchedulePhasesItemsPriceData {
     pub currency: Currency,
 
@@ -831,7 +832,7 @@ pub struct UpdateSubscriptionSchedulePhasesItemsPriceData {
     pub unit_amount_decimal: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSubscriptionSchedulePhasesItemsPriceDataRecurring {
     pub interval: CreateSubscriptionSchedulePhasesItemsPriceDataRecurringInterval,
 
@@ -839,7 +840,7 @@ pub struct CreateSubscriptionSchedulePhasesItemsPriceDataRecurring {
     pub interval_count: Option<u64>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSubscriptionSchedulePhasesItemsPriceDataRecurring {
     pub interval: UpdateSubscriptionSchedulePhasesItemsPriceDataRecurringInterval,
 
@@ -848,7 +849,7 @@ pub struct UpdateSubscriptionSchedulePhasesItemsPriceDataRecurring {
 }
 
 /// An enum representing the possible values of an `CreateSubscriptionSchedulePhases`'s `billing_cycle_anchor` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateSubscriptionSchedulePhasesBillingCycleAnchor {
     Automatic,
@@ -882,7 +883,7 @@ impl std::default::Default for CreateSubscriptionSchedulePhasesBillingCycleAncho
 }
 
 /// An enum representing the possible values of an `CreateSubscriptionSchedulePhasesItemsPriceDataRecurring`'s `interval` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateSubscriptionSchedulePhasesItemsPriceDataRecurringInterval {
     Day,
@@ -920,7 +921,7 @@ impl std::default::Default for CreateSubscriptionSchedulePhasesItemsPriceDataRec
 }
 
 /// An enum representing the possible values of an `CreateSubscriptionSchedulePhasesItemsPriceData`'s `tax_behavior` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateSubscriptionSchedulePhasesItemsPriceDataTaxBehavior {
     Exclusive,
@@ -956,7 +957,7 @@ impl std::default::Default for CreateSubscriptionSchedulePhasesItemsPriceDataTax
 }
 
 /// An enum representing the possible values of an `InvoiceItemPriceData`'s `tax_behavior` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum InvoiceItemPriceDataTaxBehavior {
     Exclusive,
@@ -992,7 +993,7 @@ impl std::default::Default for InvoiceItemPriceDataTaxBehavior {
 }
 
 /// An enum representing the possible values of an `SubscriptionSchedulePhaseConfiguration`'s `proration_behavior` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SubscriptionProrationBehavior {
     AlwaysInvoice,
@@ -1028,7 +1029,7 @@ impl std::default::Default for SubscriptionProrationBehavior {
 }
 
 /// An enum representing the possible values of an `SubscriptionScheduleDefaultSettings`'s `billing_cycle_anchor` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SubscriptionScheduleDefaultSettingsBillingCycleAnchor {
     Automatic,
@@ -1062,7 +1063,7 @@ impl std::default::Default for SubscriptionScheduleDefaultSettingsBillingCycleAn
 }
 
 /// An enum representing the possible values of an `SubscriptionScheduleDefaultSettings`'s `collection_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SubscriptionScheduleDefaultSettingsCollectionMethod {
     ChargeAutomatically,
@@ -1098,7 +1099,7 @@ impl std::default::Default for SubscriptionScheduleDefaultSettingsCollectionMeth
 }
 
 /// An enum representing the possible values of an `SubscriptionScheduleDefaultSettingsParams`'s `billing_cycle_anchor` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SubscriptionScheduleDefaultSettingsParamsBillingCycleAnchor {
     Automatic,
@@ -1134,7 +1135,7 @@ impl std::default::Default for SubscriptionScheduleDefaultSettingsParamsBillingC
 }
 
 /// An enum representing the possible values of an `SubscriptionSchedule`'s `end_behavior` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SubscriptionScheduleEndBehavior {
     Cancel,
@@ -1172,7 +1173,7 @@ impl std::default::Default for SubscriptionScheduleEndBehavior {
 }
 
 /// An enum representing the possible values of an `SubscriptionSchedulePhaseConfiguration`'s `billing_cycle_anchor` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SubscriptionSchedulePhaseConfigurationBillingCycleAnchor {
     Automatic,
@@ -1206,7 +1207,7 @@ impl std::default::Default for SubscriptionSchedulePhaseConfigurationBillingCycl
 }
 
 /// An enum representing the possible values of an `SubscriptionSchedule`'s `status` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SubscriptionScheduleStatus {
     Active,
@@ -1246,7 +1247,7 @@ impl std::default::Default for SubscriptionScheduleStatus {
 }
 
 /// An enum representing the possible values of an `UpdateSubscriptionSchedulePhases`'s `billing_cycle_anchor` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateSubscriptionSchedulePhasesBillingCycleAnchor {
     Automatic,
@@ -1280,7 +1281,7 @@ impl std::default::Default for UpdateSubscriptionSchedulePhasesBillingCycleAncho
 }
 
 /// An enum representing the possible values of an `UpdateSubscriptionSchedulePhasesItemsPriceDataRecurring`'s `interval` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateSubscriptionSchedulePhasesItemsPriceDataRecurringInterval {
     Day,
@@ -1318,7 +1319,7 @@ impl std::default::Default for UpdateSubscriptionSchedulePhasesItemsPriceDataRec
 }
 
 /// An enum representing the possible values of an `UpdateSubscriptionSchedulePhasesItemsPriceData`'s `tax_behavior` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateSubscriptionSchedulePhasesItemsPriceDataTaxBehavior {
     Exclusive,

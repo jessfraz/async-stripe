@@ -2,12 +2,13 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::params::Timestamp;
 
 /// The resource representing a Stripe "payment_method_details_card_present".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsCardPresent {
     /// The authorized amount.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -141,7 +142,7 @@ pub struct PaymentMethodDetailsCardPresentReceipt {
 }
 
 /// An enum representing the possible values of an `PaymentMethodDetailsCardPresent`'s `read_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentMethodDetailsCardPresentReadMethod {
     ContactEmv,
@@ -187,7 +188,7 @@ impl std::default::Default for PaymentMethodDetailsCardPresentReadMethod {
 }
 
 /// An enum representing the possible values of an `PaymentMethodDetailsCardPresentReceipt`'s `account_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentMethodDetailsCardPresentReceiptAccountType {
     Checking,

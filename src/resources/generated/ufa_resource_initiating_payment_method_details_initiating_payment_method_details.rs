@@ -2,12 +2,13 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::resources::UfaResourceBillingDetails;
 
 /// The resource representing a Stripe "UFAResourceInitiatingPaymentMethodDetailsInitiatingPaymentMethodDetails".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UfaResourceInitiatingPaymentMethodDetailsInitiatingPaymentMethodDetails {
     /// Set when `type` is `balance`.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -62,7 +63,7 @@ pub struct UfaResourceInitiatingPaymentMethodDetailsUsBankAccount {
 }
 
 /// An enum representing the possible values of an `ReceivedPaymentMethodDetailsFinancialAccount`'s `network` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum ReceivedPaymentMethodDetailsFinancialAccountNetwork {
     Stripe,
@@ -94,7 +95,7 @@ impl std::default::Default for ReceivedPaymentMethodDetailsFinancialAccountNetwo
 }
 
 /// An enum representing the possible values of an `UfaResourceInitiatingPaymentMethodDetailsInitiatingPaymentMethodDetails`'s `balance` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UfaResourceInitiatingPaymentMethodDetailsInitiatingPaymentMethodDetailsBalance {
     Payments,
@@ -130,7 +131,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `UfaResourceInitiatingPaymentMethodDetailsInitiatingPaymentMethodDetails`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UfaResourceInitiatingPaymentMethodDetailsInitiatingPaymentMethodDetailsType {
     Balance,

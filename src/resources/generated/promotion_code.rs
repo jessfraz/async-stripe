@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::client::{Client, Response};
@@ -12,7 +13,7 @@ use crate::resources::{Coupon, Currency, Customer};
 /// The resource representing a Stripe "PromotionCode".
 ///
 /// For more details see <https://stripe.com/docs/api/promotion_codes/object>
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PromotionCode {
     /// Unique identifier for the object.
     pub id: PromotionCodeId,

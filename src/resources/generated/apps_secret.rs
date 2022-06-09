@@ -2,13 +2,14 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::ids::AppsSecretId;
 use crate::params::{Object, Timestamp};
 
 /// The resource representing a Stripe "SecretServiceResourceSecret".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct AppsSecret {
     /// Unique identifier for the object.
     pub id: AppsSecretId,
@@ -57,7 +58,7 @@ pub struct SecretServiceResourceScope {
 }
 
 /// An enum representing the possible values of an `SecretServiceResourceScope`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SecretServiceResourceScopeType {
     Account,

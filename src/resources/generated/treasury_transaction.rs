@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::ids::TreasuryTransactionId;
@@ -12,7 +13,7 @@ use crate::resources::{
 };
 
 /// The resource representing a Stripe "TransactionsResourceTreasuryTransaction".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct TreasuryTransaction {
     /// Unique identifier for the object.
     pub id: TreasuryTransactionId,
@@ -88,7 +89,7 @@ pub struct TransactionsResourceAbstractTransactionResourceStatusTransitions {
 }
 
 /// An enum representing the possible values of an `TreasuryTransaction`'s `flow_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum TreasuryTransactionFlowType {
     CreditReversal,
@@ -136,7 +137,7 @@ impl std::default::Default for TreasuryTransactionFlowType {
 }
 
 /// An enum representing the possible values of an `TreasuryTransaction`'s `status` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum TreasuryTransactionStatus {
     Open,

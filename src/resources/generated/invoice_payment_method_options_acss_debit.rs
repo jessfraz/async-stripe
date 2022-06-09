@@ -2,10 +2,11 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 /// The resource representing a Stripe "invoice_payment_method_options_acss_debit".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct InvoicePaymentMethodOptionsAcssDebit {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub mandate_options: Option<InvoicePaymentMethodOptionsAcssDebitMandateOptions>,
@@ -23,7 +24,7 @@ pub struct InvoicePaymentMethodOptionsAcssDebitMandateOptions {
 }
 
 /// An enum representing the possible values of an `InvoicePaymentMethodOptionsAcssDebitMandateOptions`'s `transaction_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum InvoicePaymentMethodOptionsAcssDebitMandateOptionsTransactionType {
     Business,
@@ -61,7 +62,7 @@ impl std::default::Default for InvoicePaymentMethodOptionsAcssDebitMandateOption
 }
 
 /// An enum representing the possible values of an `InvoicePaymentMethodOptionsAcssDebit`'s `verification_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum InvoicePaymentMethodOptionsAcssDebitVerificationMethod {
     Automatic,

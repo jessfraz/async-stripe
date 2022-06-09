@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::client::{Client, Response};
@@ -20,7 +21,7 @@ use crate::resources::{
 /// The resource representing a Stripe "Customer".
 ///
 /// For more details see <https://stripe.com/docs/api/customers/object>
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct Customer {
     /// Unique identifier for the object.
     pub id: CustomerId,
@@ -620,13 +621,13 @@ impl<'a> UpdateCustomer<'a> {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateCustomerCashBalance {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub settings: Option<CreateCustomerCashBalanceSettings>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateCustomerShipping {
     pub address: CreateCustomerShippingAddress,
 
@@ -636,13 +637,13 @@ pub struct CreateCustomerShipping {
     pub phone: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateCustomerTax {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub ip_address: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CustomerInvoiceSettings {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_fields: Option<Vec<CustomerInvoiceSettingsCustomFields>>,
@@ -654,7 +655,7 @@ pub struct CustomerInvoiceSettings {
     pub footer: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct TaxIdData {
     #[serde(rename = "type")]
     pub type_: TaxIdType,
@@ -662,13 +663,13 @@ pub struct TaxIdData {
     pub value: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateCustomerCashBalance {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub settings: Option<UpdateCustomerCashBalanceSettings>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateCustomerShipping {
     pub address: UpdateCustomerShippingAddress,
 
@@ -678,19 +679,19 @@ pub struct UpdateCustomerShipping {
     pub phone: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateCustomerTax {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub ip_address: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateCustomerCashBalanceSettings {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub reconciliation_mode: Option<CreateCustomerCashBalanceSettingsReconciliationMode>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateCustomerShippingAddress {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub city: Option<String>,
@@ -711,20 +712,20 @@ pub struct CreateCustomerShippingAddress {
     pub state: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CustomerInvoiceSettingsCustomFields {
     pub name: String,
 
     pub value: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateCustomerCashBalanceSettings {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub reconciliation_mode: Option<UpdateCustomerCashBalanceSettingsReconciliationMode>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateCustomerShippingAddress {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub city: Option<String>,
@@ -746,7 +747,7 @@ pub struct UpdateCustomerShippingAddress {
 }
 
 /// An enum representing the possible values of an `CreateCustomerCashBalanceSettings`'s `reconciliation_mode` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateCustomerCashBalanceSettingsReconciliationMode {
     Automatic,
@@ -780,7 +781,7 @@ impl std::default::Default for CreateCustomerCashBalanceSettingsReconciliationMo
 }
 
 /// An enum representing the possible values of an `CustomerTax`'s `automatic_tax` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CustomerTaxAutomaticTax {
     Failed,
@@ -818,7 +819,7 @@ impl std::default::Default for CustomerTaxAutomaticTax {
 }
 
 /// An enum representing the possible values of an `Customer`'s `tax_exempt` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CustomerTaxExempt {
     Exempt,
@@ -854,7 +855,7 @@ impl std::default::Default for CustomerTaxExempt {
 }
 
 /// An enum representing the possible values of an `CreateCustomer`'s `tax_exempt` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CustomerTaxExemptFilter {
     Exempt,
@@ -890,7 +891,7 @@ impl std::default::Default for CustomerTaxExemptFilter {
 }
 
 /// An enum representing the possible values of an `CustomerTaxLocation`'s `source` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CustomerTaxLocationSource {
     BillingAddress,
@@ -928,7 +929,7 @@ impl std::default::Default for CustomerTaxLocationSource {
 }
 
 /// An enum representing the possible values of an `TaxIdData`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum TaxIdType {
     AeTrn,
@@ -1050,7 +1051,7 @@ impl std::default::Default for TaxIdType {
 }
 
 /// An enum representing the possible values of an `UpdateCustomerCashBalanceSettings`'s `reconciliation_mode` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateCustomerCashBalanceSettingsReconciliationMode {
     Automatic,
@@ -1084,14 +1085,14 @@ impl std::default::Default for UpdateCustomerCashBalanceSettingsReconciliationMo
 }
 
 /// A token, like the ones returned by [Stripe.js](https://stripe.com/docs/js).
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 #[serde(untagged, rename_all = "snake_case")]
 pub enum UpdateCustomerCardUnion {
     CustomerPaymentSourceCard(CustomerPaymentSourceCard),
     String(String),
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CustomerPaymentSourceCard {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub address_city: Option<String>,

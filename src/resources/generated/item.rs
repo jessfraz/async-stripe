@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::ids::CheckoutSessionItemId;
@@ -9,7 +10,7 @@ use crate::params::{Expandable, Object};
 use crate::resources::{Currency, Discount, Price, Product, TaxRate};
 
 /// The resource representing a Stripe "LineItem".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CheckoutSessionItem {
     /// Unique identifier for the object.
     pub id: CheckoutSessionItemId,

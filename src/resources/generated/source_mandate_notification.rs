@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::ids::SourceMandateNotificationId;
@@ -9,7 +10,7 @@ use crate::params::{Object, Timestamp};
 use crate::resources::Source;
 
 /// The resource representing a Stripe "SourceMandateNotification".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SourceMandateNotification {
     /// Unique identifier for the object.
     pub id: SourceMandateNotificationId,

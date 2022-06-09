@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::client::{Client, Response};
@@ -20,7 +21,7 @@ use crate::resources::{
 /// The resource representing a Stripe "Invoice".
 ///
 /// For more details see <https://stripe.com/docs/api/invoices/object>
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct Invoice {
     /// Unique identifier for the object.
     #[serde(default = "InvoiceId::none")]
@@ -52,7 +53,7 @@ pub struct Invoice {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub amount_paid: Option<i64>,
 
-    /// The amount remaining, in %s, that is due.
+    /// The difference between amount_due and amount_paid, in %s.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub amount_remaining: Option<i64>,
 
@@ -847,19 +848,19 @@ impl Paginable for ListInvoices<'_> {
         self.starting_after = Some(item.id());
     }
 }
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateInvoiceAutomaticTax {
     pub enabled: bool,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateInvoiceCustomFields {
     pub name: String,
 
     pub value: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateInvoiceDiscounts {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub coupon: Option<String>,
@@ -868,7 +869,7 @@ pub struct CreateInvoiceDiscounts {
     pub discount: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateInvoicePaymentSettings {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub payment_method_options: Option<CreateInvoicePaymentSettingsPaymentMethodOptions>,
@@ -877,7 +878,7 @@ pub struct CreateInvoicePaymentSettings {
     pub payment_method_types: Option<Vec<CreateInvoicePaymentSettingsPaymentMethodTypes>>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateInvoiceTransferData {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub amount: Option<i64>,
@@ -885,7 +886,7 @@ pub struct CreateInvoiceTransferData {
     pub destination: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateInvoicePaymentSettingsPaymentMethodOptions {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub acss_debit: Option<CreateInvoicePaymentSettingsPaymentMethodOptionsAcssDebit>,
@@ -906,7 +907,7 @@ pub struct CreateInvoicePaymentSettingsPaymentMethodOptions {
     pub us_bank_account: Option<CreateInvoicePaymentSettingsPaymentMethodOptionsUsBankAccount>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateInvoicePaymentSettingsPaymentMethodOptionsAcssDebit {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub mandate_options:
@@ -917,21 +918,21 @@ pub struct CreateInvoicePaymentSettingsPaymentMethodOptionsAcssDebit {
         Option<CreateInvoicePaymentSettingsPaymentMethodOptionsAcssDebitVerificationMethod>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateInvoicePaymentSettingsPaymentMethodOptionsBancontact {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub preferred_language:
         Option<CreateInvoicePaymentSettingsPaymentMethodOptionsBancontactPreferredLanguage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateInvoicePaymentSettingsPaymentMethodOptionsCard {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub request_three_d_secure:
         Option<CreateInvoicePaymentSettingsPaymentMethodOptionsCardRequestThreeDSecure>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateInvoicePaymentSettingsPaymentMethodOptionsCustomerBalance {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub bank_transfer:
@@ -941,10 +942,10 @@ pub struct CreateInvoicePaymentSettingsPaymentMethodOptionsCustomerBalance {
     pub funding_type: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateInvoicePaymentSettingsPaymentMethodOptionsKonbini {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateInvoicePaymentSettingsPaymentMethodOptionsUsBankAccount {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub financial_connections:
@@ -955,7 +956,7 @@ pub struct CreateInvoicePaymentSettingsPaymentMethodOptionsUsBankAccount {
         Option<CreateInvoicePaymentSettingsPaymentMethodOptionsUsBankAccountVerificationMethod>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateInvoicePaymentSettingsPaymentMethodOptionsAcssDebitMandateOptions {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub transaction_type: Option<
@@ -963,22 +964,33 @@ pub struct CreateInvoicePaymentSettingsPaymentMethodOptionsAcssDebitMandateOptio
     >,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateInvoicePaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransfer {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub eu_bank_transfer: Option<
+        CreateInvoicePaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferEuBankTransfer,
+    >,
+
     #[serde(rename = "type")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub type_: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateInvoicePaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnections {
 
     #[serde(skip_serializing_if = "Option::is_none")]
     pub permissions: Option<Vec<CreateInvoicePaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnectionsPermissions>>,
 }
 
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
+pub struct CreateInvoicePaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferEuBankTransfer
+{
+    pub country: String,
+}
+
 /// An enum representing the possible values of an `AutomaticTax`'s `status` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum AutomaticTaxStatus {
     Complete,
@@ -1014,7 +1026,7 @@ impl std::default::Default for AutomaticTaxStatus {
 }
 
 /// An enum representing the possible values of an `Invoice`'s `collection_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CollectionMethod {
     ChargeAutomatically,
@@ -1048,7 +1060,7 @@ impl std::default::Default for CollectionMethod {
 }
 
 /// An enum representing the possible values of an `CreateInvoicePaymentSettingsPaymentMethodOptionsAcssDebitMandateOptions`'s `transaction_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateInvoicePaymentSettingsPaymentMethodOptionsAcssDebitMandateOptionsTransactionType {
     Business,
@@ -1088,7 +1100,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreateInvoicePaymentSettingsPaymentMethodOptionsAcssDebit`'s `verification_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateInvoicePaymentSettingsPaymentMethodOptionsAcssDebitVerificationMethod {
     Automatic,
@@ -1128,7 +1140,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreateInvoicePaymentSettingsPaymentMethodOptionsBancontact`'s `preferred_language` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateInvoicePaymentSettingsPaymentMethodOptionsBancontactPreferredLanguage {
     De,
@@ -1170,7 +1182,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreateInvoicePaymentSettingsPaymentMethodOptionsCard`'s `request_three_d_secure` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateInvoicePaymentSettingsPaymentMethodOptionsCardRequestThreeDSecure {
     Any,
@@ -1208,7 +1220,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreateInvoicePaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnections`'s `permissions` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateInvoicePaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnectionsPermissions
 {
@@ -1253,7 +1265,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreateInvoicePaymentSettingsPaymentMethodOptionsUsBankAccount`'s `verification_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateInvoicePaymentSettingsPaymentMethodOptionsUsBankAccountVerificationMethod {
     Automatic,
@@ -1295,7 +1307,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreateInvoicePaymentSettings`'s `payment_method_types` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateInvoicePaymentSettingsPaymentMethodTypes {
     AchCreditTransfer,
@@ -1367,7 +1379,7 @@ impl std::default::Default for CreateInvoicePaymentSettingsPaymentMethodTypes {
 }
 
 /// An enum representing the possible values of an `Invoice`'s `billing_reason` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum InvoiceBillingReason {
     AutomaticPendingInvoiceItemInvoice,
@@ -1417,7 +1429,7 @@ impl std::default::Default for InvoiceBillingReason {
 }
 
 /// An enum representing the possible values of an `Invoice`'s `customer_tax_exempt` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum InvoiceCustomerTaxExempt {
     Exempt,
@@ -1453,7 +1465,7 @@ impl std::default::Default for InvoiceCustomerTaxExempt {
 }
 
 /// An enum representing the possible values of an `InvoicePaymentMethodOptionsCard`'s `request_three_d_secure` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum InvoicePaymentMethodOptionsCardRequestThreeDSecure {
     Any,
@@ -1487,7 +1499,7 @@ impl std::default::Default for InvoicePaymentMethodOptionsCardRequestThreeDSecur
 }
 
 /// An enum representing the possible values of an `CreateInvoice`'s `pending_invoice_items_behavior` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum InvoicePendingInvoiceItemsBehavior {
     Exclude,
@@ -1523,7 +1535,7 @@ impl std::default::Default for InvoicePendingInvoiceItemsBehavior {
 }
 
 /// An enum representing the possible values of an `Invoice`'s `status` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum InvoiceStatus {
     Deleted,
@@ -1565,7 +1577,7 @@ impl std::default::Default for InvoiceStatus {
 }
 
 /// An enum representing the possible values of an `ListInvoices`'s `status` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum InvoiceStatusFilter {
     Draft,
@@ -1605,7 +1617,7 @@ impl std::default::Default for InvoiceStatusFilter {
 }
 
 /// An enum representing the possible values of an `InvoicesPaymentSettings`'s `payment_method_types` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum InvoicesPaymentSettingsPaymentMethodTypes {
     AchCreditTransfer,
@@ -1675,7 +1687,7 @@ impl std::default::Default for InvoicesPaymentSettingsPaymentMethodTypes {
 }
 
 /// An enum representing the possible values of an `InvoicesResourceInvoiceTaxId`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum TaxIdType {
     AeTrn,

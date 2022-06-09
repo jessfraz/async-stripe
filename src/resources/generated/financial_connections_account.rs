@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::ids::FinancialConnectionsAccountId;
@@ -11,7 +12,7 @@ use crate::resources::{
 };
 
 /// The resource representing a Stripe "BankConnectionsResourceLinkedAccount".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct FinancialConnectionsAccount {
     /// Unique identifier for the object.
     pub id: FinancialConnectionsAccountId,
@@ -177,7 +178,7 @@ pub struct BankConnectionsResourceOwnershipRefresh {
 }
 
 /// An enum representing the possible values of an `BankConnectionsResourceBalanceRefresh`'s `status` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum BankConnectionsResourceBalanceRefreshStatus {
     Failed,
@@ -213,7 +214,7 @@ impl std::default::Default for BankConnectionsResourceBalanceRefreshStatus {
 }
 
 /// An enum representing the possible values of an `BankConnectionsResourceBalance`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum BankConnectionsResourceBalanceType {
     Cash,
@@ -247,7 +248,7 @@ impl std::default::Default for BankConnectionsResourceBalanceType {
 }
 
 /// An enum representing the possible values of an `BankConnectionsResourceOwnershipRefresh`'s `status` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum BankConnectionsResourceOwnershipRefreshStatus {
     Failed,
@@ -283,7 +284,7 @@ impl std::default::Default for BankConnectionsResourceOwnershipRefreshStatus {
 }
 
 /// An enum representing the possible values of an `FinancialConnectionsAccount`'s `category` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum FinancialConnectionsAccountCategory {
     Cash,
@@ -321,7 +322,7 @@ impl std::default::Default for FinancialConnectionsAccountCategory {
 }
 
 /// An enum representing the possible values of an `FinancialConnectionsAccount`'s `permissions` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum FinancialConnectionsAccountPermissions {
     Balances,
@@ -359,7 +360,7 @@ impl std::default::Default for FinancialConnectionsAccountPermissions {
 }
 
 /// An enum representing the possible values of an `FinancialConnectionsAccount`'s `status` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum FinancialConnectionsAccountStatus {
     Active,
@@ -395,7 +396,7 @@ impl std::default::Default for FinancialConnectionsAccountStatus {
 }
 
 /// An enum representing the possible values of an `FinancialConnectionsAccount`'s `subcategory` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum FinancialConnectionsAccountSubcategory {
     Checking,
@@ -437,7 +438,7 @@ impl std::default::Default for FinancialConnectionsAccountSubcategory {
 }
 
 /// An enum representing the possible values of an `FinancialConnectionsAccount`'s `supported_payment_method_types` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum FinancialConnectionsAccountSupportedPaymentMethodTypes {
     Link,

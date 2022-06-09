@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::client::{Client, Response};
@@ -12,7 +13,7 @@ use crate::resources::{Charge, PaymentIntent, ReviewReason};
 /// The resource representing a Stripe "RadarReview".
 ///
 /// For more details see <https://stripe.com/docs/api/reviews/object>
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct Review {
     /// Unique identifier for the object.
     pub id: ReviewId,
@@ -186,7 +187,7 @@ impl Paginable for ListReviews<'_> {
     }
 }
 /// An enum representing the possible values of an `Review`'s `closed_reason` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum ReviewClosedReason {
     Approved,
@@ -226,7 +227,7 @@ impl std::default::Default for ReviewClosedReason {
 }
 
 /// An enum representing the possible values of an `Review`'s `opened_reason` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum ReviewOpenedReason {
     Manual,

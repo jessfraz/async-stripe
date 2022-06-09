@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::client::{Client, Response};
@@ -21,7 +22,7 @@ use crate::resources::{
 /// The resource representing a Stripe "PaymentIntent".
 ///
 /// For more details see <https://stripe.com/docs/api/payment_intents/object>
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentIntent {
     /// Unique identifier for the object.
     pub id: PaymentIntentId,
@@ -423,6 +424,15 @@ pub struct PaymentIntentNextActionDisplayBankTransferInstructions {
 
 #[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct FundingInstructionsBankTransferFinancialAddress {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub iban: Option<FundingInstructionsBankTransferIbanRecord>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub sort_code: Option<FundingInstructionsBankTransferSortCodeRecord>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub spei: Option<FundingInstructionsBankTransferSpeiRecord>,
+
     /// The payment networks supported by this FinancialAddress.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub supported_networks:
@@ -434,6 +444,45 @@ pub struct FundingInstructionsBankTransferFinancialAddress {
 
     #[serde(skip_serializing_if = "Option::is_none")]
     pub zengin: Option<FundingInstructionsBankTransferZenginRecord>,
+}
+
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+pub struct FundingInstructionsBankTransferIbanRecord {
+    /// The name of the person or business that owns the bank account.
+    pub account_holder_name: String,
+
+    /// The BIC/SWIFT code of the account.
+    pub bic: String,
+
+    /// Two-letter country code ([ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)).
+    pub country: String,
+
+    /// The IBAN of the account.
+    pub iban: String,
+}
+
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+pub struct FundingInstructionsBankTransferSortCodeRecord {
+    /// The name of the person or business that owns the bank account.
+    pub account_holder_name: String,
+
+    /// The account number.
+    pub account_number: String,
+
+    /// The six-digit sort code.
+    pub sort_code: String,
+}
+
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+pub struct FundingInstructionsBankTransferSpeiRecord {
+    /// The three-digit bank code.
+    pub bank_code: String,
+
+    /// The short banking institution name.
+    pub bank_name: String,
+
+    /// The CLABE number.
+    pub clabe: String,
 }
 
 #[derive(Clone, Debug, Default, Deserialize, Serialize)]
@@ -1507,17 +1556,17 @@ impl<'a> UpdatePaymentIntent<'a> {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentAutomaticPaymentMethods {
     pub enabled: bool,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentMandateData {
     pub customer_acceptance: CreatePaymentIntentMandateDataCustomerAcceptance,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodData {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub acss_debit: Option<CreatePaymentIntentPaymentMethodDataAcssDebit>,
@@ -1607,7 +1656,7 @@ pub struct CreatePaymentIntentPaymentMethodData {
     pub wechat_pay: Option<CreatePaymentIntentPaymentMethodDataWechatPay>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodOptions {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub acss_debit: Option<CreatePaymentIntentPaymentMethodOptionsAcssDebit>,
@@ -1691,13 +1740,13 @@ pub struct CreatePaymentIntentPaymentMethodOptions {
     pub wechat_pay: Option<CreatePaymentIntentPaymentMethodOptionsWechatPay>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentRadarOptions {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub session: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentShipping {
     pub address: CreatePaymentIntentShippingAddress,
 
@@ -1713,7 +1762,7 @@ pub struct CreatePaymentIntentShipping {
     pub tracking_number: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentTransferData {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub amount: Option<i64>,
@@ -1721,7 +1770,7 @@ pub struct CreatePaymentIntentTransferData {
     pub destination: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodData {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub acss_debit: Option<UpdatePaymentIntentPaymentMethodDataAcssDebit>,
@@ -1811,7 +1860,7 @@ pub struct UpdatePaymentIntentPaymentMethodData {
     pub wechat_pay: Option<UpdatePaymentIntentPaymentMethodDataWechatPay>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodOptions {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub acss_debit: Option<UpdatePaymentIntentPaymentMethodOptionsAcssDebit>,
@@ -1895,7 +1944,7 @@ pub struct UpdatePaymentIntentPaymentMethodOptions {
     pub wechat_pay: Option<UpdatePaymentIntentPaymentMethodOptionsWechatPay>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentShipping {
     pub address: UpdatePaymentIntentShippingAddress,
 
@@ -1911,13 +1960,13 @@ pub struct UpdatePaymentIntentShipping {
     pub tracking_number: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentTransferData {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub amount: Option<i64>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentMandateDataCustomerAcceptance {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub accepted_at: Option<Timestamp>,
@@ -1932,7 +1981,7 @@ pub struct CreatePaymentIntentMandateDataCustomerAcceptance {
     pub type_: CreatePaymentIntentMandateDataCustomerAcceptanceType,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodDataAcssDebit {
     pub account_number: String,
 
@@ -1941,23 +1990,23 @@ pub struct CreatePaymentIntentPaymentMethodDataAcssDebit {
     pub transit_number: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodDataAffirm {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodDataAfterpayClearpay {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodDataAlipay {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodDataAuBecsDebit {
     pub account_number: String,
 
     pub bsb_number: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodDataBacsDebit {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub account_number: Option<String>,
@@ -1966,10 +2015,10 @@ pub struct CreatePaymentIntentPaymentMethodDataBacsDebit {
     pub sort_code: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodDataBancontact {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodDataBillingDetails {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub address: Option<CreatePaymentIntentPaymentMethodDataBillingDetailsAddress>,
@@ -1984,81 +2033,81 @@ pub struct CreatePaymentIntentPaymentMethodDataBillingDetails {
     pub phone: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodDataBoleto {
     pub tax_id: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodDataCustomerBalance {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodDataEps {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub bank: Option<CreatePaymentIntentPaymentMethodDataEpsBank>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodDataFpx {
     pub bank: CreatePaymentIntentPaymentMethodDataFpxBank,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodDataGiropay {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodDataGrabpay {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodDataIdeal {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub bank: Option<CreatePaymentIntentPaymentMethodDataIdealBank>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodDataInteracPresent {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodDataKlarna {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub dob: Option<CreatePaymentIntentPaymentMethodDataKlarnaDob>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodDataKonbini {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodDataLink {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodDataOxxo {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodDataP24 {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub bank: Option<CreatePaymentIntentPaymentMethodDataP24Bank>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodDataPaynow {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodDataRadarOptions {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub session: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodDataSepaDebit {
     pub iban: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodDataSofort {
     pub country: CreatePaymentIntentPaymentMethodDataSofortCountry,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodDataUsBankAccount {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub account_holder_type:
@@ -2077,10 +2126,10 @@ pub struct CreatePaymentIntentPaymentMethodDataUsBankAccount {
     pub routing_number: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodDataWechatPay {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodOptionsAcssDebit {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub mandate_options: Option<CreatePaymentIntentPaymentMethodOptionsAcssDebitMandateOptions>,
@@ -2094,7 +2143,7 @@ pub struct CreatePaymentIntentPaymentMethodOptionsAcssDebit {
         Option<CreatePaymentIntentPaymentMethodOptionsAcssDebitVerificationMethod>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodOptionsAffirm {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub capture_method: Option<CreatePaymentIntentPaymentMethodOptionsAffirmCaptureMethod>,
@@ -2103,7 +2152,7 @@ pub struct CreatePaymentIntentPaymentMethodOptionsAffirm {
     pub setup_future_usage: Option<CreatePaymentIntentPaymentMethodOptionsAffirmSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodOptionsAfterpayClearpay {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub capture_method:
@@ -2117,27 +2166,27 @@ pub struct CreatePaymentIntentPaymentMethodOptionsAfterpayClearpay {
         Option<CreatePaymentIntentPaymentMethodOptionsAfterpayClearpaySetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodOptionsAlipay {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub setup_future_usage: Option<CreatePaymentIntentPaymentMethodOptionsAlipaySetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodOptionsAuBecsDebit {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub setup_future_usage:
         Option<CreatePaymentIntentPaymentMethodOptionsAuBecsDebitSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodOptionsBacsDebit {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub setup_future_usage:
         Option<CreatePaymentIntentPaymentMethodOptionsBacsDebitSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodOptionsBancontact {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub preferred_language:
@@ -2148,7 +2197,7 @@ pub struct CreatePaymentIntentPaymentMethodOptionsBancontact {
         Option<CreatePaymentIntentPaymentMethodOptionsBancontactSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodOptionsBoleto {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub expires_after_days: Option<u32>,
@@ -2157,7 +2206,7 @@ pub struct CreatePaymentIntentPaymentMethodOptionsBoleto {
     pub setup_future_usage: Option<CreatePaymentIntentPaymentMethodOptionsBoletoSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodOptionsCard {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub capture_method: Option<CreatePaymentIntentPaymentMethodOptionsCardCaptureMethod>,
@@ -2182,7 +2231,7 @@ pub struct CreatePaymentIntentPaymentMethodOptionsCard {
     pub setup_future_usage: Option<CreatePaymentIntentPaymentMethodOptionsCardSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodOptionsCardPresent {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub request_extended_authorization: Option<bool>,
@@ -2191,7 +2240,7 @@ pub struct CreatePaymentIntentPaymentMethodOptionsCardPresent {
     pub request_incremental_authorization_support: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodOptionsCustomerBalance {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub bank_transfer: Option<CreatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransfer>,
@@ -2204,40 +2253,40 @@ pub struct CreatePaymentIntentPaymentMethodOptionsCustomerBalance {
         Option<CreatePaymentIntentPaymentMethodOptionsCustomerBalanceSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodOptionsEps {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub setup_future_usage: Option<CreatePaymentIntentPaymentMethodOptionsEpsSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodOptionsFpx {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub setup_future_usage: Option<CreatePaymentIntentPaymentMethodOptionsFpxSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodOptionsGiropay {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub setup_future_usage: Option<CreatePaymentIntentPaymentMethodOptionsGiropaySetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodOptionsGrabpay {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub setup_future_usage: Option<CreatePaymentIntentPaymentMethodOptionsGrabpaySetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodOptionsIdeal {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub setup_future_usage: Option<CreatePaymentIntentPaymentMethodOptionsIdealSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodOptionsInteracPresent {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodOptionsKlarna {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub capture_method: Option<CreatePaymentIntentPaymentMethodOptionsKlarnaCaptureMethod>,
@@ -2249,7 +2298,7 @@ pub struct CreatePaymentIntentPaymentMethodOptionsKlarna {
     pub setup_future_usage: Option<CreatePaymentIntentPaymentMethodOptionsKlarnaSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodOptionsKonbini {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub confirmation_number: Option<String>,
@@ -2267,7 +2316,7 @@ pub struct CreatePaymentIntentPaymentMethodOptionsKonbini {
     pub setup_future_usage: Option<CreatePaymentIntentPaymentMethodOptionsKonbiniSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodOptionsLink {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub capture_method: Option<CreatePaymentIntentPaymentMethodOptionsLinkCaptureMethod>,
@@ -2279,7 +2328,7 @@ pub struct CreatePaymentIntentPaymentMethodOptionsLink {
     pub setup_future_usage: Option<CreatePaymentIntentPaymentMethodOptionsLinkSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodOptionsOxxo {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub expires_after_days: Option<u32>,
@@ -2288,7 +2337,7 @@ pub struct CreatePaymentIntentPaymentMethodOptionsOxxo {
     pub setup_future_usage: Option<CreatePaymentIntentPaymentMethodOptionsOxxoSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodOptionsP24 {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub setup_future_usage: Option<CreatePaymentIntentPaymentMethodOptionsP24SetupFutureUsage>,
@@ -2297,13 +2346,13 @@ pub struct CreatePaymentIntentPaymentMethodOptionsP24 {
     pub tos_shown_and_accepted: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodOptionsPaynow {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub setup_future_usage: Option<CreatePaymentIntentPaymentMethodOptionsPaynowSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodOptionsSepaDebit {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub mandate_options: Option<CreatePaymentIntentPaymentMethodOptionsSepaDebitMandateOptions>,
@@ -2313,7 +2362,7 @@ pub struct CreatePaymentIntentPaymentMethodOptionsSepaDebit {
         Option<CreatePaymentIntentPaymentMethodOptionsSepaDebitSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodOptionsSofort {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub preferred_language: Option<CreatePaymentIntentPaymentMethodOptionsSofortPreferredLanguage>,
@@ -2322,7 +2371,7 @@ pub struct CreatePaymentIntentPaymentMethodOptionsSofort {
     pub setup_future_usage: Option<CreatePaymentIntentPaymentMethodOptionsSofortSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodOptionsUsBankAccount {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub financial_connections:
@@ -2340,7 +2389,7 @@ pub struct CreatePaymentIntentPaymentMethodOptionsUsBankAccount {
         Option<CreatePaymentIntentPaymentMethodOptionsUsBankAccountVerificationMethod>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodOptionsWechatPay {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub app_id: Option<String>,
@@ -2352,7 +2401,7 @@ pub struct CreatePaymentIntentPaymentMethodOptionsWechatPay {
         Option<CreatePaymentIntentPaymentMethodOptionsWechatPaySetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentShippingAddress {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub city: Option<String>,
@@ -2373,7 +2422,7 @@ pub struct CreatePaymentIntentShippingAddress {
     pub state: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodDataAcssDebit {
     pub account_number: String,
 
@@ -2382,23 +2431,23 @@ pub struct UpdatePaymentIntentPaymentMethodDataAcssDebit {
     pub transit_number: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodDataAffirm {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodDataAfterpayClearpay {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodDataAlipay {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodDataAuBecsDebit {
     pub account_number: String,
 
     pub bsb_number: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodDataBacsDebit {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub account_number: Option<String>,
@@ -2407,10 +2456,10 @@ pub struct UpdatePaymentIntentPaymentMethodDataBacsDebit {
     pub sort_code: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodDataBancontact {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodDataBillingDetails {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub address: Option<UpdatePaymentIntentPaymentMethodDataBillingDetailsAddress>,
@@ -2425,81 +2474,81 @@ pub struct UpdatePaymentIntentPaymentMethodDataBillingDetails {
     pub phone: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodDataBoleto {
     pub tax_id: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodDataCustomerBalance {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodDataEps {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub bank: Option<UpdatePaymentIntentPaymentMethodDataEpsBank>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodDataFpx {
     pub bank: UpdatePaymentIntentPaymentMethodDataFpxBank,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodDataGiropay {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodDataGrabpay {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodDataIdeal {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub bank: Option<UpdatePaymentIntentPaymentMethodDataIdealBank>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodDataInteracPresent {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodDataKlarna {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub dob: Option<UpdatePaymentIntentPaymentMethodDataKlarnaDob>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodDataKonbini {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodDataLink {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodDataOxxo {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodDataP24 {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub bank: Option<UpdatePaymentIntentPaymentMethodDataP24Bank>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodDataPaynow {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodDataRadarOptions {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub session: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodDataSepaDebit {
     pub iban: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodDataSofort {
     pub country: UpdatePaymentIntentPaymentMethodDataSofortCountry,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodDataUsBankAccount {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub account_holder_type:
@@ -2518,10 +2567,10 @@ pub struct UpdatePaymentIntentPaymentMethodDataUsBankAccount {
     pub routing_number: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodDataWechatPay {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodOptionsAcssDebit {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub mandate_options: Option<UpdatePaymentIntentPaymentMethodOptionsAcssDebitMandateOptions>,
@@ -2535,7 +2584,7 @@ pub struct UpdatePaymentIntentPaymentMethodOptionsAcssDebit {
         Option<UpdatePaymentIntentPaymentMethodOptionsAcssDebitVerificationMethod>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodOptionsAffirm {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub capture_method: Option<UpdatePaymentIntentPaymentMethodOptionsAffirmCaptureMethod>,
@@ -2544,7 +2593,7 @@ pub struct UpdatePaymentIntentPaymentMethodOptionsAffirm {
     pub setup_future_usage: Option<UpdatePaymentIntentPaymentMethodOptionsAffirmSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodOptionsAfterpayClearpay {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub capture_method:
@@ -2558,27 +2607,27 @@ pub struct UpdatePaymentIntentPaymentMethodOptionsAfterpayClearpay {
         Option<UpdatePaymentIntentPaymentMethodOptionsAfterpayClearpaySetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodOptionsAlipay {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub setup_future_usage: Option<UpdatePaymentIntentPaymentMethodOptionsAlipaySetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodOptionsAuBecsDebit {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub setup_future_usage:
         Option<UpdatePaymentIntentPaymentMethodOptionsAuBecsDebitSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodOptionsBacsDebit {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub setup_future_usage:
         Option<UpdatePaymentIntentPaymentMethodOptionsBacsDebitSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodOptionsBancontact {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub preferred_language:
@@ -2589,7 +2638,7 @@ pub struct UpdatePaymentIntentPaymentMethodOptionsBancontact {
         Option<UpdatePaymentIntentPaymentMethodOptionsBancontactSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodOptionsBoleto {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub expires_after_days: Option<u32>,
@@ -2598,7 +2647,7 @@ pub struct UpdatePaymentIntentPaymentMethodOptionsBoleto {
     pub setup_future_usage: Option<UpdatePaymentIntentPaymentMethodOptionsBoletoSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodOptionsCard {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub capture_method: Option<UpdatePaymentIntentPaymentMethodOptionsCardCaptureMethod>,
@@ -2623,7 +2672,7 @@ pub struct UpdatePaymentIntentPaymentMethodOptionsCard {
     pub setup_future_usage: Option<UpdatePaymentIntentPaymentMethodOptionsCardSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodOptionsCardPresent {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub request_extended_authorization: Option<bool>,
@@ -2632,7 +2681,7 @@ pub struct UpdatePaymentIntentPaymentMethodOptionsCardPresent {
     pub request_incremental_authorization_support: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodOptionsCustomerBalance {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub bank_transfer: Option<UpdatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransfer>,
@@ -2645,40 +2694,40 @@ pub struct UpdatePaymentIntentPaymentMethodOptionsCustomerBalance {
         Option<UpdatePaymentIntentPaymentMethodOptionsCustomerBalanceSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodOptionsEps {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub setup_future_usage: Option<UpdatePaymentIntentPaymentMethodOptionsEpsSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodOptionsFpx {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub setup_future_usage: Option<UpdatePaymentIntentPaymentMethodOptionsFpxSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodOptionsGiropay {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub setup_future_usage: Option<UpdatePaymentIntentPaymentMethodOptionsGiropaySetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodOptionsGrabpay {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub setup_future_usage: Option<UpdatePaymentIntentPaymentMethodOptionsGrabpaySetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodOptionsIdeal {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub setup_future_usage: Option<UpdatePaymentIntentPaymentMethodOptionsIdealSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodOptionsInteracPresent {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodOptionsKlarna {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub capture_method: Option<UpdatePaymentIntentPaymentMethodOptionsKlarnaCaptureMethod>,
@@ -2690,7 +2739,7 @@ pub struct UpdatePaymentIntentPaymentMethodOptionsKlarna {
     pub setup_future_usage: Option<UpdatePaymentIntentPaymentMethodOptionsKlarnaSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodOptionsKonbini {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub confirmation_number: Option<String>,
@@ -2708,7 +2757,7 @@ pub struct UpdatePaymentIntentPaymentMethodOptionsKonbini {
     pub setup_future_usage: Option<UpdatePaymentIntentPaymentMethodOptionsKonbiniSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodOptionsLink {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub capture_method: Option<UpdatePaymentIntentPaymentMethodOptionsLinkCaptureMethod>,
@@ -2720,7 +2769,7 @@ pub struct UpdatePaymentIntentPaymentMethodOptionsLink {
     pub setup_future_usage: Option<UpdatePaymentIntentPaymentMethodOptionsLinkSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodOptionsOxxo {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub expires_after_days: Option<u32>,
@@ -2729,7 +2778,7 @@ pub struct UpdatePaymentIntentPaymentMethodOptionsOxxo {
     pub setup_future_usage: Option<UpdatePaymentIntentPaymentMethodOptionsOxxoSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodOptionsP24 {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub setup_future_usage: Option<UpdatePaymentIntentPaymentMethodOptionsP24SetupFutureUsage>,
@@ -2738,13 +2787,13 @@ pub struct UpdatePaymentIntentPaymentMethodOptionsP24 {
     pub tos_shown_and_accepted: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodOptionsPaynow {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub setup_future_usage: Option<UpdatePaymentIntentPaymentMethodOptionsPaynowSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodOptionsSepaDebit {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub mandate_options: Option<UpdatePaymentIntentPaymentMethodOptionsSepaDebitMandateOptions>,
@@ -2754,7 +2803,7 @@ pub struct UpdatePaymentIntentPaymentMethodOptionsSepaDebit {
         Option<UpdatePaymentIntentPaymentMethodOptionsSepaDebitSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodOptionsSofort {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub preferred_language: Option<UpdatePaymentIntentPaymentMethodOptionsSofortPreferredLanguage>,
@@ -2763,7 +2812,7 @@ pub struct UpdatePaymentIntentPaymentMethodOptionsSofort {
     pub setup_future_usage: Option<UpdatePaymentIntentPaymentMethodOptionsSofortSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodOptionsUsBankAccount {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub financial_connections:
@@ -2781,7 +2830,7 @@ pub struct UpdatePaymentIntentPaymentMethodOptionsUsBankAccount {
         Option<UpdatePaymentIntentPaymentMethodOptionsUsBankAccountVerificationMethod>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodOptionsWechatPay {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub app_id: Option<String>,
@@ -2793,7 +2842,7 @@ pub struct UpdatePaymentIntentPaymentMethodOptionsWechatPay {
         Option<UpdatePaymentIntentPaymentMethodOptionsWechatPaySetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentShippingAddress {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub city: Option<String>,
@@ -2814,17 +2863,17 @@ pub struct UpdatePaymentIntentShippingAddress {
     pub state: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentMandateDataCustomerAcceptanceOffline {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentMandateDataCustomerAcceptanceOnline {
     pub ip_address: String,
 
     pub user_agent: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodDataBillingDetailsAddress {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub city: Option<String>,
@@ -2845,7 +2894,7 @@ pub struct CreatePaymentIntentPaymentMethodDataBillingDetailsAddress {
     pub state: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodDataKlarnaDob {
     pub day: i64,
 
@@ -2854,7 +2903,7 @@ pub struct CreatePaymentIntentPaymentMethodDataKlarnaDob {
     pub year: i64,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodOptionsAcssDebitMandateOptions {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_mandate_url: Option<String>,
@@ -2871,7 +2920,7 @@ pub struct CreatePaymentIntentPaymentMethodOptionsAcssDebitMandateOptions {
         Option<CreatePaymentIntentPaymentMethodOptionsAcssDebitMandateOptionsTransactionType>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodOptionsCardInstallments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
@@ -2880,7 +2929,7 @@ pub struct CreatePaymentIntentPaymentMethodOptionsCardInstallments {
     pub plan: Option<CreatePaymentIntentPaymentMethodOptionsCardInstallmentsPlan>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodOptionsCardMandateOptions {
     pub amount: i64,
 
@@ -2906,8 +2955,12 @@ pub struct CreatePaymentIntentPaymentMethodOptionsCardMandateOptions {
         Option<Vec<CreatePaymentIntentPaymentMethodOptionsCardMandateOptionsSupportedTypes>>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransfer {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub eu_bank_transfer:
+        Option<CreatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferEuBankTransfer>,
+
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested_address_types: Option<
         Vec<
@@ -2919,10 +2972,10 @@ pub struct CreatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransfer {
     pub type_: CreatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferType,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodOptionsSepaDebitMandateOptions {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnections {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub permissions: Option<
@@ -2933,14 +2986,14 @@ pub struct CreatePaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnecti
     pub return_url: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodOptionsUsBankAccountNetworks {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested:
         Option<Vec<CreatePaymentIntentPaymentMethodOptionsUsBankAccountNetworksRequested>>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodDataBillingDetailsAddress {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub city: Option<String>,
@@ -2961,7 +3014,7 @@ pub struct UpdatePaymentIntentPaymentMethodDataBillingDetailsAddress {
     pub state: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodDataKlarnaDob {
     pub day: i64,
 
@@ -2970,7 +3023,7 @@ pub struct UpdatePaymentIntentPaymentMethodDataKlarnaDob {
     pub year: i64,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodOptionsAcssDebitMandateOptions {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_mandate_url: Option<String>,
@@ -2987,7 +3040,7 @@ pub struct UpdatePaymentIntentPaymentMethodOptionsAcssDebitMandateOptions {
         Option<UpdatePaymentIntentPaymentMethodOptionsAcssDebitMandateOptionsTransactionType>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodOptionsCardInstallments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub enabled: Option<bool>,
@@ -2996,7 +3049,7 @@ pub struct UpdatePaymentIntentPaymentMethodOptionsCardInstallments {
     pub plan: Option<UpdatePaymentIntentPaymentMethodOptionsCardInstallmentsPlan>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodOptionsCardMandateOptions {
     pub amount: i64,
 
@@ -3022,8 +3075,12 @@ pub struct UpdatePaymentIntentPaymentMethodOptionsCardMandateOptions {
         Option<Vec<UpdatePaymentIntentPaymentMethodOptionsCardMandateOptionsSupportedTypes>>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransfer {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub eu_bank_transfer:
+        Option<UpdatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferEuBankTransfer>,
+
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested_address_types: Option<
         Vec<
@@ -3035,10 +3092,10 @@ pub struct UpdatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransfer {
     pub type_: UpdatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferType,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodOptionsSepaDebitMandateOptions {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnections {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub permissions: Option<
@@ -3049,14 +3106,14 @@ pub struct UpdatePaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnecti
     pub return_url: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodOptionsUsBankAccountNetworks {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested:
         Option<Vec<UpdatePaymentIntentPaymentMethodOptionsUsBankAccountNetworksRequested>>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentIntentPaymentMethodOptionsCardInstallmentsPlan {
     pub count: u64,
 
@@ -3066,7 +3123,12 @@ pub struct CreatePaymentIntentPaymentMethodOptionsCardInstallmentsPlan {
     pub type_: CreatePaymentIntentPaymentMethodOptionsCardInstallmentsPlanType,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
+pub struct CreatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferEuBankTransfer {
+    pub country: String,
+}
+
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentIntentPaymentMethodOptionsCardInstallmentsPlan {
     pub count: u64,
 
@@ -3076,7 +3138,12 @@ pub struct UpdatePaymentIntentPaymentMethodOptionsCardInstallmentsPlan {
     pub type_: UpdatePaymentIntentPaymentMethodOptionsCardInstallmentsPlanType,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
+pub struct UpdatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferEuBankTransfer {
+    pub country: String,
+}
+
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 #[serde(untagged, rename_all = "snake_case")]
 pub enum PaymentIntentPaymentMethodOptionsAcssDebitUnion {
     PaymentIntentPaymentMethodOptionsAcssDebit(PaymentIntentPaymentMethodOptionsAcssDebit),
@@ -3091,7 +3158,7 @@ impl std::default::Default for PaymentIntentPaymentMethodOptionsAcssDebitUnion {
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 #[serde(untagged, rename_all = "snake_case")]
 pub enum PaymentIntentPaymentMethodOptionsAffirmUnion {
     PaymentMethodOptionsAffirm(PaymentMethodOptionsAffirm),
@@ -3106,7 +3173,7 @@ impl std::default::Default for PaymentIntentPaymentMethodOptionsAffirmUnion {
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 #[serde(untagged, rename_all = "snake_case")]
 pub enum PaymentIntentPaymentMethodOptionsAfterpayClearpayUnion {
     PaymentMethodOptionsAfterpayClearpay(PaymentMethodOptionsAfterpayClearpay),
@@ -3121,7 +3188,7 @@ impl std::default::Default for PaymentIntentPaymentMethodOptionsAfterpayClearpay
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 #[serde(untagged, rename_all = "snake_case")]
 pub enum PaymentIntentPaymentMethodOptionsAlipayUnion {
     PaymentMethodOptionsAlipay(PaymentMethodOptionsAlipay),
@@ -3136,7 +3203,7 @@ impl std::default::Default for PaymentIntentPaymentMethodOptionsAlipayUnion {
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 #[serde(untagged, rename_all = "snake_case")]
 pub enum PaymentIntentPaymentMethodOptionsAuBecsDebitUnion {
     PaymentIntentPaymentMethodOptionsAuBecsDebit(PaymentIntentPaymentMethodOptionsAuBecsDebit),
@@ -3151,7 +3218,7 @@ impl std::default::Default for PaymentIntentPaymentMethodOptionsAuBecsDebitUnion
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 #[serde(untagged, rename_all = "snake_case")]
 pub enum PaymentIntentPaymentMethodOptionsBacsDebitUnion {
     PaymentMethodOptionsBacsDebit(PaymentMethodOptionsBacsDebit),
@@ -3166,7 +3233,7 @@ impl std::default::Default for PaymentIntentPaymentMethodOptionsBacsDebitUnion {
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 #[serde(untagged, rename_all = "snake_case")]
 pub enum PaymentIntentPaymentMethodOptionsBancontactUnion {
     PaymentMethodOptionsBancontact(PaymentMethodOptionsBancontact),
@@ -3181,7 +3248,7 @@ impl std::default::Default for PaymentIntentPaymentMethodOptionsBancontactUnion 
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 #[serde(untagged, rename_all = "snake_case")]
 pub enum PaymentIntentPaymentMethodOptionsBoletoUnion {
     PaymentMethodOptionsBoleto(PaymentMethodOptionsBoleto),
@@ -3196,7 +3263,7 @@ impl std::default::Default for PaymentIntentPaymentMethodOptionsBoletoUnion {
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 #[serde(untagged, rename_all = "snake_case")]
 pub enum PaymentIntentPaymentMethodOptionsCardPresentUnion {
     PaymentMethodOptionsCardPresent(PaymentMethodOptionsCardPresent),
@@ -3211,7 +3278,7 @@ impl std::default::Default for PaymentIntentPaymentMethodOptionsCardPresentUnion
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 #[serde(untagged, rename_all = "snake_case")]
 pub enum PaymentIntentPaymentMethodOptionsCardUnion {
     PaymentIntentPaymentMethodOptionsCard(PaymentIntentPaymentMethodOptionsCard),
@@ -3226,7 +3293,7 @@ impl std::default::Default for PaymentIntentPaymentMethodOptionsCardUnion {
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 #[serde(untagged, rename_all = "snake_case")]
 pub enum PaymentIntentPaymentMethodOptionsCustomerBalanceUnion {
     PaymentMethodOptionsCustomerBalance(PaymentMethodOptionsCustomerBalance),
@@ -3241,7 +3308,7 @@ impl std::default::Default for PaymentIntentPaymentMethodOptionsCustomerBalanceU
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 #[serde(untagged, rename_all = "snake_case")]
 pub enum PaymentIntentPaymentMethodOptionsEpsUnion {
     PaymentIntentPaymentMethodOptionsEps(PaymentIntentPaymentMethodOptionsEps),
@@ -3256,7 +3323,7 @@ impl std::default::Default for PaymentIntentPaymentMethodOptionsEpsUnion {
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 #[serde(untagged, rename_all = "snake_case")]
 pub enum PaymentIntentPaymentMethodOptionsFpxUnion {
     PaymentMethodOptionsFpx(PaymentMethodOptionsFpx),
@@ -3271,7 +3338,7 @@ impl std::default::Default for PaymentIntentPaymentMethodOptionsFpxUnion {
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 #[serde(untagged, rename_all = "snake_case")]
 pub enum PaymentIntentPaymentMethodOptionsGiropayUnion {
     PaymentMethodOptionsGiropay(PaymentMethodOptionsGiropay),
@@ -3286,7 +3353,7 @@ impl std::default::Default for PaymentIntentPaymentMethodOptionsGiropayUnion {
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 #[serde(untagged, rename_all = "snake_case")]
 pub enum PaymentIntentPaymentMethodOptionsGrabpayUnion {
     PaymentMethodOptionsGrabpay(PaymentMethodOptionsGrabpay),
@@ -3301,7 +3368,7 @@ impl std::default::Default for PaymentIntentPaymentMethodOptionsGrabpayUnion {
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 #[serde(untagged, rename_all = "snake_case")]
 pub enum PaymentIntentPaymentMethodOptionsIdealUnion {
     PaymentMethodOptionsIdeal(PaymentMethodOptionsIdeal),
@@ -3316,7 +3383,7 @@ impl std::default::Default for PaymentIntentPaymentMethodOptionsIdealUnion {
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 #[serde(untagged, rename_all = "snake_case")]
 pub enum PaymentIntentPaymentMethodOptionsInteracPresentUnion {
     PaymentMethodOptionsInteracPresent(PaymentMethodOptionsInteracPresent),
@@ -3331,7 +3398,7 @@ impl std::default::Default for PaymentIntentPaymentMethodOptionsInteracPresentUn
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 #[serde(untagged, rename_all = "snake_case")]
 pub enum PaymentIntentPaymentMethodOptionsKlarnaUnion {
     PaymentMethodOptionsKlarna(PaymentMethodOptionsKlarna),
@@ -3346,7 +3413,7 @@ impl std::default::Default for PaymentIntentPaymentMethodOptionsKlarnaUnion {
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 #[serde(untagged, rename_all = "snake_case")]
 pub enum PaymentIntentPaymentMethodOptionsKonbiniUnion {
     PaymentMethodOptionsKonbini(PaymentMethodOptionsKonbini),
@@ -3361,7 +3428,7 @@ impl std::default::Default for PaymentIntentPaymentMethodOptionsKonbiniUnion {
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 #[serde(untagged, rename_all = "snake_case")]
 pub enum PaymentIntentPaymentMethodOptionsLinkUnion {
     PaymentIntentPaymentMethodOptionsLink(PaymentIntentPaymentMethodOptionsLink),
@@ -3376,7 +3443,7 @@ impl std::default::Default for PaymentIntentPaymentMethodOptionsLinkUnion {
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 #[serde(untagged, rename_all = "snake_case")]
 pub enum PaymentIntentPaymentMethodOptionsOxxoUnion {
     PaymentMethodOptionsOxxo(PaymentMethodOptionsOxxo),
@@ -3391,7 +3458,7 @@ impl std::default::Default for PaymentIntentPaymentMethodOptionsOxxoUnion {
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 #[serde(untagged, rename_all = "snake_case")]
 pub enum PaymentIntentPaymentMethodOptionsP24Union {
     PaymentMethodOptionsP24(PaymentMethodOptionsP24),
@@ -3406,7 +3473,7 @@ impl std::default::Default for PaymentIntentPaymentMethodOptionsP24Union {
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 #[serde(untagged, rename_all = "snake_case")]
 pub enum PaymentIntentPaymentMethodOptionsPaynowUnion {
     PaymentMethodOptionsPaynow(PaymentMethodOptionsPaynow),
@@ -3421,7 +3488,7 @@ impl std::default::Default for PaymentIntentPaymentMethodOptionsPaynowUnion {
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 #[serde(untagged, rename_all = "snake_case")]
 pub enum PaymentIntentPaymentMethodOptionsSepaDebitUnion {
     PaymentIntentPaymentMethodOptionsSepaDebit(PaymentIntentPaymentMethodOptionsSepaDebit),
@@ -3436,7 +3503,7 @@ impl std::default::Default for PaymentIntentPaymentMethodOptionsSepaDebitUnion {
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 #[serde(untagged, rename_all = "snake_case")]
 pub enum PaymentIntentPaymentMethodOptionsSofortUnion {
     PaymentMethodOptionsSofort(PaymentMethodOptionsSofort),
@@ -3451,7 +3518,7 @@ impl std::default::Default for PaymentIntentPaymentMethodOptionsSofortUnion {
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 #[serde(untagged, rename_all = "snake_case")]
 pub enum PaymentIntentPaymentMethodOptionsUsBankAccountUnion {
     PaymentIntentPaymentMethodOptionsUsBankAccount(PaymentIntentPaymentMethodOptionsUsBankAccount),
@@ -3466,7 +3533,7 @@ impl std::default::Default for PaymentIntentPaymentMethodOptionsUsBankAccountUni
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 #[serde(untagged, rename_all = "snake_case")]
 pub enum PaymentIntentPaymentMethodOptionsWechatPayUnion {
     PaymentMethodOptionsWechatPay(PaymentMethodOptionsWechatPay),
@@ -3482,7 +3549,7 @@ impl std::default::Default for PaymentIntentPaymentMethodOptionsWechatPayUnion {
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentMandateDataCustomerAcceptance`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentMandateDataCustomerAcceptanceType {
     Offline,
@@ -3516,7 +3583,7 @@ impl std::default::Default for CreatePaymentIntentMandateDataCustomerAcceptanceT
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodDataEps`'s `bank` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodDataEpsBank {
     ArzteUndApothekerBank,
@@ -3628,7 +3695,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodDataEpsBank {
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodDataFpx`'s `bank` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodDataFpxBank {
     AffinBank,
@@ -3700,7 +3767,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodDataFpxBank {
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodDataIdeal`'s `bank` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodDataIdealBank {
     AbnAmro,
@@ -3756,7 +3823,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodDataIdealBank {
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodDataP24`'s `bank` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodDataP24Bank {
     AliorBank,
@@ -3842,7 +3909,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodDataP24Bank {
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodDataSofort`'s `country` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodDataSofortCountry {
     #[serde(rename = "AT")]
@@ -3890,7 +3957,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodDataSofortCountry
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodData`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodDataType {
     AcssDebit,
@@ -3968,7 +4035,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodDataType {
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodDataUsBankAccount`'s `account_holder_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodDataUsBankAccountAccountHolderType {
     Company,
@@ -4006,7 +4073,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodDataUsBankAccount
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodDataUsBankAccount`'s `account_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodDataUsBankAccountAccountType {
     Checking,
@@ -4040,7 +4107,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodDataUsBankAccount
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsAcssDebitMandateOptions`'s `payment_schedule` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsAcssDebitMandateOptionsPaymentSchedule {
     Combined,
@@ -4080,7 +4147,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsAcssDebitMandateOptions`'s `transaction_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsAcssDebitMandateOptionsTransactionType {
     Business,
@@ -4118,7 +4185,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsAcssDebit`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsAcssDebitSetupFutureUsage {
     None,
@@ -4158,7 +4225,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodOptionsAcssDebitS
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsAcssDebit`'s `verification_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsAcssDebitVerificationMethod {
     Automatic,
@@ -4200,7 +4267,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodOptionsAcssDebitV
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsAffirm`'s `capture_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsAffirmCaptureMethod {
     Manual,
@@ -4232,7 +4299,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodOptionsAffirmCapt
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsAffirm`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsAffirmSetupFutureUsage {
     None,
@@ -4264,7 +4331,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodOptionsAffirmSetu
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsAfterpayClearpay`'s `capture_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsAfterpayClearpayCaptureMethod {
     Manual,
@@ -4300,7 +4367,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsAfterpayClearpay`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsAfterpayClearpaySetupFutureUsage {
     None,
@@ -4334,7 +4401,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsAlipay`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsAlipaySetupFutureUsage {
     None,
@@ -4370,7 +4437,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodOptionsAlipaySetu
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsAuBecsDebit`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsAuBecsDebitSetupFutureUsage {
     None,
@@ -4410,7 +4477,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodOptionsAuBecsDebi
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsBacsDebit`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsBacsDebitSetupFutureUsage {
     None,
@@ -4450,7 +4517,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodOptionsBacsDebitS
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsBancontact`'s `preferred_language` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsBancontactPreferredLanguage {
     De,
@@ -4488,7 +4555,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodOptionsBancontact
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsBancontact`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsBancontactSetupFutureUsage {
     None,
@@ -4524,7 +4591,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodOptionsBancontact
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsBoleto`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsBoletoSetupFutureUsage {
     None,
@@ -4564,7 +4631,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodOptionsBoletoSetu
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsCard`'s `capture_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsCardCaptureMethod {
     Manual,
@@ -4596,7 +4663,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodOptionsCardCaptur
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsCardInstallmentsPlan`'s `interval` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsCardInstallmentsPlanInterval {
     Month,
@@ -4628,7 +4695,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodOptionsCardInstal
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsCardInstallmentsPlan`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsCardInstallmentsPlanType {
     FixedCount,
@@ -4662,7 +4729,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodOptionsCardInstal
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsCardMandateOptions`'s `amount_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsCardMandateOptionsAmountType {
     Fixed,
@@ -4698,7 +4765,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodOptionsCardMandat
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsCardMandateOptions`'s `interval` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsCardMandateOptionsInterval {
     Day,
@@ -4740,7 +4807,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodOptionsCardMandat
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsCardMandateOptions`'s `supported_types` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsCardMandateOptionsSupportedTypes {
     India,
@@ -4776,7 +4843,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsCard`'s `network` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsCardNetwork {
     Amex,
@@ -4828,7 +4895,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodOptionsCardNetwor
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsCard`'s `request_three_d_secure` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsCardRequestThreeDSecure {
     Any,
@@ -4864,7 +4931,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodOptionsCardReques
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsCard`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsCardSetupFutureUsage {
     None,
@@ -4902,15 +4969,23 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodOptionsCardSetupF
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransfer`'s `requested_address_types` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes {
+    Iban,
+    Sepa,
+    SortCode,
+    Spei,
     Zengin,
 }
 
 impl CreatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes {
     pub fn as_str(self) -> &'static str {
         match self {
+            CreatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes::Iban => "iban",
+            CreatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes::Sepa => "sepa",
+            CreatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes::SortCode => "sort_code",
+            CreatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes::Spei => "spei",
             CreatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes::Zengin => "zengin",
         }
     }
@@ -4935,21 +5010,27 @@ impl std::default::Default
     for CreatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes
 {
     fn default() -> Self {
-        Self::Zengin
+        Self::Iban
     }
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransfer`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferType {
+    EuBankTransfer,
+    GbBankTransfer,
     JpBankTransfer,
+    MxBankTransfer,
 }
 
 impl CreatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferType {
     pub fn as_str(self) -> &'static str {
         match self {
+            CreatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferType::EuBankTransfer => "eu_bank_transfer",
+            CreatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferType::GbBankTransfer => "gb_bank_transfer",
             CreatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferType::JpBankTransfer => "jp_bank_transfer",
+            CreatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferType::MxBankTransfer => "mx_bank_transfer",
         }
     }
 }
@@ -4969,12 +5050,12 @@ impl std::default::Default
     for CreatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferType
 {
     fn default() -> Self {
-        Self::JpBankTransfer
+        Self::EuBankTransfer
     }
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsCustomerBalance`'s `funding_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsCustomerBalanceFundingType {
     BankTransfer,
@@ -5008,7 +5089,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodOptionsCustomerBa
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsCustomerBalance`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsCustomerBalanceSetupFutureUsage {
     None,
@@ -5042,7 +5123,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsEps`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsEpsSetupFutureUsage {
     None,
@@ -5074,7 +5155,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodOptionsEpsSetupFu
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsFpx`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsFpxSetupFutureUsage {
     None,
@@ -5106,7 +5187,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodOptionsFpxSetupFu
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsGiropay`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsGiropaySetupFutureUsage {
     None,
@@ -5138,7 +5219,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodOptionsGiropaySet
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsGrabpay`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsGrabpaySetupFutureUsage {
     None,
@@ -5170,7 +5251,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodOptionsGrabpaySet
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsIdeal`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsIdealSetupFutureUsage {
     None,
@@ -5206,7 +5287,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodOptionsIdealSetup
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsKlarna`'s `capture_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsKlarnaCaptureMethod {
     Manual,
@@ -5238,7 +5319,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodOptionsKlarnaCapt
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsKlarna`'s `preferred_locale` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsKlarnaPreferredLocale {
     #[serde(rename = "da-DK")]
@@ -5358,7 +5439,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodOptionsKlarnaPref
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsKlarna`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsKlarnaSetupFutureUsage {
     None,
@@ -5390,7 +5471,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodOptionsKlarnaSetu
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsKonbini`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsKonbiniSetupFutureUsage {
     None,
@@ -5422,7 +5503,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodOptionsKonbiniSet
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsLink`'s `capture_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsLinkCaptureMethod {
     Manual,
@@ -5454,7 +5535,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodOptionsLinkCaptur
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsLink`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsLinkSetupFutureUsage {
     None,
@@ -5490,7 +5571,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodOptionsLinkSetupF
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsOxxo`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsOxxoSetupFutureUsage {
     None,
@@ -5522,7 +5603,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodOptionsOxxoSetupF
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsP24`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsP24SetupFutureUsage {
     None,
@@ -5554,7 +5635,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodOptionsP24SetupFu
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsPaynow`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsPaynowSetupFutureUsage {
     None,
@@ -5586,7 +5667,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodOptionsPaynowSetu
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsSepaDebit`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsSepaDebitSetupFutureUsage {
     None,
@@ -5626,7 +5707,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodOptionsSepaDebitS
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsSofort`'s `preferred_language` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsSofortPreferredLanguage {
     De,
@@ -5670,7 +5751,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodOptionsSofortPref
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsSofort`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsSofortSetupFutureUsage {
     None,
@@ -5706,7 +5787,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodOptionsSofortSetu
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnections`'s `permissions` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsPermissions {
     Balances,
@@ -5750,7 +5831,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsUsBankAccountNetworks`'s `requested` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsUsBankAccountNetworksRequested {
     Ach,
@@ -5786,7 +5867,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsUsBankAccount`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsUsBankAccountSetupFutureUsage {
     None,
@@ -5828,7 +5909,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsUsBankAccount`'s `verification_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsUsBankAccountVerificationMethod {
     Automatic,
@@ -5866,7 +5947,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsWechatPay`'s `client` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsWechatPayClient {
     Android,
@@ -5902,7 +5983,7 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodOptionsWechatPayC
 }
 
 /// An enum representing the possible values of an `CreatePaymentIntentPaymentMethodOptionsWechatPay`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentIntentPaymentMethodOptionsWechatPaySetupFutureUsage {
     None,
@@ -5934,17 +6015,23 @@ impl std::default::Default for CreatePaymentIntentPaymentMethodOptionsWechatPayS
 }
 
 /// An enum representing the possible values of an `FundingInstructionsBankTransferFinancialAddress`'s `supported_networks` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum FundingInstructionsBankTransferFinancialAddressSupportedNetworks {
+    Bacs,
+    Fps,
     Sepa,
+    Spei,
     Zengin,
 }
 
 impl FundingInstructionsBankTransferFinancialAddressSupportedNetworks {
     pub fn as_str(self) -> &'static str {
         match self {
+            FundingInstructionsBankTransferFinancialAddressSupportedNetworks::Bacs => "bacs",
+            FundingInstructionsBankTransferFinancialAddressSupportedNetworks::Fps => "fps",
             FundingInstructionsBankTransferFinancialAddressSupportedNetworks::Sepa => "sepa",
+            FundingInstructionsBankTransferFinancialAddressSupportedNetworks::Spei => "spei",
             FundingInstructionsBankTransferFinancialAddressSupportedNetworks::Zengin => "zengin",
         }
     }
@@ -5963,15 +6050,17 @@ impl std::fmt::Display for FundingInstructionsBankTransferFinancialAddressSuppor
 }
 impl std::default::Default for FundingInstructionsBankTransferFinancialAddressSupportedNetworks {
     fn default() -> Self {
-        Self::Sepa
+        Self::Bacs
     }
 }
 
 /// An enum representing the possible values of an `FundingInstructionsBankTransferFinancialAddress`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum FundingInstructionsBankTransferFinancialAddressType {
     Iban,
+    SortCode,
+    Spei,
     Zengin,
 }
 
@@ -5979,6 +6068,8 @@ impl FundingInstructionsBankTransferFinancialAddressType {
     pub fn as_str(self) -> &'static str {
         match self {
             FundingInstructionsBankTransferFinancialAddressType::Iban => "iban",
+            FundingInstructionsBankTransferFinancialAddressType::SortCode => "sort_code",
+            FundingInstructionsBankTransferFinancialAddressType::Spei => "spei",
             FundingInstructionsBankTransferFinancialAddressType::Zengin => "zengin",
         }
     }
@@ -6002,7 +6093,7 @@ impl std::default::Default for FundingInstructionsBankTransferFinancialAddressTy
 }
 
 /// An enum representing the possible values of an `PaymentIntent`'s `cancellation_reason` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentIntentCancellationReason {
     Abandoned,
@@ -6046,7 +6137,7 @@ impl std::default::Default for PaymentIntentCancellationReason {
 }
 
 /// An enum representing the possible values of an `PaymentIntent`'s `capture_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentIntentCaptureMethod {
     Automatic,
@@ -6080,7 +6171,7 @@ impl std::default::Default for PaymentIntentCaptureMethod {
 }
 
 /// An enum representing the possible values of an `PaymentIntent`'s `confirmation_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentIntentConfirmationMethod {
     Automatic,
@@ -6114,17 +6205,29 @@ impl std::default::Default for PaymentIntentConfirmationMethod {
 }
 
 /// An enum representing the possible values of an `PaymentIntentNextActionDisplayBankTransferInstructions`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentIntentNextActionDisplayBankTransferInstructionsType {
+    EuBankTransfer,
+    GbBankTransfer,
     JpBankTransfer,
+    MxBankTransfer,
 }
 
 impl PaymentIntentNextActionDisplayBankTransferInstructionsType {
     pub fn as_str(self) -> &'static str {
         match self {
+            PaymentIntentNextActionDisplayBankTransferInstructionsType::EuBankTransfer => {
+                "eu_bank_transfer"
+            }
+            PaymentIntentNextActionDisplayBankTransferInstructionsType::GbBankTransfer => {
+                "gb_bank_transfer"
+            }
             PaymentIntentNextActionDisplayBankTransferInstructionsType::JpBankTransfer => {
                 "jp_bank_transfer"
+            }
+            PaymentIntentNextActionDisplayBankTransferInstructionsType::MxBankTransfer => {
+                "mx_bank_transfer"
             }
         }
     }
@@ -6143,12 +6246,12 @@ impl std::fmt::Display for PaymentIntentNextActionDisplayBankTransferInstruction
 }
 impl std::default::Default for PaymentIntentNextActionDisplayBankTransferInstructionsType {
     fn default() -> Self {
-        Self::JpBankTransfer
+        Self::EuBankTransfer
     }
 }
 
 /// An enum representing the possible values of an `PaymentIntentNextActionVerifyWithMicrodeposits`'s `microdeposit_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentIntentNextActionVerifyWithMicrodepositsMicrodepositType {
     Amounts,
@@ -6184,7 +6287,7 @@ impl std::default::Default for PaymentIntentNextActionVerifyWithMicrodepositsMic
 }
 
 /// An enum representing the possible values of an `PaymentIntentPaymentMethodOptionsAuBecsDebit`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentIntentPaymentMethodOptionsAuBecsDebitSetupFutureUsage {
     None,
@@ -6222,7 +6325,7 @@ impl std::default::Default for PaymentIntentPaymentMethodOptionsAuBecsDebitSetup
 }
 
 /// An enum representing the possible values of an `PaymentIntentPaymentMethodOptionsCard`'s `capture_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentIntentPaymentMethodOptionsCardCaptureMethod {
     Manual,
@@ -6254,7 +6357,7 @@ impl std::default::Default for PaymentIntentPaymentMethodOptionsCardCaptureMetho
 }
 
 /// An enum representing the possible values of an `PaymentIntentPaymentMethodOptionsCard`'s `network` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentIntentPaymentMethodOptionsCardNetwork {
     Amex,
@@ -6304,7 +6407,7 @@ impl std::default::Default for PaymentIntentPaymentMethodOptionsCardNetwork {
 }
 
 /// An enum representing the possible values of an `PaymentIntentPaymentMethodOptionsCard`'s `request_three_d_secure` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentIntentPaymentMethodOptionsCardRequestThreeDSecure {
     Any,
@@ -6342,7 +6445,7 @@ impl std::default::Default for PaymentIntentPaymentMethodOptionsCardRequestThree
 }
 
 /// An enum representing the possible values of an `PaymentIntentPaymentMethodOptionsCard`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentIntentPaymentMethodOptionsCardSetupFutureUsage {
     None,
@@ -6378,7 +6481,7 @@ impl std::default::Default for PaymentIntentPaymentMethodOptionsCardSetupFutureU
 }
 
 /// An enum representing the possible values of an `PaymentIntentPaymentMethodOptionsEps`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentIntentPaymentMethodOptionsEpsSetupFutureUsage {
     None,
@@ -6410,7 +6513,7 @@ impl std::default::Default for PaymentIntentPaymentMethodOptionsEpsSetupFutureUs
 }
 
 /// An enum representing the possible values of an `PaymentIntentPaymentMethodOptionsUsBankAccount`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentIntentPaymentMethodOptionsUsBankAccountSetupFutureUsage {
     None,
@@ -6450,7 +6553,7 @@ impl std::default::Default for PaymentIntentPaymentMethodOptionsUsBankAccountSet
 }
 
 /// An enum representing the possible values of an `PaymentIntentPaymentMethodOptionsUsBankAccount`'s `verification_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentIntentPaymentMethodOptionsUsBankAccountVerificationMethod {
     Automatic,
@@ -6490,7 +6593,7 @@ impl std::default::Default for PaymentIntentPaymentMethodOptionsUsBankAccountVer
 }
 
 /// An enum representing the possible values of an `PaymentIntentProcessing`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentIntentProcessingType {
     Card,
@@ -6522,7 +6625,7 @@ impl std::default::Default for PaymentIntentProcessingType {
 }
 
 /// An enum representing the possible values of an `PaymentIntent`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentIntentSetupFutureUsage {
     OffSession,
@@ -6556,7 +6659,7 @@ impl std::default::Default for PaymentIntentSetupFutureUsage {
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntent`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentIntentSetupFutureUsageFilter {
     OffSession,
@@ -6590,7 +6693,7 @@ impl std::default::Default for PaymentIntentSetupFutureUsageFilter {
 }
 
 /// An enum representing the possible values of an `PaymentIntent`'s `status` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentIntentStatus {
     Canceled,
@@ -6634,7 +6737,7 @@ impl std::default::Default for PaymentIntentStatus {
 }
 
 /// An enum representing the possible values of an `PaymentIntentTypeSpecificPaymentMethodOptionsClient`'s `capture_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentIntentTypeSpecificPaymentMethodOptionsClientCaptureMethod {
     Manual,
@@ -6666,7 +6769,7 @@ impl std::default::Default for PaymentIntentTypeSpecificPaymentMethodOptionsClie
 }
 
 /// An enum representing the possible values of an `PaymentIntentTypeSpecificPaymentMethodOptionsClient`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentIntentTypeSpecificPaymentMethodOptionsClientSetupFutureUsage {
     None,
@@ -6706,7 +6809,7 @@ impl std::default::Default for PaymentIntentTypeSpecificPaymentMethodOptionsClie
 }
 
 /// An enum representing the possible values of an `PaymentIntentTypeSpecificPaymentMethodOptionsClient`'s `verification_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentIntentTypeSpecificPaymentMethodOptionsClientVerificationMethod {
     Automatic,
@@ -6744,7 +6847,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `PaymentMethodOptionsAffirm`'s `capture_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentMethodOptionsAffirmCaptureMethod {
     Manual,
@@ -6776,7 +6879,7 @@ impl std::default::Default for PaymentMethodOptionsAffirmCaptureMethod {
 }
 
 /// An enum representing the possible values of an `PaymentMethodOptionsAffirm`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentMethodOptionsAffirmSetupFutureUsage {
     None,
@@ -6808,7 +6911,7 @@ impl std::default::Default for PaymentMethodOptionsAffirmSetupFutureUsage {
 }
 
 /// An enum representing the possible values of an `PaymentMethodOptionsAfterpayClearpay`'s `capture_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentMethodOptionsAfterpayClearpayCaptureMethod {
     Manual,
@@ -6840,7 +6943,7 @@ impl std::default::Default for PaymentMethodOptionsAfterpayClearpayCaptureMethod
 }
 
 /// An enum representing the possible values of an `PaymentMethodOptionsAfterpayClearpay`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentMethodOptionsAfterpayClearpaySetupFutureUsage {
     None,
@@ -6872,7 +6975,7 @@ impl std::default::Default for PaymentMethodOptionsAfterpayClearpaySetupFutureUs
 }
 
 /// An enum representing the possible values of an `PaymentMethodOptionsBacsDebit`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentMethodOptionsBacsDebitSetupFutureUsage {
     None,
@@ -6908,7 +7011,7 @@ impl std::default::Default for PaymentMethodOptionsBacsDebitSetupFutureUsage {
 }
 
 /// An enum representing the possible values of an `PaymentMethodOptionsBoleto`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentMethodOptionsBoletoSetupFutureUsage {
     None,
@@ -6944,7 +7047,7 @@ impl std::default::Default for PaymentMethodOptionsBoletoSetupFutureUsage {
 }
 
 /// An enum representing the possible values of an `PaymentMethodOptionsCardMandateOptions`'s `amount_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentMethodOptionsCardMandateOptionsAmountType {
     Fixed,
@@ -6978,7 +7081,7 @@ impl std::default::Default for PaymentMethodOptionsCardMandateOptionsAmountType 
 }
 
 /// An enum representing the possible values of an `PaymentMethodOptionsCardMandateOptions`'s `interval` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentMethodOptionsCardMandateOptionsInterval {
     Day,
@@ -7018,7 +7121,7 @@ impl std::default::Default for PaymentMethodOptionsCardMandateOptionsInterval {
 }
 
 /// An enum representing the possible values of an `PaymentMethodOptionsCardMandateOptions`'s `supported_types` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentMethodOptionsCardMandateOptionsSupportedTypes {
     India,
@@ -7050,7 +7153,7 @@ impl std::default::Default for PaymentMethodOptionsCardMandateOptionsSupportedTy
 }
 
 /// An enum representing the possible values of an `PaymentMethodOptionsFpx`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentMethodOptionsFpxSetupFutureUsage {
     None,
@@ -7082,7 +7185,7 @@ impl std::default::Default for PaymentMethodOptionsFpxSetupFutureUsage {
 }
 
 /// An enum representing the possible values of an `PaymentMethodOptionsGiropay`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentMethodOptionsGiropaySetupFutureUsage {
     None,
@@ -7114,7 +7217,7 @@ impl std::default::Default for PaymentMethodOptionsGiropaySetupFutureUsage {
 }
 
 /// An enum representing the possible values of an `PaymentMethodOptionsGrabpay`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentMethodOptionsGrabpaySetupFutureUsage {
     None,
@@ -7146,7 +7249,7 @@ impl std::default::Default for PaymentMethodOptionsGrabpaySetupFutureUsage {
 }
 
 /// An enum representing the possible values of an `PaymentMethodOptionsKonbini`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentMethodOptionsKonbiniSetupFutureUsage {
     None,
@@ -7178,7 +7281,7 @@ impl std::default::Default for PaymentMethodOptionsKonbiniSetupFutureUsage {
 }
 
 /// An enum representing the possible values of an `PaymentMethodOptionsPaynow`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentMethodOptionsPaynowSetupFutureUsage {
     None,
@@ -7210,7 +7313,7 @@ impl std::default::Default for PaymentMethodOptionsPaynowSetupFutureUsage {
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodDataEps`'s `bank` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodDataEpsBank {
     ArzteUndApothekerBank,
@@ -7322,7 +7425,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodDataEpsBank {
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodDataFpx`'s `bank` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodDataFpxBank {
     AffinBank,
@@ -7394,7 +7497,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodDataFpxBank {
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodDataIdeal`'s `bank` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodDataIdealBank {
     AbnAmro,
@@ -7450,7 +7553,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodDataIdealBank {
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodDataP24`'s `bank` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodDataP24Bank {
     AliorBank,
@@ -7536,7 +7639,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodDataP24Bank {
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodDataSofort`'s `country` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodDataSofortCountry {
     #[serde(rename = "AT")]
@@ -7584,7 +7687,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodDataSofortCountry
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodData`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodDataType {
     AcssDebit,
@@ -7662,7 +7765,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodDataType {
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodDataUsBankAccount`'s `account_holder_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodDataUsBankAccountAccountHolderType {
     Company,
@@ -7700,7 +7803,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodDataUsBankAccount
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodDataUsBankAccount`'s `account_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodDataUsBankAccountAccountType {
     Checking,
@@ -7734,7 +7837,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodDataUsBankAccount
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsAcssDebitMandateOptions`'s `payment_schedule` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsAcssDebitMandateOptionsPaymentSchedule {
     Combined,
@@ -7774,7 +7877,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsAcssDebitMandateOptions`'s `transaction_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsAcssDebitMandateOptionsTransactionType {
     Business,
@@ -7812,7 +7915,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsAcssDebit`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsAcssDebitSetupFutureUsage {
     None,
@@ -7852,7 +7955,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodOptionsAcssDebitS
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsAcssDebit`'s `verification_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsAcssDebitVerificationMethod {
     Automatic,
@@ -7894,7 +7997,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodOptionsAcssDebitV
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsAffirm`'s `capture_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsAffirmCaptureMethod {
     Manual,
@@ -7926,7 +8029,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodOptionsAffirmCapt
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsAffirm`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsAffirmSetupFutureUsage {
     None,
@@ -7958,7 +8061,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodOptionsAffirmSetu
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsAfterpayClearpay`'s `capture_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsAfterpayClearpayCaptureMethod {
     Manual,
@@ -7994,7 +8097,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsAfterpayClearpay`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsAfterpayClearpaySetupFutureUsage {
     None,
@@ -8028,7 +8131,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsAlipay`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsAlipaySetupFutureUsage {
     None,
@@ -8064,7 +8167,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodOptionsAlipaySetu
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsAuBecsDebit`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsAuBecsDebitSetupFutureUsage {
     None,
@@ -8104,7 +8207,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodOptionsAuBecsDebi
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsBacsDebit`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsBacsDebitSetupFutureUsage {
     None,
@@ -8144,7 +8247,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodOptionsBacsDebitS
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsBancontact`'s `preferred_language` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsBancontactPreferredLanguage {
     De,
@@ -8182,7 +8285,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodOptionsBancontact
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsBancontact`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsBancontactSetupFutureUsage {
     None,
@@ -8218,7 +8321,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodOptionsBancontact
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsBoleto`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsBoletoSetupFutureUsage {
     None,
@@ -8258,7 +8361,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodOptionsBoletoSetu
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsCard`'s `capture_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsCardCaptureMethod {
     Manual,
@@ -8290,7 +8393,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodOptionsCardCaptur
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsCardInstallmentsPlan`'s `interval` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsCardInstallmentsPlanInterval {
     Month,
@@ -8322,7 +8425,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodOptionsCardInstal
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsCardInstallmentsPlan`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsCardInstallmentsPlanType {
     FixedCount,
@@ -8356,7 +8459,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodOptionsCardInstal
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsCardMandateOptions`'s `amount_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsCardMandateOptionsAmountType {
     Fixed,
@@ -8392,7 +8495,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodOptionsCardMandat
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsCardMandateOptions`'s `interval` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsCardMandateOptionsInterval {
     Day,
@@ -8434,7 +8537,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodOptionsCardMandat
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsCardMandateOptions`'s `supported_types` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsCardMandateOptionsSupportedTypes {
     India,
@@ -8470,7 +8573,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsCard`'s `network` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsCardNetwork {
     Amex,
@@ -8522,7 +8625,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodOptionsCardNetwor
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsCard`'s `request_three_d_secure` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsCardRequestThreeDSecure {
     Any,
@@ -8558,7 +8661,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodOptionsCardReques
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsCard`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsCardSetupFutureUsage {
     None,
@@ -8596,15 +8699,23 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodOptionsCardSetupF
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransfer`'s `requested_address_types` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes {
+    Iban,
+    Sepa,
+    SortCode,
+    Spei,
     Zengin,
 }
 
 impl UpdatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes {
     pub fn as_str(self) -> &'static str {
         match self {
+            UpdatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes::Iban => "iban",
+            UpdatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes::Sepa => "sepa",
+            UpdatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes::SortCode => "sort_code",
+            UpdatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes::Spei => "spei",
             UpdatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes::Zengin => "zengin",
         }
     }
@@ -8629,21 +8740,27 @@ impl std::default::Default
     for UpdatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes
 {
     fn default() -> Self {
-        Self::Zengin
+        Self::Iban
     }
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransfer`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferType {
+    EuBankTransfer,
+    GbBankTransfer,
     JpBankTransfer,
+    MxBankTransfer,
 }
 
 impl UpdatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferType {
     pub fn as_str(self) -> &'static str {
         match self {
+            UpdatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferType::EuBankTransfer => "eu_bank_transfer",
+            UpdatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferType::GbBankTransfer => "gb_bank_transfer",
             UpdatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferType::JpBankTransfer => "jp_bank_transfer",
+            UpdatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferType::MxBankTransfer => "mx_bank_transfer",
         }
     }
 }
@@ -8663,12 +8780,12 @@ impl std::default::Default
     for UpdatePaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferType
 {
     fn default() -> Self {
-        Self::JpBankTransfer
+        Self::EuBankTransfer
     }
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsCustomerBalance`'s `funding_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsCustomerBalanceFundingType {
     BankTransfer,
@@ -8702,7 +8819,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodOptionsCustomerBa
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsCustomerBalance`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsCustomerBalanceSetupFutureUsage {
     None,
@@ -8736,7 +8853,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsEps`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsEpsSetupFutureUsage {
     None,
@@ -8768,7 +8885,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodOptionsEpsSetupFu
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsFpx`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsFpxSetupFutureUsage {
     None,
@@ -8800,7 +8917,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodOptionsFpxSetupFu
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsGiropay`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsGiropaySetupFutureUsage {
     None,
@@ -8832,7 +8949,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodOptionsGiropaySet
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsGrabpay`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsGrabpaySetupFutureUsage {
     None,
@@ -8864,7 +8981,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodOptionsGrabpaySet
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsIdeal`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsIdealSetupFutureUsage {
     None,
@@ -8900,7 +9017,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodOptionsIdealSetup
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsKlarna`'s `capture_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsKlarnaCaptureMethod {
     Manual,
@@ -8932,7 +9049,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodOptionsKlarnaCapt
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsKlarna`'s `preferred_locale` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsKlarnaPreferredLocale {
     #[serde(rename = "da-DK")]
@@ -9052,7 +9169,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodOptionsKlarnaPref
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsKlarna`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsKlarnaSetupFutureUsage {
     None,
@@ -9084,7 +9201,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodOptionsKlarnaSetu
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsKonbini`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsKonbiniSetupFutureUsage {
     None,
@@ -9116,7 +9233,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodOptionsKonbiniSet
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsLink`'s `capture_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsLinkCaptureMethod {
     Manual,
@@ -9148,7 +9265,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodOptionsLinkCaptur
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsLink`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsLinkSetupFutureUsage {
     None,
@@ -9184,7 +9301,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodOptionsLinkSetupF
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsOxxo`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsOxxoSetupFutureUsage {
     None,
@@ -9216,7 +9333,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodOptionsOxxoSetupF
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsP24`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsP24SetupFutureUsage {
     None,
@@ -9248,7 +9365,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodOptionsP24SetupFu
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsPaynow`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsPaynowSetupFutureUsage {
     None,
@@ -9280,7 +9397,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodOptionsPaynowSetu
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsSepaDebit`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsSepaDebitSetupFutureUsage {
     None,
@@ -9320,7 +9437,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodOptionsSepaDebitS
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsSofort`'s `preferred_language` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsSofortPreferredLanguage {
     De,
@@ -9364,7 +9481,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodOptionsSofortPref
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsSofort`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsSofortSetupFutureUsage {
     None,
@@ -9400,7 +9517,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodOptionsSofortSetu
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnections`'s `permissions` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsPermissions {
     Balances,
@@ -9444,7 +9561,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsUsBankAccountNetworks`'s `requested` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsUsBankAccountNetworksRequested {
     Ach,
@@ -9480,7 +9597,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsUsBankAccount`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsUsBankAccountSetupFutureUsage {
     None,
@@ -9522,7 +9639,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsUsBankAccount`'s `verification_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsUsBankAccountVerificationMethod {
     Automatic,
@@ -9560,7 +9677,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsWechatPay`'s `client` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsWechatPayClient {
     Android,
@@ -9596,7 +9713,7 @@ impl std::default::Default for UpdatePaymentIntentPaymentMethodOptionsWechatPayC
 }
 
 /// An enum representing the possible values of an `UpdatePaymentIntentPaymentMethodOptionsWechatPay`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentIntentPaymentMethodOptionsWechatPaySetupFutureUsage {
     None,

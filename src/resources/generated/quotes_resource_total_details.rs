@@ -2,12 +2,13 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::resources::{Discount, TaxRate};
 
 /// The resource representing a Stripe "QuotesResourceTotalDetails".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct QuotesResourceTotalDetails {
     /// This is the sum of all the discounts.
     pub amount_discount: i64,

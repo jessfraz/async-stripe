@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::ids::TreasuryOutboundPaymentId;
@@ -9,7 +10,7 @@ use crate::params::{Expandable, Metadata, Object, Timestamp};
 use crate::resources::{Currency, TreasuryTransaction, UfaResourceBillingDetails};
 
 /// The resource representing a Stripe "OutboundPaymentsResourceTreasuryOutboundPayment".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct TreasuryOutboundPayment {
     /// Unique identifier for the object.
     pub id: TreasuryOutboundPaymentId,
@@ -208,7 +209,7 @@ pub struct OutboundPaymentsResourceTreasuryReturnedStatus {
 }
 
 /// An enum representing the possible values of an `OutboundPaymentsPaymentMethodDetailsFinancialAccount`'s `network` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum OutboundPaymentsPaymentMethodDetailsFinancialAccountNetwork {
     Stripe,
@@ -240,7 +241,7 @@ impl std::default::Default for OutboundPaymentsPaymentMethodDetailsFinancialAcco
 }
 
 /// An enum representing the possible values of an `OutboundPaymentsPaymentMethodDetails`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum OutboundPaymentsPaymentMethodDetailsType {
     FinancialAccount,
@@ -274,7 +275,7 @@ impl std::default::Default for OutboundPaymentsPaymentMethodDetailsType {
 }
 
 /// An enum representing the possible values of an `OutboundPaymentsPaymentMethodDetailsUsBankAccount`'s `account_holder_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum OutboundPaymentsPaymentMethodDetailsUsBankAccountAccountHolderType {
     Company,
@@ -312,7 +313,7 @@ impl std::default::Default for OutboundPaymentsPaymentMethodDetailsUsBankAccount
 }
 
 /// An enum representing the possible values of an `OutboundPaymentsPaymentMethodDetailsUsBankAccount`'s `account_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum OutboundPaymentsPaymentMethodDetailsUsBankAccountAccountType {
     Checking,
@@ -346,7 +347,7 @@ impl std::default::Default for OutboundPaymentsPaymentMethodDetailsUsBankAccount
 }
 
 /// An enum representing the possible values of an `OutboundPaymentsPaymentMethodDetailsUsBankAccount`'s `network` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum OutboundPaymentsPaymentMethodDetailsUsBankAccountNetwork {
     Ach,
@@ -382,7 +383,7 @@ impl std::default::Default for OutboundPaymentsPaymentMethodDetailsUsBankAccount
 }
 
 /// An enum representing the possible values of an `OutboundPaymentsResourceTreasuryReturnedStatus`'s `code` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum OutboundPaymentsResourceTreasuryReturnedStatusCode {
     AccountClosed,
@@ -442,7 +443,7 @@ impl std::default::Default for OutboundPaymentsResourceTreasuryReturnedStatusCod
 }
 
 /// An enum representing the possible values of an `TreasuryOutboundPayment`'s `status` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum TreasuryOutboundPaymentStatus {
     Canceled,

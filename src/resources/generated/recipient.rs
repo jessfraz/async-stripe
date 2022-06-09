@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::client::{Client, Response};
@@ -12,7 +13,7 @@ use crate::params::{
 use crate::resources::{Account, BankAccount, Card};
 
 /// The resource representing a Stripe "TransferRecipient".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct Recipient {
     /// Unique identifier for the object.
     pub id: RecipientId,
@@ -325,7 +326,7 @@ impl<'a> UpdateRecipient<'a> {
 }
 
 /// An enum representing the possible values of an `ListRecipients`'s `type_` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum RecipientType {
     Corporation,

@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::ids::ConnectCollectionTransferId;
@@ -9,7 +10,7 @@ use crate::params::{Expandable, Object};
 use crate::resources::{Account, Currency};
 
 /// The resource representing a Stripe "ConnectCollectionTransfer".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct ConnectCollectionTransfer {
     /// Unique identifier for the object.
     pub id: ConnectCollectionTransferId,

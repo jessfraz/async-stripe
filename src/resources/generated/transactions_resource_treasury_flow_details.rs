@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::resources::{
@@ -11,7 +12,7 @@ use crate::resources::{
 };
 
 /// The resource representing a Stripe "TransactionsResourceTreasuryFlowDetails".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct TransactionsResourceTreasuryFlowDetails {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub credit_reversal: Option<TreasuryCreditReversal>,
@@ -45,7 +46,7 @@ pub struct TransactionsResourceTreasuryFlowDetails {
 }
 
 /// An enum representing the possible values of an `TransactionsResourceTreasuryFlowDetails`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum TransactionsResourceTreasuryFlowDetailsType {
     CreditReversal,

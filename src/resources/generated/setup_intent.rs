@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::client::{Client, Response};
@@ -15,7 +16,7 @@ use crate::resources::{
 /// The resource representing a Stripe "SetupIntent".
 ///
 /// For more details see <https://stripe.com/docs/api/setup_intents/object>
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SetupIntent {
     /// Unique identifier for the object.
     pub id: SetupIntentId,
@@ -393,6 +394,14 @@ pub struct SetupIntentTypeSpecificPaymentMethodOptionsClient {
 /// The parameters for `SetupIntent::create`.
 #[derive(Clone, Debug, Serialize, Default)]
 pub struct CreateSetupIntent<'a> {
+    /// If present, the SetupIntent's payment method will be attached to the in-context Stripe Account.
+    ///
+    /// It can only be used for this Stripe Account’s own money movement flows like InboundTransfer and OutboundTransfers.
+    ///
+    /// It cannot be set to true when setting up a PaymentMethod for a Customer, and defaults to false when attaching a PaymentMethod to a Customer.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub attach_to_self: Option<bool>,
+
     /// Set to `true` to attempt to confirm this SetupIntent immediately.
     ///
     /// This parameter defaults to `false`.
@@ -417,6 +426,15 @@ pub struct CreateSetupIntent<'a> {
     /// Specifies which fields in the response should be expanded.
     #[serde(skip_serializing_if = "Expand::is_empty")]
     pub expand: &'a [&'a str],
+
+    /// Indicates the directions of money movement for which this payment method is intended to be used.
+    ///
+    /// Include `inbound` if you intend to use the payment method as the origin to pull funds from.
+    ///
+    /// Include `outbound` if you intend to use the payment method as the destination to send funds to.
+    /// You can include both if you intend to use the payment method for both purposes.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub flow_directions: Option<Vec<CreateSetupIntentFlowDirections>>,
 
     /// This hash contains details about the Mandate to create.
     ///
@@ -471,10 +489,12 @@ pub struct CreateSetupIntent<'a> {
 impl<'a> CreateSetupIntent<'a> {
     pub fn new() -> Self {
         CreateSetupIntent {
+            attach_to_self: Default::default(),
             confirm: Default::default(),
             customer: Default::default(),
             description: Default::default(),
             expand: Default::default(),
+            flow_directions: Default::default(),
             mandate_data: Default::default(),
             metadata: Default::default(),
             on_behalf_of: Default::default(),
@@ -491,6 +511,14 @@ impl<'a> CreateSetupIntent<'a> {
 /// The parameters for `SetupIntent::list`.
 #[derive(Clone, Debug, Serialize, Default)]
 pub struct ListSetupIntents<'a> {
+    /// If present, the SetupIntent's payment method will be attached to the in-context Stripe Account.
+    ///
+    /// It can only be used for this Stripe Account’s own money movement flows like InboundTransfer and OutboundTransfers.
+    ///
+    /// It cannot be set to true when setting up a PaymentMethod for a Customer, and defaults to false when attaching a PaymentMethod to a Customer.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub attach_to_self: Option<bool>,
+
     /// A filter on the list, based on the object `created` field.
     ///
     /// The value can be a string with an integer Unix timestamp, or it can be a dictionary with a number of different query options.
@@ -533,6 +561,7 @@ pub struct ListSetupIntents<'a> {
 impl<'a> ListSetupIntents<'a> {
     pub fn new() -> Self {
         ListSetupIntents {
+            attach_to_self: Default::default(),
             created: Default::default(),
             customer: Default::default(),
             ending_before: Default::default(),
@@ -552,6 +581,14 @@ impl Paginable for ListSetupIntents<'_> {
 /// The parameters for `SetupIntent::update`.
 #[derive(Clone, Debug, Serialize, Default)]
 pub struct UpdateSetupIntent<'a> {
+    /// If present, the SetupIntent's payment method will be attached to the in-context Stripe Account.
+    ///
+    /// It can only be used for this Stripe Account’s own money movement flows like InboundTransfer and OutboundTransfers.
+    ///
+    /// It cannot be set to true when setting up a PaymentMethod for a Customer, and defaults to false when attaching a PaymentMethod to a Customer.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub attach_to_self: Option<bool>,
+
     /// ID of the Customer this SetupIntent belongs to, if one exists.
     ///
     /// If present, the SetupIntent's payment method will be attached to the Customer on successful setup.
@@ -569,6 +606,15 @@ pub struct UpdateSetupIntent<'a> {
     /// Specifies which fields in the response should be expanded.
     #[serde(skip_serializing_if = "Expand::is_empty")]
     pub expand: &'a [&'a str],
+
+    /// Indicates the directions of money movement for which this payment method is intended to be used.
+    ///
+    /// Include `inbound` if you intend to use the payment method as the origin to pull funds from.
+    ///
+    /// Include `outbound` if you intend to use the payment method as the destination to send funds to.
+    /// You can include both if you intend to use the payment method for both purposes.
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub flow_directions: Option<Vec<UpdateSetupIntentFlowDirections>>,
 
     /// Set of [key-value pairs](https://stripe.com/docs/api/metadata) that you can attach to an object.
     ///
@@ -602,9 +648,11 @@ pub struct UpdateSetupIntent<'a> {
 impl<'a> UpdateSetupIntent<'a> {
     pub fn new() -> Self {
         UpdateSetupIntent {
+            attach_to_self: Default::default(),
             customer: Default::default(),
             description: Default::default(),
             expand: Default::default(),
+            flow_directions: Default::default(),
             metadata: Default::default(),
             payment_method: Default::default(),
             payment_method_data: Default::default(),
@@ -614,12 +662,12 @@ impl<'a> UpdateSetupIntent<'a> {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentMandateData {
     pub customer_acceptance: CreateSetupIntentMandateDataCustomerAcceptance,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentPaymentMethodData {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub acss_debit: Option<CreateSetupIntentPaymentMethodDataAcssDebit>,
@@ -709,7 +757,7 @@ pub struct CreateSetupIntentPaymentMethodData {
     pub wechat_pay: Option<CreateSetupIntentPaymentMethodDataWechatPay>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentPaymentMethodOptions {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub acss_debit: Option<CreateSetupIntentPaymentMethodOptionsAcssDebit>,
@@ -727,14 +775,14 @@ pub struct CreateSetupIntentPaymentMethodOptions {
     pub us_bank_account: Option<CreateSetupIntentPaymentMethodOptionsUsBankAccount>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentSingleUse {
     pub amount: i64,
 
     pub currency: Currency,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSetupIntentPaymentMethodData {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub acss_debit: Option<UpdateSetupIntentPaymentMethodDataAcssDebit>,
@@ -824,7 +872,7 @@ pub struct UpdateSetupIntentPaymentMethodData {
     pub wechat_pay: Option<UpdateSetupIntentPaymentMethodDataWechatPay>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSetupIntentPaymentMethodOptions {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub acss_debit: Option<UpdateSetupIntentPaymentMethodOptionsAcssDebit>,
@@ -842,7 +890,7 @@ pub struct UpdateSetupIntentPaymentMethodOptions {
     pub us_bank_account: Option<UpdateSetupIntentPaymentMethodOptionsUsBankAccount>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentMandateDataCustomerAcceptance {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub accepted_at: Option<Timestamp>,
@@ -857,7 +905,7 @@ pub struct CreateSetupIntentMandateDataCustomerAcceptance {
     pub type_: CreateSetupIntentMandateDataCustomerAcceptanceType,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentPaymentMethodDataAcssDebit {
     pub account_number: String,
 
@@ -866,23 +914,23 @@ pub struct CreateSetupIntentPaymentMethodDataAcssDebit {
     pub transit_number: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentPaymentMethodDataAffirm {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentPaymentMethodDataAfterpayClearpay {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentPaymentMethodDataAlipay {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentPaymentMethodDataAuBecsDebit {
     pub account_number: String,
 
     pub bsb_number: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentPaymentMethodDataBacsDebit {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub account_number: Option<String>,
@@ -891,10 +939,10 @@ pub struct CreateSetupIntentPaymentMethodDataBacsDebit {
     pub sort_code: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentPaymentMethodDataBancontact {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentPaymentMethodDataBillingDetails {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub address: Option<CreateSetupIntentPaymentMethodDataBillingDetailsAddress>,
@@ -909,81 +957,81 @@ pub struct CreateSetupIntentPaymentMethodDataBillingDetails {
     pub phone: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentPaymentMethodDataBoleto {
     pub tax_id: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentPaymentMethodDataCustomerBalance {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentPaymentMethodDataEps {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub bank: Option<CreateSetupIntentPaymentMethodDataEpsBank>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentPaymentMethodDataFpx {
     pub bank: CreateSetupIntentPaymentMethodDataFpxBank,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentPaymentMethodDataGiropay {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentPaymentMethodDataGrabpay {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentPaymentMethodDataIdeal {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub bank: Option<CreateSetupIntentPaymentMethodDataIdealBank>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentPaymentMethodDataInteracPresent {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentPaymentMethodDataKlarna {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub dob: Option<CreateSetupIntentPaymentMethodDataKlarnaDob>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentPaymentMethodDataKonbini {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentPaymentMethodDataLink {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentPaymentMethodDataOxxo {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentPaymentMethodDataP24 {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub bank: Option<CreateSetupIntentPaymentMethodDataP24Bank>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentPaymentMethodDataPaynow {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentPaymentMethodDataRadarOptions {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub session: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentPaymentMethodDataSepaDebit {
     pub iban: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentPaymentMethodDataSofort {
     pub country: CreateSetupIntentPaymentMethodDataSofortCountry,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentPaymentMethodDataUsBankAccount {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub account_holder_type:
@@ -1002,10 +1050,10 @@ pub struct CreateSetupIntentPaymentMethodDataUsBankAccount {
     pub routing_number: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentPaymentMethodDataWechatPay {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentPaymentMethodOptionsAcssDebit {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub currency: Option<Currency>,
@@ -1018,7 +1066,7 @@ pub struct CreateSetupIntentPaymentMethodOptionsAcssDebit {
         Option<CreateSetupIntentPaymentMethodOptionsAcssDebitVerificationMethod>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentPaymentMethodOptionsCard {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub mandate_options: Option<CreateSetupIntentPaymentMethodOptionsCardMandateOptions>,
@@ -1028,19 +1076,19 @@ pub struct CreateSetupIntentPaymentMethodOptionsCard {
         Option<CreateSetupIntentPaymentMethodOptionsCardRequestThreeDSecure>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentPaymentMethodOptionsLink {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub persistent_token: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentPaymentMethodOptionsSepaDebit {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub mandate_options: Option<CreateSetupIntentPaymentMethodOptionsSepaDebitMandateOptions>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentPaymentMethodOptionsUsBankAccount {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub financial_connections:
@@ -1054,7 +1102,7 @@ pub struct CreateSetupIntentPaymentMethodOptionsUsBankAccount {
         Option<CreateSetupIntentPaymentMethodOptionsUsBankAccountVerificationMethod>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSetupIntentPaymentMethodDataAcssDebit {
     pub account_number: String,
 
@@ -1063,23 +1111,23 @@ pub struct UpdateSetupIntentPaymentMethodDataAcssDebit {
     pub transit_number: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSetupIntentPaymentMethodDataAffirm {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSetupIntentPaymentMethodDataAfterpayClearpay {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSetupIntentPaymentMethodDataAlipay {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSetupIntentPaymentMethodDataAuBecsDebit {
     pub account_number: String,
 
     pub bsb_number: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSetupIntentPaymentMethodDataBacsDebit {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub account_number: Option<String>,
@@ -1088,10 +1136,10 @@ pub struct UpdateSetupIntentPaymentMethodDataBacsDebit {
     pub sort_code: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSetupIntentPaymentMethodDataBancontact {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSetupIntentPaymentMethodDataBillingDetails {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub address: Option<UpdateSetupIntentPaymentMethodDataBillingDetailsAddress>,
@@ -1106,81 +1154,81 @@ pub struct UpdateSetupIntentPaymentMethodDataBillingDetails {
     pub phone: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSetupIntentPaymentMethodDataBoleto {
     pub tax_id: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSetupIntentPaymentMethodDataCustomerBalance {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSetupIntentPaymentMethodDataEps {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub bank: Option<UpdateSetupIntentPaymentMethodDataEpsBank>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSetupIntentPaymentMethodDataFpx {
     pub bank: UpdateSetupIntentPaymentMethodDataFpxBank,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSetupIntentPaymentMethodDataGiropay {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSetupIntentPaymentMethodDataGrabpay {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSetupIntentPaymentMethodDataIdeal {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub bank: Option<UpdateSetupIntentPaymentMethodDataIdealBank>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSetupIntentPaymentMethodDataInteracPresent {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSetupIntentPaymentMethodDataKlarna {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub dob: Option<UpdateSetupIntentPaymentMethodDataKlarnaDob>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSetupIntentPaymentMethodDataKonbini {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSetupIntentPaymentMethodDataLink {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSetupIntentPaymentMethodDataOxxo {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSetupIntentPaymentMethodDataP24 {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub bank: Option<UpdateSetupIntentPaymentMethodDataP24Bank>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSetupIntentPaymentMethodDataPaynow {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSetupIntentPaymentMethodDataRadarOptions {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub session: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSetupIntentPaymentMethodDataSepaDebit {
     pub iban: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSetupIntentPaymentMethodDataSofort {
     pub country: UpdateSetupIntentPaymentMethodDataSofortCountry,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSetupIntentPaymentMethodDataUsBankAccount {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub account_holder_type:
@@ -1199,10 +1247,10 @@ pub struct UpdateSetupIntentPaymentMethodDataUsBankAccount {
     pub routing_number: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSetupIntentPaymentMethodDataWechatPay {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSetupIntentPaymentMethodOptionsAcssDebit {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub currency: Option<Currency>,
@@ -1215,7 +1263,7 @@ pub struct UpdateSetupIntentPaymentMethodOptionsAcssDebit {
         Option<UpdateSetupIntentPaymentMethodOptionsAcssDebitVerificationMethod>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSetupIntentPaymentMethodOptionsCard {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub mandate_options: Option<UpdateSetupIntentPaymentMethodOptionsCardMandateOptions>,
@@ -1225,19 +1273,19 @@ pub struct UpdateSetupIntentPaymentMethodOptionsCard {
         Option<UpdateSetupIntentPaymentMethodOptionsCardRequestThreeDSecure>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSetupIntentPaymentMethodOptionsLink {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub persistent_token: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSetupIntentPaymentMethodOptionsSepaDebit {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub mandate_options: Option<UpdateSetupIntentPaymentMethodOptionsSepaDebitMandateOptions>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSetupIntentPaymentMethodOptionsUsBankAccount {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub financial_connections:
@@ -1251,17 +1299,17 @@ pub struct UpdateSetupIntentPaymentMethodOptionsUsBankAccount {
         Option<UpdateSetupIntentPaymentMethodOptionsUsBankAccountVerificationMethod>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentMandateDataCustomerAcceptanceOffline {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentMandateDataCustomerAcceptanceOnline {
     pub ip_address: String,
 
     pub user_agent: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentPaymentMethodDataBillingDetailsAddress {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub city: Option<String>,
@@ -1282,7 +1330,7 @@ pub struct CreateSetupIntentPaymentMethodDataBillingDetailsAddress {
     pub state: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentPaymentMethodDataKlarnaDob {
     pub day: i64,
 
@@ -1291,7 +1339,7 @@ pub struct CreateSetupIntentPaymentMethodDataKlarnaDob {
     pub year: i64,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentPaymentMethodOptionsAcssDebitMandateOptions {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_mandate_url: Option<String>,
@@ -1312,7 +1360,7 @@ pub struct CreateSetupIntentPaymentMethodOptionsAcssDebitMandateOptions {
         Option<CreateSetupIntentPaymentMethodOptionsAcssDebitMandateOptionsTransactionType>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentPaymentMethodOptionsCardMandateOptions {
     pub amount: i64,
 
@@ -1340,10 +1388,10 @@ pub struct CreateSetupIntentPaymentMethodOptionsCardMandateOptions {
         Option<Vec<CreateSetupIntentPaymentMethodOptionsCardMandateOptionsSupportedTypes>>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentPaymentMethodOptionsSepaDebitMandateOptions {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentPaymentMethodOptionsUsBankAccountFinancialConnections {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub permissions: Option<
@@ -1354,13 +1402,13 @@ pub struct CreateSetupIntentPaymentMethodOptionsUsBankAccountFinancialConnection
     pub return_url: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSetupIntentPaymentMethodOptionsUsBankAccountNetworks {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Vec<CreateSetupIntentPaymentMethodOptionsUsBankAccountNetworksRequested>>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSetupIntentPaymentMethodDataBillingDetailsAddress {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub city: Option<String>,
@@ -1381,7 +1429,7 @@ pub struct UpdateSetupIntentPaymentMethodDataBillingDetailsAddress {
     pub state: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSetupIntentPaymentMethodDataKlarnaDob {
     pub day: i64,
 
@@ -1390,7 +1438,7 @@ pub struct UpdateSetupIntentPaymentMethodDataKlarnaDob {
     pub year: i64,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSetupIntentPaymentMethodOptionsAcssDebitMandateOptions {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_mandate_url: Option<String>,
@@ -1411,7 +1459,7 @@ pub struct UpdateSetupIntentPaymentMethodOptionsAcssDebitMandateOptions {
         Option<UpdateSetupIntentPaymentMethodOptionsAcssDebitMandateOptionsTransactionType>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSetupIntentPaymentMethodOptionsCardMandateOptions {
     pub amount: i64,
 
@@ -1439,10 +1487,10 @@ pub struct UpdateSetupIntentPaymentMethodOptionsCardMandateOptions {
         Option<Vec<UpdateSetupIntentPaymentMethodOptionsCardMandateOptionsSupportedTypes>>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSetupIntentPaymentMethodOptionsSepaDebitMandateOptions {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSetupIntentPaymentMethodOptionsUsBankAccountFinancialConnections {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub permissions: Option<
@@ -1453,13 +1501,13 @@ pub struct UpdateSetupIntentPaymentMethodOptionsUsBankAccountFinancialConnection
     pub return_url: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSetupIntentPaymentMethodOptionsUsBankAccountNetworks {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<Vec<UpdateSetupIntentPaymentMethodOptionsUsBankAccountNetworksRequested>>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 #[serde(untagged, rename_all = "snake_case")]
 pub enum SetupIntentPaymentMethodOptionsAcssDebitUnion {
     SetupIntentPaymentMethodOptionsAcssDebit(SetupIntentPaymentMethodOptionsAcssDebit),
@@ -1474,7 +1522,7 @@ impl std::default::Default for SetupIntentPaymentMethodOptionsAcssDebitUnion {
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 #[serde(untagged, rename_all = "snake_case")]
 pub enum SetupIntentPaymentMethodOptionsLinkUnion {
     SetupIntentPaymentMethodOptionsLink(SetupIntentPaymentMethodOptionsLink),
@@ -1489,7 +1537,7 @@ impl std::default::Default for SetupIntentPaymentMethodOptionsLinkUnion {
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 #[serde(untagged, rename_all = "snake_case")]
 pub enum SetupIntentPaymentMethodOptionsSepaDebitUnion {
     SetupIntentPaymentMethodOptionsSepaDebit(SetupIntentPaymentMethodOptionsSepaDebit),
@@ -1504,7 +1552,7 @@ impl std::default::Default for SetupIntentPaymentMethodOptionsSepaDebitUnion {
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 #[serde(untagged, rename_all = "snake_case")]
 pub enum SetupIntentPaymentMethodOptionsUsBankAccountUnion {
     SetupIntentPaymentMethodOptionsUsBankAccount(SetupIntentPaymentMethodOptionsUsBankAccount),
@@ -1519,8 +1567,42 @@ impl std::default::Default for SetupIntentPaymentMethodOptionsUsBankAccountUnion
     }
 }
 
+/// An enum representing the possible values of an `CreateSetupIntent`'s `flow_directions` field.
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
+#[serde(rename_all = "snake_case")]
+pub enum CreateSetupIntentFlowDirections {
+    Inbound,
+    Outbound,
+}
+
+impl CreateSetupIntentFlowDirections {
+    pub fn as_str(self) -> &'static str {
+        match self {
+            CreateSetupIntentFlowDirections::Inbound => "inbound",
+            CreateSetupIntentFlowDirections::Outbound => "outbound",
+        }
+    }
+}
+
+impl AsRef<str> for CreateSetupIntentFlowDirections {
+    fn as_ref(&self) -> &str {
+        self.as_str()
+    }
+}
+
+impl std::fmt::Display for CreateSetupIntentFlowDirections {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        self.as_str().fmt(f)
+    }
+}
+impl std::default::Default for CreateSetupIntentFlowDirections {
+    fn default() -> Self {
+        Self::Inbound
+    }
+}
+
 /// An enum representing the possible values of an `CreateSetupIntentMandateDataCustomerAcceptance`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateSetupIntentMandateDataCustomerAcceptanceType {
     Offline,
@@ -1554,7 +1636,7 @@ impl std::default::Default for CreateSetupIntentMandateDataCustomerAcceptanceTyp
 }
 
 /// An enum representing the possible values of an `CreateSetupIntentPaymentMethodDataEps`'s `bank` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateSetupIntentPaymentMethodDataEpsBank {
     ArzteUndApothekerBank,
@@ -1664,7 +1746,7 @@ impl std::default::Default for CreateSetupIntentPaymentMethodDataEpsBank {
 }
 
 /// An enum representing the possible values of an `CreateSetupIntentPaymentMethodDataFpx`'s `bank` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateSetupIntentPaymentMethodDataFpxBank {
     AffinBank,
@@ -1736,7 +1818,7 @@ impl std::default::Default for CreateSetupIntentPaymentMethodDataFpxBank {
 }
 
 /// An enum representing the possible values of an `CreateSetupIntentPaymentMethodDataIdeal`'s `bank` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateSetupIntentPaymentMethodDataIdealBank {
     AbnAmro,
@@ -1792,7 +1874,7 @@ impl std::default::Default for CreateSetupIntentPaymentMethodDataIdealBank {
 }
 
 /// An enum representing the possible values of an `CreateSetupIntentPaymentMethodDataP24`'s `bank` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateSetupIntentPaymentMethodDataP24Bank {
     AliorBank,
@@ -1876,7 +1958,7 @@ impl std::default::Default for CreateSetupIntentPaymentMethodDataP24Bank {
 }
 
 /// An enum representing the possible values of an `CreateSetupIntentPaymentMethodDataSofort`'s `country` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateSetupIntentPaymentMethodDataSofortCountry {
     #[serde(rename = "AT")]
@@ -1924,7 +2006,7 @@ impl std::default::Default for CreateSetupIntentPaymentMethodDataSofortCountry {
 }
 
 /// An enum representing the possible values of an `CreateSetupIntentPaymentMethodData`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateSetupIntentPaymentMethodDataType {
     AcssDebit,
@@ -2002,7 +2084,7 @@ impl std::default::Default for CreateSetupIntentPaymentMethodDataType {
 }
 
 /// An enum representing the possible values of an `CreateSetupIntentPaymentMethodDataUsBankAccount`'s `account_holder_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateSetupIntentPaymentMethodDataUsBankAccountAccountHolderType {
     Company,
@@ -2038,7 +2120,7 @@ impl std::default::Default for CreateSetupIntentPaymentMethodDataUsBankAccountAc
 }
 
 /// An enum representing the possible values of an `CreateSetupIntentPaymentMethodDataUsBankAccount`'s `account_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateSetupIntentPaymentMethodDataUsBankAccountAccountType {
     Checking,
@@ -2072,7 +2154,7 @@ impl std::default::Default for CreateSetupIntentPaymentMethodDataUsBankAccountAc
 }
 
 /// An enum representing the possible values of an `CreateSetupIntentPaymentMethodOptionsAcssDebitMandateOptions`'s `default_for` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateSetupIntentPaymentMethodOptionsAcssDebitMandateOptionsDefaultFor {
     Invoice,
@@ -2108,7 +2190,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreateSetupIntentPaymentMethodOptionsAcssDebitMandateOptions`'s `payment_schedule` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateSetupIntentPaymentMethodOptionsAcssDebitMandateOptionsPaymentSchedule {
     Combined,
@@ -2148,7 +2230,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreateSetupIntentPaymentMethodOptionsAcssDebitMandateOptions`'s `transaction_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateSetupIntentPaymentMethodOptionsAcssDebitMandateOptionsTransactionType {
     Business,
@@ -2186,7 +2268,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreateSetupIntentPaymentMethodOptionsAcssDebit`'s `verification_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateSetupIntentPaymentMethodOptionsAcssDebitVerificationMethod {
     Automatic,
@@ -2226,7 +2308,7 @@ impl std::default::Default for CreateSetupIntentPaymentMethodOptionsAcssDebitVer
 }
 
 /// An enum representing the possible values of an `CreateSetupIntentPaymentMethodOptionsCardMandateOptions`'s `amount_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateSetupIntentPaymentMethodOptionsCardMandateOptionsAmountType {
     Fixed,
@@ -2260,7 +2342,7 @@ impl std::default::Default for CreateSetupIntentPaymentMethodOptionsCardMandateO
 }
 
 /// An enum representing the possible values of an `CreateSetupIntentPaymentMethodOptionsCardMandateOptions`'s `interval` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateSetupIntentPaymentMethodOptionsCardMandateOptionsInterval {
     Day,
@@ -2300,7 +2382,7 @@ impl std::default::Default for CreateSetupIntentPaymentMethodOptionsCardMandateO
 }
 
 /// An enum representing the possible values of an `CreateSetupIntentPaymentMethodOptionsCardMandateOptions`'s `supported_types` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateSetupIntentPaymentMethodOptionsCardMandateOptionsSupportedTypes {
     India,
@@ -2334,7 +2416,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreateSetupIntentPaymentMethodOptionsCard`'s `request_three_d_secure` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateSetupIntentPaymentMethodOptionsCardRequestThreeDSecure {
     Any,
@@ -2368,7 +2450,7 @@ impl std::default::Default for CreateSetupIntentPaymentMethodOptionsCardRequestT
 }
 
 /// An enum representing the possible values of an `CreateSetupIntentPaymentMethodOptionsUsBankAccountFinancialConnections`'s `permissions` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateSetupIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsPermissions {
     Balances,
@@ -2412,7 +2494,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreateSetupIntentPaymentMethodOptionsUsBankAccountNetworks`'s `requested` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateSetupIntentPaymentMethodOptionsUsBankAccountNetworksRequested {
     Ach,
@@ -2448,7 +2530,7 @@ impl std::default::Default for CreateSetupIntentPaymentMethodOptionsUsBankAccoun
 }
 
 /// An enum representing the possible values of an `CreateSetupIntentPaymentMethodOptionsUsBankAccount`'s `verification_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateSetupIntentPaymentMethodOptionsUsBankAccountVerificationMethod {
     Automatic,
@@ -2492,7 +2574,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `SetupIntent`'s `cancellation_reason` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SetupIntentCancellationReason {
     Abandoned,
@@ -2528,7 +2610,7 @@ impl std::default::Default for SetupIntentCancellationReason {
 }
 
 /// An enum representing the possible values of an `SetupIntent`'s `flow_directions` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SetupIntentFlowDirections {
     Inbound,
@@ -2562,7 +2644,7 @@ impl std::default::Default for SetupIntentFlowDirections {
 }
 
 /// An enum representing the possible values of an `SetupIntentNextActionVerifyWithMicrodeposits`'s `microdeposit_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SetupIntentNextActionVerifyWithMicrodepositsMicrodepositType {
     Amounts,
@@ -2598,7 +2680,7 @@ impl std::default::Default for SetupIntentNextActionVerifyWithMicrodepositsMicro
 }
 
 /// An enum representing the possible values of an `SetupIntentPaymentMethodOptionsAcssDebit`'s `verification_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SetupIntentPaymentMethodOptionsAcssDebitVerificationMethod {
     Automatic,
@@ -2636,7 +2718,7 @@ impl std::default::Default for SetupIntentPaymentMethodOptionsAcssDebitVerificat
 }
 
 /// An enum representing the possible values of an `SetupIntentPaymentMethodOptionsCardMandateOptions`'s `amount_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SetupIntentPaymentMethodOptionsCardMandateOptionsAmountType {
     Fixed,
@@ -2670,7 +2752,7 @@ impl std::default::Default for SetupIntentPaymentMethodOptionsCardMandateOptions
 }
 
 /// An enum representing the possible values of an `SetupIntentPaymentMethodOptionsCardMandateOptions`'s `interval` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SetupIntentPaymentMethodOptionsCardMandateOptionsInterval {
     Day,
@@ -2710,7 +2792,7 @@ impl std::default::Default for SetupIntentPaymentMethodOptionsCardMandateOptions
 }
 
 /// An enum representing the possible values of an `SetupIntentPaymentMethodOptionsCardMandateOptions`'s `supported_types` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SetupIntentPaymentMethodOptionsCardMandateOptionsSupportedTypes {
     India,
@@ -2742,7 +2824,7 @@ impl std::default::Default for SetupIntentPaymentMethodOptionsCardMandateOptions
 }
 
 /// An enum representing the possible values of an `SetupIntentPaymentMethodOptionsCard`'s `network` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SetupIntentPaymentMethodOptionsCardNetwork {
     Amex,
@@ -2792,7 +2874,7 @@ impl std::default::Default for SetupIntentPaymentMethodOptionsCardNetwork {
 }
 
 /// An enum representing the possible values of an `SetupIntentPaymentMethodOptionsCard`'s `request_three_d_secure` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SetupIntentPaymentMethodOptionsCardRequestThreeDSecure {
     Any,
@@ -2830,7 +2912,7 @@ impl std::default::Default for SetupIntentPaymentMethodOptionsCardRequestThreeDS
 }
 
 /// An enum representing the possible values of an `SetupIntentPaymentMethodOptionsMandateOptionsAcssDebit`'s `default_for` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SetupIntentPaymentMethodOptionsMandateOptionsAcssDebitDefaultFor {
     Invoice,
@@ -2866,7 +2948,7 @@ impl std::default::Default for SetupIntentPaymentMethodOptionsMandateOptionsAcss
 }
 
 /// An enum representing the possible values of an `SetupIntentPaymentMethodOptionsMandateOptionsAcssDebit`'s `payment_schedule` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SetupIntentPaymentMethodOptionsMandateOptionsAcssDebitPaymentSchedule {
     Combined,
@@ -2910,7 +2992,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `SetupIntentPaymentMethodOptionsMandateOptionsAcssDebit`'s `transaction_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SetupIntentPaymentMethodOptionsMandateOptionsAcssDebitTransactionType {
     Business,
@@ -2950,7 +3032,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `SetupIntentPaymentMethodOptionsUsBankAccount`'s `verification_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SetupIntentPaymentMethodOptionsUsBankAccountVerificationMethod {
     Automatic,
@@ -2990,7 +3072,7 @@ impl std::default::Default for SetupIntentPaymentMethodOptionsUsBankAccountVerif
 }
 
 /// An enum representing the possible values of an `SetupIntent`'s `status` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SetupIntentStatus {
     Canceled,
@@ -3032,7 +3114,7 @@ impl std::default::Default for SetupIntentStatus {
 }
 
 /// An enum representing the possible values of an `SetupIntentTypeSpecificPaymentMethodOptionsClient`'s `verification_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SetupIntentTypeSpecificPaymentMethodOptionsClientVerificationMethod {
     Automatic,
@@ -3073,8 +3155,42 @@ impl std::default::Default for SetupIntentTypeSpecificPaymentMethodOptionsClient
     }
 }
 
+/// An enum representing the possible values of an `UpdateSetupIntent`'s `flow_directions` field.
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
+#[serde(rename_all = "snake_case")]
+pub enum UpdateSetupIntentFlowDirections {
+    Inbound,
+    Outbound,
+}
+
+impl UpdateSetupIntentFlowDirections {
+    pub fn as_str(self) -> &'static str {
+        match self {
+            UpdateSetupIntentFlowDirections::Inbound => "inbound",
+            UpdateSetupIntentFlowDirections::Outbound => "outbound",
+        }
+    }
+}
+
+impl AsRef<str> for UpdateSetupIntentFlowDirections {
+    fn as_ref(&self) -> &str {
+        self.as_str()
+    }
+}
+
+impl std::fmt::Display for UpdateSetupIntentFlowDirections {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        self.as_str().fmt(f)
+    }
+}
+impl std::default::Default for UpdateSetupIntentFlowDirections {
+    fn default() -> Self {
+        Self::Inbound
+    }
+}
+
 /// An enum representing the possible values of an `UpdateSetupIntentPaymentMethodDataEps`'s `bank` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateSetupIntentPaymentMethodDataEpsBank {
     ArzteUndApothekerBank,
@@ -3184,7 +3300,7 @@ impl std::default::Default for UpdateSetupIntentPaymentMethodDataEpsBank {
 }
 
 /// An enum representing the possible values of an `UpdateSetupIntentPaymentMethodDataFpx`'s `bank` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateSetupIntentPaymentMethodDataFpxBank {
     AffinBank,
@@ -3256,7 +3372,7 @@ impl std::default::Default for UpdateSetupIntentPaymentMethodDataFpxBank {
 }
 
 /// An enum representing the possible values of an `UpdateSetupIntentPaymentMethodDataIdeal`'s `bank` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateSetupIntentPaymentMethodDataIdealBank {
     AbnAmro,
@@ -3312,7 +3428,7 @@ impl std::default::Default for UpdateSetupIntentPaymentMethodDataIdealBank {
 }
 
 /// An enum representing the possible values of an `UpdateSetupIntentPaymentMethodDataP24`'s `bank` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateSetupIntentPaymentMethodDataP24Bank {
     AliorBank,
@@ -3396,7 +3512,7 @@ impl std::default::Default for UpdateSetupIntentPaymentMethodDataP24Bank {
 }
 
 /// An enum representing the possible values of an `UpdateSetupIntentPaymentMethodDataSofort`'s `country` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateSetupIntentPaymentMethodDataSofortCountry {
     #[serde(rename = "AT")]
@@ -3444,7 +3560,7 @@ impl std::default::Default for UpdateSetupIntentPaymentMethodDataSofortCountry {
 }
 
 /// An enum representing the possible values of an `UpdateSetupIntentPaymentMethodData`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateSetupIntentPaymentMethodDataType {
     AcssDebit,
@@ -3522,7 +3638,7 @@ impl std::default::Default for UpdateSetupIntentPaymentMethodDataType {
 }
 
 /// An enum representing the possible values of an `UpdateSetupIntentPaymentMethodDataUsBankAccount`'s `account_holder_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateSetupIntentPaymentMethodDataUsBankAccountAccountHolderType {
     Company,
@@ -3558,7 +3674,7 @@ impl std::default::Default for UpdateSetupIntentPaymentMethodDataUsBankAccountAc
 }
 
 /// An enum representing the possible values of an `UpdateSetupIntentPaymentMethodDataUsBankAccount`'s `account_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateSetupIntentPaymentMethodDataUsBankAccountAccountType {
     Checking,
@@ -3592,7 +3708,7 @@ impl std::default::Default for UpdateSetupIntentPaymentMethodDataUsBankAccountAc
 }
 
 /// An enum representing the possible values of an `UpdateSetupIntentPaymentMethodOptionsAcssDebitMandateOptions`'s `default_for` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateSetupIntentPaymentMethodOptionsAcssDebitMandateOptionsDefaultFor {
     Invoice,
@@ -3628,7 +3744,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `UpdateSetupIntentPaymentMethodOptionsAcssDebitMandateOptions`'s `payment_schedule` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateSetupIntentPaymentMethodOptionsAcssDebitMandateOptionsPaymentSchedule {
     Combined,
@@ -3668,7 +3784,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `UpdateSetupIntentPaymentMethodOptionsAcssDebitMandateOptions`'s `transaction_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateSetupIntentPaymentMethodOptionsAcssDebitMandateOptionsTransactionType {
     Business,
@@ -3706,7 +3822,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `UpdateSetupIntentPaymentMethodOptionsAcssDebit`'s `verification_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateSetupIntentPaymentMethodOptionsAcssDebitVerificationMethod {
     Automatic,
@@ -3746,7 +3862,7 @@ impl std::default::Default for UpdateSetupIntentPaymentMethodOptionsAcssDebitVer
 }
 
 /// An enum representing the possible values of an `UpdateSetupIntentPaymentMethodOptionsCardMandateOptions`'s `amount_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateSetupIntentPaymentMethodOptionsCardMandateOptionsAmountType {
     Fixed,
@@ -3780,7 +3896,7 @@ impl std::default::Default for UpdateSetupIntentPaymentMethodOptionsCardMandateO
 }
 
 /// An enum representing the possible values of an `UpdateSetupIntentPaymentMethodOptionsCardMandateOptions`'s `interval` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateSetupIntentPaymentMethodOptionsCardMandateOptionsInterval {
     Day,
@@ -3820,7 +3936,7 @@ impl std::default::Default for UpdateSetupIntentPaymentMethodOptionsCardMandateO
 }
 
 /// An enum representing the possible values of an `UpdateSetupIntentPaymentMethodOptionsCardMandateOptions`'s `supported_types` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateSetupIntentPaymentMethodOptionsCardMandateOptionsSupportedTypes {
     India,
@@ -3854,7 +3970,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `UpdateSetupIntentPaymentMethodOptionsCard`'s `request_three_d_secure` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateSetupIntentPaymentMethodOptionsCardRequestThreeDSecure {
     Any,
@@ -3888,7 +4004,7 @@ impl std::default::Default for UpdateSetupIntentPaymentMethodOptionsCardRequestT
 }
 
 /// An enum representing the possible values of an `UpdateSetupIntentPaymentMethodOptionsUsBankAccountFinancialConnections`'s `permissions` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateSetupIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsPermissions {
     Balances,
@@ -3932,7 +4048,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `UpdateSetupIntentPaymentMethodOptionsUsBankAccountNetworks`'s `requested` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateSetupIntentPaymentMethodOptionsUsBankAccountNetworksRequested {
     Ach,
@@ -3968,7 +4084,7 @@ impl std::default::Default for UpdateSetupIntentPaymentMethodOptionsUsBankAccoun
 }
 
 /// An enum representing the possible values of an `UpdateSetupIntentPaymentMethodOptionsUsBankAccount`'s `verification_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateSetupIntentPaymentMethodOptionsUsBankAccountVerificationMethod {
     Automatic,

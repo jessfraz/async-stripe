@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::ids::TreasuryReceivedDebitId;
@@ -12,7 +13,7 @@ use crate::resources::{
 };
 
 /// The resource representing a Stripe "ReceivedDebitsResourceTreasuryReceivedDebit".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct TreasuryReceivedDebit {
     /// Unique identifier for the object.
     pub id: TreasuryReceivedDebitId,
@@ -84,7 +85,7 @@ pub struct ReceivedDebitsResourceTreasuryLinkedFlows {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub inbound_transfer: Option<String>,
 
-    /// Set if the ReceivedCredit was created due to an [Issuing Authorization](https://stripe.com/docs/api#issuing_authorizations) object.
+    /// Set if the ReceivedDebit was created due to an [Issuing Authorization](https://stripe.com/docs/api#issuing_authorizations) object.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub issuing_authorization: Option<String>,
 
@@ -94,7 +95,7 @@ pub struct ReceivedDebitsResourceTreasuryLinkedFlows {
 }
 
 /// An enum representing the possible values of an `TreasuryReceivedDebit`'s `failure_code` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum TreasuryReceivedDebitFailureCode {
     AccountClosed,
@@ -132,7 +133,7 @@ impl std::default::Default for TreasuryReceivedDebitFailureCode {
 }
 
 /// An enum representing the possible values of an `TreasuryReceivedDebit`'s `network` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum TreasuryReceivedDebitNetwork {
     Ach,
@@ -168,7 +169,7 @@ impl std::default::Default for TreasuryReceivedDebitNetwork {
 }
 
 /// An enum representing the possible values of an `TreasuryReceivedDebit`'s `status` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum TreasuryReceivedDebitStatus {
     Failed,

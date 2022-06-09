@@ -2,13 +2,14 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::ids::TestHelpersTestClockId;
 use crate::params::{Object, Timestamp};
 
 /// The resource representing a Stripe "TestClock".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct TestHelpersTestClock {
     /// Unique identifier for the object.
     pub id: TestHelpersTestClockId,
@@ -55,7 +56,7 @@ impl Object for TestHelpersTestClock {
 }
 
 /// An enum representing the possible values of an `TestHelpersTestClock`'s `status` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum TestHelpersTestClockStatus {
     Advancing,

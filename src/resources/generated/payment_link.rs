@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::client::{Client, Response};
@@ -12,7 +13,7 @@ use crate::resources::{Account, CheckoutSessionItem, ShippingRate};
 /// The resource representing a Stripe "PaymentLink".
 ///
 /// For more details see <https://stripe.com/docs/api/payment_links/object>
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentLink {
     /// Unique identifier for the object.
     pub id: PaymentLinkId,
@@ -500,7 +501,7 @@ impl<'a> UpdatePaymentLink<'a> {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentLinkAfterCompletion {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub hosted_confirmation: Option<CreatePaymentLinkAfterCompletionHostedConfirmation>,
@@ -512,18 +513,18 @@ pub struct CreatePaymentLinkAfterCompletion {
     pub type_: CreatePaymentLinkAfterCompletionType,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentLinkAutomaticTax {
     pub enabled: bool,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentLinkConsentCollection {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub promotions: Option<CreatePaymentLinkConsentCollectionPromotions>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentLinkLineItems {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub adjustable_quantity: Option<CreatePaymentLinkLineItemsAdjustableQuantity>,
@@ -533,7 +534,7 @@ pub struct CreatePaymentLinkLineItems {
     pub quantity: u64,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentLinkPaymentIntentData {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub capture_method: Option<CreatePaymentLinkPaymentIntentDataCaptureMethod>,
@@ -542,34 +543,34 @@ pub struct CreatePaymentLinkPaymentIntentData {
     pub setup_future_usage: Option<CreatePaymentLinkPaymentIntentDataSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentLinkPhoneNumberCollection {
     pub enabled: bool,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentLinkShippingAddressCollection {
     pub allowed_countries: Vec<CreatePaymentLinkShippingAddressCollectionAllowedCountries>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentLinkShippingOptions {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub shipping_rate: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentLinkSubscriptionData {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub trial_period_days: Option<u32>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentLinkTaxIdCollection {
     pub enabled: bool,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentLinkTransferData {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub amount: Option<i64>,
@@ -577,7 +578,7 @@ pub struct CreatePaymentLinkTransferData {
     pub destination: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentLinkAfterCompletion {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub hosted_confirmation: Option<UpdatePaymentLinkAfterCompletionHostedConfirmation>,
@@ -589,12 +590,12 @@ pub struct UpdatePaymentLinkAfterCompletion {
     pub type_: UpdatePaymentLinkAfterCompletionType,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentLinkAutomaticTax {
     pub enabled: bool,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentLinkLineItems {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub adjustable_quantity: Option<UpdatePaymentLinkLineItemsAdjustableQuantity>,
@@ -605,23 +606,23 @@ pub struct UpdatePaymentLinkLineItems {
     pub quantity: Option<u64>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentLinkShippingAddressCollection {
     pub allowed_countries: Vec<UpdatePaymentLinkShippingAddressCollectionAllowedCountries>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentLinkAfterCompletionHostedConfirmation {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_message: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentLinkAfterCompletionRedirect {
     pub url: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePaymentLinkLineItemsAdjustableQuantity {
     pub enabled: bool,
 
@@ -632,18 +633,18 @@ pub struct CreatePaymentLinkLineItemsAdjustableQuantity {
     pub minimum: Option<i64>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentLinkAfterCompletionHostedConfirmation {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_message: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentLinkAfterCompletionRedirect {
     pub url: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdatePaymentLinkLineItemsAdjustableQuantity {
     pub enabled: bool,
 
@@ -655,7 +656,7 @@ pub struct UpdatePaymentLinkLineItemsAdjustableQuantity {
 }
 
 /// An enum representing the possible values of an `CreatePaymentLinkAfterCompletion`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentLinkAfterCompletionType {
     HostedConfirmation,
@@ -689,7 +690,7 @@ impl std::default::Default for CreatePaymentLinkAfterCompletionType {
 }
 
 /// An enum representing the possible values of an `CreatePaymentLinkConsentCollection`'s `promotions` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentLinkConsentCollectionPromotions {
     Auto,
@@ -721,7 +722,7 @@ impl std::default::Default for CreatePaymentLinkConsentCollectionPromotions {
 }
 
 /// An enum representing the possible values of an `CreatePaymentLinkPaymentIntentData`'s `capture_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentLinkPaymentIntentDataCaptureMethod {
     Automatic,
@@ -755,7 +756,7 @@ impl std::default::Default for CreatePaymentLinkPaymentIntentDataCaptureMethod {
 }
 
 /// An enum representing the possible values of an `CreatePaymentLinkPaymentIntentData`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentLinkPaymentIntentDataSetupFutureUsage {
     OffSession,
@@ -789,7 +790,7 @@ impl std::default::Default for CreatePaymentLinkPaymentIntentDataSetupFutureUsag
 }
 
 /// An enum representing the possible values of an `CreatePaymentLink`'s `payment_method_types` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentLinkPaymentMethodTypes {
     Card,
@@ -821,7 +822,7 @@ impl std::default::Default for CreatePaymentLinkPaymentMethodTypes {
 }
 
 /// An enum representing the possible values of an `CreatePaymentLinkShippingAddressCollection`'s `allowed_countries` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePaymentLinkShippingAddressCollectionAllowedCountries {
     #[serde(rename = "AC")]
@@ -1562,7 +1563,7 @@ impl std::default::Default for CreatePaymentLinkShippingAddressCollectionAllowed
 }
 
 /// An enum representing the possible values of an `PaymentLink`'s `billing_address_collection` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentLinkBillingAddressCollection {
     Auto,
@@ -1596,7 +1597,7 @@ impl std::default::Default for PaymentLinkBillingAddressCollection {
 }
 
 /// An enum representing the possible values of an `PaymentLink`'s `customer_creation` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentLinkCustomerCreation {
     Always,
@@ -1630,7 +1631,7 @@ impl std::default::Default for PaymentLinkCustomerCreation {
 }
 
 /// An enum representing the possible values of an `PaymentLink`'s `payment_method_types` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentLinkPaymentMethodTypes {
     Card,
@@ -1662,7 +1663,7 @@ impl std::default::Default for PaymentLinkPaymentMethodTypes {
 }
 
 /// An enum representing the possible values of an `PaymentLink`'s `submit_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentLinkSubmitType {
     Auto,
@@ -1700,7 +1701,7 @@ impl std::default::Default for PaymentLinkSubmitType {
 }
 
 /// An enum representing the possible values of an `PaymentLinksResourceAfterCompletion`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentLinksResourceAfterCompletionType {
     HostedConfirmation,
@@ -1734,7 +1735,7 @@ impl std::default::Default for PaymentLinksResourceAfterCompletionType {
 }
 
 /// An enum representing the possible values of an `PaymentLinksResourceConsentCollection`'s `promotions` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentLinksResourceConsentCollectionPromotions {
     Auto,
@@ -1766,7 +1767,7 @@ impl std::default::Default for PaymentLinksResourceConsentCollectionPromotions {
 }
 
 /// An enum representing the possible values of an `PaymentLinksResourcePaymentIntentData`'s `capture_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentLinksResourcePaymentIntentDataCaptureMethod {
     Automatic,
@@ -1800,7 +1801,7 @@ impl std::default::Default for PaymentLinksResourcePaymentIntentDataCaptureMetho
 }
 
 /// An enum representing the possible values of an `PaymentLinksResourcePaymentIntentData`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentLinksResourcePaymentIntentDataSetupFutureUsage {
     OffSession,
@@ -1834,7 +1835,7 @@ impl std::default::Default for PaymentLinksResourcePaymentIntentDataSetupFutureU
 }
 
 /// An enum representing the possible values of an `PaymentLinksResourceShippingAddressCollection`'s `allowed_countries` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentLinksResourceShippingAddressCollectionAllowedCountries {
     #[serde(rename = "AC")]
@@ -2575,7 +2576,7 @@ impl std::default::Default for PaymentLinksResourceShippingAddressCollectionAllo
 }
 
 /// An enum representing the possible values of an `UpdatePaymentLinkAfterCompletion`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentLinkAfterCompletionType {
     HostedConfirmation,
@@ -2609,7 +2610,7 @@ impl std::default::Default for UpdatePaymentLinkAfterCompletionType {
 }
 
 /// An enum representing the possible values of an `UpdatePaymentLink`'s `payment_method_types` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentLinkPaymentMethodTypes {
     Card,
@@ -2641,7 +2642,7 @@ impl std::default::Default for UpdatePaymentLinkPaymentMethodTypes {
 }
 
 /// An enum representing the possible values of an `UpdatePaymentLinkShippingAddressCollection`'s `allowed_countries` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdatePaymentLinkShippingAddressCollectionAllowedCountries {
     #[serde(rename = "AC")]

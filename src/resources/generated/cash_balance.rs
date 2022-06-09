@@ -2,12 +2,13 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::params::Object;
 
 /// The resource representing a Stripe "cash_balance".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CashBalance {
     /// A hash of all cash balances available to this customer.
     ///
@@ -39,7 +40,7 @@ pub struct CustomerBalanceCustomerBalanceSettings {
 }
 
 /// An enum representing the possible values of an `CustomerBalanceCustomerBalanceSettings`'s `reconciliation_mode` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CustomerBalanceCustomerBalanceSettingsReconciliationMode {
     Automatic,

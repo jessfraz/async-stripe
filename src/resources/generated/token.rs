@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::client::{Client, Response};
@@ -12,7 +13,7 @@ use crate::resources::{Address, BankAccount, Card, CompanyParams, PersonParams, 
 /// The resource representing a Stripe "Token".
 ///
 /// For more details see <https://stripe.com/docs/api/tokens/object>
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct Token {
     /// Unique identifier for the object.
     pub id: TokenId,
@@ -116,7 +117,7 @@ impl<'a> CreateToken<'a> {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateTokenAccount {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub business_type: Option<CreateTokenAccountBusinessType>,
@@ -131,12 +132,12 @@ pub struct CreateTokenAccount {
     pub tos_shown_and_accepted: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateTokenCvcUpdate {
     pub cvc: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateTokenPerson {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub address: Option<Address>,
@@ -214,13 +215,13 @@ pub struct CreateTokenPerson {
     pub verification: Option<PersonVerificationParams>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateTokenPii {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub id_number: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateTokenPersonDob {
     pub day: i64,
 
@@ -229,7 +230,7 @@ pub struct CreateTokenPersonDob {
     pub year: i64,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateTokenPersonDocuments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub company_authorization: Option<CreateTokenPersonDocumentsCompanyAuthorization>,
@@ -241,7 +242,7 @@ pub struct CreateTokenPersonDocuments {
     pub visa: Option<CreateTokenPersonDocumentsVisa>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateTokenPersonRegisteredAddress {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub city: Option<String>,
@@ -262,7 +263,7 @@ pub struct CreateTokenPersonRegisteredAddress {
     pub state: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateTokenPersonRelationship {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub director: Option<bool>,
@@ -283,7 +284,7 @@ pub struct CreateTokenPersonRelationship {
     pub title: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PersonVerificationParams {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub additional_document: Option<VerificationDocumentParams>,
@@ -292,25 +293,25 @@ pub struct PersonVerificationParams {
     pub document: Option<VerificationDocumentParams>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateTokenPersonDocumentsCompanyAuthorization {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub files: Option<Vec<String>>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateTokenPersonDocumentsPassport {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub files: Option<Vec<String>>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateTokenPersonDocumentsVisa {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub files: Option<Vec<String>>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct VerificationDocumentParams {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub back: Option<String>,
@@ -320,7 +321,7 @@ pub struct VerificationDocumentParams {
 }
 
 /// An enum representing the possible values of an `CreateTokenAccount`'s `business_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateTokenAccountBusinessType {
     Company,
@@ -357,14 +358,14 @@ impl std::default::Default for CreateTokenAccountBusinessType {
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 #[serde(untagged, rename_all = "snake_case")]
 pub enum CreateTokenCardUnion {
     CreditCardSpecs(CreditCardSpecs),
     String(String),
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreditCardSpecs {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub address_city: Option<String>,

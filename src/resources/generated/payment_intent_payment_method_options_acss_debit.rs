@@ -2,10 +2,11 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 /// The resource representing a Stripe "payment_intent_payment_method_options_acss_debit".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentIntentPaymentMethodOptionsAcssDebit {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub mandate_options: Option<PaymentIntentPaymentMethodOptionsMandateOptionsAcssDebit>,
@@ -47,7 +48,7 @@ pub struct PaymentIntentPaymentMethodOptionsMandateOptionsAcssDebit {
 }
 
 /// An enum representing the possible values of an `PaymentIntentPaymentMethodOptionsAcssDebit`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentIntentPaymentMethodOptionsAcssDebitSetupFutureUsage {
     None,
@@ -83,7 +84,7 @@ impl std::default::Default for PaymentIntentPaymentMethodOptionsAcssDebitSetupFu
 }
 
 /// An enum representing the possible values of an `PaymentIntentPaymentMethodOptionsAcssDebit`'s `verification_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentIntentPaymentMethodOptionsAcssDebitVerificationMethod {
     Automatic,
@@ -121,7 +122,7 @@ impl std::default::Default for PaymentIntentPaymentMethodOptionsAcssDebitVerific
 }
 
 /// An enum representing the possible values of an `PaymentIntentPaymentMethodOptionsMandateOptionsAcssDebit`'s `payment_schedule` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentIntentPaymentMethodOptionsMandateOptionsAcssDebitPaymentSchedule {
     Combined,
@@ -165,7 +166,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `PaymentIntentPaymentMethodOptionsMandateOptionsAcssDebit`'s `transaction_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentIntentPaymentMethodOptionsMandateOptionsAcssDebitTransactionType {
     Business,

@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::client::{Client, Response};
@@ -12,7 +13,7 @@ use crate::resources::{Currency, Price, SubscriptionItemBillingThresholds, TaxRa
 /// The resource representing a Stripe "SubscriptionItem".
 ///
 /// For more details see <https://stripe.com/docs/api/subscription_items/object>
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SubscriptionItem {
     /// Unique identifier for the object.
     pub id: SubscriptionItemId,
@@ -158,10 +159,6 @@ pub struct CreateSubscriptionItem<'a> {
     pub price_data: Option<SubscriptionItemPriceData>,
 
     /// Determines how to handle [prorations](https://stripe.com/docs/subscriptions/billing-cycle#prorations) when the billing cycle changes (e.g., when switching plans, resetting `billing_cycle_anchor=now`, or starting a trial), or if an item's `quantity` changes.
-    ///
-    /// Valid values are `create_prorations`, `none`, or `always_invoice`.  Passing `create_prorations` will cause proration invoice items to be created when applicable.
-    /// These proration items will only be invoiced immediately under [certain conditions](https://stripe.com/docs/subscriptions/upgrading-downgrading#immediate-payment).
-    /// In order to always invoice immediately for prorations, pass `always_invoice`.  Prorations can be disabled by passing `none`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub proration_behavior: Option<SubscriptionProrationBehavior>,
 
@@ -303,10 +300,6 @@ pub struct UpdateSubscriptionItem<'a> {
     pub price_data: Option<SubscriptionItemPriceData>,
 
     /// Determines how to handle [prorations](https://stripe.com/docs/subscriptions/billing-cycle#prorations) when the billing cycle changes (e.g., when switching plans, resetting `billing_cycle_anchor=now`, or starting a trial), or if an item's `quantity` changes.
-    ///
-    /// Valid values are `create_prorations`, `none`, or `always_invoice`.  Passing `create_prorations` will cause proration invoice items to be created when applicable.
-    /// These proration items will only be invoiced immediately under [certain conditions](https://stripe.com/docs/subscriptions/upgrading-downgrading#immediate-payment).
-    /// In order to always invoice immediately for prorations, pass `always_invoice`.  Prorations can be disabled by passing `none`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub proration_behavior: Option<SubscriptionProrationBehavior>,
 
@@ -346,7 +339,7 @@ impl<'a> UpdateSubscriptionItem<'a> {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SubscriptionItemPriceData {
     pub currency: Currency,
 
@@ -364,7 +357,7 @@ pub struct SubscriptionItemPriceData {
     pub unit_amount_decimal: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SubscriptionItemPriceDataRecurring {
     pub interval: PlanInterval,
 
@@ -373,7 +366,7 @@ pub struct SubscriptionItemPriceDataRecurring {
 }
 
 /// An enum representing the possible values of an `SubscriptionItemPriceDataRecurring`'s `interval` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PlanInterval {
     Day,
@@ -411,7 +404,7 @@ impl std::default::Default for PlanInterval {
 }
 
 /// An enum representing the possible values of an `SubscriptionItemPriceData`'s `tax_behavior` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SubscriptionItemPriceDataTaxBehavior {
     Exclusive,
@@ -447,7 +440,7 @@ impl std::default::Default for SubscriptionItemPriceDataTaxBehavior {
 }
 
 /// An enum representing the possible values of an `CreateSubscriptionItem`'s `payment_behavior` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SubscriptionPaymentBehavior {
     AllowIncomplete,
@@ -485,7 +478,7 @@ impl std::default::Default for SubscriptionPaymentBehavior {
 }
 
 /// An enum representing the possible values of an `CreateSubscriptionItem`'s `proration_behavior` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SubscriptionProrationBehavior {
     AlwaysInvoice,

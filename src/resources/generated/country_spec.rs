@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::client::{Client, Response};
@@ -12,7 +13,7 @@ use crate::resources::Currency;
 /// The resource representing a Stripe "CountrySpec".
 ///
 /// For more details see <https://stripe.com/docs/api/country_specs/object>
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CountrySpec {
     /// Unique identifier for the object.
     ///

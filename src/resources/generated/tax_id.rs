@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::ids::TaxIdId;
@@ -9,7 +10,7 @@ use crate::params::{Expandable, Object, Timestamp};
 use crate::resources::Customer;
 
 /// The resource representing a Stripe "tax_id".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct TaxId {
     /// Unique identifier for the object.
     pub id: TaxIdId,
@@ -77,7 +78,7 @@ pub struct TaxIdVerification {
 }
 
 /// An enum representing the possible values of an `TaxId`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum TaxIdType {
     AeTrn,
@@ -201,7 +202,7 @@ impl std::default::Default for TaxIdType {
 }
 
 /// An enum representing the possible values of an `TaxIdVerification`'s `status` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum TaxIdVerificationStatus {
     Pending,

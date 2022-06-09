@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::client::{Client, Response};
@@ -12,7 +13,7 @@ use crate::resources::{BalanceTransaction, BankAccount, Card, Currency};
 /// The resource representing a Stripe "Payout".
 ///
 /// For more details see <https://stripe.com/docs/api/payouts/object>
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct Payout {
     /// Unique identifier for the object.
     pub id: PayoutId,
@@ -312,7 +313,7 @@ impl<'a> UpdatePayout<'a> {
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 #[serde(untagged, rename_all = "snake_case")]
 pub enum PayoutDestinationUnion {
     BankAccount(BankAccount),
@@ -325,7 +326,7 @@ impl std::default::Default for PayoutDestinationUnion {
 }
 
 /// An enum representing the possible values of an `CreatePayout`'s `method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PayoutMethod {
     Instant,
@@ -359,7 +360,7 @@ impl std::default::Default for PayoutMethod {
 }
 
 /// An enum representing the possible values of an `CreatePayout`'s `source_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PayoutSourceType {
     BankAccount,
@@ -395,7 +396,7 @@ impl std::default::Default for PayoutSourceType {
 }
 
 /// An enum representing the possible values of an `Payout`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PayoutType {
     BankAccount,

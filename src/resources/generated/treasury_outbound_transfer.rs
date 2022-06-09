@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::ids::TreasuryOutboundTransferId;
@@ -9,7 +10,7 @@ use crate::params::{Expandable, Metadata, Object, Timestamp};
 use crate::resources::{Currency, TreasuryTransaction, UfaResourceBillingDetails};
 
 /// The resource representing a Stripe "OutboundTransfersResourceTreasuryOutboundTransfer".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct TreasuryOutboundTransfer {
     /// Unique identifier for the object.
     pub id: TreasuryOutboundTransferId,
@@ -167,7 +168,7 @@ pub struct OutboundTransfersResourceTreasuryReturnedDetails {
 }
 
 /// An enum representing the possible values of an `OutboundTransfersPaymentMethodDetails`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum OutboundTransfersPaymentMethodDetailsType {
     UsBankAccount,
@@ -199,7 +200,7 @@ impl std::default::Default for OutboundTransfersPaymentMethodDetailsType {
 }
 
 /// An enum representing the possible values of an `OutboundTransfersPaymentMethodDetailsUsBankAccount`'s `account_holder_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum OutboundTransfersPaymentMethodDetailsUsBankAccountAccountHolderType {
     Company,
@@ -237,7 +238,7 @@ impl std::default::Default for OutboundTransfersPaymentMethodDetailsUsBankAccoun
 }
 
 /// An enum representing the possible values of an `OutboundTransfersPaymentMethodDetailsUsBankAccount`'s `account_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum OutboundTransfersPaymentMethodDetailsUsBankAccountAccountType {
     Checking,
@@ -271,7 +272,7 @@ impl std::default::Default for OutboundTransfersPaymentMethodDetailsUsBankAccoun
 }
 
 /// An enum representing the possible values of an `OutboundTransfersPaymentMethodDetailsUsBankAccount`'s `network` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum OutboundTransfersPaymentMethodDetailsUsBankAccountNetwork {
     Ach,
@@ -307,7 +308,7 @@ impl std::default::Default for OutboundTransfersPaymentMethodDetailsUsBankAccoun
 }
 
 /// An enum representing the possible values of an `OutboundTransfersResourceTreasuryReturnedDetails`'s `code` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum OutboundTransfersResourceTreasuryReturnedDetailsCode {
     AccountClosed,
@@ -367,7 +368,7 @@ impl std::default::Default for OutboundTransfersResourceTreasuryReturnedDetailsC
 }
 
 /// An enum representing the possible values of an `TreasuryOutboundTransfer`'s `status` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum TreasuryOutboundTransferStatus {
     Canceled,

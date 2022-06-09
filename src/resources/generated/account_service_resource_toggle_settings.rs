@@ -2,10 +2,11 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 /// The resource representing a Stripe "AccountServiceResourceToggleSettings".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct AccountServiceResourceToggleSettings {
     /// Whether the FinancialAccount should have the Feature.
     pub requested: bool,
@@ -32,7 +33,7 @@ pub struct AccountServiceResourceStatusDetails {
 }
 
 /// An enum representing the possible values of an `AccountServiceResourceStatusDetails`'s `code` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum AccountServiceResourceStatusDetailsCode {
     Activating,
@@ -90,7 +91,7 @@ impl std::default::Default for AccountServiceResourceStatusDetailsCode {
 }
 
 /// An enum representing the possible values of an `AccountServiceResourceStatusDetails`'s `resolution` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum AccountServiceResourceStatusDetailsResolution {
     ContactStripe,
@@ -130,7 +131,7 @@ impl std::default::Default for AccountServiceResourceStatusDetailsResolution {
 }
 
 /// An enum representing the possible values of an `AccountServiceResourceStatusDetails`'s `restriction` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum AccountServiceResourceStatusDetailsRestriction {
     InboundFlows,
@@ -164,7 +165,7 @@ impl std::default::Default for AccountServiceResourceStatusDetailsRestriction {
 }
 
 /// An enum representing the possible values of an `AccountServiceResourceToggleSettings`'s `status` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum AccountServiceResourceToggleSettingsStatus {
     Active,

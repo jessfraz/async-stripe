@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::client::{Client, Response};
@@ -12,7 +13,7 @@ use crate::resources::{BalanceTransaction, Charge, Currency, PaymentIntent, Tran
 /// The resource representing a Stripe "Refund".
 ///
 /// For more details see <https://stripe.com/docs/api/refunds/object>
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct Refund {
     /// Unique identifier for the object.
     pub id: RefundId,
@@ -301,7 +302,7 @@ impl<'a> UpdateRefund<'a> {
 }
 
 /// An enum representing the possible values of an `Refund`'s `reason` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum RefundReason {
     Duplicate,
@@ -339,7 +340,7 @@ impl std::default::Default for RefundReason {
 }
 
 /// An enum representing the possible values of an `CreateRefund`'s `reason` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum RefundReasonFilter {
     Duplicate,

@@ -2,13 +2,14 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::params::Object;
 use crate::resources::Currency;
 
 /// The resource representing a Stripe "CustomerBalanceFundingInstructionsCustomerBalanceFundingInstructions".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct FundingInstructions {
     pub bank_transfer: FundingInstructionsBankTransfer,
 
@@ -47,6 +48,15 @@ pub struct FundingInstructionsBankTransfer {
 
 #[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct FundingInstructionsBankTransferFinancialAddress {
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub iban: Option<FundingInstructionsBankTransferIbanRecord>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub sort_code: Option<FundingInstructionsBankTransferSortCodeRecord>,
+
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub spei: Option<FundingInstructionsBankTransferSpeiRecord>,
+
     /// The payment networks supported by this FinancialAddress.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub supported_networks:
@@ -58,6 +68,45 @@ pub struct FundingInstructionsBankTransferFinancialAddress {
 
     #[serde(skip_serializing_if = "Option::is_none")]
     pub zengin: Option<FundingInstructionsBankTransferZenginRecord>,
+}
+
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+pub struct FundingInstructionsBankTransferIbanRecord {
+    /// The name of the person or business that owns the bank account.
+    pub account_holder_name: String,
+
+    /// The BIC/SWIFT code of the account.
+    pub bic: String,
+
+    /// Two-letter country code ([ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2)).
+    pub country: String,
+
+    /// The IBAN of the account.
+    pub iban: String,
+}
+
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+pub struct FundingInstructionsBankTransferSortCodeRecord {
+    /// The name of the person or business that owns the bank account.
+    pub account_holder_name: String,
+
+    /// The account number.
+    pub account_number: String,
+
+    /// The six-digit sort code.
+    pub sort_code: String,
+}
+
+#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+pub struct FundingInstructionsBankTransferSpeiRecord {
+    /// The three-digit bank code.
+    pub bank_code: String,
+
+    /// The short banking institution name.
+    pub bank_name: String,
+
+    /// The CLABE number.
+    pub clabe: String,
 }
 
 #[derive(Clone, Debug, Default, Deserialize, Serialize)]
@@ -94,17 +143,23 @@ pub struct FundingInstructionsBankTransferZenginRecord {
 }
 
 /// An enum representing the possible values of an `FundingInstructionsBankTransferFinancialAddress`'s `supported_networks` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum FundingInstructionsBankTransferFinancialAddressSupportedNetworks {
+    Bacs,
+    Fps,
     Sepa,
+    Spei,
     Zengin,
 }
 
 impl FundingInstructionsBankTransferFinancialAddressSupportedNetworks {
     pub fn as_str(self) -> &'static str {
         match self {
+            FundingInstructionsBankTransferFinancialAddressSupportedNetworks::Bacs => "bacs",
+            FundingInstructionsBankTransferFinancialAddressSupportedNetworks::Fps => "fps",
             FundingInstructionsBankTransferFinancialAddressSupportedNetworks::Sepa => "sepa",
+            FundingInstructionsBankTransferFinancialAddressSupportedNetworks::Spei => "spei",
             FundingInstructionsBankTransferFinancialAddressSupportedNetworks::Zengin => "zengin",
         }
     }
@@ -123,15 +178,17 @@ impl std::fmt::Display for FundingInstructionsBankTransferFinancialAddressSuppor
 }
 impl std::default::Default for FundingInstructionsBankTransferFinancialAddressSupportedNetworks {
     fn default() -> Self {
-        Self::Sepa
+        Self::Bacs
     }
 }
 
 /// An enum representing the possible values of an `FundingInstructionsBankTransferFinancialAddress`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum FundingInstructionsBankTransferFinancialAddressType {
     Iban,
+    SortCode,
+    Spei,
     Zengin,
 }
 
@@ -139,6 +196,8 @@ impl FundingInstructionsBankTransferFinancialAddressType {
     pub fn as_str(self) -> &'static str {
         match self {
             FundingInstructionsBankTransferFinancialAddressType::Iban => "iban",
+            FundingInstructionsBankTransferFinancialAddressType::SortCode => "sort_code",
+            FundingInstructionsBankTransferFinancialAddressType::Spei => "spei",
             FundingInstructionsBankTransferFinancialAddressType::Zengin => "zengin",
         }
     }
@@ -162,7 +221,7 @@ impl std::default::Default for FundingInstructionsBankTransferFinancialAddressTy
 }
 
 /// An enum representing the possible values of an `FundingInstructionsBankTransfer`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum FundingInstructionsBankTransferType {
     EuBankTransfer,
@@ -196,7 +255,7 @@ impl std::default::Default for FundingInstructionsBankTransferType {
 }
 
 /// An enum representing the possible values of an `FundingInstructions`'s `funding_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum FundingInstructionsFundingType {
     BankTransfer,

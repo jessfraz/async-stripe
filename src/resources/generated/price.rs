@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::client::{Client, Response};
@@ -14,7 +15,7 @@ use crate::resources::{CreateProduct, Currency, Product, UpTo};
 /// The resource representing a Stripe "Price".
 ///
 /// For more details see <https://stripe.com/docs/api/prices/object>
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct Price {
     /// Unique identifier for the object.
     pub id: PriceId,
@@ -476,7 +477,7 @@ impl<'a> UpdatePrice<'a> {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePriceProductData {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub active: Option<bool>,
@@ -499,7 +500,7 @@ pub struct CreatePriceProductData {
     pub unit_label: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePriceRecurring {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub aggregate_usage: Option<CreatePriceRecurringAggregateUsage>,
@@ -513,7 +514,7 @@ pub struct CreatePriceRecurring {
     pub usage_type: Option<CreatePriceRecurringUsageType>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePriceTiers {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub flat_amount: Option<i64>,
@@ -530,14 +531,14 @@ pub struct CreatePriceTiers {
     pub up_to: Option<UpTo>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreatePriceTransformQuantity {
     pub divide_by: i64,
 
     pub round: CreatePriceTransformQuantityRound,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct ListPricesRecurring {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub interval: Option<ListPricesRecurringInterval>,
@@ -547,7 +548,7 @@ pub struct ListPricesRecurring {
 }
 
 /// An enum representing the possible values of an `CreatePriceRecurring`'s `aggregate_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePriceRecurringAggregateUsage {
     LastDuringPeriod,
@@ -585,7 +586,7 @@ impl std::default::Default for CreatePriceRecurringAggregateUsage {
 }
 
 /// An enum representing the possible values of an `CreatePriceRecurring`'s `interval` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePriceRecurringInterval {
     Day,
@@ -623,7 +624,7 @@ impl std::default::Default for CreatePriceRecurringInterval {
 }
 
 /// An enum representing the possible values of an `CreatePriceRecurring`'s `usage_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePriceRecurringUsageType {
     Licensed,
@@ -657,7 +658,7 @@ impl std::default::Default for CreatePriceRecurringUsageType {
 }
 
 /// An enum representing the possible values of an `CreatePriceTransformQuantity`'s `round` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreatePriceTransformQuantityRound {
     Down,
@@ -691,7 +692,7 @@ impl std::default::Default for CreatePriceTransformQuantityRound {
 }
 
 /// An enum representing the possible values of an `ListPricesRecurring`'s `interval` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum ListPricesRecurringInterval {
     Day,
@@ -729,7 +730,7 @@ impl std::default::Default for ListPricesRecurringInterval {
 }
 
 /// An enum representing the possible values of an `ListPricesRecurring`'s `usage_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum ListPricesRecurringUsageType {
     Licensed,
@@ -763,7 +764,7 @@ impl std::default::Default for ListPricesRecurringUsageType {
 }
 
 /// An enum representing the possible values of an `Price`'s `billing_scheme` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PriceBillingScheme {
     PerUnit,
@@ -797,7 +798,7 @@ impl std::default::Default for PriceBillingScheme {
 }
 
 /// An enum representing the possible values of an `Price`'s `tax_behavior` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PriceTaxBehavior {
     Exclusive,
@@ -833,7 +834,7 @@ impl std::default::Default for PriceTaxBehavior {
 }
 
 /// An enum representing the possible values of an `Price`'s `tiers_mode` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PriceTiersMode {
     Graduated,
@@ -867,7 +868,7 @@ impl std::default::Default for PriceTiersMode {
 }
 
 /// An enum representing the possible values of an `Price`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PriceType {
     OneTime,
@@ -901,7 +902,7 @@ impl std::default::Default for PriceType {
 }
 
 /// An enum representing the possible values of an `Recurring`'s `aggregate_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum RecurringAggregateUsage {
     LastDuringPeriod,
@@ -939,7 +940,7 @@ impl std::default::Default for RecurringAggregateUsage {
 }
 
 /// An enum representing the possible values of an `Recurring`'s `interval` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum RecurringInterval {
     Day,
@@ -977,7 +978,7 @@ impl std::default::Default for RecurringInterval {
 }
 
 /// An enum representing the possible values of an `Recurring`'s `usage_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum RecurringUsageType {
     Licensed,
@@ -1011,7 +1012,7 @@ impl std::default::Default for RecurringUsageType {
 }
 
 /// An enum representing the possible values of an `TransformQuantity`'s `round` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum TransformQuantityRound {
     Down,

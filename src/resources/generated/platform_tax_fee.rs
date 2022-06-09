@@ -2,13 +2,14 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::ids::PlatformTaxFeeId;
 use crate::params::Object;
 
 /// The resource representing a Stripe "PlatformTax".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PlatformTaxFee {
     /// Unique identifier for the object.
     pub id: PlatformTaxFeeId,

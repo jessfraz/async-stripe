@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::client::{Client, Response};
@@ -12,7 +13,7 @@ use crate::resources::Currency;
 /// The resource representing a Stripe "Coupon".
 ///
 /// For more details see <https://stripe.com/docs/api/coupons/object>
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct Coupon {
     /// Unique identifier for the object.
     pub id: CouponId,
@@ -308,14 +309,14 @@ impl<'a> UpdateCoupon<'a> {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateCouponAppliesTo {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub products: Option<Vec<String>>,
 }
 
 /// An enum representing the possible values of an `Coupon`'s `duration` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CouponDuration {
     Forever,

@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::ids::RadarEarlyFraudWarningId;
@@ -9,7 +10,7 @@ use crate::params::{Expandable, Object, Timestamp};
 use crate::resources::{Charge, PaymentIntent};
 
 /// The resource representing a Stripe "RadarEarlyFraudWarning".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct RadarEarlyFraudWarning {
     /// Unique identifier for the object.
     pub id: RadarEarlyFraudWarningId,

@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::ids::IssuingDisputeId;
@@ -11,7 +12,7 @@ use crate::resources::{
 };
 
 /// The resource representing a Stripe "IssuingDispute".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct IssuingDispute {
     /// Unique identifier for the object.
     pub id: IssuingDisputeId,
@@ -279,7 +280,7 @@ pub struct IssuingDisputeTreasury {
 }
 
 /// An enum representing the possible values of an `IssuingDisputeCanceledEvidence`'s `product_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum IssuingDisputeCanceledEvidenceProductType {
     Merchandise,
@@ -313,7 +314,7 @@ impl std::default::Default for IssuingDisputeCanceledEvidenceProductType {
 }
 
 /// An enum representing the possible values of an `IssuingDisputeCanceledEvidence`'s `return_status` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum IssuingDisputeCanceledEvidenceReturnStatus {
     MerchantRejected,
@@ -347,7 +348,7 @@ impl std::default::Default for IssuingDisputeCanceledEvidenceReturnStatus {
 }
 
 /// An enum representing the possible values of an `IssuingDisputeEvidence`'s `reason` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum IssuingDisputeEvidenceReason {
     Canceled,
@@ -393,7 +394,7 @@ impl std::default::Default for IssuingDisputeEvidenceReason {
 }
 
 /// An enum representing the possible values of an `IssuingDisputeMerchandiseNotAsDescribedEvidence`'s `return_status` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum IssuingDisputeMerchandiseNotAsDescribedEvidenceReturnStatus {
     MerchantRejected,
@@ -429,7 +430,7 @@ impl std::default::Default for IssuingDisputeMerchandiseNotAsDescribedEvidenceRe
 }
 
 /// An enum representing the possible values of an `IssuingDisputeNotReceivedEvidence`'s `product_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum IssuingDisputeNotReceivedEvidenceProductType {
     Merchandise,
@@ -463,7 +464,7 @@ impl std::default::Default for IssuingDisputeNotReceivedEvidenceProductType {
 }
 
 /// An enum representing the possible values of an `IssuingDisputeOtherEvidence`'s `product_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum IssuingDisputeOtherEvidenceProductType {
     Merchandise,

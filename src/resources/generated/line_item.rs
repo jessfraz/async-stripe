@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::ids::InvoiceLineItemId;
@@ -9,7 +10,7 @@ use crate::params::{Expandable, Metadata, Object};
 use crate::resources::{Currency, Discount, Period, Price, TaxRate};
 
 /// The resource representing a Stripe "InvoiceLineItem".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct InvoiceLineItem {
     /// Unique identifier for the object.
     pub id: InvoiceLineItemId,
@@ -145,7 +146,7 @@ pub struct InvoicesLineItemsCreditedItems {
 }
 
 /// An enum representing the possible values of an `InvoiceLineItem`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum InvoiceLineItemType {
     #[serde(rename = "invoiceitem")]

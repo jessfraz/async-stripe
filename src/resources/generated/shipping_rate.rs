@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::client::{Client, Response};
@@ -12,7 +13,7 @@ use crate::resources::{Currency, TaxCode};
 /// The resource representing a Stripe "ShippingRate".
 ///
 /// For more details see <https://stripe.com/docs/api/shipping_rates/object>
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct ShippingRate {
     /// Unique identifier for the object.
     pub id: ShippingRateId,
@@ -304,7 +305,7 @@ impl<'a> UpdateShippingRate<'a> {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateShippingRateDeliveryEstimate {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub maximum: Option<CreateShippingRateDeliveryEstimateMaximum>,
@@ -313,21 +314,21 @@ pub struct CreateShippingRateDeliveryEstimate {
     pub minimum: Option<CreateShippingRateDeliveryEstimateMinimum>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateShippingRateFixedAmount {
     pub amount: i64,
 
     pub currency: Currency,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateShippingRateDeliveryEstimateMaximum {
     pub unit: CreateShippingRateDeliveryEstimateMaximumUnit,
 
     pub value: i64,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateShippingRateDeliveryEstimateMinimum {
     pub unit: CreateShippingRateDeliveryEstimateMinimumUnit,
 
@@ -335,7 +336,7 @@ pub struct CreateShippingRateDeliveryEstimateMinimum {
 }
 
 /// An enum representing the possible values of an `CreateShippingRateDeliveryEstimateMaximum`'s `unit` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateShippingRateDeliveryEstimateMaximumUnit {
     BusinessDay,
@@ -375,7 +376,7 @@ impl std::default::Default for CreateShippingRateDeliveryEstimateMaximumUnit {
 }
 
 /// An enum representing the possible values of an `CreateShippingRateDeliveryEstimateMinimum`'s `unit` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateShippingRateDeliveryEstimateMinimumUnit {
     BusinessDay,
@@ -415,7 +416,7 @@ impl std::default::Default for CreateShippingRateDeliveryEstimateMinimumUnit {
 }
 
 /// An enum representing the possible values of an `ShippingRateDeliveryEstimateBound`'s `unit` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum ShippingRateDeliveryEstimateBoundUnit {
     BusinessDay,
@@ -455,7 +456,7 @@ impl std::default::Default for ShippingRateDeliveryEstimateBoundUnit {
 }
 
 /// An enum representing the possible values of an `ShippingRate`'s `tax_behavior` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum ShippingRateTaxBehavior {
     Exclusive,
@@ -491,7 +492,7 @@ impl std::default::Default for ShippingRateTaxBehavior {
 }
 
 /// An enum representing the possible values of an `ShippingRate`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum ShippingRateType {
     FixedAmount,

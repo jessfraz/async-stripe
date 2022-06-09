@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::client::{Client, Response};
@@ -17,7 +18,7 @@ use crate::resources::{
 /// The resource representing a Stripe "Account".
 ///
 /// For more details see <https://stripe.com/docs/api/accounts/object>
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct Account {
     /// Unique identifier for the object.
     pub id: AccountId,
@@ -1046,7 +1047,7 @@ impl<'a> UpdateAccount<'a> {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct AcceptTos {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub date: Option<Timestamp>,
@@ -1061,7 +1062,7 @@ pub struct AcceptTos {
     pub user_agent: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct AccountSettingsParams {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub branding: Option<BrandingSettingsParams>,
@@ -1079,7 +1080,7 @@ pub struct AccountSettingsParams {
     pub payouts: Option<PayoutSettingsParams>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CompanyParams {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub address: Option<Address>,
@@ -1133,7 +1134,7 @@ pub struct CompanyParams {
     pub verification: Option<CompanyVerificationParams>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateAccountCapabilities {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub acss_debit_payments: Option<CreateAccountCapabilitiesAcssDebitPayments>,
@@ -1229,7 +1230,7 @@ pub struct CreateAccountCapabilities {
     pub us_bank_account_ach_payments: Option<CreateAccountCapabilitiesUsBankAccountAchPayments>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateAccountDocuments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub bank_account_ownership_verification:
@@ -1256,7 +1257,7 @@ pub struct CreateAccountDocuments {
     pub proof_of_registration: Option<CreateAccountDocumentsProofOfRegistration>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PersonParams {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub address: Option<Address>,
@@ -1325,7 +1326,7 @@ pub struct PersonParams {
     pub verification: Option<PersonVerificationParams>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateAccountCapabilities {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub acss_debit_payments: Option<UpdateAccountCapabilitiesAcssDebitPayments>,
@@ -1421,7 +1422,7 @@ pub struct UpdateAccountCapabilities {
     pub us_bank_account_ach_payments: Option<UpdateAccountCapabilitiesUsBankAccountAchPayments>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateAccountDocuments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub bank_account_ownership_verification:
@@ -1448,13 +1449,13 @@ pub struct UpdateAccountDocuments {
     pub proof_of_registration: Option<UpdateAccountDocumentsProofOfRegistration>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct AccountSettingsParamsCardIssuing {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tos_acceptance: Option<AccountSettingsParamsCardIssuingTosAcceptance>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct BrandingSettingsParams {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub icon: Option<String>,
@@ -1469,7 +1470,7 @@ pub struct BrandingSettingsParams {
     pub secondary_color: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CardPaymentsSettingsParams {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub decline_on: Option<DeclineChargeOnParams>,
@@ -1478,7 +1479,7 @@ pub struct CardPaymentsSettingsParams {
     pub statement_descriptor_prefix: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CompanyParamsOwnershipDeclaration {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub date: Option<Timestamp>,
@@ -1490,241 +1491,241 @@ pub struct CompanyParamsOwnershipDeclaration {
     pub user_agent: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CompanyVerificationParams {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub document: Option<VerificationDocumentParams>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateAccountCapabilitiesAcssDebitPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateAccountCapabilitiesAffirmPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateAccountCapabilitiesAfterpayClearpayPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateAccountCapabilitiesAuBecsDebitPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateAccountCapabilitiesBacsDebitPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateAccountCapabilitiesBancontactPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateAccountCapabilitiesBankTransferPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateAccountCapabilitiesBoletoPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateAccountCapabilitiesCardIssuing {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateAccountCapabilitiesCardPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateAccountCapabilitiesCartesBancairesPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateAccountCapabilitiesEpsPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateAccountCapabilitiesFpxPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateAccountCapabilitiesGiropayPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateAccountCapabilitiesGrabpayPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateAccountCapabilitiesIdealPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateAccountCapabilitiesJcbPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateAccountCapabilitiesKlarnaPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateAccountCapabilitiesKonbiniPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateAccountCapabilitiesLegacyPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateAccountCapabilitiesLinkPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateAccountCapabilitiesOxxoPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateAccountCapabilitiesP24Payments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateAccountCapabilitiesPaynowPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateAccountCapabilitiesSepaDebitPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateAccountCapabilitiesSofortPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateAccountCapabilitiesTaxReportingUs1099K {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateAccountCapabilitiesTaxReportingUs1099Misc {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateAccountCapabilitiesTransfers {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateAccountCapabilitiesTreasury {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateAccountCapabilitiesUsBankAccountAchPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateAccountDocumentsBankAccountOwnershipVerification {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub files: Option<Vec<String>>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateAccountDocumentsCompanyLicense {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub files: Option<Vec<String>>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateAccountDocumentsCompanyMemorandumOfAssociation {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub files: Option<Vec<String>>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateAccountDocumentsCompanyMinisterialDecree {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub files: Option<Vec<String>>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateAccountDocumentsCompanyRegistrationVerification {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub files: Option<Vec<String>>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateAccountDocumentsCompanyTaxIdVerification {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub files: Option<Vec<String>>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateAccountDocumentsProofOfRegistration {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub files: Option<Vec<String>>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentsSettingsParams {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub statement_descriptor: Option<String>,
@@ -1736,7 +1737,7 @@ pub struct PaymentsSettingsParams {
     pub statement_descriptor_kanji: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PayoutSettingsParams {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub debit_negative_balances: Option<bool>,
@@ -1748,7 +1749,7 @@ pub struct PayoutSettingsParams {
     pub statement_descriptor: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PersonParamsDob {
     pub day: i64,
 
@@ -1757,7 +1758,7 @@ pub struct PersonParamsDob {
     pub year: i64,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PersonParamsRegisteredAddress {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub city: Option<String>,
@@ -1778,235 +1779,235 @@ pub struct PersonParamsRegisteredAddress {
     pub state: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateAccountCapabilitiesAcssDebitPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateAccountCapabilitiesAffirmPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateAccountCapabilitiesAfterpayClearpayPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateAccountCapabilitiesAuBecsDebitPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateAccountCapabilitiesBacsDebitPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateAccountCapabilitiesBancontactPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateAccountCapabilitiesBankTransferPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateAccountCapabilitiesBoletoPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateAccountCapabilitiesCardIssuing {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateAccountCapabilitiesCardPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateAccountCapabilitiesCartesBancairesPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateAccountCapabilitiesEpsPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateAccountCapabilitiesFpxPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateAccountCapabilitiesGiropayPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateAccountCapabilitiesGrabpayPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateAccountCapabilitiesIdealPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateAccountCapabilitiesJcbPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateAccountCapabilitiesKlarnaPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateAccountCapabilitiesKonbiniPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateAccountCapabilitiesLegacyPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateAccountCapabilitiesLinkPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateAccountCapabilitiesOxxoPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateAccountCapabilitiesP24Payments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateAccountCapabilitiesPaynowPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateAccountCapabilitiesSepaDebitPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateAccountCapabilitiesSofortPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateAccountCapabilitiesTaxReportingUs1099K {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateAccountCapabilitiesTaxReportingUs1099Misc {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateAccountCapabilitiesTransfers {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateAccountCapabilitiesTreasury {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateAccountCapabilitiesUsBankAccountAchPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateAccountDocumentsBankAccountOwnershipVerification {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub files: Option<Vec<String>>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateAccountDocumentsCompanyLicense {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub files: Option<Vec<String>>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateAccountDocumentsCompanyMemorandumOfAssociation {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub files: Option<Vec<String>>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateAccountDocumentsCompanyMinisterialDecree {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub files: Option<Vec<String>>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateAccountDocumentsCompanyRegistrationVerification {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub files: Option<Vec<String>>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateAccountDocumentsCompanyTaxIdVerification {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub files: Option<Vec<String>>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateAccountDocumentsProofOfRegistration {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub files: Option<Vec<String>>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct AccountSettingsParamsCardIssuingTosAcceptance {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub date: Option<Timestamp>,
@@ -2018,7 +2019,7 @@ pub struct AccountSettingsParamsCardIssuingTosAcceptance {
     pub user_agent: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct DeclineChargeOnParams {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub avs_failure: Option<bool>,
@@ -2027,7 +2028,7 @@ pub struct DeclineChargeOnParams {
     pub cvc_failure: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct TransferScheduleParams {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub delay_days: Option<DelayDays>,
@@ -2042,7 +2043,7 @@ pub struct TransferScheduleParams {
     pub weekly_anchor: Option<TransferScheduleParamsWeeklyAnchor>,
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 #[serde(untagged, rename_all = "snake_case")]
 pub enum ExternalAccount {
     BankAccount(BankAccount),
@@ -2055,7 +2056,7 @@ impl std::default::Default for ExternalAccount {
 }
 
 /// An enum representing the possible values of an `Account`'s `business_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum AccountBusinessType {
     Company,
@@ -2093,7 +2094,7 @@ impl std::default::Default for AccountBusinessType {
 }
 
 /// An enum representing the possible values of an `AccountCapabilities`'s `acss_debit_payments` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum AccountCapabilitiesAcssDebitPayments {
     Active,
@@ -2129,7 +2130,7 @@ impl std::default::Default for AccountCapabilitiesAcssDebitPayments {
 }
 
 /// An enum representing the possible values of an `AccountCapabilities`'s `affirm_payments` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum AccountCapabilitiesAffirmPayments {
     Active,
@@ -2165,7 +2166,7 @@ impl std::default::Default for AccountCapabilitiesAffirmPayments {
 }
 
 /// An enum representing the possible values of an `AccountCapabilities`'s `afterpay_clearpay_payments` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum AccountCapabilitiesAfterpayClearpayPayments {
     Active,
@@ -2201,7 +2202,7 @@ impl std::default::Default for AccountCapabilitiesAfterpayClearpayPayments {
 }
 
 /// An enum representing the possible values of an `AccountCapabilities`'s `bacs_debit_payments` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum AccountCapabilitiesBacsDebitPayments {
     Active,
@@ -2237,7 +2238,7 @@ impl std::default::Default for AccountCapabilitiesBacsDebitPayments {
 }
 
 /// An enum representing the possible values of an `AccountCapabilities`'s `bancontact_payments` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum AccountCapabilitiesBancontactPayments {
     Active,
@@ -2273,7 +2274,7 @@ impl std::default::Default for AccountCapabilitiesBancontactPayments {
 }
 
 /// An enum representing the possible values of an `AccountCapabilities`'s `bank_transfer_payments` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum AccountCapabilitiesBankTransferPayments {
     Active,
@@ -2309,7 +2310,7 @@ impl std::default::Default for AccountCapabilitiesBankTransferPayments {
 }
 
 /// An enum representing the possible values of an `AccountCapabilities`'s `boleto_payments` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum AccountCapabilitiesBoletoPayments {
     Active,
@@ -2345,7 +2346,7 @@ impl std::default::Default for AccountCapabilitiesBoletoPayments {
 }
 
 /// An enum representing the possible values of an `AccountCapabilities`'s `cartes_bancaires_payments` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum AccountCapabilitiesCartesBancairesPayments {
     Active,
@@ -2381,7 +2382,7 @@ impl std::default::Default for AccountCapabilitiesCartesBancairesPayments {
 }
 
 /// An enum representing the possible values of an `AccountCapabilities`'s `eps_payments` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum AccountCapabilitiesEpsPayments {
     Active,
@@ -2417,7 +2418,7 @@ impl std::default::Default for AccountCapabilitiesEpsPayments {
 }
 
 /// An enum representing the possible values of an `AccountCapabilities`'s `fpx_payments` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum AccountCapabilitiesFpxPayments {
     Active,
@@ -2453,7 +2454,7 @@ impl std::default::Default for AccountCapabilitiesFpxPayments {
 }
 
 /// An enum representing the possible values of an `AccountCapabilities`'s `giropay_payments` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum AccountCapabilitiesGiropayPayments {
     Active,
@@ -2489,7 +2490,7 @@ impl std::default::Default for AccountCapabilitiesGiropayPayments {
 }
 
 /// An enum representing the possible values of an `AccountCapabilities`'s `grabpay_payments` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum AccountCapabilitiesGrabpayPayments {
     Active,
@@ -2525,7 +2526,7 @@ impl std::default::Default for AccountCapabilitiesGrabpayPayments {
 }
 
 /// An enum representing the possible values of an `AccountCapabilities`'s `ideal_payments` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum AccountCapabilitiesIdealPayments {
     Active,
@@ -2561,7 +2562,7 @@ impl std::default::Default for AccountCapabilitiesIdealPayments {
 }
 
 /// An enum representing the possible values of an `AccountCapabilities`'s `klarna_payments` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum AccountCapabilitiesKlarnaPayments {
     Active,
@@ -2597,7 +2598,7 @@ impl std::default::Default for AccountCapabilitiesKlarnaPayments {
 }
 
 /// An enum representing the possible values of an `AccountCapabilities`'s `konbini_payments` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum AccountCapabilitiesKonbiniPayments {
     Active,
@@ -2633,7 +2634,7 @@ impl std::default::Default for AccountCapabilitiesKonbiniPayments {
 }
 
 /// An enum representing the possible values of an `AccountCapabilities`'s `link_payments` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum AccountCapabilitiesLinkPayments {
     Active,
@@ -2669,7 +2670,7 @@ impl std::default::Default for AccountCapabilitiesLinkPayments {
 }
 
 /// An enum representing the possible values of an `AccountCapabilities`'s `oxxo_payments` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum AccountCapabilitiesOxxoPayments {
     Active,
@@ -2705,7 +2706,7 @@ impl std::default::Default for AccountCapabilitiesOxxoPayments {
 }
 
 /// An enum representing the possible values of an `AccountCapabilities`'s `p24_payments` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum AccountCapabilitiesP24Payments {
     Active,
@@ -2741,7 +2742,7 @@ impl std::default::Default for AccountCapabilitiesP24Payments {
 }
 
 /// An enum representing the possible values of an `AccountCapabilities`'s `paynow_payments` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum AccountCapabilitiesPaynowPayments {
     Active,
@@ -2777,7 +2778,7 @@ impl std::default::Default for AccountCapabilitiesPaynowPayments {
 }
 
 /// An enum representing the possible values of an `AccountCapabilities`'s `sepa_debit_payments` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum AccountCapabilitiesSepaDebitPayments {
     Active,
@@ -2813,7 +2814,7 @@ impl std::default::Default for AccountCapabilitiesSepaDebitPayments {
 }
 
 /// An enum representing the possible values of an `AccountCapabilities`'s `sofort_payments` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum AccountCapabilitiesSofortPayments {
     Active,
@@ -2849,7 +2850,7 @@ impl std::default::Default for AccountCapabilitiesSofortPayments {
 }
 
 /// An enum representing the possible values of an `AccountCapabilities`'s `treasury` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum AccountCapabilitiesTreasury {
     Active,
@@ -2885,7 +2886,7 @@ impl std::default::Default for AccountCapabilitiesTreasury {
 }
 
 /// An enum representing the possible values of an `AccountCapabilities`'s `us_bank_account_ach_payments` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum AccountCapabilitiesUsBankAccountAchPayments {
     Active,
@@ -2921,7 +2922,7 @@ impl std::default::Default for AccountCapabilitiesUsBankAccountAchPayments {
 }
 
 /// An enum representing the possible values of an `AccountRequirementsError`'s `code` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum AccountRequirementsErrorCode {
     InvalidAddressCityStatePostalCode,
@@ -3041,7 +3042,7 @@ impl std::default::Default for AccountRequirementsErrorCode {
 }
 
 /// An enum representing the possible values of an `CreateAccount`'s `type_` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum AccountType {
     Custom,
@@ -3077,7 +3078,7 @@ impl std::default::Default for AccountType {
 }
 
 /// An enum representing the possible values of an `AccountUnificationAccountController`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum AccountUnificationAccountControllerType {
     Account,
@@ -3111,7 +3112,7 @@ impl std::default::Default for AccountUnificationAccountControllerType {
 }
 
 /// An enum representing the possible values of an `AccountCapabilities`'s `au_becs_debit_payments` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CapabilityStatus {
     Active,
@@ -3147,7 +3148,7 @@ impl std::default::Default for CapabilityStatus {
 }
 
 /// An enum representing the possible values of an `CompanyParams`'s `structure` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CompanyParamsStructure {
     FreeZoneEstablishment,
@@ -3219,7 +3220,7 @@ impl std::default::Default for CompanyParamsStructure {
 }
 
 /// An enum representing the possible values of an `Company`'s `structure` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CompanyStructure {
     FreeZoneEstablishment,
@@ -3291,7 +3292,7 @@ impl std::default::Default for CompanyStructure {
 }
 
 /// An enum representing the possible values of an `PersonParams`'s `political_exposure` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PersonParamsPoliticalExposure {
     Existing,
@@ -3325,7 +3326,7 @@ impl std::default::Default for PersonParamsPoliticalExposure {
 }
 
 /// An enum representing the possible values of an `TransferScheduleParams`'s `interval` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum TransferScheduleInterval {
     Daily,
@@ -3363,7 +3364,7 @@ impl std::default::Default for TransferScheduleInterval {
 }
 
 /// An enum representing the possible values of an `TransferScheduleParams`'s `weekly_anchor` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum TransferScheduleParamsWeeklyAnchor {
     Friday,

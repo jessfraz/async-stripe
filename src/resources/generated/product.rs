@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::client::{Client, Response};
@@ -14,7 +15,7 @@ use crate::resources::{Currency, PackageDimensions, Price, TaxCode};
 /// The resource representing a Stripe "Product".
 ///
 /// For more details see <https://stripe.com/docs/api/products/object>
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct Product {
     /// Unique identifier for the object.
     pub id: ProductId,
@@ -399,7 +400,7 @@ impl<'a> UpdateProduct<'a> {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateProductDefaultPriceData {
     pub currency: Currency,
 
@@ -416,7 +417,7 @@ pub struct CreateProductDefaultPriceData {
     pub unit_amount_decimal: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateProductDefaultPriceDataRecurring {
     pub interval: CreateProductDefaultPriceDataRecurringInterval,
 
@@ -425,7 +426,7 @@ pub struct CreateProductDefaultPriceDataRecurring {
 }
 
 /// An enum representing the possible values of an `CreateProductDefaultPriceDataRecurring`'s `interval` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateProductDefaultPriceDataRecurringInterval {
     Day,
@@ -463,7 +464,7 @@ impl std::default::Default for CreateProductDefaultPriceDataRecurringInterval {
 }
 
 /// An enum representing the possible values of an `CreateProductDefaultPriceData`'s `tax_behavior` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateProductDefaultPriceDataTaxBehavior {
     Exclusive,

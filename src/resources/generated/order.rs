@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::client::{Client, Response};
@@ -18,7 +19,7 @@ use crate::resources::{
 };
 
 /// The resource representing a Stripe "OrdersV2ResourceOrder".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct Order {
     /// Unique identifier for the object.
     pub id: OrderId,
@@ -687,12 +688,12 @@ impl<'a> UpdateOrder<'a> {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateOrderAutomaticTax {
     pub enabled: bool,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateOrderBillingDetails {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub address: Option<CreateOrderBillingDetailsAddress>,
@@ -707,7 +708,7 @@ pub struct CreateOrderBillingDetails {
     pub phone: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateOrderDiscounts {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub coupon: Option<String>,
@@ -719,7 +720,7 @@ pub struct CreateOrderDiscounts {
     pub promotion_code: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateOrderLineItems {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
@@ -743,12 +744,12 @@ pub struct CreateOrderLineItems {
     pub tax_rates: Option<Vec<String>>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateOrderPayment {
     pub settings: CreateOrderPaymentSettings,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateOrderShippingCost {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub shipping_rate: Option<String>,
@@ -757,7 +758,7 @@ pub struct CreateOrderShippingCost {
     pub shipping_rate_data: Option<CreateOrderShippingCostShippingRateData>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateOrderShippingDetails {
     pub address: CreateOrderShippingDetailsAddress,
 
@@ -767,7 +768,7 @@ pub struct CreateOrderShippingDetails {
     pub phone: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateOrderTaxDetails {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tax_exempt: Option<CreateOrderTaxDetailsTaxExempt>,
@@ -776,12 +777,12 @@ pub struct CreateOrderTaxDetails {
     pub tax_ids: Option<Vec<CreateOrderTaxDetailsTaxIds>>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateOrderAutomaticTax {
     pub enabled: bool,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateOrderBillingDetails {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub address: Option<UpdateOrderBillingDetailsAddress>,
@@ -796,7 +797,7 @@ pub struct UpdateOrderBillingDetails {
     pub phone: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateOrderDiscounts {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub coupon: Option<String>,
@@ -808,7 +809,7 @@ pub struct UpdateOrderDiscounts {
     pub promotion_code: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateOrderLineItems {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub description: Option<String>,
@@ -835,12 +836,12 @@ pub struct UpdateOrderLineItems {
     pub tax_rates: Option<Vec<String>>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateOrderPayment {
     pub settings: UpdateOrderPaymentSettings,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateOrderShippingCost {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub shipping_rate: Option<String>,
@@ -849,7 +850,7 @@ pub struct UpdateOrderShippingCost {
     pub shipping_rate_data: Option<UpdateOrderShippingCostShippingRateData>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateOrderShippingDetails {
     pub address: UpdateOrderShippingDetailsAddress,
 
@@ -859,7 +860,7 @@ pub struct UpdateOrderShippingDetails {
     pub phone: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateOrderTaxDetails {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tax_exempt: Option<UpdateOrderTaxDetailsTaxExempt>,
@@ -868,7 +869,7 @@ pub struct UpdateOrderTaxDetails {
     pub tax_ids: Option<Vec<UpdateOrderTaxDetailsTaxIds>>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateOrderBillingDetailsAddress {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub city: Option<String>,
@@ -889,7 +890,7 @@ pub struct CreateOrderBillingDetailsAddress {
     pub state: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateOrderLineItemsDiscounts {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub coupon: Option<String>,
@@ -898,7 +899,7 @@ pub struct CreateOrderLineItemsDiscounts {
     pub discount: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateOrderLineItemsPriceData {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub currency: Option<Currency>,
@@ -916,7 +917,7 @@ pub struct CreateOrderLineItemsPriceData {
     pub unit_amount_decimal: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateOrderPaymentSettings {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub application_fee_amount: Option<i64>,
@@ -940,7 +941,7 @@ pub struct CreateOrderPaymentSettings {
     pub transfer_data: Option<CreateOrderPaymentSettingsTransferData>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateOrderShippingCostShippingRateData {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub delivery_estimate: Option<CreateOrderShippingCostShippingRateDataDeliveryEstimate>,
@@ -964,7 +965,7 @@ pub struct CreateOrderShippingCostShippingRateData {
     pub type_: Option<CreateOrderShippingCostShippingRateDataType>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateOrderShippingDetailsAddress {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub city: Option<String>,
@@ -985,7 +986,7 @@ pub struct CreateOrderShippingDetailsAddress {
     pub state: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateOrderTaxDetailsTaxIds {
     #[serde(rename = "type")]
     pub type_: CreateOrderTaxDetailsTaxIdsType,
@@ -993,7 +994,7 @@ pub struct CreateOrderTaxDetailsTaxIds {
     pub value: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateOrderBillingDetailsAddress {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub city: Option<String>,
@@ -1014,7 +1015,7 @@ pub struct UpdateOrderBillingDetailsAddress {
     pub state: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateOrderLineItemsDiscounts {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub coupon: Option<String>,
@@ -1023,7 +1024,7 @@ pub struct UpdateOrderLineItemsDiscounts {
     pub discount: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateOrderLineItemsPriceData {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub currency: Option<Currency>,
@@ -1041,7 +1042,7 @@ pub struct UpdateOrderLineItemsPriceData {
     pub unit_amount_decimal: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateOrderPaymentSettings {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub application_fee_amount: Option<i64>,
@@ -1065,7 +1066,7 @@ pub struct UpdateOrderPaymentSettings {
     pub transfer_data: Option<UpdateOrderPaymentSettingsTransferData>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateOrderShippingCostShippingRateData {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub delivery_estimate: Option<UpdateOrderShippingCostShippingRateDataDeliveryEstimate>,
@@ -1089,7 +1090,7 @@ pub struct UpdateOrderShippingCostShippingRateData {
     pub type_: Option<UpdateOrderShippingCostShippingRateDataType>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateOrderShippingDetailsAddress {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub city: Option<String>,
@@ -1110,7 +1111,7 @@ pub struct UpdateOrderShippingDetailsAddress {
     pub state: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateOrderTaxDetailsTaxIds {
     #[serde(rename = "type")]
     pub type_: UpdateOrderTaxDetailsTaxIdsType,
@@ -1118,7 +1119,7 @@ pub struct UpdateOrderTaxDetailsTaxIds {
     pub value: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateOrderPaymentSettingsPaymentMethodOptions {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub acss_debit: Option<CreateOrderPaymentSettingsPaymentMethodOptionsAcssDebit>,
@@ -1163,7 +1164,7 @@ pub struct CreateOrderPaymentSettingsPaymentMethodOptions {
     pub wechat_pay: Option<CreateOrderPaymentSettingsPaymentMethodOptionsWechatPay>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateOrderPaymentSettingsTransferData {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub amount: Option<i64>,
@@ -1171,7 +1172,7 @@ pub struct CreateOrderPaymentSettingsTransferData {
     pub destination: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateOrderShippingCostShippingRateDataDeliveryEstimate {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub maximum: Option<CreateOrderShippingCostShippingRateDataDeliveryEstimateMaximum>,
@@ -1180,14 +1181,14 @@ pub struct CreateOrderShippingCostShippingRateDataDeliveryEstimate {
     pub minimum: Option<CreateOrderShippingCostShippingRateDataDeliveryEstimateMinimum>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateOrderShippingCostShippingRateDataFixedAmount {
     pub amount: i64,
 
     pub currency: Currency,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateOrderPaymentSettingsPaymentMethodOptions {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub acss_debit: Option<UpdateOrderPaymentSettingsPaymentMethodOptionsAcssDebit>,
@@ -1232,7 +1233,7 @@ pub struct UpdateOrderPaymentSettingsPaymentMethodOptions {
     pub wechat_pay: Option<UpdateOrderPaymentSettingsPaymentMethodOptionsWechatPay>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateOrderPaymentSettingsTransferData {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub amount: Option<i64>,
@@ -1240,7 +1241,7 @@ pub struct UpdateOrderPaymentSettingsTransferData {
     pub destination: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateOrderShippingCostShippingRateDataDeliveryEstimate {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub maximum: Option<UpdateOrderShippingCostShippingRateDataDeliveryEstimateMaximum>,
@@ -1249,14 +1250,14 @@ pub struct UpdateOrderShippingCostShippingRateDataDeliveryEstimate {
     pub minimum: Option<UpdateOrderShippingCostShippingRateDataDeliveryEstimateMinimum>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateOrderShippingCostShippingRateDataFixedAmount {
     pub amount: i64,
 
     pub currency: Currency,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateOrderPaymentSettingsPaymentMethodOptionsAcssDebit {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub mandate_options:
@@ -1271,7 +1272,7 @@ pub struct CreateOrderPaymentSettingsPaymentMethodOptionsAcssDebit {
         Option<CreateOrderPaymentSettingsPaymentMethodOptionsAcssDebitVerificationMethod>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateOrderPaymentSettingsPaymentMethodOptionsAfterpayClearpay {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub capture_method:
@@ -1285,14 +1286,14 @@ pub struct CreateOrderPaymentSettingsPaymentMethodOptionsAfterpayClearpay {
         Option<CreateOrderPaymentSettingsPaymentMethodOptionsAfterpayClearpaySetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateOrderPaymentSettingsPaymentMethodOptionsAlipay {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub setup_future_usage:
         Option<CreateOrderPaymentSettingsPaymentMethodOptionsAlipaySetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateOrderPaymentSettingsPaymentMethodOptionsBancontact {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub preferred_language:
@@ -1303,7 +1304,7 @@ pub struct CreateOrderPaymentSettingsPaymentMethodOptionsBancontact {
         Option<CreateOrderPaymentSettingsPaymentMethodOptionsBancontactSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateOrderPaymentSettingsPaymentMethodOptionsCard {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub capture_method: Option<CreateOrderPaymentSettingsPaymentMethodOptionsCardCaptureMethod>,
@@ -1313,7 +1314,7 @@ pub struct CreateOrderPaymentSettingsPaymentMethodOptionsCard {
         Option<CreateOrderPaymentSettingsPaymentMethodOptionsCardSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateOrderPaymentSettingsPaymentMethodOptionsCustomerBalance {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub bank_transfer:
@@ -1328,14 +1329,14 @@ pub struct CreateOrderPaymentSettingsPaymentMethodOptionsCustomerBalance {
         Option<CreateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateOrderPaymentSettingsPaymentMethodOptionsIdeal {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub setup_future_usage:
         Option<CreateOrderPaymentSettingsPaymentMethodOptionsIdealSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateOrderPaymentSettingsPaymentMethodOptionsKlarna {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub capture_method: Option<CreateOrderPaymentSettingsPaymentMethodOptionsKlarnaCaptureMethod>,
@@ -1349,7 +1350,7 @@ pub struct CreateOrderPaymentSettingsPaymentMethodOptionsKlarna {
         Option<CreateOrderPaymentSettingsPaymentMethodOptionsKlarnaSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateOrderPaymentSettingsPaymentMethodOptionsLink {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub capture_method: Option<CreateOrderPaymentSettingsPaymentMethodOptionsLinkCaptureMethod>,
@@ -1362,7 +1363,7 @@ pub struct CreateOrderPaymentSettingsPaymentMethodOptionsLink {
         Option<CreateOrderPaymentSettingsPaymentMethodOptionsLinkSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateOrderPaymentSettingsPaymentMethodOptionsOxxo {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub expires_after_days: Option<u32>,
@@ -1372,7 +1373,7 @@ pub struct CreateOrderPaymentSettingsPaymentMethodOptionsOxxo {
         Option<CreateOrderPaymentSettingsPaymentMethodOptionsOxxoSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateOrderPaymentSettingsPaymentMethodOptionsP24 {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub setup_future_usage:
@@ -1382,7 +1383,7 @@ pub struct CreateOrderPaymentSettingsPaymentMethodOptionsP24 {
     pub tos_shown_and_accepted: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateOrderPaymentSettingsPaymentMethodOptionsSepaDebit {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub mandate_options:
@@ -1393,7 +1394,7 @@ pub struct CreateOrderPaymentSettingsPaymentMethodOptionsSepaDebit {
         Option<CreateOrderPaymentSettingsPaymentMethodOptionsSepaDebitSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateOrderPaymentSettingsPaymentMethodOptionsSofort {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub preferred_language:
@@ -1404,7 +1405,7 @@ pub struct CreateOrderPaymentSettingsPaymentMethodOptionsSofort {
         Option<CreateOrderPaymentSettingsPaymentMethodOptionsSofortSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateOrderPaymentSettingsPaymentMethodOptionsWechatPay {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub app_id: Option<String>,
@@ -1416,21 +1417,21 @@ pub struct CreateOrderPaymentSettingsPaymentMethodOptionsWechatPay {
         Option<CreateOrderPaymentSettingsPaymentMethodOptionsWechatPaySetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateOrderShippingCostShippingRateDataDeliveryEstimateMaximum {
     pub unit: CreateOrderShippingCostShippingRateDataDeliveryEstimateMaximumUnit,
 
     pub value: i64,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateOrderShippingCostShippingRateDataDeliveryEstimateMinimum {
     pub unit: CreateOrderShippingCostShippingRateDataDeliveryEstimateMinimumUnit,
 
     pub value: i64,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateOrderPaymentSettingsPaymentMethodOptionsAcssDebit {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub mandate_options:
@@ -1445,7 +1446,7 @@ pub struct UpdateOrderPaymentSettingsPaymentMethodOptionsAcssDebit {
         Option<UpdateOrderPaymentSettingsPaymentMethodOptionsAcssDebitVerificationMethod>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateOrderPaymentSettingsPaymentMethodOptionsAfterpayClearpay {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub capture_method:
@@ -1459,14 +1460,14 @@ pub struct UpdateOrderPaymentSettingsPaymentMethodOptionsAfterpayClearpay {
         Option<UpdateOrderPaymentSettingsPaymentMethodOptionsAfterpayClearpaySetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateOrderPaymentSettingsPaymentMethodOptionsAlipay {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub setup_future_usage:
         Option<UpdateOrderPaymentSettingsPaymentMethodOptionsAlipaySetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateOrderPaymentSettingsPaymentMethodOptionsBancontact {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub preferred_language:
@@ -1477,7 +1478,7 @@ pub struct UpdateOrderPaymentSettingsPaymentMethodOptionsBancontact {
         Option<UpdateOrderPaymentSettingsPaymentMethodOptionsBancontactSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateOrderPaymentSettingsPaymentMethodOptionsCard {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub capture_method: Option<UpdateOrderPaymentSettingsPaymentMethodOptionsCardCaptureMethod>,
@@ -1487,7 +1488,7 @@ pub struct UpdateOrderPaymentSettingsPaymentMethodOptionsCard {
         Option<UpdateOrderPaymentSettingsPaymentMethodOptionsCardSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateOrderPaymentSettingsPaymentMethodOptionsCustomerBalance {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub bank_transfer:
@@ -1502,14 +1503,14 @@ pub struct UpdateOrderPaymentSettingsPaymentMethodOptionsCustomerBalance {
         Option<UpdateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateOrderPaymentSettingsPaymentMethodOptionsIdeal {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub setup_future_usage:
         Option<UpdateOrderPaymentSettingsPaymentMethodOptionsIdealSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateOrderPaymentSettingsPaymentMethodOptionsKlarna {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub capture_method: Option<UpdateOrderPaymentSettingsPaymentMethodOptionsKlarnaCaptureMethod>,
@@ -1523,7 +1524,7 @@ pub struct UpdateOrderPaymentSettingsPaymentMethodOptionsKlarna {
         Option<UpdateOrderPaymentSettingsPaymentMethodOptionsKlarnaSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateOrderPaymentSettingsPaymentMethodOptionsLink {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub capture_method: Option<UpdateOrderPaymentSettingsPaymentMethodOptionsLinkCaptureMethod>,
@@ -1536,7 +1537,7 @@ pub struct UpdateOrderPaymentSettingsPaymentMethodOptionsLink {
         Option<UpdateOrderPaymentSettingsPaymentMethodOptionsLinkSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateOrderPaymentSettingsPaymentMethodOptionsOxxo {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub expires_after_days: Option<u32>,
@@ -1546,7 +1547,7 @@ pub struct UpdateOrderPaymentSettingsPaymentMethodOptionsOxxo {
         Option<UpdateOrderPaymentSettingsPaymentMethodOptionsOxxoSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateOrderPaymentSettingsPaymentMethodOptionsP24 {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub setup_future_usage:
@@ -1556,7 +1557,7 @@ pub struct UpdateOrderPaymentSettingsPaymentMethodOptionsP24 {
     pub tos_shown_and_accepted: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateOrderPaymentSettingsPaymentMethodOptionsSepaDebit {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub mandate_options:
@@ -1567,7 +1568,7 @@ pub struct UpdateOrderPaymentSettingsPaymentMethodOptionsSepaDebit {
         Option<UpdateOrderPaymentSettingsPaymentMethodOptionsSepaDebitSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateOrderPaymentSettingsPaymentMethodOptionsSofort {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub preferred_language:
@@ -1578,7 +1579,7 @@ pub struct UpdateOrderPaymentSettingsPaymentMethodOptionsSofort {
         Option<UpdateOrderPaymentSettingsPaymentMethodOptionsSofortSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateOrderPaymentSettingsPaymentMethodOptionsWechatPay {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub app_id: Option<String>,
@@ -1590,21 +1591,21 @@ pub struct UpdateOrderPaymentSettingsPaymentMethodOptionsWechatPay {
         Option<UpdateOrderPaymentSettingsPaymentMethodOptionsWechatPaySetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateOrderShippingCostShippingRateDataDeliveryEstimateMaximum {
     pub unit: UpdateOrderShippingCostShippingRateDataDeliveryEstimateMaximumUnit,
 
     pub value: i64,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateOrderShippingCostShippingRateDataDeliveryEstimateMinimum {
     pub unit: UpdateOrderShippingCostShippingRateDataDeliveryEstimateMinimumUnit,
 
     pub value: i64,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateOrderPaymentSettingsPaymentMethodOptionsAcssDebitMandateOptions {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_mandate_url: Option<String>,
@@ -1623,8 +1624,11 @@ pub struct CreateOrderPaymentSettingsPaymentMethodOptionsAcssDebitMandateOptions
     >,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransfer {
+
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub eu_bank_transfer: Option<CreateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferEuBankTransfer>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested_address_types: Option<Vec<CreateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes>>,
@@ -1633,10 +1637,10 @@ pub struct CreateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTran
     pub type_: CreateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferType,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateOrderPaymentSettingsPaymentMethodOptionsSepaDebitMandateOptions {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateOrderPaymentSettingsPaymentMethodOptionsAcssDebitMandateOptions {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub custom_mandate_url: Option<String>,
@@ -1655,8 +1659,11 @@ pub struct UpdateOrderPaymentSettingsPaymentMethodOptionsAcssDebitMandateOptions
     >,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransfer {
+
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub eu_bank_transfer: Option<UpdateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferEuBankTransfer>,
 
     #[serde(skip_serializing_if = "Option::is_none")]
     pub requested_address_types: Option<Vec<UpdateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes>>,
@@ -1665,11 +1672,21 @@ pub struct UpdateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTran
     pub type_: UpdateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferType,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateOrderPaymentSettingsPaymentMethodOptionsSepaDebitMandateOptions {}
 
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
+pub struct CreateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferEuBankTransfer {
+    pub country: String,
+}
+
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
+pub struct UpdateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferEuBankTransfer {
+    pub country: String,
+}
+
 /// An enum representing the possible values of an `CreateOrderLineItemsPriceData`'s `tax_behavior` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateOrderLineItemsPriceDataTaxBehavior {
     Exclusive,
@@ -1705,7 +1722,7 @@ impl std::default::Default for CreateOrderLineItemsPriceDataTaxBehavior {
 }
 
 /// An enum representing the possible values of an `CreateOrderPaymentSettingsPaymentMethodOptionsAcssDebitMandateOptions`'s `payment_schedule` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateOrderPaymentSettingsPaymentMethodOptionsAcssDebitMandateOptionsPaymentSchedule {
     Combined,
@@ -1747,7 +1764,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreateOrderPaymentSettingsPaymentMethodOptionsAcssDebitMandateOptions`'s `transaction_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateOrderPaymentSettingsPaymentMethodOptionsAcssDebitMandateOptionsTransactionType {
     Business,
@@ -1787,7 +1804,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreateOrderPaymentSettingsPaymentMethodOptionsAcssDebit`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateOrderPaymentSettingsPaymentMethodOptionsAcssDebitSetupFutureUsage {
     None,
@@ -1829,7 +1846,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreateOrderPaymentSettingsPaymentMethodOptionsAcssDebit`'s `verification_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateOrderPaymentSettingsPaymentMethodOptionsAcssDebitVerificationMethod {
     Automatic,
@@ -1869,7 +1886,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreateOrderPaymentSettingsPaymentMethodOptionsAfterpayClearpay`'s `capture_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateOrderPaymentSettingsPaymentMethodOptionsAfterpayClearpayCaptureMethod {
     Automatic,
@@ -1907,7 +1924,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreateOrderPaymentSettingsPaymentMethodOptionsAfterpayClearpay`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateOrderPaymentSettingsPaymentMethodOptionsAfterpayClearpaySetupFutureUsage {
     None,
@@ -1943,7 +1960,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreateOrderPaymentSettingsPaymentMethodOptionsAlipay`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateOrderPaymentSettingsPaymentMethodOptionsAlipaySetupFutureUsage {
     None,
@@ -1981,7 +1998,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreateOrderPaymentSettingsPaymentMethodOptionsBancontact`'s `preferred_language` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateOrderPaymentSettingsPaymentMethodOptionsBancontactPreferredLanguage {
     De,
@@ -2023,7 +2040,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreateOrderPaymentSettingsPaymentMethodOptionsBancontact`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateOrderPaymentSettingsPaymentMethodOptionsBancontactSetupFutureUsage {
     None,
@@ -2061,7 +2078,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreateOrderPaymentSettingsPaymentMethodOptionsCard`'s `capture_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateOrderPaymentSettingsPaymentMethodOptionsCardCaptureMethod {
     Automatic,
@@ -2097,7 +2114,7 @@ impl std::default::Default for CreateOrderPaymentSettingsPaymentMethodOptionsCar
 }
 
 /// An enum representing the possible values of an `CreateOrderPaymentSettingsPaymentMethodOptionsCard`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateOrderPaymentSettingsPaymentMethodOptionsCardSetupFutureUsage {
     None,
@@ -2137,10 +2154,14 @@ impl std::default::Default for CreateOrderPaymentSettingsPaymentMethodOptionsCar
 }
 
 /// An enum representing the possible values of an `CreateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransfer`'s `requested_address_types` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes
 {
+    Iban,
+    Sepa,
+    SortCode,
+    Spei,
     Zengin,
 }
 
@@ -2149,6 +2170,10 @@ impl
 {
     pub fn as_str(self) -> &'static str {
         match self {
+            CreateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes::Iban => "iban",
+            CreateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes::Sepa => "sepa",
+            CreateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes::SortCode => "sort_code",
+            CreateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes::Spei => "spei",
             CreateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes::Zengin => "zengin",
         }
     }
@@ -2167,21 +2192,27 @@ impl std::fmt::Display for CreateOrderPaymentSettingsPaymentMethodOptionsCustome
 }
 impl std::default::Default for CreateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes {
     fn default() -> Self {
-        Self::Zengin
+        Self::Iban
     }
 }
 
 /// An enum representing the possible values of an `CreateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransfer`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferType {
+    EuBankTransfer,
+    GbBankTransfer,
     JpBankTransfer,
+    MxBankTransfer,
 }
 
 impl CreateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferType {
     pub fn as_str(self) -> &'static str {
         match self {
+            CreateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferType::EuBankTransfer => "eu_bank_transfer",
+            CreateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferType::GbBankTransfer => "gb_bank_transfer",
             CreateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferType::JpBankTransfer => "jp_bank_transfer",
+            CreateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferType::MxBankTransfer => "mx_bank_transfer",
         }
     }
 }
@@ -2203,12 +2234,12 @@ impl std::default::Default
     for CreateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferType
 {
     fn default() -> Self {
-        Self::JpBankTransfer
+        Self::EuBankTransfer
     }
 }
 
 /// An enum representing the possible values of an `CreateOrderPaymentSettingsPaymentMethodOptionsCustomerBalance`'s `funding_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceFundingType {
     BankTransfer,
@@ -2244,7 +2275,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreateOrderPaymentSettingsPaymentMethodOptionsCustomerBalance`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceSetupFutureUsage {
     None,
@@ -2282,7 +2313,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreateOrderPaymentSettingsPaymentMethodOptionsIdeal`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateOrderPaymentSettingsPaymentMethodOptionsIdealSetupFutureUsage {
     None,
@@ -2318,7 +2349,7 @@ impl std::default::Default for CreateOrderPaymentSettingsPaymentMethodOptionsIde
 }
 
 /// An enum representing the possible values of an `CreateOrderPaymentSettingsPaymentMethodOptionsKlarna`'s `capture_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateOrderPaymentSettingsPaymentMethodOptionsKlarnaCaptureMethod {
     Manual,
@@ -2350,7 +2381,7 @@ impl std::default::Default for CreateOrderPaymentSettingsPaymentMethodOptionsKla
 }
 
 /// An enum representing the possible values of an `CreateOrderPaymentSettingsPaymentMethodOptionsKlarna`'s `preferred_locale` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateOrderPaymentSettingsPaymentMethodOptionsKlarnaPreferredLocale {
     #[serde(rename = "da-DK")]
@@ -2470,7 +2501,7 @@ impl std::default::Default for CreateOrderPaymentSettingsPaymentMethodOptionsKla
 }
 
 /// An enum representing the possible values of an `CreateOrderPaymentSettingsPaymentMethodOptionsKlarna`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateOrderPaymentSettingsPaymentMethodOptionsKlarnaSetupFutureUsage {
     None,
@@ -2504,7 +2535,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreateOrderPaymentSettingsPaymentMethodOptionsLink`'s `capture_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateOrderPaymentSettingsPaymentMethodOptionsLinkCaptureMethod {
     Manual,
@@ -2536,7 +2567,7 @@ impl std::default::Default for CreateOrderPaymentSettingsPaymentMethodOptionsLin
 }
 
 /// An enum representing the possible values of an `CreateOrderPaymentSettingsPaymentMethodOptionsLink`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateOrderPaymentSettingsPaymentMethodOptionsLinkSetupFutureUsage {
     None,
@@ -2572,7 +2603,7 @@ impl std::default::Default for CreateOrderPaymentSettingsPaymentMethodOptionsLin
 }
 
 /// An enum representing the possible values of an `CreateOrderPaymentSettingsPaymentMethodOptionsOxxo`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateOrderPaymentSettingsPaymentMethodOptionsOxxoSetupFutureUsage {
     None,
@@ -2604,7 +2635,7 @@ impl std::default::Default for CreateOrderPaymentSettingsPaymentMethodOptionsOxx
 }
 
 /// An enum representing the possible values of an `CreateOrderPaymentSettingsPaymentMethodOptionsP24`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateOrderPaymentSettingsPaymentMethodOptionsP24SetupFutureUsage {
     None,
@@ -2636,7 +2667,7 @@ impl std::default::Default for CreateOrderPaymentSettingsPaymentMethodOptionsP24
 }
 
 /// An enum representing the possible values of an `CreateOrderPaymentSettingsPaymentMethodOptionsSepaDebit`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateOrderPaymentSettingsPaymentMethodOptionsSepaDebitSetupFutureUsage {
     None,
@@ -2678,7 +2709,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreateOrderPaymentSettingsPaymentMethodOptionsSofort`'s `preferred_language` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateOrderPaymentSettingsPaymentMethodOptionsSofortPreferredLanguage {
     De,
@@ -2724,7 +2755,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreateOrderPaymentSettingsPaymentMethodOptionsSofort`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateOrderPaymentSettingsPaymentMethodOptionsSofortSetupFutureUsage {
     None,
@@ -2762,7 +2793,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreateOrderPaymentSettingsPaymentMethodOptionsWechatPay`'s `client` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateOrderPaymentSettingsPaymentMethodOptionsWechatPayClient {
     Android,
@@ -2798,7 +2829,7 @@ impl std::default::Default for CreateOrderPaymentSettingsPaymentMethodOptionsWec
 }
 
 /// An enum representing the possible values of an `CreateOrderPaymentSettingsPaymentMethodOptionsWechatPay`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateOrderPaymentSettingsPaymentMethodOptionsWechatPaySetupFutureUsage {
     None,
@@ -2832,7 +2863,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreateOrderPaymentSettings`'s `payment_method_types` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateOrderPaymentSettingsPaymentMethodTypes {
     AcssDebit,
@@ -2904,7 +2935,7 @@ impl std::default::Default for CreateOrderPaymentSettingsPaymentMethodTypes {
 }
 
 /// An enum representing the possible values of an `CreateOrderShippingCostShippingRateDataDeliveryEstimateMaximum`'s `unit` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateOrderShippingCostShippingRateDataDeliveryEstimateMaximumUnit {
     BusinessDay,
@@ -2946,7 +2977,7 @@ impl std::default::Default for CreateOrderShippingCostShippingRateDataDeliveryEs
 }
 
 /// An enum representing the possible values of an `CreateOrderShippingCostShippingRateDataDeliveryEstimateMinimum`'s `unit` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateOrderShippingCostShippingRateDataDeliveryEstimateMinimumUnit {
     BusinessDay,
@@ -2988,7 +3019,7 @@ impl std::default::Default for CreateOrderShippingCostShippingRateDataDeliveryEs
 }
 
 /// An enum representing the possible values of an `CreateOrderShippingCostShippingRateData`'s `tax_behavior` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateOrderShippingCostShippingRateDataTaxBehavior {
     Exclusive,
@@ -3024,7 +3055,7 @@ impl std::default::Default for CreateOrderShippingCostShippingRateDataTaxBehavio
 }
 
 /// An enum representing the possible values of an `CreateOrderShippingCostShippingRateData`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateOrderShippingCostShippingRateDataType {
     FixedAmount,
@@ -3056,7 +3087,7 @@ impl std::default::Default for CreateOrderShippingCostShippingRateDataType {
 }
 
 /// An enum representing the possible values of an `CreateOrderTaxDetails`'s `tax_exempt` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateOrderTaxDetailsTaxExempt {
     Exempt,
@@ -3092,7 +3123,7 @@ impl std::default::Default for CreateOrderTaxDetailsTaxExempt {
 }
 
 /// An enum representing the possible values of an `CreateOrderTaxDetailsTaxIds`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateOrderTaxDetailsTaxIdsType {
     AeTrn,
@@ -3214,7 +3245,7 @@ impl std::default::Default for CreateOrderTaxDetailsTaxIdsType {
 }
 
 /// An enum representing the possible values of an `Order`'s `status` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum OrderStatus {
     Canceled,
@@ -3254,7 +3285,7 @@ impl std::default::Default for OrderStatus {
 }
 
 /// An enum representing the possible values of an `OrdersPaymentMethodOptionsAfterpayClearpay`'s `capture_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum OrdersPaymentMethodOptionsAfterpayClearpayCaptureMethod {
     Automatic,
@@ -3288,7 +3319,7 @@ impl std::default::Default for OrdersPaymentMethodOptionsAfterpayClearpayCapture
 }
 
 /// An enum representing the possible values of an `OrdersPaymentMethodOptionsAfterpayClearpay`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum OrdersPaymentMethodOptionsAfterpayClearpaySetupFutureUsage {
     None,
@@ -3320,7 +3351,7 @@ impl std::default::Default for OrdersPaymentMethodOptionsAfterpayClearpaySetupFu
 }
 
 /// An enum representing the possible values of an `OrdersV2ResourceAutomaticTax`'s `status` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum OrdersV2ResourceAutomaticTaxStatus {
     Complete,
@@ -3358,7 +3389,7 @@ impl std::default::Default for OrdersV2ResourceAutomaticTaxStatus {
 }
 
 /// An enum representing the possible values of an `OrdersV2ResourceCardPaymentMethodOptions`'s `capture_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum OrdersV2ResourceCardPaymentMethodOptionsCaptureMethod {
     Automatic,
@@ -3392,7 +3423,7 @@ impl std::default::Default for OrdersV2ResourceCardPaymentMethodOptionsCaptureMe
 }
 
 /// An enum representing the possible values of an `OrdersV2ResourceCardPaymentMethodOptions`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum OrdersV2ResourceCardPaymentMethodOptionsSetupFutureUsage {
     None,
@@ -3428,7 +3459,7 @@ impl std::default::Default for OrdersV2ResourceCardPaymentMethodOptionsSetupFutu
 }
 
 /// An enum representing the possible values of an `OrdersV2ResourcePaymentSettings`'s `payment_method_types` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum OrdersV2ResourcePaymentSettingsPaymentMethodTypes {
     AcssDebit,
@@ -3504,7 +3535,7 @@ impl std::default::Default for OrdersV2ResourcePaymentSettingsPaymentMethodTypes
 }
 
 /// An enum representing the possible values of an `OrdersV2ResourcePayment`'s `status` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum OrdersV2ResourcePaymentStatus {
     Canceled,
@@ -3550,7 +3581,7 @@ impl std::default::Default for OrdersV2ResourcePaymentStatus {
 }
 
 /// An enum representing the possible values of an `OrdersV2ResourceTaxDetailsResourceTaxId`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum OrdersV2ResourceTaxDetailsResourceTaxIdType {
     AeTrn,
@@ -3674,7 +3705,7 @@ impl std::default::Default for OrdersV2ResourceTaxDetailsResourceTaxIdType {
 }
 
 /// An enum representing the possible values of an `OrdersV2ResourceTaxDetails`'s `tax_exempt` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum OrdersV2ResourceTaxDetailsTaxExempt {
     Exempt,
@@ -3710,7 +3741,7 @@ impl std::default::Default for OrdersV2ResourceTaxDetailsTaxExempt {
 }
 
 /// An enum representing the possible values of an `PaymentMethodOptionsPaypal`'s `capture_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PaymentMethodOptionsPaypalCaptureMethod {
     Manual,
@@ -3742,7 +3773,7 @@ impl std::default::Default for PaymentMethodOptionsPaypalCaptureMethod {
 }
 
 /// An enum representing the possible values of an `UpdateOrderLineItemsPriceData`'s `tax_behavior` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateOrderLineItemsPriceDataTaxBehavior {
     Exclusive,
@@ -3778,7 +3809,7 @@ impl std::default::Default for UpdateOrderLineItemsPriceDataTaxBehavior {
 }
 
 /// An enum representing the possible values of an `UpdateOrderPaymentSettingsPaymentMethodOptionsAcssDebitMandateOptions`'s `payment_schedule` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateOrderPaymentSettingsPaymentMethodOptionsAcssDebitMandateOptionsPaymentSchedule {
     Combined,
@@ -3820,7 +3851,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `UpdateOrderPaymentSettingsPaymentMethodOptionsAcssDebitMandateOptions`'s `transaction_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateOrderPaymentSettingsPaymentMethodOptionsAcssDebitMandateOptionsTransactionType {
     Business,
@@ -3860,7 +3891,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `UpdateOrderPaymentSettingsPaymentMethodOptionsAcssDebit`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateOrderPaymentSettingsPaymentMethodOptionsAcssDebitSetupFutureUsage {
     None,
@@ -3902,7 +3933,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `UpdateOrderPaymentSettingsPaymentMethodOptionsAcssDebit`'s `verification_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateOrderPaymentSettingsPaymentMethodOptionsAcssDebitVerificationMethod {
     Automatic,
@@ -3942,7 +3973,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `UpdateOrderPaymentSettingsPaymentMethodOptionsAfterpayClearpay`'s `capture_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateOrderPaymentSettingsPaymentMethodOptionsAfterpayClearpayCaptureMethod {
     Automatic,
@@ -3980,7 +4011,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `UpdateOrderPaymentSettingsPaymentMethodOptionsAfterpayClearpay`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateOrderPaymentSettingsPaymentMethodOptionsAfterpayClearpaySetupFutureUsage {
     None,
@@ -4016,7 +4047,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `UpdateOrderPaymentSettingsPaymentMethodOptionsAlipay`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateOrderPaymentSettingsPaymentMethodOptionsAlipaySetupFutureUsage {
     None,
@@ -4054,7 +4085,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `UpdateOrderPaymentSettingsPaymentMethodOptionsBancontact`'s `preferred_language` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateOrderPaymentSettingsPaymentMethodOptionsBancontactPreferredLanguage {
     De,
@@ -4096,7 +4127,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `UpdateOrderPaymentSettingsPaymentMethodOptionsBancontact`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateOrderPaymentSettingsPaymentMethodOptionsBancontactSetupFutureUsage {
     None,
@@ -4134,7 +4165,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `UpdateOrderPaymentSettingsPaymentMethodOptionsCard`'s `capture_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateOrderPaymentSettingsPaymentMethodOptionsCardCaptureMethod {
     Automatic,
@@ -4170,7 +4201,7 @@ impl std::default::Default for UpdateOrderPaymentSettingsPaymentMethodOptionsCar
 }
 
 /// An enum representing the possible values of an `UpdateOrderPaymentSettingsPaymentMethodOptionsCard`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateOrderPaymentSettingsPaymentMethodOptionsCardSetupFutureUsage {
     None,
@@ -4210,10 +4241,14 @@ impl std::default::Default for UpdateOrderPaymentSettingsPaymentMethodOptionsCar
 }
 
 /// An enum representing the possible values of an `UpdateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransfer`'s `requested_address_types` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes
 {
+    Iban,
+    Sepa,
+    SortCode,
+    Spei,
     Zengin,
 }
 
@@ -4222,6 +4257,10 @@ impl
 {
     pub fn as_str(self) -> &'static str {
         match self {
+            UpdateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes::Iban => "iban",
+            UpdateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes::Sepa => "sepa",
+            UpdateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes::SortCode => "sort_code",
+            UpdateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes::Spei => "spei",
             UpdateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes::Zengin => "zengin",
         }
     }
@@ -4240,21 +4279,27 @@ impl std::fmt::Display for UpdateOrderPaymentSettingsPaymentMethodOptionsCustome
 }
 impl std::default::Default for UpdateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferRequestedAddressTypes {
     fn default() -> Self {
-        Self::Zengin
+        Self::Iban
     }
 }
 
 /// An enum representing the possible values of an `UpdateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransfer`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferType {
+    EuBankTransfer,
+    GbBankTransfer,
     JpBankTransfer,
+    MxBankTransfer,
 }
 
 impl UpdateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferType {
     pub fn as_str(self) -> &'static str {
         match self {
+            UpdateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferType::EuBankTransfer => "eu_bank_transfer",
+            UpdateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferType::GbBankTransfer => "gb_bank_transfer",
             UpdateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferType::JpBankTransfer => "jp_bank_transfer",
+            UpdateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferType::MxBankTransfer => "mx_bank_transfer",
         }
     }
 }
@@ -4276,12 +4321,12 @@ impl std::default::Default
     for UpdateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferType
 {
     fn default() -> Self {
-        Self::JpBankTransfer
+        Self::EuBankTransfer
     }
 }
 
 /// An enum representing the possible values of an `UpdateOrderPaymentSettingsPaymentMethodOptionsCustomerBalance`'s `funding_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceFundingType {
     BankTransfer,
@@ -4317,7 +4362,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `UpdateOrderPaymentSettingsPaymentMethodOptionsCustomerBalance`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateOrderPaymentSettingsPaymentMethodOptionsCustomerBalanceSetupFutureUsage {
     None,
@@ -4355,7 +4400,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `UpdateOrderPaymentSettingsPaymentMethodOptionsIdeal`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateOrderPaymentSettingsPaymentMethodOptionsIdealSetupFutureUsage {
     None,
@@ -4391,7 +4436,7 @@ impl std::default::Default for UpdateOrderPaymentSettingsPaymentMethodOptionsIde
 }
 
 /// An enum representing the possible values of an `UpdateOrderPaymentSettingsPaymentMethodOptionsKlarna`'s `capture_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateOrderPaymentSettingsPaymentMethodOptionsKlarnaCaptureMethod {
     Manual,
@@ -4423,7 +4468,7 @@ impl std::default::Default for UpdateOrderPaymentSettingsPaymentMethodOptionsKla
 }
 
 /// An enum representing the possible values of an `UpdateOrderPaymentSettingsPaymentMethodOptionsKlarna`'s `preferred_locale` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateOrderPaymentSettingsPaymentMethodOptionsKlarnaPreferredLocale {
     #[serde(rename = "da-DK")]
@@ -4543,7 +4588,7 @@ impl std::default::Default for UpdateOrderPaymentSettingsPaymentMethodOptionsKla
 }
 
 /// An enum representing the possible values of an `UpdateOrderPaymentSettingsPaymentMethodOptionsKlarna`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateOrderPaymentSettingsPaymentMethodOptionsKlarnaSetupFutureUsage {
     None,
@@ -4577,7 +4622,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `UpdateOrderPaymentSettingsPaymentMethodOptionsLink`'s `capture_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateOrderPaymentSettingsPaymentMethodOptionsLinkCaptureMethod {
     Manual,
@@ -4609,7 +4654,7 @@ impl std::default::Default for UpdateOrderPaymentSettingsPaymentMethodOptionsLin
 }
 
 /// An enum representing the possible values of an `UpdateOrderPaymentSettingsPaymentMethodOptionsLink`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateOrderPaymentSettingsPaymentMethodOptionsLinkSetupFutureUsage {
     None,
@@ -4645,7 +4690,7 @@ impl std::default::Default for UpdateOrderPaymentSettingsPaymentMethodOptionsLin
 }
 
 /// An enum representing the possible values of an `UpdateOrderPaymentSettingsPaymentMethodOptionsOxxo`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateOrderPaymentSettingsPaymentMethodOptionsOxxoSetupFutureUsage {
     None,
@@ -4677,7 +4722,7 @@ impl std::default::Default for UpdateOrderPaymentSettingsPaymentMethodOptionsOxx
 }
 
 /// An enum representing the possible values of an `UpdateOrderPaymentSettingsPaymentMethodOptionsP24`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateOrderPaymentSettingsPaymentMethodOptionsP24SetupFutureUsage {
     None,
@@ -4709,7 +4754,7 @@ impl std::default::Default for UpdateOrderPaymentSettingsPaymentMethodOptionsP24
 }
 
 /// An enum representing the possible values of an `UpdateOrderPaymentSettingsPaymentMethodOptionsSepaDebit`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateOrderPaymentSettingsPaymentMethodOptionsSepaDebitSetupFutureUsage {
     None,
@@ -4751,7 +4796,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `UpdateOrderPaymentSettingsPaymentMethodOptionsSofort`'s `preferred_language` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateOrderPaymentSettingsPaymentMethodOptionsSofortPreferredLanguage {
     De,
@@ -4797,7 +4842,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `UpdateOrderPaymentSettingsPaymentMethodOptionsSofort`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateOrderPaymentSettingsPaymentMethodOptionsSofortSetupFutureUsage {
     None,
@@ -4835,7 +4880,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `UpdateOrderPaymentSettingsPaymentMethodOptionsWechatPay`'s `client` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateOrderPaymentSettingsPaymentMethodOptionsWechatPayClient {
     Android,
@@ -4871,7 +4916,7 @@ impl std::default::Default for UpdateOrderPaymentSettingsPaymentMethodOptionsWec
 }
 
 /// An enum representing the possible values of an `UpdateOrderPaymentSettingsPaymentMethodOptionsWechatPay`'s `setup_future_usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateOrderPaymentSettingsPaymentMethodOptionsWechatPaySetupFutureUsage {
     None,
@@ -4905,7 +4950,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `UpdateOrderPaymentSettings`'s `payment_method_types` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateOrderPaymentSettingsPaymentMethodTypes {
     AcssDebit,
@@ -4977,7 +5022,7 @@ impl std::default::Default for UpdateOrderPaymentSettingsPaymentMethodTypes {
 }
 
 /// An enum representing the possible values of an `UpdateOrderShippingCostShippingRateDataDeliveryEstimateMaximum`'s `unit` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateOrderShippingCostShippingRateDataDeliveryEstimateMaximumUnit {
     BusinessDay,
@@ -5019,7 +5064,7 @@ impl std::default::Default for UpdateOrderShippingCostShippingRateDataDeliveryEs
 }
 
 /// An enum representing the possible values of an `UpdateOrderShippingCostShippingRateDataDeliveryEstimateMinimum`'s `unit` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateOrderShippingCostShippingRateDataDeliveryEstimateMinimumUnit {
     BusinessDay,
@@ -5061,7 +5106,7 @@ impl std::default::Default for UpdateOrderShippingCostShippingRateDataDeliveryEs
 }
 
 /// An enum representing the possible values of an `UpdateOrderShippingCostShippingRateData`'s `tax_behavior` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateOrderShippingCostShippingRateDataTaxBehavior {
     Exclusive,
@@ -5097,7 +5142,7 @@ impl std::default::Default for UpdateOrderShippingCostShippingRateDataTaxBehavio
 }
 
 /// An enum representing the possible values of an `UpdateOrderShippingCostShippingRateData`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateOrderShippingCostShippingRateDataType {
     FixedAmount,
@@ -5129,7 +5174,7 @@ impl std::default::Default for UpdateOrderShippingCostShippingRateDataType {
 }
 
 /// An enum representing the possible values of an `UpdateOrderTaxDetails`'s `tax_exempt` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateOrderTaxDetailsTaxExempt {
     Exempt,
@@ -5165,7 +5210,7 @@ impl std::default::Default for UpdateOrderTaxDetailsTaxExempt {
 }
 
 /// An enum representing the possible values of an `UpdateOrderTaxDetailsTaxIds`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateOrderTaxDetailsTaxIdsType {
     AeTrn,

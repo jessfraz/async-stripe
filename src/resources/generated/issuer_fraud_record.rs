@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::client::{Client, Response};
@@ -10,7 +11,7 @@ use crate::params::{Expand, Expandable, List, Object, Paginable, Timestamp};
 use crate::resources::Charge;
 
 /// The resource representing a Stripe "IssuerFraudRecord".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct IssuerFraudRecord {
     /// Unique identifier for the object.
     pub id: IssuerFraudRecordId,

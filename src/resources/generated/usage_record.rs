@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::ids::UsageRecordId;
@@ -10,7 +11,7 @@ use crate::params::{Object, Timestamp};
 /// The resource representing a Stripe "UsageRecord".
 ///
 /// For more details see <https://stripe.com/docs/api/usage_records/object>
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UsageRecord {
     /// Unique identifier for the object.
     pub id: UsageRecordId,

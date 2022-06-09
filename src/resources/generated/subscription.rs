@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::client::{Client, Response};
@@ -21,7 +22,7 @@ use crate::resources::{
 /// The resource representing a Stripe "Subscription".
 ///
 /// For more details see <https://stripe.com/docs/api/subscriptions/object>
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct Subscription {
     /// Unique identifier for the object.
     pub id: SubscriptionId,
@@ -39,6 +40,8 @@ pub struct Subscription {
     pub automatic_tax: SubscriptionAutomaticTax,
 
     /// Determines the date of the first full invoice, and, for plans with `month` or `year` intervals, the day of the month for subsequent invoices.
+    ///
+    /// The timestamp is in UTC format.
     pub billing_cycle_anchor: Timestamp,
 
     /// Define thresholds at which an invoice will be sent, and the subscription advanced to a new billing period.
@@ -381,6 +384,8 @@ pub struct InvoiceMandateOptionsCard {
 #[derive(Clone, Debug, Default, Deserialize, Serialize)]
 pub struct SubscriptionsResourcePendingUpdate {
     /// If the update is applied, determines the date of the first full invoice, and, for plans with `month` or `year` intervals, the day of the month for subsequent invoices.
+    ///
+    /// The timestamp is in UTC format.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub billing_cycle_anchor: Option<Timestamp>,
 
@@ -437,6 +442,7 @@ pub struct CreateSubscription<'a> {
     /// A future timestamp to anchor the subscription's [billing cycle](https://stripe.com/docs/subscriptions/billing-cycle).
     ///
     /// This is used to determine the date of the first full invoice, and, for plans with `month` or `year` intervals, the day of the month for subsequent invoices.
+    /// The timestamp is in UTC format.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub billing_cycle_anchor: Option<Timestamp>,
 
@@ -562,8 +568,6 @@ pub struct CreateSubscription<'a> {
 
     /// Determines how to handle [prorations](https://stripe.com/docs/subscriptions/billing-cycle#prorations) resulting from the `billing_cycle_anchor`.
     ///
-    /// Valid values are `create_prorations` or `none`.  Passing `create_prorations` will cause proration invoice items to be created when applicable.
-    /// Prorations can be disabled by passing `none`.
     /// If no value is passed, the default is `create_prorations`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub proration_behavior: Option<SubscriptionProrationBehavior>,
@@ -749,7 +753,7 @@ pub struct UpdateSubscription<'a> {
 
     /// Either `now` or `unchanged`.
     ///
-    /// Setting the value to `now` resets the subscription's billing cycle anchor to the current time.
+    /// Setting the value to `now` resets the subscription's billing cycle anchor to the current time (in UTC).
     /// For more information, see the billing cycle [documentation](https://stripe.com/docs/billing/subscriptions/billing-cycle).
     #[serde(skip_serializing_if = "Option::is_none")]
     pub billing_cycle_anchor: Option<SubscriptionBillingCycleAnchor>,
@@ -876,10 +880,6 @@ pub struct UpdateSubscription<'a> {
     pub promotion_code: Option<PromotionCodeId>,
 
     /// Determines how to handle [prorations](https://stripe.com/docs/subscriptions/billing-cycle#prorations) when the billing cycle changes (e.g., when switching plans, resetting `billing_cycle_anchor=now`, or starting a trial), or if an item's `quantity` changes.
-    ///
-    /// Valid values are `create_prorations`, `none`, or `always_invoice`.  Passing `create_prorations` will cause proration invoice items to be created when applicable.
-    /// These proration items will only be invoiced immediately under [certain conditions](https://stripe.com/docs/subscriptions/upgrading-downgrading#immediate-payment).
-    /// In order to always invoice immediately for prorations, pass `always_invoice`.  Prorations can be disabled by passing `none`.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub proration_behavior: Option<SubscriptionProrationBehavior>,
 
@@ -949,7 +949,7 @@ impl<'a> UpdateSubscription<'a> {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct AddInvoiceItems {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub price: Option<String>,
@@ -964,12 +964,12 @@ pub struct AddInvoiceItems {
     pub tax_rates: Option<Vec<String>>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSubscriptionAutomaticTax {
     pub enabled: bool,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSubscriptionItems {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub billing_thresholds: Option<CreateSubscriptionItemsBillingThresholds>,
@@ -990,7 +990,7 @@ pub struct CreateSubscriptionItems {
     pub tax_rates: Option<Vec<String>>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSubscriptionPaymentSettings {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub payment_method_options: Option<CreateSubscriptionPaymentSettingsPaymentMethodOptions>,
@@ -1003,7 +1003,7 @@ pub struct CreateSubscriptionPaymentSettings {
         Option<CreateSubscriptionPaymentSettingsSaveDefaultPaymentMethod>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSubscriptionPendingInvoiceItemInterval {
     pub interval: PlanInterval,
 
@@ -1011,7 +1011,7 @@ pub struct CreateSubscriptionPendingInvoiceItemInterval {
     pub interval_count: Option<u64>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSubscriptionTransferData {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub amount_percent: Option<f64>,
@@ -1019,12 +1019,12 @@ pub struct CreateSubscriptionTransferData {
     pub destination: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSubscriptionAutomaticTax {
     pub enabled: bool,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSubscriptionItems {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub billing_thresholds: Option<SubscriptionItemBillingThresholds>,
@@ -1054,7 +1054,7 @@ pub struct UpdateSubscriptionItems {
     pub tax_rates: Option<Vec<String>>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSubscriptionPauseCollection {
     pub behavior: UpdateSubscriptionPauseCollectionBehavior,
 
@@ -1062,7 +1062,7 @@ pub struct UpdateSubscriptionPauseCollection {
     pub resumes_at: Option<Timestamp>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSubscriptionPaymentSettings {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub payment_method_options: Option<UpdateSubscriptionPaymentSettingsPaymentMethodOptions>,
@@ -1075,7 +1075,7 @@ pub struct UpdateSubscriptionPaymentSettings {
         Option<UpdateSubscriptionPaymentSettingsSaveDefaultPaymentMethod>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSubscriptionPendingInvoiceItemInterval {
     pub interval: PlanInterval,
 
@@ -1083,7 +1083,7 @@ pub struct UpdateSubscriptionPendingInvoiceItemInterval {
     pub interval_count: Option<u64>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSubscriptionTransferData {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub amount_percent: Option<f64>,
@@ -1091,12 +1091,12 @@ pub struct UpdateSubscriptionTransferData {
     pub destination: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSubscriptionItemsBillingThresholds {
     pub usage_gte: i64,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSubscriptionPaymentSettingsPaymentMethodOptions {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub acss_debit: Option<CreateSubscriptionPaymentSettingsPaymentMethodOptionsAcssDebit>,
@@ -1118,7 +1118,7 @@ pub struct CreateSubscriptionPaymentSettingsPaymentMethodOptions {
     pub us_bank_account: Option<CreateSubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccount>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct InvoiceItemPriceData {
     pub currency: Currency,
 
@@ -1134,7 +1134,7 @@ pub struct InvoiceItemPriceData {
     pub unit_amount_decimal: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SubscriptionItemPriceData {
     pub currency: Currency,
 
@@ -1152,7 +1152,7 @@ pub struct SubscriptionItemPriceData {
     pub unit_amount_decimal: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSubscriptionPaymentSettingsPaymentMethodOptions {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub acss_debit: Option<UpdateSubscriptionPaymentSettingsPaymentMethodOptionsAcssDebit>,
@@ -1174,7 +1174,7 @@ pub struct UpdateSubscriptionPaymentSettingsPaymentMethodOptions {
     pub us_bank_account: Option<UpdateSubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccount>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSubscriptionPaymentSettingsPaymentMethodOptionsAcssDebit {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub mandate_options:
@@ -1185,14 +1185,14 @@ pub struct CreateSubscriptionPaymentSettingsPaymentMethodOptionsAcssDebit {
         Option<CreateSubscriptionPaymentSettingsPaymentMethodOptionsAcssDebitVerificationMethod>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSubscriptionPaymentSettingsPaymentMethodOptionsBancontact {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub preferred_language:
         Option<CreateSubscriptionPaymentSettingsPaymentMethodOptionsBancontactPreferredLanguage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSubscriptionPaymentSettingsPaymentMethodOptionsCard {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub mandate_options:
@@ -1203,7 +1203,7 @@ pub struct CreateSubscriptionPaymentSettingsPaymentMethodOptionsCard {
         Option<CreateSubscriptionPaymentSettingsPaymentMethodOptionsCardRequestThreeDSecure>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSubscriptionPaymentSettingsPaymentMethodOptionsCustomerBalance {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub bank_transfer:
@@ -1213,10 +1213,10 @@ pub struct CreateSubscriptionPaymentSettingsPaymentMethodOptionsCustomerBalance 
     pub funding_type: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSubscriptionPaymentSettingsPaymentMethodOptionsKonbini {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccount {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub financial_connections: Option<
@@ -1229,7 +1229,7 @@ pub struct CreateSubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccount {
     >,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SubscriptionItemPriceDataRecurring {
     pub interval: PlanInterval,
 
@@ -1237,7 +1237,7 @@ pub struct SubscriptionItemPriceDataRecurring {
     pub interval_count: Option<u64>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSubscriptionPaymentSettingsPaymentMethodOptionsAcssDebit {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub mandate_options:
@@ -1248,14 +1248,14 @@ pub struct UpdateSubscriptionPaymentSettingsPaymentMethodOptionsAcssDebit {
         Option<UpdateSubscriptionPaymentSettingsPaymentMethodOptionsAcssDebitVerificationMethod>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSubscriptionPaymentSettingsPaymentMethodOptionsBancontact {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub preferred_language:
         Option<UpdateSubscriptionPaymentSettingsPaymentMethodOptionsBancontactPreferredLanguage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSubscriptionPaymentSettingsPaymentMethodOptionsCard {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub mandate_options:
@@ -1266,7 +1266,7 @@ pub struct UpdateSubscriptionPaymentSettingsPaymentMethodOptionsCard {
         Option<UpdateSubscriptionPaymentSettingsPaymentMethodOptionsCardRequestThreeDSecure>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSubscriptionPaymentSettingsPaymentMethodOptionsCustomerBalance {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub bank_transfer:
@@ -1276,10 +1276,10 @@ pub struct UpdateSubscriptionPaymentSettingsPaymentMethodOptionsCustomerBalance 
     pub funding_type: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSubscriptionPaymentSettingsPaymentMethodOptionsKonbini {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccount {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub financial_connections: Option<
@@ -1292,7 +1292,7 @@ pub struct UpdateSubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccount {
     >,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSubscriptionPaymentSettingsPaymentMethodOptionsAcssDebitMandateOptions {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub transaction_type: Option<
@@ -1300,7 +1300,7 @@ pub struct CreateSubscriptionPaymentSettingsPaymentMethodOptionsAcssDebitMandate
     >,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSubscriptionPaymentSettingsPaymentMethodOptionsCardMandateOptions {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub amount: Option<i64>,
@@ -1313,21 +1313,25 @@ pub struct CreateSubscriptionPaymentSettingsPaymentMethodOptionsCardMandateOptio
     pub description: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSubscriptionPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransfer {
+
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub eu_bank_transfer: Option<CreateSubscriptionPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferEuBankTransfer>,
+
     #[serde(rename = "type")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub type_: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CreateSubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnections {
 
     #[serde(skip_serializing_if = "Option::is_none")]
     pub permissions: Option<Vec<CreateSubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnectionsPermissions>>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSubscriptionPaymentSettingsPaymentMethodOptionsAcssDebitMandateOptions {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub transaction_type: Option<
@@ -1335,7 +1339,7 @@ pub struct UpdateSubscriptionPaymentSettingsPaymentMethodOptionsAcssDebitMandate
     >,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSubscriptionPaymentSettingsPaymentMethodOptionsCardMandateOptions {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub amount: Option<i64>,
@@ -1348,22 +1352,38 @@ pub struct UpdateSubscriptionPaymentSettingsPaymentMethodOptionsCardMandateOptio
     pub description: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSubscriptionPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransfer {
+
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub eu_bank_transfer: Option<UpdateSubscriptionPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferEuBankTransfer>,
+
     #[serde(rename = "type")]
     #[serde(skip_serializing_if = "Option::is_none")]
     pub type_: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UpdateSubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnections {
 
     #[serde(skip_serializing_if = "Option::is_none")]
     pub permissions: Option<Vec<UpdateSubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnectionsPermissions>>,
 }
 
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
+pub struct CreateSubscriptionPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferEuBankTransfer
+{
+    pub country: String,
+}
+
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
+pub struct UpdateSubscriptionPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferEuBankTransfer
+{
+    pub country: String,
+}
+
 /// An enum representing the possible values of an `CreateSubscriptionPaymentSettingsPaymentMethodOptionsAcssDebitMandateOptions`'s `transaction_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateSubscriptionPaymentSettingsPaymentMethodOptionsAcssDebitMandateOptionsTransactionType
 {
@@ -1404,7 +1424,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreateSubscriptionPaymentSettingsPaymentMethodOptionsAcssDebit`'s `verification_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateSubscriptionPaymentSettingsPaymentMethodOptionsAcssDebitVerificationMethod {
     Automatic,
@@ -1446,7 +1466,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreateSubscriptionPaymentSettingsPaymentMethodOptionsBancontact`'s `preferred_language` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateSubscriptionPaymentSettingsPaymentMethodOptionsBancontactPreferredLanguage {
     De,
@@ -1490,7 +1510,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreateSubscriptionPaymentSettingsPaymentMethodOptionsCardMandateOptions`'s `amount_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateSubscriptionPaymentSettingsPaymentMethodOptionsCardMandateOptionsAmountType {
     Fixed,
@@ -1530,7 +1550,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreateSubscriptionPaymentSettingsPaymentMethodOptionsCard`'s `request_three_d_secure` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateSubscriptionPaymentSettingsPaymentMethodOptionsCardRequestThreeDSecure {
     Any,
@@ -1568,7 +1588,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreateSubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnections`'s `permissions` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateSubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnectionsPermissions
 {
@@ -1607,7 +1627,7 @@ impl std::default::Default for CreateSubscriptionPaymentSettingsPaymentMethodOpt
 }
 
 /// An enum representing the possible values of an `CreateSubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccount`'s `verification_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateSubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountVerificationMethod {
     Automatic,
@@ -1649,7 +1669,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `CreateSubscriptionPaymentSettings`'s `payment_method_types` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateSubscriptionPaymentSettingsPaymentMethodTypes {
     AchCreditTransfer,
@@ -1723,7 +1743,7 @@ impl std::default::Default for CreateSubscriptionPaymentSettingsPaymentMethodTyp
 }
 
 /// An enum representing the possible values of an `CreateSubscriptionPaymentSettings`'s `save_default_payment_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum CreateSubscriptionPaymentSettingsSaveDefaultPaymentMethod {
     Off,
@@ -1759,7 +1779,7 @@ impl std::default::Default for CreateSubscriptionPaymentSettingsSaveDefaultPayme
 }
 
 /// An enum representing the possible values of an `InvoiceItemPriceData`'s `tax_behavior` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum InvoiceItemPriceDataTaxBehavior {
     Exclusive,
@@ -1795,7 +1815,7 @@ impl std::default::Default for InvoiceItemPriceDataTaxBehavior {
 }
 
 /// An enum representing the possible values of an `InvoiceMandateOptionsCard`'s `amount_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum InvoiceMandateOptionsCardAmountType {
     Fixed,
@@ -1829,7 +1849,7 @@ impl std::default::Default for InvoiceMandateOptionsCardAmountType {
 }
 
 /// An enum representing the possible values of an `SubscriptionPendingInvoiceItemInterval`'s `interval` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum PlanInterval {
     Day,
@@ -1867,7 +1887,7 @@ impl std::default::Default for PlanInterval {
 }
 
 /// An enum representing the possible values of an `UpdateSubscription`'s `billing_cycle_anchor` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SubscriptionBillingCycleAnchor {
     Now,
@@ -1901,7 +1921,7 @@ impl std::default::Default for SubscriptionBillingCycleAnchor {
 }
 
 /// An enum representing the possible values of an `SubscriptionItemPriceData`'s `tax_behavior` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SubscriptionItemPriceDataTaxBehavior {
     Exclusive,
@@ -1937,7 +1957,7 @@ impl std::default::Default for SubscriptionItemPriceDataTaxBehavior {
 }
 
 /// An enum representing the possible values of an `CreateSubscription`'s `payment_behavior` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SubscriptionPaymentBehavior {
     AllowIncomplete,
@@ -1975,7 +1995,7 @@ impl std::default::Default for SubscriptionPaymentBehavior {
 }
 
 /// An enum representing the possible values of an `SubscriptionPaymentMethodOptionsCard`'s `request_three_d_secure` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SubscriptionPaymentMethodOptionsCardRequestThreeDSecure {
     Any,
@@ -2009,7 +2029,7 @@ impl std::default::Default for SubscriptionPaymentMethodOptionsCardRequestThreeD
 }
 
 /// An enum representing the possible values of an `CreateSubscription`'s `proration_behavior` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SubscriptionProrationBehavior {
     AlwaysInvoice,
@@ -2045,7 +2065,7 @@ impl std::default::Default for SubscriptionProrationBehavior {
 }
 
 /// An enum representing the possible values of an `Subscription`'s `status` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SubscriptionStatus {
     Active,
@@ -2089,7 +2109,7 @@ impl std::default::Default for SubscriptionStatus {
 }
 
 /// An enum representing the possible values of an `ListSubscriptions`'s `status` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SubscriptionStatusFilter {
     Active,
@@ -2137,7 +2157,7 @@ impl std::default::Default for SubscriptionStatusFilter {
 }
 
 /// An enum representing the possible values of an `SubscriptionsResourcePauseCollection`'s `behavior` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SubscriptionsResourcePauseCollectionBehavior {
     KeepAsDraft,
@@ -2173,7 +2193,7 @@ impl std::default::Default for SubscriptionsResourcePauseCollectionBehavior {
 }
 
 /// An enum representing the possible values of an `SubscriptionsResourcePaymentSettings`'s `payment_method_types` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SubscriptionsResourcePaymentSettingsPaymentMethodTypes {
     AchCreditTransfer,
@@ -2249,7 +2269,7 @@ impl std::default::Default for SubscriptionsResourcePaymentSettingsPaymentMethod
 }
 
 /// An enum representing the possible values of an `SubscriptionsResourcePaymentSettings`'s `save_default_payment_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SubscriptionsResourcePaymentSettingsSaveDefaultPaymentMethod {
     Off,
@@ -2285,7 +2305,7 @@ impl std::default::Default for SubscriptionsResourcePaymentSettingsSaveDefaultPa
 }
 
 /// An enum representing the possible values of an `UpdateSubscriptionPauseCollection`'s `behavior` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateSubscriptionPauseCollectionBehavior {
     KeepAsDraft,
@@ -2321,7 +2341,7 @@ impl std::default::Default for UpdateSubscriptionPauseCollectionBehavior {
 }
 
 /// An enum representing the possible values of an `UpdateSubscriptionPaymentSettingsPaymentMethodOptionsAcssDebitMandateOptions`'s `transaction_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateSubscriptionPaymentSettingsPaymentMethodOptionsAcssDebitMandateOptionsTransactionType
 {
@@ -2362,7 +2382,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `UpdateSubscriptionPaymentSettingsPaymentMethodOptionsAcssDebit`'s `verification_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateSubscriptionPaymentSettingsPaymentMethodOptionsAcssDebitVerificationMethod {
     Automatic,
@@ -2404,7 +2424,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `UpdateSubscriptionPaymentSettingsPaymentMethodOptionsBancontact`'s `preferred_language` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateSubscriptionPaymentSettingsPaymentMethodOptionsBancontactPreferredLanguage {
     De,
@@ -2448,7 +2468,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `UpdateSubscriptionPaymentSettingsPaymentMethodOptionsCardMandateOptions`'s `amount_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateSubscriptionPaymentSettingsPaymentMethodOptionsCardMandateOptionsAmountType {
     Fixed,
@@ -2488,7 +2508,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `UpdateSubscriptionPaymentSettingsPaymentMethodOptionsCard`'s `request_three_d_secure` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateSubscriptionPaymentSettingsPaymentMethodOptionsCardRequestThreeDSecure {
     Any,
@@ -2526,7 +2546,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `UpdateSubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnections`'s `permissions` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateSubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnectionsPermissions
 {
@@ -2565,7 +2585,7 @@ impl std::default::Default for UpdateSubscriptionPaymentSettingsPaymentMethodOpt
 }
 
 /// An enum representing the possible values of an `UpdateSubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccount`'s `verification_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateSubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountVerificationMethod {
     Automatic,
@@ -2607,7 +2627,7 @@ impl std::default::Default
 }
 
 /// An enum representing the possible values of an `UpdateSubscriptionPaymentSettings`'s `payment_method_types` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateSubscriptionPaymentSettingsPaymentMethodTypes {
     AchCreditTransfer,
@@ -2681,7 +2701,7 @@ impl std::default::Default for UpdateSubscriptionPaymentSettingsPaymentMethodTyp
 }
 
 /// An enum representing the possible values of an `UpdateSubscriptionPaymentSettings`'s `save_default_payment_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UpdateSubscriptionPaymentSettingsSaveDefaultPaymentMethod {
     Off,

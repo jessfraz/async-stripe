@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::client::{Client, Response};
@@ -11,7 +12,7 @@ use crate::params::{Expand, Object, Timestamp};
 /// The resource representing a Stripe "AccountLink".
 ///
 /// For more details see <https://stripe.com/docs/api/account_links/object>
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct AccountLink {
     /// Time at which the object was created.
     ///
@@ -89,7 +90,7 @@ impl<'a> CreateAccountLink<'a> {
 }
 
 /// An enum representing the possible values of an `CreateAccountLink`'s `collect` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum AccountLinkCollect {
     CurrentlyDue,
@@ -123,7 +124,7 @@ impl std::default::Default for AccountLinkCollect {
 }
 
 /// An enum representing the possible values of an `CreateAccountLink`'s `type_` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum AccountLinkType {
     AccountOnboarding,

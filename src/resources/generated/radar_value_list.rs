@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::ids::RadarValueListId;
@@ -9,7 +10,7 @@ use crate::params::{List, Metadata, Object, Timestamp};
 use crate::resources::RadarValueListItem;
 
 /// The resource representing a Stripe "RadarListList".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct RadarValueList {
     /// Unique identifier for the object.
     pub id: RadarValueListId,
@@ -68,7 +69,7 @@ impl Object for RadarValueList {
 }
 
 /// An enum representing the possible values of an `RadarValueList`'s `item_type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum RadarValueListItemType {
     CardBin,

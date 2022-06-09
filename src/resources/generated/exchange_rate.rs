@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::client::{Client, Response};
@@ -9,7 +10,7 @@ use crate::ids::ExchangeRateId;
 use crate::params::{Expand, List, Object, Paginable};
 
 /// The resource representing a Stripe "ExchangeRate".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct ExchangeRate {
     /// Unique identifier for the object.
     ///

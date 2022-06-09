@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::ids::TreasuryReceivedCreditId;
@@ -12,7 +13,7 @@ use crate::resources::{
 };
 
 /// The resource representing a Stripe "ReceivedCreditsResourceTreasuryReceivedCredit".
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct TreasuryReceivedCredit {
     /// Unique identifier for the object.
     pub id: TreasuryReceivedCreditId,
@@ -124,7 +125,7 @@ pub struct ReceivedCreditsResourceTreasurySourceFlowsDetails {
 }
 
 /// An enum representing the possible values of an `ReceivedCreditsResourceTreasurySourceFlowsDetails`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum ReceivedCreditsResourceTreasurySourceFlowsDetailsType {
     CreditReversal,
@@ -166,7 +167,7 @@ impl std::default::Default for ReceivedCreditsResourceTreasurySourceFlowsDetails
 }
 
 /// An enum representing the possible values of an `TreasuryReceivedCredit`'s `failure_code` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum TreasuryReceivedCreditFailureCode {
     AccountClosed,
@@ -202,7 +203,7 @@ impl std::default::Default for TreasuryReceivedCreditFailureCode {
 }
 
 /// An enum representing the possible values of an `TreasuryReceivedCredit`'s `network` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum TreasuryReceivedCreditNetwork {
     Ach,
@@ -240,7 +241,7 @@ impl std::default::Default for TreasuryReceivedCreditNetwork {
 }
 
 /// An enum representing the possible values of an `TreasuryReceivedCredit`'s `status` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum TreasuryReceivedCreditStatus {
     Failed,

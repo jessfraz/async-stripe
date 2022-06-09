@@ -2,6 +2,7 @@
 // This file was automatically generated.
 // ======================================
 
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::client::{Client, Response};
@@ -14,7 +15,7 @@ use crate::resources::{
 /// The resource representing a Stripe "PlatformFee".
 ///
 /// For more details see <https://stripe.com/docs/api/application_fees/object>
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct ApplicationFee {
     /// Unique identifier for the object.
     pub id: ApplicationFeeId,
