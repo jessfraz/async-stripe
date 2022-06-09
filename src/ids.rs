@@ -76,11 +76,11 @@ macro_rules! def_id {
 
         impl JsonSchema for $struct_name {
             fn schema_name() -> String{
-                String::new(stringify!($struct_name))
+                stringify!($struct_name).to_string()
             }
-            fn json_schema(gen: &mut schemars::SchemaGenerator) -> schemars::Schema {
-                schemars::SchemaObject {
-                    instance_type: Some(InstanceType::String.into()),
+            fn json_schema(gen: &mut schemars::gen::SchemaGenerator) -> schemars::schema::Schema {
+                schemars::schema::SchemaObject {
+                    instance_type: Some(schemars::schema::InstanceType::String.into()),
                     ..Default::default()
                 }
                 .into()
@@ -190,11 +190,11 @@ macro_rules! def_id {
 
         impl JsonSchema for $struct_name {
             fn schema_name() -> String{
-                String::new(stringify!($struct_name))
+                stringify!($struct_name).to_string()
             }
-            fn json_schema(gen: &mut schemars::SchemaGenerator) -> schemars::Schema {
-                schemars::SchemaObject {
-                    instance_type: Some(InstanceType::String.into()),
+            fn json_schema(gen: &mut schemars::gen::SchemaGenerator) -> schemars::schema::Schema {
+                schemars::schema::SchemaObject {
+                    instance_type: Some(schemars::schema::InstanceType::String.into()),
                     ..Default::default()
                 }
                 .into()

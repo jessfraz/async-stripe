@@ -101,7 +101,9 @@ impl Expand<'_> {
 /// For more details see <https://stripe.com/docs/api/expanding_objects>.
 #[derive(Clone, Debug, Serialize, Deserialize, JsonSchema)] // TODO: Implement deserialize by hand for better error messages
 #[serde(untagged)]
-pub enum Expandable<T: Object> {
+pub enum Expandable<T: Object>
+where T::Id: JsonSchema
+{
     Id(T::Id),
     Object(Box<T>),
 }
@@ -109,7 +111,7 @@ pub enum Expandable<T: Object> {
 impl<T> Expandable<T>
 where
     T: Object,
-    T::Id: Clone + Default,
+    T::Id: Clone + Default, <T as Object>::Id: JsonSchema
 {
     pub fn id(&self) -> T::Id {
         match self {
@@ -119,16 +121,17 @@ where
     }
 }
 
+
 impl<T: Object> Default for Expandable<T>
 where
-    T::Id: Default,
+    T::Id: Default, <T as Object>::Id: JsonSchema
 {
     fn default() -> Self {
         Expandable::Id(Default::default())
     }
 }
 
-impl<T: Object> Expandable<T> {
+impl<T: Object> Expandable<T> where <T as Object>::Id: JsonSchema {
     pub fn is_object(&self) -> bool {
         match self {
             Expandable::Id(_) => false,
