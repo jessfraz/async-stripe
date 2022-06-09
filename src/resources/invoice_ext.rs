@@ -59,7 +59,7 @@ impl RetrieveUpcomingInvoice {
     }
 }
 
-#[derive(Clone, Debug, Serialize)]
+#[derive(Clone, Debug, Serialize, JsonSchema)]
 pub struct SubscriptionItemFilter {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub id: Option<SubscriptionItemId>,

@@ -1,7 +1,8 @@
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 /// The resource representing a Stripe "IssuingAuthorizationMerchantData".
-#[derive(Clone, Debug, Deserialize, Default, Serialize)]
+#[derive(Clone, Debug, Deserialize, Default, Serialize, JsonSchema)]
 pub struct MerchantData {
     /// Identifier assigned to the seller by the card brand.
     pub network_id: String,
@@ -33,7 +34,7 @@ pub struct MerchantData {
 }
 
 /// An enum representing the industry of a merchant.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum MerchantCategory {
     AcRefrigerationRepair,
