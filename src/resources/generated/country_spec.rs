@@ -65,14 +65,14 @@ impl Object for CountrySpec {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CountrySpecVerificationFields {
     pub company: CountrySpecVerificationFieldDetails,
 
     pub individual: CountrySpecVerificationFieldDetails,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CountrySpecVerificationFieldDetails {
     /// Additional fields which are only required for some users.
     pub additional: Vec<String>,

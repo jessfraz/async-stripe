@@ -159,7 +159,7 @@ impl Object for Order {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct OrdersV2ResourceAutomaticTax {
     /// Whether Stripe automatically computes tax on this Order.
     pub enabled: bool,
@@ -169,7 +169,7 @@ pub struct OrdersV2ResourceAutomaticTax {
     pub status: Option<OrdersV2ResourceAutomaticTaxStatus>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct OrdersV2ResourceBillingDetails {
     /// Billing address for the order.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -188,7 +188,7 @@ pub struct OrdersV2ResourceBillingDetails {
     pub phone: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct OrdersV2ResourcePayment {
     /// ID of the payment intent associated with this order.
     ///
@@ -207,7 +207,7 @@ pub struct OrdersV2ResourcePayment {
     pub status: Option<OrdersV2ResourcePaymentStatus>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct OrdersV2ResourcePaymentSettings {
     /// The amount of the application fee (if any) that will be requested to be applied to the payment and transferred to the application owner's Stripe account.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -243,7 +243,7 @@ pub struct OrdersV2ResourcePaymentSettings {
     pub transfer_data: Option<OrdersV2ResourceTransferData>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct OrdersV2ResourcePaymentMethodOptions {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub acss_debit: Option<PaymentIntentPaymentMethodOptionsAcssDebit>,
@@ -291,7 +291,7 @@ pub struct OrdersV2ResourcePaymentMethodOptions {
     pub wechat_pay: Option<PaymentMethodOptionsWechatPay>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct OrdersPaymentMethodOptionsAfterpayClearpay {
     /// Controls when the funds will be captured from the customer's account.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -313,7 +313,7 @@ pub struct OrdersPaymentMethodOptionsAfterpayClearpay {
     pub setup_future_usage: Option<OrdersPaymentMethodOptionsAfterpayClearpaySetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct OrdersV2ResourceCardPaymentMethodOptions {
     /// Controls when the funds will be captured from the customer's account.
     pub capture_method: OrdersV2ResourceCardPaymentMethodOptionsCaptureMethod,
@@ -327,7 +327,7 @@ pub struct OrdersV2ResourceCardPaymentMethodOptions {
     pub setup_future_usage: Option<OrdersV2ResourceCardPaymentMethodOptionsSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct OrdersV2ResourceShippingCost {
     /// Total shipping cost before any discounts or taxes are applied.
     pub amount_subtotal: i64,
@@ -349,7 +349,7 @@ pub struct OrdersV2ResourceShippingCost {
     pub taxes: Option<Vec<LineItemsTaxAmount>>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct LineItemsTaxAmount {
     /// Amount of tax applied for this rate.
     pub amount: i64,
@@ -357,7 +357,7 @@ pub struct LineItemsTaxAmount {
     pub rate: TaxRate,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct OrdersV2ResourceShippingDetails {
     /// Recipient shipping address.
     ///
@@ -374,7 +374,7 @@ pub struct OrdersV2ResourceShippingDetails {
     pub phone: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct OrdersV2ResourceTaxDetails {
     /// Describes the purchaser's tax exemption status.
     ///
@@ -385,7 +385,7 @@ pub struct OrdersV2ResourceTaxDetails {
     pub tax_ids: Vec<OrdersV2ResourceTaxDetailsResourceTaxId>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct OrdersV2ResourceTaxDetailsResourceTaxId {
     /// The type of the tax ID, one of `eu_vat`, `br_cnpj`, `br_cpf`, `eu_oss_vat`, `gb_vat`, `nz_gst`, `au_abn`, `au_arn`, `in_gst`, `no_vat`, `za_vat`, `ch_vat`, `mx_rfc`, `sg_uen`, `ru_inn`, `ru_kpp`, `ca_bn`, `hk_br`, `es_cif`, `tw_vat`, `th_vat`, `jp_cn`, `jp_rn`, `li_uid`, `my_itn`, `us_ein`, `kr_brn`, `ca_qst`, `ca_gst_hst`, `ca_pst_bc`, `ca_pst_mb`, `ca_pst_sk`, `my_sst`, `sg_gst`, `ae_trn`, `cl_tin`, `sa_vat`, `id_npwp`, `my_frp`, `il_vat`, `ge_vat`, `ua_vat`, `is_vat`, `bg_uic`, `hu_tin`, `si_tin`, or `unknown`.
     #[serde(rename = "type")]
@@ -396,7 +396,7 @@ pub struct OrdersV2ResourceTaxDetailsResourceTaxId {
     pub value: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct OrdersV2ResourceTotalDetails {
     /// This is the sum of all the discounts.
     pub amount_discount: i64,
@@ -412,7 +412,7 @@ pub struct OrdersV2ResourceTotalDetails {
     pub breakdown: Option<OrdersV2ResourceTotalDetailsApiResourceBreakdown>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct OrdersV2ResourceTotalDetailsApiResourceBreakdown {
     /// The aggregated discounts.
     pub discounts: Vec<LineItemsDiscountAmount>,
@@ -421,7 +421,7 @@ pub struct OrdersV2ResourceTotalDetailsApiResourceBreakdown {
     pub taxes: Vec<LineItemsTaxAmount>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct LineItemsDiscountAmount {
     /// The amount discounted.
     pub amount: i64,
@@ -429,7 +429,7 @@ pub struct LineItemsDiscountAmount {
     pub discount: Discount,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct OrdersV2ResourceTransferData {
     /// The amount that will be transferred automatically when the order is paid.
     ///
@@ -442,7 +442,7 @@ pub struct OrdersV2ResourceTransferData {
     pub destination: Expandable<Account>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodOptionsPaypal {
     /// Controls when the funds will be captured from the customer's account.
     #[serde(skip_serializing_if = "Option::is_none")]

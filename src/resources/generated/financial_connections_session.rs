@@ -64,7 +64,7 @@ impl Object for FinancialConnectionsSession {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct BankConnectionsResourceLinkAccountSessionFilters {
     /// List of countries from which to filter accounts.
     #[serde(skip_serializing_if = "Option::is_none")]

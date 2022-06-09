@@ -53,7 +53,7 @@ impl Object for IdentityVerificationReport {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct GelatoDocumentReport {
     /// Address as it appears in the document.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -106,7 +106,7 @@ pub struct GelatoDocumentReport {
     pub type_: Option<GelatoDocumentReportType>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct GelatoDataDocumentReportDateOfBirth {
     /// Numerical day between 1 and 31.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -121,7 +121,7 @@ pub struct GelatoDataDocumentReportDateOfBirth {
     pub year: Option<i64>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct GelatoDataDocumentReportExpirationDate {
     /// Numerical day between 1 and 31.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -136,7 +136,7 @@ pub struct GelatoDataDocumentReportExpirationDate {
     pub year: Option<i64>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct GelatoDataDocumentReportIssuedDate {
     /// Numerical day between 1 and 31.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -151,7 +151,7 @@ pub struct GelatoDataDocumentReportIssuedDate {
     pub year: Option<i64>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct GelatoDocumentReportError {
     /// A short machine-readable string giving the reason for the verification failure.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -164,7 +164,7 @@ pub struct GelatoDocumentReportError {
     pub reason: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct GelatoIdNumberReport {
     /// Date of birth.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -196,7 +196,7 @@ pub struct GelatoIdNumberReport {
     pub status: GelatoIdNumberReportStatus,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct GelatoDataIdNumberReportDate {
     /// Numerical day between 1 and 31.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -211,7 +211,7 @@ pub struct GelatoDataIdNumberReportDate {
     pub year: Option<i64>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct GelatoIdNumberReportError {
     /// A short machine-readable string giving the reason for the verification failure.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -224,7 +224,7 @@ pub struct GelatoIdNumberReportError {
     pub reason: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct GelatoSelfieReport {
     /// ID of the [File](https://stripe.com/docs/api/files) holding the image of the identity document used in this check.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -244,7 +244,7 @@ pub struct GelatoSelfieReport {
     pub status: GelatoSelfieReportStatus,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct GelatoSelfieReportError {
     /// A short machine-readable string giving the reason for the verification failure.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -257,7 +257,7 @@ pub struct GelatoSelfieReportError {
     pub reason: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct GelatoVerificationReportOptions {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub document: Option<GelatoReportDocumentOptions>,
@@ -266,7 +266,7 @@ pub struct GelatoVerificationReportOptions {
     pub id_number: Option<GelatoReportIdNumberOptions>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct GelatoReportDocumentOptions {
     /// Array of strings of allowed identity document types.
     ///
@@ -289,7 +289,7 @@ pub struct GelatoReportDocumentOptions {
     pub require_matching_selfie: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct GelatoReportIdNumberOptions {}
 
 /// An enum representing the possible values of an `GelatoDocumentReportError`'s `code` field.

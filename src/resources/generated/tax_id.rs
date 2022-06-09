@@ -63,7 +63,7 @@ impl Object for TaxId {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct TaxIdVerification {
     /// Verification status, one of `pending`, `verified`, `unverified`, or `unavailable`.
     pub status: TaxIdVerificationStatus,

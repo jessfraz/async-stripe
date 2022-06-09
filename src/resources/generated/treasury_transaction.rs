@@ -77,7 +77,7 @@ impl Object for TreasuryTransaction {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct TransactionsResourceAbstractTransactionResourceStatusTransitions {
     /// Timestamp describing when the Transaction changed status to `posted`.
     #[serde(skip_serializing_if = "Option::is_none")]

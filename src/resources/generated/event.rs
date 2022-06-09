@@ -76,7 +76,7 @@ impl Object for Event {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct NotificationEventRequest {
     /// ID of the API request that caused the event.
     ///

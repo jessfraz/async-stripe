@@ -98,7 +98,7 @@ pub struct PaymentMethodDetailsCardPresent {
     pub receipt: Option<PaymentMethodDetailsCardPresentReceipt>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsCardPresentReceipt {
     /// The type of account being debited or credited.
     #[serde(skip_serializing_if = "Option::is_none")]

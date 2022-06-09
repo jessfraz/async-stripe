@@ -16,7 +16,7 @@ pub struct InvoicePaymentMethodOptionsUsBankAccount {
     pub verification_method: Option<InvoicePaymentMethodOptionsUsBankAccountVerificationMethod>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct InvoicePaymentMethodOptionsUsBankAccountLinkedAccountOptions {
     /// The list of permissions to request.
     ///

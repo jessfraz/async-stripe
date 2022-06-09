@@ -94,7 +94,7 @@ impl Object for Dispute {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct DisputeEvidence {
     /// Any server or activity logs showing proof that the customer accessed or downloaded the purchased digital product.
     ///
@@ -222,7 +222,7 @@ pub struct DisputeEvidence {
     pub uncategorized_text: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct DisputeEvidenceDetails {
     /// Date by which evidence must be submitted in order to successfully challenge dispute.
     ///

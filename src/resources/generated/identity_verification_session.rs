@@ -87,7 +87,7 @@ impl Object for IdentityVerificationSession {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct GelatoSessionLastError {
     /// A short machine-readable string giving the reason for the verification or user-session failure.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -98,7 +98,7 @@ pub struct GelatoSessionLastError {
     pub reason: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct GelatoVerificationSessionOptions {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub document: Option<GelatoSessionDocumentOptions>,
@@ -107,7 +107,7 @@ pub struct GelatoVerificationSessionOptions {
     pub id_number: Option<GelatoSessionIdNumberOptions>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct GelatoSessionDocumentOptions {
     /// Array of strings of allowed identity document types.
     ///
@@ -130,10 +130,10 @@ pub struct GelatoSessionDocumentOptions {
     pub require_matching_selfie: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct GelatoSessionIdNumberOptions {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct GelatoVerifiedOutputs {
     /// The user's verified address.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -160,7 +160,7 @@ pub struct GelatoVerifiedOutputs {
     pub last_name: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct GelatoDataVerifiedOutputsDate {
     /// Numerical day between 1 and 31.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -175,7 +175,7 @@ pub struct GelatoDataVerifiedOutputsDate {
     pub year: Option<i64>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct VerificationSessionRedaction {
     /// Indicates whether this object and its related objects have been redacted or not.
     pub status: VerificationSessionRedactionStatus,

@@ -128,7 +128,7 @@ impl Object for Sku {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SkuInventory {
     /// The count of inventory available.
     ///

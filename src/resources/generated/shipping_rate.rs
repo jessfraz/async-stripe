@@ -110,7 +110,7 @@ impl Object for ShippingRate {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct ShippingRateDeliveryEstimate {
     /// The upper bound of the estimated range.
     ///
@@ -125,7 +125,7 @@ pub struct ShippingRateDeliveryEstimate {
     pub minimum: Option<ShippingRateDeliveryEstimateBound>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct ShippingRateDeliveryEstimateBound {
     /// A unit of time.
     pub unit: ShippingRateDeliveryEstimateBoundUnit,
@@ -134,7 +134,7 @@ pub struct ShippingRateDeliveryEstimateBound {
     pub value: i64,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct ShippingRateFixedAmount {
     /// A non-negative integer in cents representing how much to charge.
     pub amount: i64,

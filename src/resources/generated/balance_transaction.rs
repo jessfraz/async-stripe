@@ -117,7 +117,7 @@ impl Object for BalanceTransaction {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct Fee {
     /// Amount of the fee, in cents.
     pub amount: i64,

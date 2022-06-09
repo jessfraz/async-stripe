@@ -101,7 +101,7 @@ impl Object for PromotionCode {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PromotionCodesResourceRestrictions {
     /// A Boolean indicating if the Promotion Code should only be redeemed for Customers without any successful payments or invoices.
     pub first_time_transaction: bool,

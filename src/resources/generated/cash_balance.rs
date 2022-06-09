@@ -33,7 +33,7 @@ impl Object for CashBalance {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CustomerBalanceCustomerBalanceSettings {
     /// The configuration for how funds that land in the customer cash balance are reconciled.
     pub reconciliation_mode: CustomerBalanceCustomerBalanceSettingsReconciliationMode,

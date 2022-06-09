@@ -41,19 +41,19 @@ impl Object for TreasuryFinancialAccountFeatures {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct AccountServiceResourceFinancialAddressesFeatures {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub aba: Option<AccountServiceResourceToggleSettings>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct AccountServiceResourceInboundTransfers {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub ach: Option<AccountServiceResourceToggleSettings>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct AccountServiceResourceOutboundPayments {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub ach: Option<AccountServiceResourceToggleSettings>,
@@ -62,7 +62,7 @@ pub struct AccountServiceResourceOutboundPayments {
     pub us_domestic_wire: Option<AccountServiceResourceToggleSettings>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct AccountServiceResourceOutboundTransfers {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub ach: Option<AccountServiceResourceToggleSettings>,

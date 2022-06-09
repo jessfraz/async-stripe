@@ -20,7 +20,7 @@ pub struct PaymentIntentPaymentMethodOptionsSepaDebit {
     pub setup_future_usage: Option<PaymentIntentPaymentMethodOptionsSepaDebitSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentIntentPaymentMethodOptionsMandateOptionsSepaDebit {}
 
 /// An enum representing the possible values of an `PaymentIntentPaymentMethodOptionsSepaDebit`'s `setup_future_usage` field.

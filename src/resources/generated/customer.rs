@@ -203,7 +203,7 @@ impl Object for Customer {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CustomerTax {
     /// Surfaces if automatic tax computation is possible given the current customer location information.
     pub automatic_tax: CustomerTaxAutomaticTax,
@@ -217,7 +217,7 @@ pub struct CustomerTax {
     pub location: Option<CustomerTaxLocation>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CustomerTaxLocation {
     /// The customer's country as identified by Stripe Tax.
     pub country: String,
@@ -230,7 +230,7 @@ pub struct CustomerTaxLocation {
     pub state: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct InvoiceSettingCustomerSetting {
     /// Default custom fields to be displayed on invoices for this customer.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -245,7 +245,7 @@ pub struct InvoiceSettingCustomerSetting {
     pub footer: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct InvoiceSettingCustomField {
     /// The name of the custom field.
     pub name: String,

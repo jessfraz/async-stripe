@@ -105,7 +105,7 @@ impl Object for TreasuryOutboundPayment {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct OutboundPaymentsPaymentMethodDetails {
     pub billing_details: UfaResourceBillingDetails,
 
@@ -120,7 +120,7 @@ pub struct OutboundPaymentsPaymentMethodDetails {
     pub us_bank_account: Option<OutboundPaymentsPaymentMethodDetailsUsBankAccount>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct OutboundPaymentsPaymentMethodDetailsFinancialAccount {
     /// Token of the FinancialAccount.
     pub id: String,
@@ -129,7 +129,7 @@ pub struct OutboundPaymentsPaymentMethodDetailsFinancialAccount {
     pub network: OutboundPaymentsPaymentMethodDetailsFinancialAccountNetwork,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct OutboundPaymentsPaymentMethodDetailsUsBankAccount {
     /// Account holder type: individual or company.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -164,7 +164,7 @@ pub struct OutboundPaymentsPaymentMethodDetailsUsBankAccount {
     pub routing_number: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct OutboundPaymentsResourceOutboundPaymentResourceEndUserDetails {
     /// IP address of the user initiating the OutboundPayment.
     ///
@@ -180,7 +180,7 @@ pub struct OutboundPaymentsResourceOutboundPaymentResourceEndUserDetails {
     pub present: bool,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct OutboundPaymentsResourceOutboundPaymentResourceStatusTransitions {
     /// Timestamp describing when an OutboundPayment changed status to `canceled`.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -199,7 +199,7 @@ pub struct OutboundPaymentsResourceOutboundPaymentResourceStatusTransitions {
     pub returned_at: Option<Timestamp>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct OutboundPaymentsResourceTreasuryReturnedStatus {
     /// Reason for the return.
     pub code: OutboundPaymentsResourceTreasuryReturnedStatusCode,

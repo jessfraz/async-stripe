@@ -140,7 +140,7 @@ impl Object for Refund {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct RefundNextAction {
     /// Contains the refund details.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -151,7 +151,7 @@ pub struct RefundNextAction {
     pub type_: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct RefundNextActionDisplayDetails {
     pub email_sent: EmailSent,
 
@@ -159,7 +159,7 @@ pub struct RefundNextActionDisplayDetails {
     pub expires_at: Timestamp,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct EmailSent {
     /// The timestamp when the email was sent.
     pub email_sent_at: Timestamp,

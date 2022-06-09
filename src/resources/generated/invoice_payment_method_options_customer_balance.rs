@@ -18,7 +18,7 @@ pub struct InvoicePaymentMethodOptionsCustomerBalance {
     pub funding_type: Option<InvoicePaymentMethodOptionsCustomerBalanceFundingType>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct InvoicePaymentMethodOptionsCustomerBalanceBankTransfer {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub eu_bank_transfer:
@@ -32,7 +32,7 @@ pub struct InvoicePaymentMethodOptionsCustomerBalanceBankTransfer {
     pub type_: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct InvoicePaymentMethodOptionsCustomerBalanceBankTransferEuBankTransfer {
     /// The desired country code of the bank account information.
     ///

@@ -57,7 +57,7 @@ impl Object for Balance {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct BalanceAmount {
     /// Balance amount.
     pub amount: i64,
@@ -71,7 +71,7 @@ pub struct BalanceAmount {
     pub source_types: Option<BalanceAmountBySourceType>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct BalanceAmountBySourceType {
     /// Amount for bank account.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -86,7 +86,7 @@ pub struct BalanceAmountBySourceType {
     pub fpx: Option<i64>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct BalanceDetail {
     /// Funds that are available for use.
     pub available: Vec<BalanceAmount>,

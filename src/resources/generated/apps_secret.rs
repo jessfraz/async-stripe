@@ -46,7 +46,7 @@ impl Object for AppsSecret {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SecretServiceResourceScope {
     /// The secret scope type.
     #[serde(rename = "type")]

@@ -268,26 +268,26 @@ impl Object for PaymentIntent {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentFlowsAmountDetails {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tip: Option<PaymentFlowsAmountDetailsResourceTip>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentFlowsAmountDetailsResourceTip {
     /// Portion of the amount that corresponds to a tip.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub amount: Option<i64>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentFlowsAutomaticPaymentMethodsPaymentIntent {
     /// Automatically calculates compatible payment methods.
     pub enabled: bool,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentIntentNextAction {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub alipay_handle_redirect: Option<PaymentIntentNextActionAlipayHandleRedirect>,
@@ -338,7 +338,7 @@ pub struct PaymentIntentNextAction {
     pub wechat_pay_redirect_to_ios_app: Option<PaymentIntentNextActionWechatPayRedirectToIosApp>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentIntentNextActionAlipayHandleRedirect {
     /// The native data to be used with Alipay SDK you must redirect your customer to in order to authenticate the payment in an Android App.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -357,7 +357,7 @@ pub struct PaymentIntentNextActionAlipayHandleRedirect {
     pub url: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentIntentNextActionBoleto {
     /// The timestamp after which the boleto expires.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -376,7 +376,7 @@ pub struct PaymentIntentNextActionBoleto {
     pub pdf: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentIntentNextActionCardAwaitNotification {
     /// The time that payment will be attempted.
     ///
@@ -391,7 +391,7 @@ pub struct PaymentIntentNextActionCardAwaitNotification {
     pub customer_approval_required: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentIntentNextActionDisplayBankTransferInstructions {
     /// The remaining amount that needs to be transferred to complete the payment.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -422,7 +422,7 @@ pub struct PaymentIntentNextActionDisplayBankTransferInstructions {
     pub type_: PaymentIntentNextActionDisplayBankTransferInstructionsType,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct FundingInstructionsBankTransferFinancialAddress {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub iban: Option<FundingInstructionsBankTransferIbanRecord>,
@@ -446,7 +446,7 @@ pub struct FundingInstructionsBankTransferFinancialAddress {
     pub zengin: Option<FundingInstructionsBankTransferZenginRecord>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct FundingInstructionsBankTransferIbanRecord {
     /// The name of the person or business that owns the bank account.
     pub account_holder_name: String,
@@ -461,7 +461,7 @@ pub struct FundingInstructionsBankTransferIbanRecord {
     pub iban: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct FundingInstructionsBankTransferSortCodeRecord {
     /// The name of the person or business that owns the bank account.
     pub account_holder_name: String,
@@ -473,7 +473,7 @@ pub struct FundingInstructionsBankTransferSortCodeRecord {
     pub sort_code: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct FundingInstructionsBankTransferSpeiRecord {
     /// The three-digit bank code.
     pub bank_code: String,
@@ -485,7 +485,7 @@ pub struct FundingInstructionsBankTransferSpeiRecord {
     pub clabe: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct FundingInstructionsBankTransferZenginRecord {
     /// The account holder name.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -518,7 +518,7 @@ pub struct FundingInstructionsBankTransferZenginRecord {
     pub branch_name: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentIntentNextActionDisplayOxxoDetails {
     /// The timestamp after which the OXXO voucher expires.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -533,7 +533,7 @@ pub struct PaymentIntentNextActionDisplayOxxoDetails {
     pub number: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentIntentNextActionKonbini {
     /// The timestamp at which the pending Konbini payment expires.
     pub expires_at: Timestamp,
@@ -545,7 +545,7 @@ pub struct PaymentIntentNextActionKonbini {
     pub stores: PaymentIntentNextActionKonbiniStores,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentIntentNextActionKonbiniStores {
     /// FamilyMart instruction details.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -564,7 +564,7 @@ pub struct PaymentIntentNextActionKonbiniStores {
     pub seicomart: Option<PaymentIntentNextActionKonbiniSeicomart>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentIntentNextActionKonbiniFamilymart {
     /// The confirmation number.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -574,7 +574,7 @@ pub struct PaymentIntentNextActionKonbiniFamilymart {
     pub payment_code: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentIntentNextActionKonbiniLawson {
     /// The confirmation number.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -584,7 +584,7 @@ pub struct PaymentIntentNextActionKonbiniLawson {
     pub payment_code: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentIntentNextActionKonbiniMinistop {
     /// The confirmation number.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -594,7 +594,7 @@ pub struct PaymentIntentNextActionKonbiniMinistop {
     pub payment_code: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentIntentNextActionKonbiniSeicomart {
     /// The confirmation number.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -604,7 +604,7 @@ pub struct PaymentIntentNextActionKonbiniSeicomart {
     pub payment_code: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentIntentNextActionPaynowDisplayQrCode {
     /// The raw data string used to generate QR code, it should be used together with QR code library.
     pub data: String,
@@ -616,7 +616,7 @@ pub struct PaymentIntentNextActionPaynowDisplayQrCode {
     pub image_url_svg: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentIntentNextActionRedirectToUrl {
     /// If the customer does not exit their browser while authenticating, they will be redirected to this specified URL after completion.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -627,7 +627,7 @@ pub struct PaymentIntentNextActionRedirectToUrl {
     pub url: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentIntentNextActionVerifyWithMicrodeposits {
     /// The timestamp when the microdeposits are expected to land.
     pub arrival_date: Timestamp,
@@ -642,7 +642,7 @@ pub struct PaymentIntentNextActionVerifyWithMicrodeposits {
     pub microdeposit_type: Option<PaymentIntentNextActionVerifyWithMicrodepositsMicrodepositType>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentIntentNextActionWechatPayDisplayQrCode {
     /// The data being used to generate QR code.
     pub data: String,
@@ -657,7 +657,7 @@ pub struct PaymentIntentNextActionWechatPayDisplayQrCode {
     pub image_url_svg: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentIntentNextActionWechatPayRedirectToAndroidApp {
     /// app_id is the APP ID registered on WeChat open platform.
     pub app_id: String,
@@ -681,13 +681,13 @@ pub struct PaymentIntentNextActionWechatPayRedirectToAndroidApp {
     pub timestamp: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentIntentNextActionWechatPayRedirectToIosApp {
     /// An universal link that redirect to WeChat Pay app.
     pub native_url: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentIntentPaymentMethodOptions {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub acss_debit: Option<PaymentIntentPaymentMethodOptionsAcssDebitUnion>,
@@ -771,7 +771,7 @@ pub struct PaymentIntentPaymentMethodOptions {
     pub wechat_pay: Option<PaymentIntentPaymentMethodOptionsWechatPayUnion>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentIntentPaymentMethodOptionsAuBecsDebit {
     /// Indicates that you intend to make future payments with this PaymentIntent's payment method.
     ///
@@ -782,7 +782,7 @@ pub struct PaymentIntentPaymentMethodOptionsAuBecsDebit {
     pub setup_future_usage: Option<PaymentIntentPaymentMethodOptionsAuBecsDebitSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentIntentPaymentMethodOptionsCard {
     /// Controls when the funds will be captured from the customer's account.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -823,7 +823,7 @@ pub struct PaymentIntentPaymentMethodOptionsCard {
     pub setup_future_usage: Option<PaymentIntentPaymentMethodOptionsCardSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentIntentPaymentMethodOptionsEps {
     /// Indicates that you intend to make future payments with this PaymentIntent's payment method.
     ///
@@ -834,7 +834,7 @@ pub struct PaymentIntentPaymentMethodOptionsEps {
     pub setup_future_usage: Option<PaymentIntentPaymentMethodOptionsEpsSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentIntentPaymentMethodOptionsUsBankAccount {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub financial_connections: Option<LinkedAccountOptionsUsBankAccount>,
@@ -853,7 +853,7 @@ pub struct PaymentIntentPaymentMethodOptionsUsBankAccount {
         Option<PaymentIntentPaymentMethodOptionsUsBankAccountVerificationMethod>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentIntentProcessing {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub card: Option<PaymentIntentCardProcessing>,
@@ -863,13 +863,13 @@ pub struct PaymentIntentProcessing {
     pub type_: PaymentIntentProcessingType,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentIntentCardProcessing {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub customer_notification: Option<PaymentIntentProcessingCustomerNotification>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentIntentProcessingCustomerNotification {
     /// Whether customer approval has been requested for this payment.
     ///
@@ -882,7 +882,7 @@ pub struct PaymentIntentProcessingCustomerNotification {
     pub completes_at: Option<Timestamp>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentIntentTypeSpecificPaymentMethodOptionsClient {
     /// Controls when the funds will be captured from the customer's account.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -903,7 +903,7 @@ pub struct PaymentIntentTypeSpecificPaymentMethodOptionsClient {
         Option<PaymentIntentTypeSpecificPaymentMethodOptionsClientVerificationMethod>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodOptionsAffirm {
     /// Controls when the funds will be captured from the customer's account.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -918,7 +918,7 @@ pub struct PaymentMethodOptionsAffirm {
     pub setup_future_usage: Option<PaymentMethodOptionsAffirmSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodOptionsAfterpayClearpay {
     /// Controls when the funds will be captured from the customer's account.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -940,7 +940,7 @@ pub struct PaymentMethodOptionsAfterpayClearpay {
     pub setup_future_usage: Option<PaymentMethodOptionsAfterpayClearpaySetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodOptionsBacsDebit {
     /// Indicates that you intend to make future payments with this PaymentIntent's payment method.
     ///
@@ -951,7 +951,7 @@ pub struct PaymentMethodOptionsBacsDebit {
     pub setup_future_usage: Option<PaymentMethodOptionsBacsDebitSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodOptionsBoleto {
     /// The number of calendar days before a Boleto voucher expires.
     ///
@@ -967,7 +967,7 @@ pub struct PaymentMethodOptionsBoleto {
     pub setup_future_usage: Option<PaymentMethodOptionsBoletoSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodOptionsCardInstallments {
     /// Installment plans that may be selected for this PaymentIntent.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -981,7 +981,7 @@ pub struct PaymentMethodOptionsCardInstallments {
     pub plan: Option<PaymentMethodDetailsCardInstallmentsPlan>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodOptionsCardMandateOptions {
     /// Amount to be charged for future payments.
     pub amount: i64,
@@ -1031,7 +1031,7 @@ pub struct PaymentMethodOptionsCardMandateOptions {
     pub supported_types: Option<Vec<PaymentMethodOptionsCardMandateOptionsSupportedTypes>>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodOptionsCardPresent {
     /// Request ability to capture this payment beyond the standard [authorization validity window](https://stripe.com/docs/terminal/features/extended-authorizations#authorization-validity).
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -1044,7 +1044,7 @@ pub struct PaymentMethodOptionsCardPresent {
     pub request_incremental_authorization_support: Option<bool>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodOptionsFpx {
     /// Indicates that you intend to make future payments with this PaymentIntent's payment method.
     ///
@@ -1055,7 +1055,7 @@ pub struct PaymentMethodOptionsFpx {
     pub setup_future_usage: Option<PaymentMethodOptionsFpxSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodOptionsGiropay {
     /// Indicates that you intend to make future payments with this PaymentIntent's payment method.
     ///
@@ -1066,7 +1066,7 @@ pub struct PaymentMethodOptionsGiropay {
     pub setup_future_usage: Option<PaymentMethodOptionsGiropaySetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodOptionsGrabpay {
     /// Indicates that you intend to make future payments with this PaymentIntent's payment method.
     ///
@@ -1077,10 +1077,10 @@ pub struct PaymentMethodOptionsGrabpay {
     pub setup_future_usage: Option<PaymentMethodOptionsGrabpaySetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodOptionsInteracPresent {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodOptionsKonbini {
     /// An optional 10 to 11 digit numeric-only string determining the confirmation code at applicable convenience stores.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -1111,7 +1111,7 @@ pub struct PaymentMethodOptionsKonbini {
     pub setup_future_usage: Option<PaymentMethodOptionsKonbiniSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodOptionsPaynow {
     /// Indicates that you intend to make future payments with this PaymentIntent's payment method.
     ///
@@ -1122,7 +1122,7 @@ pub struct PaymentMethodOptionsPaynow {
     pub setup_future_usage: Option<PaymentMethodOptionsPaynowSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct TransferData {
     /// Amount intended to be collected by this PaymentIntent.
     ///

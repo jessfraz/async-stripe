@@ -100,7 +100,7 @@ impl Object for TreasuryInboundTransfer {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct InboundTransfers {
     pub billing_details: UfaResourceBillingDetails,
 
@@ -112,7 +112,7 @@ pub struct InboundTransfers {
     pub us_bank_account: Option<InboundTransfersPaymentMethodDetailsUsBankAccount>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct InboundTransfersPaymentMethodDetailsUsBankAccount {
     /// Account holder type: individual or company.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -147,13 +147,13 @@ pub struct InboundTransfersPaymentMethodDetailsUsBankAccount {
     pub routing_number: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct InboundTransfersResourceFailureDetails {
     /// Reason for the failure.
     pub code: InboundTransfersResourceFailureDetailsCode,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct InboundTransfersResourceInboundTransferResourceStatusTransitions {
     /// Timestamp describing when an InboundTransfer changed status to `canceled`.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -168,7 +168,7 @@ pub struct InboundTransfersResourceInboundTransferResourceStatusTransitions {
     pub succeeded_at: Option<Timestamp>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct InboundTransfersResourceTreasuryInboundTransferResourceLinkedFlows {
     /// If funds for this flow were returned after the flow went to the `succeeded` state, this field contains a reference to the ReceivedDebit return.
     #[serde(skip_serializing_if = "Option::is_none")]

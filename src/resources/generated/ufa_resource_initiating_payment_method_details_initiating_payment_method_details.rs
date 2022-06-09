@@ -36,7 +36,7 @@ pub struct UfaResourceInitiatingPaymentMethodDetailsInitiatingPaymentMethodDetai
     pub us_bank_account: Option<UfaResourceInitiatingPaymentMethodDetailsUsBankAccount>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct ReceivedPaymentMethodDetailsFinancialAccount {
     /// The FinancialAccount ID.
     pub id: String,
@@ -47,7 +47,7 @@ pub struct ReceivedPaymentMethodDetailsFinancialAccount {
     pub network: ReceivedPaymentMethodDetailsFinancialAccountNetwork,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct UfaResourceInitiatingPaymentMethodDetailsUsBankAccount {
     /// Bank name.
     #[serde(skip_serializing_if = "Option::is_none")]

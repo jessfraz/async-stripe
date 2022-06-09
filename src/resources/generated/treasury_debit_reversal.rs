@@ -69,14 +69,14 @@ impl Object for TreasuryDebitReversal {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct ReceivedDebitsResourceDebitReversalLinkedFlows {
     /// Set if there is an Issuing dispute associated with the DebitReversal.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub issuing_dispute: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct ReceivedDebitsResourceStatusTransitions {
     /// Timestamp describing when the DebitReversal changed status to `completed`.
     #[serde(skip_serializing_if = "Option::is_none")]

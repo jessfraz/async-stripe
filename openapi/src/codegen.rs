@@ -185,7 +185,7 @@ pub fn gen_generated_schemas(
     {
         let struct_name = meta.schema_to_rust_type(&schema_name);
         out.push('\n');
-        out.push_str("#[derive(Clone, Debug, Default, Deserialize, Serialize)]\n");
+        out.push_str("#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]\n");
         out.push_str("pub struct ");
         out.push_str(&struct_name);
         out.push_str(" {\n");

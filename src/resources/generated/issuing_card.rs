@@ -112,7 +112,7 @@ impl Object for IssuingCard {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct IssuingCardAuthorizationControls {
     /// Array of strings containing [categories](https://stripe.com/docs/api#issuing_authorization_object-merchant_data-category) of authorizations to allow.
     ///
@@ -139,7 +139,7 @@ pub struct IssuingCardAuthorizationControls {
     pub spending_limits_currency: Option<Currency>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct IssuingCardShipping {
     pub address: Address,
 
@@ -174,7 +174,7 @@ pub struct IssuingCardShipping {
     pub type_: IssuingCardShippingType,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct IssuingCardSpendingLimit {
     /// Maximum amount allowed to spend per interval.
     ///
@@ -191,7 +191,7 @@ pub struct IssuingCardSpendingLimit {
     pub interval: IssuingCardSpendingLimitInterval,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct IssuingCardWallets {
     pub apple_pay: IssuingCardApplePay,
 
@@ -202,7 +202,7 @@ pub struct IssuingCardWallets {
     pub primary_account_identifier: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct IssuingCardApplePay {
     /// Apple Pay Eligibility.
     pub eligible: bool,
@@ -212,7 +212,7 @@ pub struct IssuingCardApplePay {
     pub ineligible_reason: Option<IssuingCardApplePayIneligibleReason>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct IssuingCardGooglePay {
     /// Google Pay Eligibility.
     pub eligible: bool,

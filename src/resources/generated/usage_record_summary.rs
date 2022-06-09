@@ -40,7 +40,7 @@ impl Object for UsageRecordSummary {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct Period {
     /// The end date of this usage period.
     ///

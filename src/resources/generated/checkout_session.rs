@@ -225,7 +225,7 @@ impl Object for CheckoutSession {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CheckoutSessionPaymentMethodOptions {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub acss_debit: Option<CheckoutAcssDebitPaymentMethodOptions>,
@@ -294,7 +294,7 @@ pub struct CheckoutSessionPaymentMethodOptions {
     pub us_bank_account: Option<CheckoutUsBankAccountPaymentMethodOptions>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CheckoutAcssDebitPaymentMethodOptions {
     /// Currency supported by the bank account.
     ///
@@ -318,7 +318,7 @@ pub struct CheckoutAcssDebitPaymentMethodOptions {
     pub verification_method: Option<CheckoutAcssDebitPaymentMethodOptionsVerificationMethod>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CheckoutAcssDebitMandateOptions {
     /// A URL for custom mandate text.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -345,7 +345,7 @@ pub struct CheckoutAcssDebitMandateOptions {
     pub transaction_type: Option<CheckoutAcssDebitMandateOptionsTransactionType>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CheckoutAffirmPaymentMethodOptions {
     /// Indicates that you intend to make future payments with this PaymentIntent's payment method.
     ///
@@ -356,7 +356,7 @@ pub struct CheckoutAffirmPaymentMethodOptions {
     pub setup_future_usage: Option<CheckoutAffirmPaymentMethodOptionsSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CheckoutAfterpayClearpayPaymentMethodOptions {
     /// Indicates that you intend to make future payments with this PaymentIntent's payment method.
     ///
@@ -367,7 +367,7 @@ pub struct CheckoutAfterpayClearpayPaymentMethodOptions {
     pub setup_future_usage: Option<CheckoutAfterpayClearpayPaymentMethodOptionsSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CheckoutAlipayPaymentMethodOptions {
     /// Indicates that you intend to make future payments with this PaymentIntent's payment method.
     ///
@@ -378,7 +378,7 @@ pub struct CheckoutAlipayPaymentMethodOptions {
     pub setup_future_usage: Option<CheckoutAlipayPaymentMethodOptionsSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CheckoutAuBecsDebitPaymentMethodOptions {
     /// Indicates that you intend to make future payments with this PaymentIntent's payment method.
     ///
@@ -389,7 +389,7 @@ pub struct CheckoutAuBecsDebitPaymentMethodOptions {
     pub setup_future_usage: Option<CheckoutAuBecsDebitPaymentMethodOptionsSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CheckoutBacsDebitPaymentMethodOptions {
     /// Indicates that you intend to make future payments with this PaymentIntent's payment method.
     ///
@@ -400,7 +400,7 @@ pub struct CheckoutBacsDebitPaymentMethodOptions {
     pub setup_future_usage: Option<CheckoutBacsDebitPaymentMethodOptionsSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CheckoutBancontactPaymentMethodOptions {
     /// Indicates that you intend to make future payments with this PaymentIntent's payment method.
     ///
@@ -411,7 +411,7 @@ pub struct CheckoutBancontactPaymentMethodOptions {
     pub setup_future_usage: Option<CheckoutBancontactPaymentMethodOptionsSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CheckoutBoletoPaymentMethodOptions {
     /// The number of calendar days before a Boleto voucher expires.
     ///
@@ -427,7 +427,7 @@ pub struct CheckoutBoletoPaymentMethodOptions {
     pub setup_future_usage: Option<CheckoutBoletoPaymentMethodOptionsSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CheckoutCardPaymentMethodOptions {
     /// Indicates that you intend to make future payments with this PaymentIntent's payment method.
     ///
@@ -438,7 +438,7 @@ pub struct CheckoutCardPaymentMethodOptions {
     pub setup_future_usage: Option<CheckoutCardPaymentMethodOptionsSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CheckoutEpsPaymentMethodOptions {
     /// Indicates that you intend to make future payments with this PaymentIntent's payment method.
     ///
@@ -449,7 +449,7 @@ pub struct CheckoutEpsPaymentMethodOptions {
     pub setup_future_usage: Option<CheckoutEpsPaymentMethodOptionsSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CheckoutFpxPaymentMethodOptions {
     /// Indicates that you intend to make future payments with this PaymentIntent's payment method.
     ///
@@ -460,7 +460,7 @@ pub struct CheckoutFpxPaymentMethodOptions {
     pub setup_future_usage: Option<CheckoutFpxPaymentMethodOptionsSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CheckoutGiropayPaymentMethodOptions {
     /// Indicates that you intend to make future payments with this PaymentIntent's payment method.
     ///
@@ -471,7 +471,7 @@ pub struct CheckoutGiropayPaymentMethodOptions {
     pub setup_future_usage: Option<CheckoutGiropayPaymentMethodOptionsSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CheckoutGrabPayPaymentMethodOptions {
     /// Indicates that you intend to make future payments with this PaymentIntent's payment method.
     ///
@@ -482,7 +482,7 @@ pub struct CheckoutGrabPayPaymentMethodOptions {
     pub setup_future_usage: Option<CheckoutGrabPayPaymentMethodOptionsSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CheckoutIdealPaymentMethodOptions {
     /// Indicates that you intend to make future payments with this PaymentIntent's payment method.
     ///
@@ -493,7 +493,7 @@ pub struct CheckoutIdealPaymentMethodOptions {
     pub setup_future_usage: Option<CheckoutIdealPaymentMethodOptionsSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CheckoutKlarnaPaymentMethodOptions {
     /// Indicates that you intend to make future payments with this PaymentIntent's payment method.
     ///
@@ -504,7 +504,7 @@ pub struct CheckoutKlarnaPaymentMethodOptions {
     pub setup_future_usage: Option<CheckoutKlarnaPaymentMethodOptionsSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CheckoutKonbiniPaymentMethodOptions {
     /// The number of calendar days (between 1 and 60) after which Konbini payment instructions will expire.
     ///
@@ -521,7 +521,7 @@ pub struct CheckoutKonbiniPaymentMethodOptions {
     pub setup_future_usage: Option<CheckoutKonbiniPaymentMethodOptionsSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CheckoutOxxoPaymentMethodOptions {
     /// The number of calendar days before an OXXO invoice expires.
     ///
@@ -537,7 +537,7 @@ pub struct CheckoutOxxoPaymentMethodOptions {
     pub setup_future_usage: Option<CheckoutOxxoPaymentMethodOptionsSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CheckoutP24PaymentMethodOptions {
     /// Indicates that you intend to make future payments with this PaymentIntent's payment method.
     ///
@@ -548,7 +548,7 @@ pub struct CheckoutP24PaymentMethodOptions {
     pub setup_future_usage: Option<CheckoutP24PaymentMethodOptionsSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CheckoutPaynowPaymentMethodOptions {
     /// Indicates that you intend to make future payments with this PaymentIntent's payment method.
     ///
@@ -559,7 +559,7 @@ pub struct CheckoutPaynowPaymentMethodOptions {
     pub setup_future_usage: Option<CheckoutPaynowPaymentMethodOptionsSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CheckoutSepaDebitPaymentMethodOptions {
     /// Indicates that you intend to make future payments with this PaymentIntent's payment method.
     ///
@@ -570,7 +570,7 @@ pub struct CheckoutSepaDebitPaymentMethodOptions {
     pub setup_future_usage: Option<CheckoutSepaDebitPaymentMethodOptionsSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CheckoutSofortPaymentMethodOptions {
     /// Indicates that you intend to make future payments with this PaymentIntent's payment method.
     ///
@@ -581,7 +581,7 @@ pub struct CheckoutSofortPaymentMethodOptions {
     pub setup_future_usage: Option<CheckoutSofortPaymentMethodOptionsSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CheckoutUsBankAccountPaymentMethodOptions {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub financial_connections: Option<LinkedAccountOptionsUsBankAccount>,
@@ -599,14 +599,14 @@ pub struct CheckoutUsBankAccountPaymentMethodOptions {
     pub verification_method: Option<CheckoutUsBankAccountPaymentMethodOptionsVerificationMethod>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentPagesCheckoutSessionAfterExpiration {
     /// When set, configuration used to recover the Checkout Session on expiry.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub recovery: Option<PaymentPagesCheckoutSessionAfterExpirationRecovery>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentPagesCheckoutSessionAfterExpirationRecovery {
     /// Enables user redeemable promotion codes on the recovered Checkout Sessions.
     ///
@@ -628,7 +628,7 @@ pub struct PaymentPagesCheckoutSessionAfterExpirationRecovery {
     pub url: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentPagesCheckoutSessionAutomaticTax {
     /// Indicates whether automatic tax is enabled for the session.
     pub enabled: bool,
@@ -638,7 +638,7 @@ pub struct PaymentPagesCheckoutSessionAutomaticTax {
     pub status: Option<PaymentPagesCheckoutSessionAutomaticTaxStatus>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentPagesCheckoutSessionConsent {
     /// If `opt_in`, the customer consents to receiving promotional communications
     /// from the merchant about this Checkout Session.
@@ -646,7 +646,7 @@ pub struct PaymentPagesCheckoutSessionConsent {
     pub promotions: Option<PaymentPagesCheckoutSessionConsentPromotions>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentPagesCheckoutSessionConsentCollection {
     /// If set to `auto`, enables the collection of customer consent for promotional communications.
     ///
@@ -656,7 +656,7 @@ pub struct PaymentPagesCheckoutSessionConsentCollection {
     pub promotions: Option<PaymentPagesCheckoutSessionConsentCollectionPromotions>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentPagesCheckoutSessionCustomerDetails {
     /// The customer's address at the time of checkout.
     ///
@@ -688,13 +688,13 @@ pub struct PaymentPagesCheckoutSessionCustomerDetails {
     pub tax_ids: Option<Vec<PaymentPagesCheckoutSessionTaxId>>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentPagesCheckoutSessionPhoneNumberCollection {
     /// Indicates whether phone number collection is enabled for the session.
     pub enabled: bool,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentPagesCheckoutSessionShippingAddressCollection {
     /// An array of two-letter ISO country codes representing which countries Checkout should provide as options for
     /// shipping locations.
@@ -704,7 +704,7 @@ pub struct PaymentPagesCheckoutSessionShippingAddressCollection {
         Vec<PaymentPagesCheckoutSessionShippingAddressCollectionAllowedCountries>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentPagesCheckoutSessionShippingOption {
     /// A non-negative integer in cents representing how much to charge.
     pub shipping_amount: i64,
@@ -713,7 +713,7 @@ pub struct PaymentPagesCheckoutSessionShippingOption {
     pub shipping_rate: Expandable<ShippingRate>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentPagesCheckoutSessionTaxId {
     /// The type of the tax ID, one of `eu_vat`, `br_cnpj`, `br_cpf`, `eu_oss_vat`, `gb_vat`, `nz_gst`, `au_abn`, `au_arn`, `in_gst`, `no_vat`, `za_vat`, `ch_vat`, `mx_rfc`, `sg_uen`, `ru_inn`, `ru_kpp`, `ca_bn`, `hk_br`, `es_cif`, `tw_vat`, `th_vat`, `jp_cn`, `jp_rn`, `li_uid`, `my_itn`, `us_ein`, `kr_brn`, `ca_qst`, `ca_gst_hst`, `ca_pst_bc`, `ca_pst_mb`, `ca_pst_sk`, `my_sst`, `sg_gst`, `ae_trn`, `cl_tin`, `sa_vat`, `id_npwp`, `my_frp`, `il_vat`, `ge_vat`, `ua_vat`, `is_vat`, `bg_uic`, `hu_tin`, `si_tin`, or `unknown`.
     #[serde(rename = "type")]
@@ -724,13 +724,13 @@ pub struct PaymentPagesCheckoutSessionTaxId {
     pub value: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentPagesCheckoutSessionTaxIdCollection {
     /// Indicates whether tax ID collection is enabled for the session.
     pub enabled: bool,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentPagesCheckoutSessionTotalDetails {
     /// This is the sum of all the discounts.
     pub amount_discount: i64,
@@ -746,7 +746,7 @@ pub struct PaymentPagesCheckoutSessionTotalDetails {
     pub breakdown: Option<PaymentPagesCheckoutSessionTotalDetailsResourceBreakdown>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentPagesCheckoutSessionTotalDetailsResourceBreakdown {
     /// The aggregated discounts.
     pub discounts: Vec<LineItemsDiscountAmount>,
@@ -755,7 +755,7 @@ pub struct PaymentPagesCheckoutSessionTotalDetailsResourceBreakdown {
     pub taxes: Vec<LineItemsTaxAmount>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct LineItemsDiscountAmount {
     /// The amount discounted.
     pub amount: i64,
@@ -763,7 +763,7 @@ pub struct LineItemsDiscountAmount {
     pub discount: Discount,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct LineItemsTaxAmount {
     /// Amount of tax applied for this rate.
     pub amount: i64,

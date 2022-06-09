@@ -108,7 +108,7 @@ impl Object for InvoiceLineItem {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct DiscountsResourceDiscountAmount {
     /// The amount, in %s, of the discount.
     pub amount: i64,
@@ -117,7 +117,7 @@ pub struct DiscountsResourceDiscountAmount {
     pub discount: Expandable<Discount>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct TaxAmount {
     /// The amount, in %s, of the tax.
     pub amount: i64,
@@ -129,14 +129,14 @@ pub struct TaxAmount {
     pub tax_rate: Expandable<TaxRate>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct InvoicesLineItemsProrationDetails {
     /// For a credit proration `line_item`, the original debit line_items to which the credit proration applies.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub credited_items: Option<InvoicesLineItemsCreditedItems>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct InvoicesLineItemsCreditedItems {
     /// Invoice containing the credited invoice line items.
     pub invoice: String,

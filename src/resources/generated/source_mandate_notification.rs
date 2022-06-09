@@ -68,21 +68,21 @@ impl Object for SourceMandateNotification {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SourceMandateNotificationAcssDebitData {
     /// The statement descriptor associate with the debit.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub statement_descriptor: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SourceMandateNotificationBacsDebitData {
     /// Last 4 digits of the account number associated with the debit.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub last4: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SourceMandateNotificationSepaDebitData {
     /// SEPA creditor ID.
     #[serde(skip_serializing_if = "Option::is_none")]

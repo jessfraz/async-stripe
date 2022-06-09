@@ -92,7 +92,7 @@ impl Object for TreasuryOutboundTransfer {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct OutboundTransfersPaymentMethodDetails {
     pub billing_details: UfaResourceBillingDetails,
 
@@ -104,7 +104,7 @@ pub struct OutboundTransfersPaymentMethodDetails {
     pub us_bank_account: Option<OutboundTransfersPaymentMethodDetailsUsBankAccount>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct OutboundTransfersPaymentMethodDetailsUsBankAccount {
     /// Account holder type: individual or company.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -139,7 +139,7 @@ pub struct OutboundTransfersPaymentMethodDetailsUsBankAccount {
     pub routing_number: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct OutboundTransfersResourceStatusTransitions {
     /// Timestamp describing when an OutboundTransfer changed status to `canceled`.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -158,7 +158,7 @@ pub struct OutboundTransfersResourceStatusTransitions {
     pub returned_at: Option<Timestamp>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct OutboundTransfersResourceTreasuryReturnedDetails {
     /// Reason for the return.
     pub code: OutboundTransfersResourceTreasuryReturnedDetailsCode,

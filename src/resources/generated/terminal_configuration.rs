@@ -47,14 +47,14 @@ impl Object for TerminalConfiguration {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct TerminalConfigurationConfigurationResourceDeviceTypeSpecificConfig {
     /// A File ID representing an image you would like displayed on the reader.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub splashscreen: Option<Expandable<File>>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct TerminalConfigurationConfigurationResourceTipping {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub aud: Option<TerminalConfigurationConfigurationResourceCurrencySpecificConfig>,
@@ -99,7 +99,7 @@ pub struct TerminalConfigurationConfigurationResourceTipping {
     pub usd: Option<TerminalConfigurationConfigurationResourceCurrencySpecificConfig>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct TerminalConfigurationConfigurationResourceCurrencySpecificConfig {
     /// Fixed amounts displayed when collecting a tip.
     #[serde(skip_serializing_if = "Option::is_none")]

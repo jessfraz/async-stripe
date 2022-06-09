@@ -144,7 +144,7 @@ impl Object for SubscriptionSchedule {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SubscriptionScheduleCurrentPhase {
     /// The end of this phase of the subscription schedule.
     pub end_date: Timestamp,
@@ -153,7 +153,7 @@ pub struct SubscriptionScheduleCurrentPhase {
     pub start_date: Timestamp,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SubscriptionSchedulePhaseConfiguration {
     /// A list of prices and quantities that will generate invoice items appended to the first invoice for this phase.
     pub add_invoice_items: Vec<SubscriptionScheduleAddInvoiceItem>,
@@ -235,13 +235,13 @@ pub struct SubscriptionSchedulePhaseConfiguration {
     pub trial_end: Option<Timestamp>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SchedulesPhaseAutomaticTax {
     /// Whether Stripe automatically computes tax on invoices created during this phase.
     pub enabled: bool,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SubscriptionScheduleAddInvoiceItem {
     /// ID of the price used to generate the invoice item.
     pub price: Expandable<Price>,
@@ -257,7 +257,7 @@ pub struct SubscriptionScheduleAddInvoiceItem {
     pub tax_rates: Option<Vec<TaxRate>>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SubscriptionScheduleConfigurationItem {
     /// Define thresholds at which an invoice will be sent, and the related subscription advanced to a new billing period.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -277,7 +277,7 @@ pub struct SubscriptionScheduleConfigurationItem {
     pub tax_rates: Option<Vec<TaxRate>>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SubscriptionScheduleDefaultSettings {
     /// A non-negative decimal between 0 and 100, with at most two decimal places.
     ///
@@ -321,7 +321,7 @@ pub struct SubscriptionScheduleDefaultSettings {
     pub transfer_data: Option<SubscriptionTransferData>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SubscriptionSchedulesResourceDefaultSettingsAutomaticTax {
     /// Whether Stripe automatically computes tax on invoices created during this phase.
     pub enabled: bool,

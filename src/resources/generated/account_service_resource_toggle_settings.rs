@@ -18,7 +18,7 @@ pub struct AccountServiceResourceToggleSettings {
     pub status_details: Vec<AccountServiceResourceStatusDetails>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct AccountServiceResourceStatusDetails {
     /// Represents the reason why the status is `pending` or `restricted`.
     pub code: AccountServiceResourceStatusDetailsCode,

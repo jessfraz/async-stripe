@@ -67,7 +67,7 @@ impl Object for BillingPortalConfiguration {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PortalBusinessProfile {
     /// The messaging shown to customers in the portal.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -82,7 +82,7 @@ pub struct PortalBusinessProfile {
     pub terms_of_service_url: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PortalFeatures {
     pub customer_update: PortalCustomerUpdate,
 
@@ -97,7 +97,7 @@ pub struct PortalFeatures {
     pub subscription_update: PortalSubscriptionUpdate,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PortalCustomerUpdate {
     /// The types of customer updates that are supported.
     ///
@@ -108,19 +108,19 @@ pub struct PortalCustomerUpdate {
     pub enabled: bool,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PortalInvoiceList {
     /// Whether the feature is enabled.
     pub enabled: bool,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PortalPaymentMethodUpdate {
     /// Whether the feature is enabled.
     pub enabled: bool,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PortalSubscriptionCancel {
     pub cancellation_reason: PortalSubscriptionCancellationReason,
 
@@ -136,7 +136,7 @@ pub struct PortalSubscriptionCancel {
     pub proration_behavior: PortalSubscriptionCancelProrationBehavior,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PortalSubscriptionCancellationReason {
     /// Whether the feature is enabled.
     pub enabled: bool,
@@ -145,13 +145,13 @@ pub struct PortalSubscriptionCancellationReason {
     pub options: Vec<PortalSubscriptionCancellationReasonOptions>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PortalSubscriptionPause {
     /// Whether the feature is enabled.
     pub enabled: bool,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PortalSubscriptionUpdate {
     /// The types of subscription updates that are supported for items listed in the `products` attribute.
     ///
@@ -171,7 +171,7 @@ pub struct PortalSubscriptionUpdate {
     pub proration_behavior: PortalSubscriptionUpdateProrationBehavior,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PortalSubscriptionUpdateProduct {
     /// The list of price IDs which, when subscribed to, a subscription can be updated.
     pub prices: Vec<String>,

@@ -33,7 +33,7 @@ impl Object for FundingInstructions {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct FundingInstructionsBankTransfer {
     /// The country of the bank account to fund.
     pub country: String,
@@ -46,7 +46,7 @@ pub struct FundingInstructionsBankTransfer {
     pub type_: FundingInstructionsBankTransferType,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct FundingInstructionsBankTransferFinancialAddress {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub iban: Option<FundingInstructionsBankTransferIbanRecord>,
@@ -70,7 +70,7 @@ pub struct FundingInstructionsBankTransferFinancialAddress {
     pub zengin: Option<FundingInstructionsBankTransferZenginRecord>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct FundingInstructionsBankTransferIbanRecord {
     /// The name of the person or business that owns the bank account.
     pub account_holder_name: String,
@@ -85,7 +85,7 @@ pub struct FundingInstructionsBankTransferIbanRecord {
     pub iban: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct FundingInstructionsBankTransferSortCodeRecord {
     /// The name of the person or business that owns the bank account.
     pub account_holder_name: String,
@@ -97,7 +97,7 @@ pub struct FundingInstructionsBankTransferSortCodeRecord {
     pub sort_code: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct FundingInstructionsBankTransferSpeiRecord {
     /// The three-digit bank code.
     pub bank_code: String,
@@ -109,7 +109,7 @@ pub struct FundingInstructionsBankTransferSpeiRecord {
     pub clabe: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct FundingInstructionsBankTransferZenginRecord {
     /// The account holder name.
     #[serde(skip_serializing_if = "Option::is_none")]

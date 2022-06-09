@@ -134,7 +134,7 @@ impl Object for Coupon {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CouponAppliesTo {
     /// A list of product IDs this coupon applies to.
     pub products: Vec<String>,

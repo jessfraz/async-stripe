@@ -64,7 +64,7 @@ impl Object for TreasuryCreditReversal {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct ReceivedCreditsResourceStatusTransitions {
     /// Timestamp describing when the CreditReversal changed status to `posted`.
     #[serde(skip_serializing_if = "Option::is_none")]

@@ -72,7 +72,7 @@ impl Object for TerminalReader {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct TerminalReaderReaderResourceReaderAction {
     /// Failure code, only set if status is `failed`.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -99,13 +99,13 @@ pub struct TerminalReaderReaderResourceReaderAction {
     pub type_: TerminalReaderReaderResourceReaderActionType,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct TerminalReaderReaderResourceProcessPaymentIntentAction {
     /// Most recent PaymentIntent processed by the reader.
     pub payment_intent: Expandable<PaymentIntent>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct TerminalReaderReaderResourceProcessSetupIntentAction {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub generated_card: Option<String>,
@@ -114,7 +114,7 @@ pub struct TerminalReaderReaderResourceProcessSetupIntentAction {
     pub setup_intent: Expandable<SetupIntent>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct TerminalReaderReaderResourceSetReaderDisplayAction {
     /// Cart object to be displayed by the reader.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -125,7 +125,7 @@ pub struct TerminalReaderReaderResourceSetReaderDisplayAction {
     pub type_: TerminalReaderReaderResourceSetReaderDisplayActionType,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct TerminalReaderReaderResourceCart {
     /// Three-letter [ISO currency code](https://www.iso.org/iso-4217-currency-codes.html), in lowercase.
     ///
@@ -147,7 +147,7 @@ pub struct TerminalReaderReaderResourceCart {
     pub total: i64,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct TerminalReaderReaderResourceLineItem {
     /// The amount of the line item.
     ///

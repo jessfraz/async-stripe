@@ -201,7 +201,7 @@ impl Object for Source {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SourceCodeVerificationFlow {
     /// The number of attempts remaining to authenticate the source object with a verification code.
     pub attempts_remaining: i64,
@@ -210,7 +210,7 @@ pub struct SourceCodeVerificationFlow {
     pub status: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SourceOrder {
     /// A positive integer in the smallest currency unit (that is, 100 cents for $1.00, or 1 for ¥1, Japanese Yen being a zero-decimal currency) representing the total amount for the order.
     pub amount: i64,
@@ -232,7 +232,7 @@ pub struct SourceOrder {
     pub shipping: Option<Shipping>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SourceOrderItem {
     /// The amount (price) for this order item.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -268,7 +268,7 @@ pub struct SourceOrderItem {
     pub type_: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SourceOwner {
     /// Owner's address.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -315,7 +315,7 @@ pub struct SourceOwner {
     pub verified_phone: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SourceReceiverFlow {
     /// The address of the receiver source.
     ///
@@ -348,7 +348,7 @@ pub struct SourceReceiverFlow {
     pub refund_attributes_status: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SourceRedirectFlow {
     /// The failure reason for the redirect, either `user_abort` (the customer aborted or dropped out of the redirect flow), `declined` (the authentication failed or the transaction was declined), or `processing_error` (the redirect failed due to a technical error).
     ///
@@ -366,7 +366,7 @@ pub struct SourceRedirectFlow {
     pub url: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SourceTypeAchCreditTransfer {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub account_number: Option<String>,
@@ -393,7 +393,7 @@ pub struct SourceTypeAchCreditTransfer {
     pub swift_code: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SourceTypeAchDebit {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub bank_name: Option<String>,
@@ -415,7 +415,7 @@ pub struct SourceTypeAchDebit {
     pub type_: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SourceTypeAcssDebit {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub bank_address_city: Option<String>,
@@ -448,7 +448,7 @@ pub struct SourceTypeAcssDebit {
     pub routing_number: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SourceTypeAlipay {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub data_string: Option<String>,
@@ -460,7 +460,7 @@ pub struct SourceTypeAlipay {
     pub statement_descriptor: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SourceTypeAuBecsDebit {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub bsb_number: Option<String>,
@@ -472,7 +472,7 @@ pub struct SourceTypeAuBecsDebit {
     pub last4: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SourceTypeBancontact {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub bank_code: Option<String>,
@@ -493,7 +493,7 @@ pub struct SourceTypeBancontact {
     pub statement_descriptor: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SourceTypeCard {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub address_line1_check: Option<String>,
@@ -538,7 +538,7 @@ pub struct SourceTypeCard {
     pub tokenization_method: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SourceTypeCardPresent {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub application_cryptogram: Option<String>,
@@ -610,7 +610,7 @@ pub struct SourceTypeCardPresent {
     pub transaction_status_information: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SourceTypeEps {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub reference: Option<String>,
@@ -619,7 +619,7 @@ pub struct SourceTypeEps {
     pub statement_descriptor: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SourceTypeGiropay {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub bank_code: Option<String>,
@@ -634,7 +634,7 @@ pub struct SourceTypeGiropay {
     pub statement_descriptor: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SourceTypeIdeal {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub bank: Option<String>,
@@ -649,7 +649,7 @@ pub struct SourceTypeIdeal {
     pub statement_descriptor: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SourceTypeKlarna {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub background_image_url: Option<String>,
@@ -730,7 +730,7 @@ pub struct SourceTypeKlarna {
     pub shipping_last_name: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SourceTypeMultibanco {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub entity: Option<String>,
@@ -763,13 +763,13 @@ pub struct SourceTypeMultibanco {
     pub refund_iban: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SourceTypeP24 {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub reference: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SourceTypeSepaDebit {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub bank_code: Option<String>,
@@ -793,7 +793,7 @@ pub struct SourceTypeSepaDebit {
     pub mandate_url: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SourceTypeSofort {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub bank_code: Option<String>,
@@ -817,7 +817,7 @@ pub struct SourceTypeSofort {
     pub statement_descriptor: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SourceTypeThreeDSecure {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub address_line1_check: Option<String>,
@@ -871,7 +871,7 @@ pub struct SourceTypeThreeDSecure {
     pub tokenization_method: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SourceTypeWechat {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub prepay_id: Option<String>,

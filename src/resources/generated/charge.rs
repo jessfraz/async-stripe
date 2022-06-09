@@ -264,7 +264,7 @@ impl Object for Charge {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct FraudDetails {
     /// Assessments from Stripe.
     ///
@@ -279,7 +279,7 @@ pub struct FraudDetails {
     pub user_report: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct ChargeOutcome {
     /// Possible values are `approved_by_network`, `declined_by_network`, `not_sent_to_network`, and `reversed_after_approval`.
     ///
@@ -328,7 +328,7 @@ pub struct ChargeOutcome {
     pub type_: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct TransferData {
     /// The amount transferred to the destination account, if specified.
     ///
@@ -340,7 +340,7 @@ pub struct TransferData {
     pub destination: Expandable<Account>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetails {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub ach_credit_transfer: Option<PaymentMethodDetailsAchCreditTransfer>,
@@ -445,7 +445,7 @@ pub struct PaymentMethodDetails {
     pub wechat_pay: Option<PaymentMethodDetailsWechatPay>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentFlowsPrivatePaymentMethodsAlipayDetails {
     /// Uniquely identifies this particular Alipay account.
     ///
@@ -464,7 +464,7 @@ pub struct PaymentFlowsPrivatePaymentMethodsAlipayDetails {
     pub transaction_id: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsAchCreditTransfer {
     /// Account number to transfer funds to.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -483,7 +483,7 @@ pub struct PaymentMethodDetailsAchCreditTransfer {
     pub swift_code: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsAchDebit {
     /// Type of entity that holds the account.
     ///
@@ -514,7 +514,7 @@ pub struct PaymentMethodDetailsAchDebit {
     pub routing_number: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsAcssDebit {
     /// Name of the bank associated with the bank account.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -543,17 +543,17 @@ pub struct PaymentMethodDetailsAcssDebit {
     pub transit_number: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsAffirm {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsAfterpayClearpay {
     /// Order identifier shown to the merchant in Afterpay’s online portal.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub reference: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsAuBecsDebit {
     /// Bank-State-Branch number of the bank account.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -574,7 +574,7 @@ pub struct PaymentMethodDetailsAuBecsDebit {
     pub mandate: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsBacsDebit {
     /// Uniquely identifies this particular bank account.
     ///
@@ -597,7 +597,7 @@ pub struct PaymentMethodDetailsBacsDebit {
     pub sort_code: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsBancontact {
     /// Bank code of bank associated with the bank account.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -636,13 +636,13 @@ pub struct PaymentMethodDetailsBancontact {
     pub verified_name: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsBoleto {
     /// The tax ID of the customer (CPF for individuals consumers or CNPJ for businesses consumers).
     pub tax_id: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsCard {
     /// Card brand.
     ///
@@ -708,7 +708,7 @@ pub struct PaymentMethodDetailsCard {
     pub wallet: Option<PaymentMethodDetailsCardWallet>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsCardChecks {
     /// If a address line1 was provided, results of the check, one of `pass`, `fail`, `unavailable`, or `unchecked`.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -723,14 +723,14 @@ pub struct PaymentMethodDetailsCardChecks {
     pub cvc_check: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsCardInstallments {
     /// Installment plan selected for the payment.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub plan: Option<PaymentMethodDetailsCardInstallmentsPlan>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsCardWallet {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub amex_express_checkout: Option<PaymentMethodDetailsCardWalletAmexExpressCheckout>,
@@ -762,16 +762,16 @@ pub struct PaymentMethodDetailsCardWallet {
     pub visa_checkout: Option<PaymentMethodDetailsCardWalletVisaCheckout>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsCardWalletAmexExpressCheckout {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsCardWalletApplePay {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsCardWalletGooglePay {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsCardWalletMasterpass {
     /// Owner's verified billing address.
     ///
@@ -802,10 +802,10 @@ pub struct PaymentMethodDetailsCardWalletMasterpass {
     pub shipping_address: Option<Address>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsCardWalletSamsungPay {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsCardWalletVisaCheckout {
     /// Owner's verified billing address.
     ///
@@ -836,10 +836,10 @@ pub struct PaymentMethodDetailsCardWalletVisaCheckout {
     pub shipping_address: Option<Address>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsCustomerBalance {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsEps {
     /// The customer's bank.
     ///
@@ -855,7 +855,7 @@ pub struct PaymentMethodDetailsEps {
     pub verified_name: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsFpx {
     /// The customer's bank.
     ///
@@ -867,7 +867,7 @@ pub struct PaymentMethodDetailsFpx {
     pub transaction_id: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsGiropay {
     /// Bank code of bank associated with the bank account.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -889,14 +889,14 @@ pub struct PaymentMethodDetailsGiropay {
     pub verified_name: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsGrabpay {
     /// Unique transaction id generated by GrabPay.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub transaction_id: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsIdeal {
     /// The customer's bank.
     ///
@@ -928,7 +928,7 @@ pub struct PaymentMethodDetailsIdeal {
     pub verified_name: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsInteracPresent {
     /// Card brand.
     ///
@@ -1006,7 +1006,7 @@ pub struct PaymentMethodDetailsInteracPresent {
     pub receipt: Option<PaymentMethodDetailsInteracPresentReceipt>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsInteracPresentReceipt {
     /// The type of account being debited or credited.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -1049,7 +1049,7 @@ pub struct PaymentMethodDetailsInteracPresentReceipt {
     pub transaction_status_information: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsKlarna {
     /// The Klarna payment method used for this transaction.
     /// Can be one of `pay_later`, `pay_now`, `pay_with_financing`, or `pay_in_installments`.
@@ -1062,24 +1062,24 @@ pub struct PaymentMethodDetailsKlarna {
     pub preferred_locale: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsKonbini {
     /// If the payment succeeded, this contains the details of the convenience store where the payment was completed.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub store: Option<PaymentMethodDetailsKonbiniStore>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsKonbiniStore {
     /// The name of the convenience store chain where the payment was completed.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub chain: Option<PaymentMethodDetailsKonbiniStoreChain>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsLink {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsMultibanco {
     /// Entity number associated with this Multibanco payment.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -1090,14 +1090,14 @@ pub struct PaymentMethodDetailsMultibanco {
     pub reference: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsOxxo {
     /// OXXO reference number.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub number: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsP24 {
     /// The customer's bank.
     ///
@@ -1117,14 +1117,14 @@ pub struct PaymentMethodDetailsP24 {
     pub verified_name: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsPaynow {
     /// Reference number associated with this PayNow payment.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub reference: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsSepaDebit {
     /// Bank code of bank associated with the bank account.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -1153,7 +1153,7 @@ pub struct PaymentMethodDetailsSepaDebit {
     pub mandate: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsSofort {
     /// Bank code of bank associated with the bank account.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -1196,10 +1196,10 @@ pub struct PaymentMethodDetailsSofort {
     pub verified_name: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsStripeAccount {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsUsBankAccount {
     /// Account holder type: individual or company.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -1230,10 +1230,10 @@ pub struct PaymentMethodDetailsUsBankAccount {
     pub routing_number: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsWechat {}
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodDetailsWechatPay {
     /// Uniquely identifies this particular WeChat Pay account.
     ///
@@ -1246,7 +1246,7 @@ pub struct PaymentMethodDetailsWechatPay {
     pub transaction_id: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct Rule {
     /// The action taken on the payment.
     pub action: String,

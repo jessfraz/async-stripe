@@ -79,7 +79,7 @@ impl Object for TreasuryReceivedDebit {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct ReceivedDebitsResourceTreasuryLinkedFlows {
     /// Set if the ReceivedDebit is associated with an InboundTransfer's return of funds.
     #[serde(skip_serializing_if = "Option::is_none")]

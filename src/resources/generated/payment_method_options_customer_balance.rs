@@ -26,7 +26,7 @@ pub struct PaymentMethodOptionsCustomerBalance {
     pub setup_future_usage: Option<PaymentMethodOptionsCustomerBalanceSetupFutureUsage>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodOptionsCustomerBalanceBankTransfer {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub eu_bank_transfer: Option<PaymentMethodOptionsCustomerBalanceEuBankAccount>,
@@ -44,7 +44,7 @@ pub struct PaymentMethodOptionsCustomerBalanceBankTransfer {
     pub type_: Option<PaymentMethodOptionsCustomerBalanceBankTransferType>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct PaymentMethodOptionsCustomerBalanceEuBankAccount {
     /// The desired country code of the bank account information.
     ///

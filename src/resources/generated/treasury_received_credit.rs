@@ -78,7 +78,7 @@ impl Object for TreasuryReceivedCredit {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct ReceivedCreditsResourceTreasuryLinkedFlows {
     /// The CreditReversal created as a result of this ReceivedCredit being reversed.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -108,7 +108,7 @@ pub struct ReceivedCreditsResourceTreasuryLinkedFlows {
     pub source_flow_type: Option<String>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct ReceivedCreditsResourceTreasurySourceFlowsDetails {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub credit_reversal: Option<TreasuryCreditReversal>,

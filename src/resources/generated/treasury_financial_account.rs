@@ -74,7 +74,7 @@ impl Object for TreasuryFinancialAccount {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct AccountServiceResourceBalance {
     /// Funds the user can spend right now.
     pub cash: i64,
@@ -86,7 +86,7 @@ pub struct AccountServiceResourceBalance {
     pub outbound_pending: i64,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct AccountServiceResourceFinancialAddress {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub aba: Option<AccountServiceResourceAbaRecord>,
@@ -100,7 +100,7 @@ pub struct AccountServiceResourceFinancialAddress {
     pub type_: AccountServiceResourceFinancialAddressType,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct AccountServiceResourceAbaRecord {
     /// The name of the person or business that owns the bank account.
     pub account_holder_name: String,
@@ -119,7 +119,7 @@ pub struct AccountServiceResourceAbaRecord {
     pub routing_number: String,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct AccountServiceResourcePlatformRestrictions {
     /// Restricts all inbound money movement.
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -130,14 +130,14 @@ pub struct AccountServiceResourcePlatformRestrictions {
     pub outbound_flows: Option<AccountServiceResourcePlatformRestrictionsOutboundFlows>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct AccountServiceResourceTreasuryStatusDetails {
     /// Details related to the closure of this FinancialAccount.
     #[serde(skip_serializing_if = "Option::is_none")]
     pub closed: Option<AccountServiceResourceTreasuryClosedStatusDetails>,
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct AccountServiceResourceTreasuryClosedStatusDetails {
     /// The array that contains reasons for a FinancialAccount closure.
     pub reasons: Vec<AccountServiceResourceTreasuryClosedStatusDetailsReasons>,

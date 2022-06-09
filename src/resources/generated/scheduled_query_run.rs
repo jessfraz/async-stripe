@@ -56,7 +56,7 @@ impl Object for ScheduledQueryRun {
     }
 }
 
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct SigmaScheduledQueryRunError {
     /// Information about the run failure.
     pub message: String,
