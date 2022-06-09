@@ -78,7 +78,7 @@ macro_rules! def_id {
             fn schema_name() -> String{
                 stringify!($struct_name).to_string()
             }
-            fn json_schema(gen: &mut schemars::gen::SchemaGenerator) -> schemars::schema::Schema {
+            fn json_schema(_gen: &mut schemars::gen::SchemaGenerator) -> schemars::schema::Schema {
                 schemars::schema::SchemaObject {
                     instance_type: Some(schemars::schema::InstanceType::String.into()),
                     ..Default::default()
@@ -192,7 +192,7 @@ macro_rules! def_id {
             fn schema_name() -> String{
                 stringify!($struct_name).to_string()
             }
-            fn json_schema(gen: &mut schemars::gen::SchemaGenerator) -> schemars::schema::Schema {
+            fn json_schema(_gen: &mut schemars::gen::SchemaGenerator) -> schemars::schema::Schema {
                 schemars::schema::SchemaObject {
                     instance_type: Some(schemars::schema::InstanceType::String.into()),
                     ..Default::default()
