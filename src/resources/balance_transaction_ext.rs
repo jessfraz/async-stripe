@@ -1,3 +1,4 @@
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::ids::BalanceTransactionSourceId;
@@ -54,7 +55,7 @@ impl Object for BalanceTransactionSourceUnion {
 }
 
 /// An enum representing the possible values of an `BalanceTransaction`'s `status` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum BalanceTransactionStatus {
     Available,
@@ -89,7 +90,7 @@ impl std::default::Default for BalanceTransactionStatus {
 }
 
 /// An enum representing the possible values of an `Fee`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum FeeType {
     ApplicationFee,

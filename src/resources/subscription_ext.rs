@@ -1,10 +1,11 @@
+use schemars::JsonSchema;
 use serde::Serialize;
 
 use crate::client::{Client, Response};
 use crate::ids::SubscriptionId;
 use crate::resources::{CreateSubscriptionItems, Subscription};
 
-#[derive(Clone, Debug, Default, Serialize)]
+#[derive(Clone, Debug, Default, Serialize, JsonSchema)]
 pub struct CancelSubscription {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub at_period_end: Option<bool>,

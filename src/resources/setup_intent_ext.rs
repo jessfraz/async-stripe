@@ -1,10 +1,11 @@
+use schemars::JsonSchema;
 use serde::Serialize;
 
 use crate::client::{Client, Response};
 use crate::resources::SetupIntent;
 use crate::SetupIntentId;
 
-#[derive(Clone, Debug, Serialize)]
+#[derive(Clone, Debug, Serialize, JsonSchema)]
 pub struct ConfirmSetupIntent {
     /// The client secret if on the client side
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -21,7 +22,7 @@ pub struct ConfirmSetupIntent {
     pub redirect_url: Option<String>,
 }
 
-#[derive(Clone, Debug, Serialize)]
+#[derive(Clone, Debug, Serialize, JsonSchema)]
 pub struct CancelSetupIntent {}
 
 impl SetupIntent {

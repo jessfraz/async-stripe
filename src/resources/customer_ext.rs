@@ -1,3 +1,4 @@
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::client::{Client, Response};
@@ -7,7 +8,7 @@ use crate::resources::{
     BankAccount, Customer, PaymentMethod, PaymentSource, PaymentSourceParams, Source,
 };
 
-#[derive(Clone, Debug, Serialize, Eq, PartialEq)]
+#[derive(Clone, Debug, Serialize, Eq, PartialEq, JsonSchema)]
 pub struct CustomerPaymentMethodRetrieval<'a> {
     ///A cursor for use in pagination. `ending_before` is an object ID that defines your place in the list.
     ///For instance, if you make a list request and receive 100 objects, starting with `obj_bar`,
@@ -151,7 +152,7 @@ impl VerifyBankAccount<'_> {
     }
 }
 
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 #[serde(tag = "object", rename_all = "snake_case")]
 pub enum DetachedSource {
     BankAccount(Deleted<BankAccountId>),

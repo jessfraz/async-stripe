@@ -1,7 +1,8 @@
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 /// An enum representing the possible values of an `Source`'s `status` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SourceStatus {
     Canceled,
@@ -42,7 +43,7 @@ impl std::default::Default for SourceStatus {
 }
 
 /// An enum representing the possible values of an `Source`'s `usage` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SourceUsage {
     Reusable,
@@ -71,7 +72,7 @@ impl std::fmt::Display for SourceUsage {
 }
 
 /// An enum representing the possible values of an `SourceRedirectFlow`'s `failure_reason` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SourceRedirectFlowFailureReason {
     Declined,
@@ -108,7 +109,7 @@ impl std::default::Default for SourceRedirectFlowFailureReason {
 }
 
 /// An enum representing the possible values of an `SourceRedirectFlow`'s `status` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum SourceRedirectFlowStatus {
     Failed,

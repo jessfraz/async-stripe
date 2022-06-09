@@ -1,3 +1,4 @@
+use schemars::JsonSchema;
 use serde::Serialize;
 
 use crate::client::{Client, Response};
@@ -24,7 +25,7 @@ impl Invoice {
     }
 }
 
-#[derive(Clone, Debug, Serialize)]
+#[derive(Clone, Debug, Serialize, JsonSchema)]
 pub struct RetrieveUpcomingInvoice {
     pub customer: CustomerId, // this is a required param
     #[serde(skip_serializing_if = "Option::is_none")]

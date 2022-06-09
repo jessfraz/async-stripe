@@ -1,3 +1,4 @@
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::{Client, Response, SubscriptionItemId, Timestamp, UsageRecord};
@@ -36,7 +37,7 @@ pub struct CreateUsageRecord {
 }
 
 /// An enum representing the possible values of a `UsageRecord`'s `account` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum UsageRecordAction {
     Increment,

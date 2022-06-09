@@ -1,7 +1,8 @@
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 /// An enum representing the possible values of an `IssuingCardPin`'s `status` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum IssuingCardPinStatus {
     Active,
@@ -30,7 +31,7 @@ impl std::fmt::Display for IssuingCardPinStatus {
 }
 
 /// An enum representing the possible values of an `IssuingCardShipping`'s `status` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum IssuingCardShippingStatus {
     Canceled,
@@ -67,7 +68,7 @@ impl std::fmt::Display for IssuingCardShippingStatus {
 }
 
 /// An enum representing the possible values of an `IssuingCardShipping`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum IssuingCardShippingType {
     Bulk,
@@ -102,7 +103,7 @@ impl std::default::Default for IssuingCardShippingType {
 }
 
 /// An enum representing the possible values of an `IssuingCard`'s `type` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum IssuingCardType {
     Physical,

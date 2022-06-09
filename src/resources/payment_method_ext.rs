@@ -1,3 +1,4 @@
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::client::{Client, Response};
@@ -7,7 +8,7 @@ use crate::resources::PaymentMethod;
 /// The parameters for `PaymentMethod::attach`
 ///
 /// For more details see <https://stripe.com/docs/api/payment_methods/attach>.
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 pub struct AttachPaymentMethod {
     pub customer: CustomerId,
 }

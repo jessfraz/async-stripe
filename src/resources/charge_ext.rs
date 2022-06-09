@@ -1,3 +1,4 @@
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 use crate::client::{Client, Response};
@@ -8,7 +9,7 @@ use crate::resources::{Charge, Rule};
 /// The set of PaymentSource parameters that can be used to create a charge.
 ///
 /// For more details see <https://stripe.com/docs/api/charges/create#create_charge-source>.
-#[derive(Clone, Debug, Deserialize, Serialize)]
+#[derive(Clone, Debug, Deserialize, Serialize, JsonSchema)]
 #[serde(untagged)]
 pub enum ChargeSourceParams {
     Token(TokenId),
@@ -21,7 +22,7 @@ pub enum ChargeSourceParams {
 /// The set of parameters that can be used when capturing a charge object.
 ///
 /// For more details see <https://stripe.com/docs/api#charge_capture>.
-#[derive(Clone, Debug, Default, Deserialize, Serialize)]
+#[derive(Clone, Debug, Default, Deserialize, Serialize, JsonSchema)]
 pub struct CaptureCharge<'a> {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub amount: Option<u64>,

@@ -1,7 +1,8 @@
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 
 /// An enum representing the possible values of the `IssuingAuthorizationVerificationData` fields.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum IssuingAuthorizationCheck {
     Match,
@@ -16,7 +17,7 @@ impl std::default::Default for IssuingAuthorizationCheck {
 }
 
 /// An enum representing the possible values of the `IssuingAuthorization`'s `authorization_method` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum IssuingAuthorizationMethod {
     KeyedIn,
@@ -33,7 +34,7 @@ impl std::default::Default for IssuingAuthorizationMethod {
 }
 
 /// An enum representing the possible values of the `IssuingAuthorizationRequest`'s `reason` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum IssuingAuthorizationReason {
     AuthenticationFailed,
@@ -56,7 +57,7 @@ impl std::default::Default for IssuingAuthorizationReason {
 }
 
 /// An enum representing the possible values of an `IssuingAuthorization`'s `wallet_provider` field.
-#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq)]
+#[derive(Copy, Clone, Debug, Deserialize, Serialize, Eq, PartialEq, JsonSchema)]
 #[serde(rename_all = "snake_case")]
 pub enum IssuingAuthorizationWalletProvider {
     ApplePay,
